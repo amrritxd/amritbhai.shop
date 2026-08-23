@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amrit Whiteboard — Sketch. Sync. Ship ideas.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0612;
+    --bg-alt:#120a1f;
+    --violet:#8b5cf6;
+    --pink:#ec4899;
+    --orange:#f97316;
+    --glass:rgba(255,255,255,0.045);
+    --glass-border:rgba(255,255,255,0.09);
+    --text:#f3eefb;
+    --text-dim:#a89bc2;
+    --text-faint:#6f6386;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Plus Jakarta Sans',sans-serif;
+    overflow-x:hidden;
+    position:relative;
+  }
+  h1,h2,h3,.logo{font-family:'Syne',sans-serif;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+
+  /* ---------- glow blobs ---------- */
+  .blob{position:fixed;border-radius:50%;filter:blur(90px);z-index:0;pointer-events:none;opacity:.55;}
+  .blob-1{width:480px;height:480px;top:-160px;left:-140px;background:radial-gradient(circle,var(--violet),transparent 70%);animation:float1 18s ease-in-out infinite;}
+  .blob-2{width:420px;height:420px;top:280px;right:-160px;background:radial-gradient(circle,var(--pink),transparent 70%);animation:float2 22s ease-in-out infinite;}
+  .blob-3{width:380px;height:380px;bottom:-140px;left:20%;background:radial-gradient(circle,var(--orange),transparent 70%);opacity:.35;animation:float1 26s ease-in-out infinite reverse;}
+  @keyframes float1{0%,100%{transform:translate(0,0);}50%{transform:translate(40px,60px);}}
+  @keyframes float2{0%,100%{transform:translate(0,0);}50%{transform:translate(-50px,40px);}}
+
+  .wrap{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- navbar ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(10,6,18,0.72);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(255,255,255,0.06);
+  }
+  nav{max-width:1180px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;}
+  .logo{font-weight:800;font-size:20px;letter-spacing:-0.01em;display:flex;align-items:center;gap:9px;}
+  .logo-mark{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--violet),var(--pink) 55%,var(--orange));flex-shrink:0;position:relative;}
+  .logo-mark::after{content:"";position:absolute;inset:5px;border-radius:4px;background:var(--bg);opacity:.85;}
+  .nav-links{display:flex;gap:32px;list-style:none;}
+  .nav-links a{color:var(--text-dim);text-decoration:none;font-size:14.5px;font-weight:500;transition:color .2s;}
+  .nav-links a:hover{color:var(--text);}
+  .nav-cta{
+    padding:9px 18px;border-radius:100px;font-size:14px;font-weight:600;
+    background:linear-gradient(135deg,var(--violet),var(--pink));
+    color:#fff;text-decoration:none;white-space:nowrap;
+    box-shadow:0 4px 20px rgba(139,92,246,0.35);
+  }
+  .nav-mobile-hide{display:flex;}
+  @media (max-width:720px){.nav-links{display:none;}}
+
+  /* ---------- hero ---------- */
+  .hero{padding:76px 0 40px;text-align:center;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:6px 14px;border-radius:100px;
+    background:var(--glass);border:1px solid var(--glass-border);
+    font-size:13px;color:var(--text-dim);font-weight:600;margin-bottom:26px;
+  }
+  .dot{width:6px;height:6px;border-radius:50%;background:linear-gradient(135deg,var(--violet),var(--orange));}
+  .hero h1{
+    font-size:clamp(34px,7vw,58px);
+    line-height:1.06;font-weight:800;letter-spacing:-0.02em;
+    max-width:760px;margin:0 auto;
+  }
+  .grad-text{
+    background:linear-gradient(100deg,var(--violet),var(--pink) 50%,var(--orange));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .stroke-wrap{position:relative;display:inline-block;}
+  .stroke-wrap svg{position:absolute;left:0;bottom:-14px;width:100%;height:18px;}
+  .hero p.sub{
+    max-width:480px;margin:22px auto 0;color:var(--text-dim);
+    font-size:16.5px;line-height:1.6;
+  }
+  .hero-ctas{display:flex;gap:14px;justify-content:center;margin-top:34px;flex-wrap:wrap;}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;
+    padding:14px 26px;border-radius:100px;font-size:15px;font-weight:700;
+    text-decoration:none;transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .btn:active{transform:scale(0.97);}
+  .btn-primary{
+    background:linear-gradient(135deg,var(--violet),var(--pink) 60%,var(--orange));
+    color:#fff;box-shadow:0 8px 28px rgba(236,72,153,0.32);
+  }
+  .btn-primary:hover{box-shadow:0 10px 34px rgba(236,72,153,0.46);transform:translateY(-2px);}
+  .btn-ghost{
+    background:var(--glass);border:1px solid var(--glass-border);color:var(--text);
+    backdrop-filter:blur(10px);
+  }
+  .btn-ghost:hover{background:rgba(255,255,255,0.08);transform:translateY(-2px);}
+  .btn-note{font-size:12px;color:var(--text-faint);margin-top:14px;}
+
+  /* ---------- device mock ---------- */
+  .hero-device{margin:56px auto 0;width:230px;position:relative;}
+  .phone{
+    width:230px;height:472px;border-radius:38px;
+    background:linear-gradient(160deg,#1a1128,#0d0716);
+    border:1px solid rgba(255,255,255,0.1);
+    padding:10px;box-shadow:0 30px 80px -20px rgba(139,92,246,0.35), 0 0 0 1px rgba(255,255,255,0.03);
+    position:relative;
+  }
+  .phone-screen{
+    width:100%;height:100%;border-radius:28px;overflow:hidden;position:relative;
+    background:radial-gradient(120% 100% at 20% 0%, #241537 0%, #100a1c 60%);
+  }
+  .canvas-grid{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);background-size:14px 14px;}
+  .note{position:absolute;border-radius:10px;box-shadow:0 8px 18px rgba(0,0,0,.35);}
+  .n1{width:58px;height:44px;top:70px;left:20px;background:linear-gradient(135deg,var(--violet),var(--pink));opacity:.9;transform:rotate(-6deg);}
+  .n2{width:50px;height:38px;top:130px;right:18px;background:linear-gradient(135deg,var(--orange),var(--pink));opacity:.85;transform:rotate(5deg);}
+  .n3{width:44px;height:44px;bottom:110px;left:26px;border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--violet));opacity:.8;}
+  .cursor{position:absolute;display:flex;align-items:center;gap:5px;animation:bob 4s ease-in-out infinite;}
+  .cursor svg{width:14px;height:14px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.4));}
+  .cursor span{font-size:9px;font-weight:700;background:var(--pink);color:#fff;padding:2px 6px;border-radius:5px;white-space:nowrap;}
+  .c1{top:100px;right:40px;}
+  .c2{bottom:150px;left:60px;animation-delay:1.2s;}
+  @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+  .stroke-path{position:absolute;inset:0;}
+
+  /* ---------- section shell ---------- */
+  section{padding:88px 0;position:relative;}
+  .section-head{text-align:center;max-width:520px;margin:0 auto 48px;}
+  .section-head .eyebrow{margin-bottom:16px;}
+  .section-head h2{font-size:clamp(26px,4.5vw,38px);font-weight:800;letter-spacing:-0.015em;line-height:1.15;}
+  .section-head p{color:var(--text-dim);margin-top:14px;font-size:15.5px;line-height:1.6;}
+
+  /* ---------- carousel ---------- */
+  .carousel{
+    display:flex;gap:20px;overflow-x:auto;padding:12px 24px 28px;
+    scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .carousel::-webkit-scrollbar{display:none;}
+  .screen-card{
+    flex:0 0 auto;scroll-snap-align:center;
+    width:220px;height:440px;border-radius:32px;padding:8px;
+    background:var(--glass);border:1px solid var(--glass-border);
+    backdrop-filter:blur(16px);position:relative;
+  }
+  .screen-inner{
+    width:100%;height:100%;border-radius:26px;overflow:hidden;position:relative;
+    background:radial-gradient(120% 100% at 30% 0%, #221533 0%, #0e0818 65%);
+  }
+  .screen-label{
+    position:absolute;bottom:12px;left:12px;right:12px;
+    font-size:11.5px;font-weight:700;color:#fff;
+    background:rgba(10,6,18,0.55);backdrop-filter:blur(6px);
+    padding:7px 10px;border-radius:10px;border:1px solid rgba(255,255,255,0.08);
+  }
+  .bar{position:absolute;border-radius:8px;}
+  /* screen 1: infinite canvas */
+  .s1 .bar{background:linear-gradient(135deg,var(--violet),var(--pink));}
+  .s1 .b1{width:70px;height:50px;top:40px;left:24px;opacity:.9;transform:rotate(-4deg);}
+  .s1 .b2{width:56px;height:56px;top:120px;right:20px;border-radius:50%;opacity:.75;background:linear-gradient(135deg,var(--orange),var(--pink));}
+  .s1 .b3{width:60px;height:40px;bottom:120px;left:30px;opacity:.6;}
+  /* screen 2: boards grid */
+  .s2 .grid-item{position:absolute;width:70px;height:70px;border-radius:14px;background:var(--glass);border:1px solid var(--glass-border);}
+  .s2 .g1{top:36px;left:20px;background:linear-gradient(135deg,rgba(139,92,246,.5),rgba(236,72,153,.3));}
+  .s2 .g2{top:36px;right:20px;background:linear-gradient(135deg,rgba(249,115,22,.4),rgba(236,72,153,.3));}
+  .s2 .g3{top:118px;left:20px;background:linear-gradient(135deg,rgba(236,72,153,.4),rgba(139,92,246,.25));}
+  .s2 .g4{top:118px;right:20px;background:linear-gradient(135deg,rgba(139,92,246,.35),rgba(249,115,22,.25));}
+  /* screen 3: collab cursors */
+  .s3 .avatar-row{position:absolute;top:30px;left:20px;display:flex;gap:-6px;}
+  .s3 .av{width:26px;height:26px;border-radius:50%;border:2px solid #150c22;margin-left:-8px;}
+  .s3 .av:first-child{margin-left:0;}
+  .s3 .av1{background:var(--violet);}
+  .s3 .av2{background:var(--pink);}
+  .s3 .av3{background:var(--orange);}
+  .s3 .stroke{position:absolute;top:90px;left:18px;width:64%;height:2px;background:linear-gradient(90deg,var(--pink),transparent);border-radius:2px;}
+  .s3 .stroke2{position:absolute;top:150px;right:18px;width:50%;height:2px;background:linear-gradient(90deg,transparent,var(--violet));border-radius:2px;}
+  /* screen 4: export */
+  .s4 .doc{position:absolute;top:44px;left:50%;transform:translateX(-50%);width:110px;height:130px;border-radius:12px;background:var(--glass);border:1px solid var(--glass-border);}
+  .s4 .doc::before{content:"";position:absolute;top:16px;left:14px;right:14px;height:6px;border-radius:3px;background:linear-gradient(90deg,var(--violet),var(--pink));}
+  .s4 .doc::after{content:"";position:absolute;top:32px;left:14px;right:30px;height:5px;border-radius:3px;background:rgba(255,255,255,.15);}
+
+  /* ---------- features ---------- */
+  .feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;}
+  .feature-card{
+    background:var(--glass);border:1px solid var(--glass-border);
+    border-radius:22px;padding:26px 24px;backdrop-filter:blur(14px);
+    transition:transform .2s ease, border-color .2s ease;
+  }
+  .feature-card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,0.18);}
+  .feature-icon{
+    width:42px;height:42px;border-radius:13px;margin-bottom:16px;
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,rgba(139,92,246,.35),rgba(236,72,153,.25));
+    border:1px solid rgba(255,255,255,0.1);
+  }
+  .feature-icon svg{width:20px;height:20px;stroke:#fff;}
+  .feature-card h3{font-size:17px;font-weight:700;margin-bottom:8px;letter-spacing:-0.01em;}
+  .feature-card p{font-size:14px;color:var(--text-dim);line-height:1.6;}
+
+  /* ---------- community ---------- */
+  .community-card{
+    max-width:640px;margin:0 auto;
+    background:linear-gradient(160deg, rgba(139,92,246,0.14), rgba(10,6,18,0.4) 60%);
+    border:1px solid var(--glass-border);border-radius:28px;
+    padding:40px 36px;text-align:center;backdrop-filter:blur(16px);
+    position:relative;overflow:hidden;
+  }
+  .community-card::before{
+    content:"";position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;
+    background:radial-gradient(circle,var(--pink),transparent 70%);opacity:.4;filter:blur(20px);
+  }
+  .tg-icon{
+    width:56px;height:56px;border-radius:16px;margin:0 auto 20px;
+    background:linear-gradient(135deg,#2AABEE,#229ED9);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 10px 30px rgba(42,171,238,0.35);
+  }
+  .tg-icon svg{width:28px;height:28px;fill:#fff;}
+  .community-card h2{font-size:24px;font-weight:800;margin-bottom:10px;}
+  .community-card p{color:var(--text-dim);font-size:15px;max-width:420px;margin:0 auto 26px;line-height:1.6;}
+
+  /* ---------- download / footer ---------- */
+  .download-section{text-align:center;}
+  .download-card{
+    max-width:560px;margin:0 auto;
+    background:var(--glass);border:1px solid var(--glass-border);
+    border-radius:28px;padding:44px 32px;backdrop-filter:blur(16px);
+  }
+  .download-card h2{font-size:26px;font-weight:800;margin-bottom:12px;}
+  .download-card p{color:var(--text-dim);font-size:14.5px;line-height:1.6;margin-bottom:28px;}
+  .apk-badge{
+    display:inline-flex;align-items:center;gap:8px;font-size:12px;color:var(--text-faint);
+    margin-top:16px;justify-content:center;
+  }
+  .apk-badge svg{width:14px;height:14px;stroke:var(--text-faint);}
+
+  footer{padding:36px 24px 44px;text-align:center;border-top:1px solid rgba(255,255,255,0.06);margin-top:20px;}
+  footer p{font-size:13px;color:var(--text-faint);}
+  footer .logo{justify-content:center;margin-bottom:14px;}
+</style>
+</head>
+<body>
+
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+<div class="blob blob-3"></div>
+
+<header>
+  <nav class="wrap">
+    <div class="logo"><span class="logo-mark"></span>Whiteboard</div>
+    <ul class="nav-links">
+      <li><a href="#screens">Screens</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#community">Community</a></li>
+    </ul>
+    <a class="nav-cta nav-mobile-hide" href="https://devuploads.com/5jvkt3gxwrqr" target="_blank" rel="noopener">Get the app</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <div class="eyebrow"><span class="dot"></span> Now on Android · Early access</div>
+    <h1>Sketch. Sync. <span class="stroke-wrap"><span class="grad-text">Ship ideas.</span>
+      <svg viewBox="0 0 220 18" preserveAspectRatio="none"><path d="M2,12 C50,2 170,2 218,10" stroke="url(#g1)" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#8b5cf6"/><stop offset="55%" stop-color="#ec4899"/><stop offset="100%" stop-color="#f97316"/></linearGradient></defs>
+      </svg></span></h1>
+    <p class="sub">Sketch ideas, drop sticky notes, and draw with friends in real time — all in one pocket-sized board that never runs out of room.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="https://devuploads.com/5jvkt3gxwrqr" target="_blank" rel="noopener">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M12 3v13m0 0l-4-4m4 4l4-4M5 21h14"/></svg>
+        Download APK
+      </a>
+      <a class="btn btn-ghost" href="https://t.me/+dQcx4OpgzPM4ODA1" target="_blank" rel="noopener">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="#fff"><path d="M21.5 4.5L2.7 11.9c-1.2.5-1.2 1.2-.2 1.5l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.2-2.1 4.6 3.4c.8.5 1.4.2 1.6-.8L23 6.1c.3-1.3-.4-1.9-1.5-1.6z" opacity=".95"/></svg>
+        Join Telegram
+      </a>
+    </div>
+    <div class="btn-note">Sideloaded APK · Android 8+ · ~24MB</div>
+
+    <div class="hero-device">
+      <div class="phone">
+        <div class="phone-screen">
+          <div class="canvas-grid"></div>
+          <div class="note n1"></div>
+          <div class="note n2"></div>
+          <div class="note n3"></div>
+          <svg class="stroke-path" viewBox="0 0 210 452"><path d="M30,260 C70,230 120,290 170,250" stroke="#ec4899" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.7"/></svg>
+          <div class="cursor c1"><svg viewBox="0 0 24 24" fill="#8b5cf6"><path d="M4 2l16 8-7 2-2 7z"/></svg><span>Rae</span></div>
+          <div class="cursor c2"><svg viewBox="0 0 24 24" fill="#f97316"><path d="M4 2l16 8-7 2-2 7z"/></svg><span>Cole</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="screens" class="wrap">
+    <div class="section-head">
+      <div class="eyebrow"><span class="dot"></span> Inside the app</div>
+      <h2>Every screen, built for the flow of a session</h2>
+      <p>Swipe through the canvas, your boards, live collaboration, and one-tap export.</p>
+    </div>
+  </section>
+  <div class="carousel">
+    <div class="screen-card">
+      <div class="screen-inner s1">
+        <div class="bar b1"></div><div class="bar b2"></div><div class="bar b3"></div>
+        <div class="screen-label">Infinite canvas</div>
+      </div>
+    </div>
+    <div class="screen-card">
+      <div class="screen-inner s2">
+        <div class="grid-item g1"></div><div class="grid-item g2"></div>
+        <div class="grid-item g3"></div><div class="grid-item g4"></div>
+        <div class="screen-label">Your boards, organized</div>
+      </div>
+    </div>
+    <div class="screen-card">
+      <div class="screen-inner s3">
+        <div class="avatar-row"><div class="av av1"></div><div class="av av2"></div><div class="av av3"></div></div>
+        <div class="stroke"></div><div class="stroke2"></div>
+        <div class="screen-label">Live, with your people</div>
+      </div>
+    </div>
+    <div class="screen-card">
+      <div class="screen-inner s4">
+        <div class="doc"></div>
+        <div class="screen-label">Export in one tap</div>
+      </div>
+    </div>
+  </div>
+
+  <section id="features" class="wrap">
+    <div class="section-head">
+      <div class="eyebrow"><span class="dot"></span> Why people switch</div>
+      <h2>Built for the moment an idea shows up</h2>
+    </div>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 6h7v7"/></svg></div>
+        <h3>Real-time collaboration</h3>
+        <p>See every cursor, stroke, and sticky note land the moment someone else makes it — no refresh, no lag.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></div>
+        <h3>Unlimited canvas</h3>
+        <p>Pan and zoom forever. Your board grows with the conversation instead of forcing it into a corner.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 6 6 1-4.5 4.4 1 6.1L12 16.5 6.5 19.5l1-6.1L3 8l6-1z"/></svg></div>
+        <h3>Sticky notes & shapes</h3>
+        <p>Drop notes, arrows, and shapes in a tap. Color-code by hand or let a palette suggest one.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/></svg></div>
+        <h3>Export & share</h3>
+        <p>Turn any board into a clean PNG or PDF, ready to drop into a doc, deck, or group chat.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="community" class="wrap">
+    <div class="community-card">
+      <div class="tg-icon"><svg viewBox="0 0 24 24"><path d="M21.5 4.5L2.7 11.9c-1.2.5-1.2 1.2-.2 1.5l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.2-2.1 4.6 3.4c.8.5 1.4.2 1.6-.8L23 6.1c.3-1.3-.4-1.9-1.5-1.6z"/></svg></div>
+      <h2>Join the Telegram channel</h2>
+      <p>Get build drops, roadmap updates, and a direct line to the people making Whiteboard — before anything hits the app.</p>
+      <a class="btn btn-primary" href="https://t.me/+dQcx4OpgzPM4ODA1" target="_blank" rel="noopener">Open Telegram →</a>
+    </div>
+  </section>
+
+  <section class="wrap download-section">
+    <div class="download-card">
+      <h2>Get <span class="grad-text">Whiteboard</span> on your phone</h2>
+      <p>Direct APK download — install it, open it, start sketching. No store, no wait.</p>
+      <a class="btn btn-primary" href="https://devuploads.com/5jvkt3gxwrqr" target="_blank" rel="noopener">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M12 3v13m0 0l-4-4m4 4l4-4M5 21h14"/></svg>
+        Download the APK
+      </a>
+      <div class="apk-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg>
+        You'll need to allow installs from unknown sources
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="logo"><span class="logo-mark"></span>Whiteboard</div>
+  <p>© 2026 Whiteboard. Sketch it, share it, keep it moving.</p>
+</footer>
+
+</body>
+</html>
