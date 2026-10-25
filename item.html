@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amritt Editon by Amrit Tiwari</title>
+<meta name="description" content="Amritt Editon - apps, websites, PDFs aur digital tools ek hi jagah. Created by Amrit Tiwari.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="Amrit Tiwari">
+<meta name="theme-color" content="#000000">
+<link rel="canonical" href="https://www.amritbhai.shop/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Amritt Editon">
+<meta property="og:title" content="Amritt Editon by Amrit Tiwari">
+<meta property="og:description" content="Apps, websites, PDFs aur digital tools ek hi jagah.">
+<meta property="og:url" content="https://www.amritbhai.shop/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script>
+tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter', 'Noto Sans Devanagari', 'system-ui', 'sans-serif'] } } } };
+</script>
+</head>
+<body class="bg-black text-neutral-50 font-sans min-h-screen antialiased">
+
+<header class="border-b border-neutral-900">
+  <div class="max-w-[640px] mx-auto px-5 py-3.5 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-2.5 font-bold tracking-tight">
+      <span class="w-8 h-8 rounded-[9px] bg-white text-black grid place-items-center font-extrabold">A</span>Amritt Editon
+    </a>
+    <a href="/" class="text-sm text-neutral-400 hover:text-white">Saare items</a>
+  </div>
+</header>
+
+<main id="app" class="max-w-[640px] mx-auto px-5 py-8">
+  <div class="animate-pulse"><div class="h-[60px] w-[60px] rounded-2xl bg-neutral-900 mb-4"></div><div class="h-6 w-2/3 rounded bg-neutral-900 mb-3"></div><div class="h-4 w-full rounded bg-neutral-900"></div></div>
+</main>
+
+<noscript><p class="max-w-[640px] mx-auto px-5 text-neutral-400">Is page ke liye JavaScript on karein, ya <a class="underline" href="/">Amritt Editon</a> par jayein.</p></noscript>
+
+<footer class="border-t border-neutral-900 text-center text-neutral-600 text-[.78rem] px-5 pt-6 pb-10">&copy; <span id="yr"></span> Amritt Editon. Created by <span class="text-neutral-400 font-medium">Amrit Tiwari</span>. All rights reserved.</footer>
+
+<script>
+(function () {
+  var SITE = "https://www.amritbhai.shop";
+  var DB = "https://amritt-editon-default-rtdb.firebaseio.com";
+  var id = new URLSearchParams(location.search).get("id") || "";
+  var $ = function (x) { return document.getElementById(x); };
+  var esc = function (v) { return String(v == null ? "" : v).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); };
+  var okUrl = function (u) { return /^https?:\/\//i.test(String(u || "").trim()); };
+  var kind = function (c) { c = String(c || "").toLowerCase(); return c.indexOf("web") > -1 ? "Website" : c.indexOf("pdf") > -1 ? "PDF" : c.indexOf("app") > -1 ? "App" : "Other"; };
+  document.getElementById("yr").textContent = new Date().getFullYear();
+
+  function meta(sel, create, val) {
+    var el = document.querySelector(sel);
+    if (!el && create) { el = document.createElement("meta"); el.setAttribute(create[0], create[1]); document.head.appendChild(el); }
+    if (el) el.setAttribute("content", val);
+  }
+  function notFound(soft) {
+    if (!soft) meta('meta[name="robots"]', null, "noindex, follow");
+    $("app").innerHTML = '<h1 class="text-xl font-bold mb-2">' + (soft ? "Load nahi ho paya" : "Item nahi mila") + '</h1><p class="text-neutral-400 mb-5">' + (soft ? "Internet check karke dobara try karein." : "Ye item hat chuka hai ya link galat hai.") + '</p><a href="/" class="inline-flex px-5 py-3 rounded-full bg-white text-black font-semibold text-sm">Amritt Editon par jayein</a>';
+  }
+
+  function render(i) {
+    var paid = i.paid && Number(i.price) > 0;
+    var k = kind(i.category);
+    var title = i.title + " - Amritt Editon by Amrit Tiwari";
+    var desc = String(i.shortDesc || i.fullDesc || "").replace(/\s+/g, " ").trim();
+    if (desc.length > 130) desc = desc.slice(0, 127) + "...";
+    var action = paid ? "Buy" : k === "Website" ? "Open" : k === "PDF" ? "Open" : "Download";
+    var metaDesc = (desc ? desc + " " : "") + "Amritt Editon par " + i.title + " " + action.toLowerCase() + " karein. Created by Amrit Tiwari.";
+    var url = SITE + "/item.html?id=" + encodeURIComponent(id);
+    var icon = okUrl(i.iconUrl) ? i.iconUrl.trim() : "";
+
+    document.title = title;
+    meta('meta[name="description"]', null, metaDesc);
+    document.querySelector('link[rel="canonical"]').setAttribute("href", url);
+    meta('meta[property="og:title"]', ["property", "og:title"], title);
+    meta('meta[property="og:description"]', ["property", "og:description"], metaDesc);
+    meta('meta[property="og:url"]', ["property", "og:url"], url);
+    if (icon) meta('meta[property="og:image"]', ["property", "og:image"], icon);
+
+    var person = { "@type": "Person", name: "Amrit Tiwari", url: SITE + "/" };
+    var org = { "@type": "Organization", name: "Amritt Editon", url: SITE + "/" };
+    var ld = k === "App"
+      ? { "@context": "https://schema.org", "@type": "SoftwareApplication", name: i.title, description: metaDesc, applicationCategory: "UtilitiesApplication", url: url,
+          offers: { "@type": "Offer", price: paid ? Number(i.price) : 0, priceCurrency: "INR" }, author: person, publisher: org }
+      : { "@context": "https://schema.org", "@type": "CreativeWork", name: i.title, description: metaDesc, url: url, author: person, publisher: org };
+    if (i.version) ld.softwareVersion = String(i.version);
+    if (icon) ld.image = icon;
+    var s = document.createElement("script"); s.type = "application/ld+json"; s.text = JSON.stringify(ld); document.head.appendChild(s);
+
+    var cta = paid ? "Buy \u20B9" + Number(i.price) : action;
+    var letter = esc(String(i.title).trim().charAt(0).toUpperCase() || "A");
+    var cell = function (l, v) { return '<div><small class="block text-neutral-600 text-[.68rem] uppercase tracking-wider mb-1">' + l + '</small><span class="font-semibold text-sm break-words">' + esc(v || "-") + "</span></div>"; };
+    $("app").innerHTML =
+      '<div class="flex gap-4 items-center">' +
+        (icon ? '<img src="' + esc(icon) + '" alt="' + esc(i.title) + '" class="w-[72px] h-[72px] rounded-2xl object-cover bg-neutral-900 border border-neutral-800 shrink-0" onerror="this.outerHTML=\'<div class=&quot;w-[72px] h-[72px] rounded-2xl bg-neutral-900 border border-neutral-800 grid place-items-center font-bold text-2xl shrink-0&quot;>' + letter + '</div>\'">'
+              : '<div class="w-[72px] h-[72px] rounded-2xl bg-neutral-900 border border-neutral-800 grid place-items-center font-bold text-2xl shrink-0">' + letter + "</div>") +
+        '<div class="min-w-0"><h1 class="text-2xl font-bold leading-tight break-words">' + esc(i.title) + '</h1>' +
+        '<p class="text-neutral-400 text-sm mt-1">by Amritt Editon &middot; Amrit Tiwari' + (paid ? " &middot; \u20B9" + Number(i.price) : " &middot; Free") + "</p></div></div>" +
+      '<div class="grid grid-cols-3 gap-2 my-6 p-4 border border-neutral-900 rounded-[14px] text-center">' + cell("Category", i.category || "App") + cell("Version", i.version) + cell("Size", i.size) + "</div>" +
+      '<p class="text-neutral-400 leading-[1.75] whitespace-pre-line mb-7">' + esc(i.fullDesc || i.shortDesc || "") + "</p>" +
+      '<a href="/?open=' + encodeURIComponent(id) + '" class="flex items-center justify-center w-full py-3.5 rounded-full bg-white text-black font-semibold hover:bg-neutral-200 transition">' + esc(cta) + " on Amritt Editon</a>" +
+      '<a href="/" class="block text-center text-sm text-neutral-400 hover:text-white mt-4">Aur apps, websites aur PDFs dekho</a>';
+  }
+
+  if (!/^[A-Za-z0-9_-]{1,64}$/.test(id)) { notFound(); return; }
+  fetch(DB + "/items/" + encodeURIComponent(id) + ".json")
+    .then(function (r) { if (!r.ok) throw new Error("x"); return r.json(); })
+    .then(function (i) { if (!i || !i.title || i.hidden) notFound(); else render(i); })
+    .catch(function () { notFound(true); });
+})();
+</script>
+</body>
+</html>
