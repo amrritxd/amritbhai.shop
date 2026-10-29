@@ -1,0 +1,23 @@
+name: Update topper SEO
+
+on:
+  schedule:
+    - cron: "0 */3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  topper:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Topper update
+        run: python3 .github/scripts/update_topper.py
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add test.html
+          git diff --cached --quiet || (git commit -m "Update topper SEO" && git push)
