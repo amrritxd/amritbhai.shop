@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="pageTitle">Amrit Tiwari Test - Amritt Edition</title>
+<meta id="metaDesc" name="description" content="Amrit Tiwari Test: apni class aur subject chunein, 30 sawaal ka test dein aur leaderboard mein apna naam dekhein.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="Amrit Tiwari">
+<meta name="theme-color" content="#16a34a">
+<link rel="canonical" href="https://www.amritbhai.shop/test.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Amrit Tiwari Test">
+<meta id="ogTitle" property="og:title" content="Amrit Tiwari Test - Amritt Edition">
+<meta id="ogDesc" property="og:description" content="Class aur subject chunein, test dein aur leaderboard mein top karein.">
+<meta property="og:url" content="https://www.amritbhai.shop/test.html">
+<meta property="og:image" content="https://www.amritbhai.shop/developer.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://www.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script>tailwind.config = { theme: { extend: { fontFamily: { sans: ['Poppins', 'Noto Sans Devanagari', 'system-ui', 'sans-serif'] } } } };</script>
+<style>
+html{background:#f6fbf7;scroll-behavior:smooth}
+body{background:
+ radial-gradient(700px 320px at 12% -60px,rgba(34,197,94,.20),transparent 70%),
+ radial-gradient(600px 300px at 95% 0,rgba(16,185,129,.14),transparent 70%),
+ linear-gradient(#f6fbf7,#fff 420px);background-attachment:fixed}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;
+ background-image:radial-gradient(rgba(22,163,74,.13) 1px,transparent 1.2px);background-size:22px 22px;
+ -webkit-mask-image:linear-gradient(#000,transparent 340px);mask-image:linear-gradient(#000,transparent 340px)}
+.glass{background:rgba(255,255,255,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(187,247,208,.9);box-shadow:0 10px 30px -12px rgba(22,163,74,.25),0 1px 0 rgba(255,255,255,.9) inset}
+.gtext{background:linear-gradient(120deg,#15803d,#22c55e 55%,#10b981);-webkit-background-clip:text;background-clip:text;color:transparent}
+.logo{background:linear-gradient(135deg,#22c55e,#15803d);box-shadow:0 6px 14px -4px rgba(22,163,74,.55)}
+.optkey{width:28px;height:28px;border-radius:9px;display:grid;place-items:center;font-size:.75rem;font-weight:700;flex-shrink:0;background:#dcfce7;color:#15803d;transition:background-color .15s,color .15s}
+.opt.on .optkey{background:rgba(255,255,255,.22);color:#fff}
+.opt{box-shadow:0 1px 2px rgba(22,163,74,.06)}
+.opt.on{background:linear-gradient(135deg,#16a34a,#22c55e);box-shadow:0 10px 22px -10px rgba(22,163,74,.7)}
+.opt:hover:not(.on){transform:translateY(-1px);box-shadow:0 8px 18px -10px rgba(22,163,74,.45)}
+.sub:hover{transform:translateY(-2px);box-shadow:0 10px 20px -12px rgba(22,163,74,.55)}
+.pbar{background:linear-gradient(90deg,#16a34a,#4ade80);box-shadow:0 0 12px rgba(74,222,128,.7)}
+.actbar{position:sticky;bottom:0;margin:0 -20px;padding:12px 20px calc(12px + env(safe-area-inset-bottom));background:linear-gradient(transparent,rgba(255,255,255,.92) 35%);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+@keyframes ring{from{stroke-dashoffset:var(--c)}}
+.ringc{animation:ring 1.1s cubic-bezier(.2,.8,.2,1) .15s both}
+@keyframes slidein{from{opacity:0;transform:translateX(14px)}to{opacity:1;transform:none}}
+.slidein{animation:slidein .32s cubic-bezier(.2,.8,.2,1) both}
+.stagger>*{animation:pop .45s cubic-bezier(.2,.8,.2,1) both}
+.stagger>*:nth-child(2){animation-delay:.05s}.stagger>*:nth-child(3){animation-delay:.1s}.stagger>*:nth-child(4){animation-delay:.15s}.stagger>*:nth-child(5){animation-delay:.2s}.stagger>*:nth-child(6){animation-delay:.25s}
+@keyframes pulsedot{0%{box-shadow:0 0 0 0 rgba(34,197,94,.6)}100%{box-shadow:0 0 0 8px rgba(34,197,94,0)}}
+.dot{width:8px;height:8px;border-radius:99px;background:#22c55e;display:inline-block;animation:pulsedot 1.6s infinite}
+.skel{background:linear-gradient(90deg,#ecfdf3 25%,#d1fae5 50%,#ecfdf3 75%);background-size:200% 100%;animation:sk 1.2s infinite;border-radius:14px}
+@keyframes sk{to{background-position:-200% 0}}
+select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2316a34a' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:40px}
+.no-scroll{-ms-overflow-style:none;scrollbar-width:none}
+html{-webkit-tap-highlight-color:transparent}button{touch-action:manipulation}
+@keyframes pgrow{from{width:var(--from)}}
+.pbar{animation:pgrow .55s cubic-bezier(.2,.8,.2,1) both}
+@keyframes fadein{from{opacity:0}}
+@keyframes sheetup{from{transform:translateY(60px);opacity:0}to{transform:none;opacity:1}}
+.sheet-bg{animation:fadein .2s ease both;transition:opacity .2s}
+.sheet{animation:sheetup .35s cubic-bezier(.2,.9,.25,1) both;transition:transform .2s ease}
+.sheet-bg.out{opacity:0}.sheet-bg.out .sheet{transform:translateY(40px)}
+.lg{position:relative;display:grid;grid-template-columns:1fr 1fr;width:92px;padding:3px;border-radius:99px;border:1px solid #bbf7d0;background:rgba(255,255,255,.8);box-shadow:0 1px 2px rgba(22,163,74,.12);font-size:.72rem;font-weight:700}
+.lg .th{position:absolute;top:3px;left:3px;width:calc(50% - 3px);height:calc(100% - 6px);border-radius:99px;background:linear-gradient(135deg,#22c55e,#15803d);box-shadow:0 4px 10px -3px rgba(22,163,74,.6);transition:transform .3s cubic-bezier(.2,.9,.25,1)}
+.lg span.o{position:relative;text-align:center;padding:5px 0;transition:color .25s}
+@keyframes pop{from{opacity:0;transform:translateY(10px) scale(.97)}to{opacity:1;transform:none}}
+.pop{animation:pop .4s cubic-bezier(.2,.8,.2,1) both}
+@keyframes fall{0%{transform:translate3d(0,-20px,0) rotate(0);opacity:1}100%{transform:translate3d(var(--dx),105vh,0) rotate(var(--rot));opacity:0}}
+.confetti{position:fixed;top:0;z-index:300;pointer-events:none;animation:fall var(--t) ease-in forwards}
+@keyframes grow{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+.grow{transform-origin:bottom;animation:grow .7s cubic-bezier(.2,.8,.2,1) both}
+@keyframes bar{from{width:0}}
+.bar{animation:bar .9s ease-out both}
+.opt,.sub{transition:transform .15s,border-color .15s,background-color .15s,box-shadow .2s}
+.opt:active,.sub:active{transform:scale(.98)}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.floaty{display:inline-block;animation:floaty 2s ease-in-out infinite}
+@keyframes shine{0%,100%{box-shadow:0 0 0 0 rgba(253,224,71,.6)}50%{box-shadow:0 0 28px 8px rgba(253,224,71,.5)}}
+.shine{animation:shine 2.2s ease-in-out infinite}
+::-webkit-scrollbar{display:none}
+button:focus-visible,select:focus-visible,summary:focus-visible,a:focus-visible{outline:2px solid #16a34a;outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.confetti{display:none}}
+</style>
+</head>
+<body class="text-neutral-900 font-sans min-h-screen antialiased">
+
+<header class="sticky top-0 z-40 bg-white/75 backdrop-blur-xl border-b border-green-100/80">
+  <div class="max-w-[640px] mx-auto px-5 py-3.5 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-2.5 font-bold tracking-tight text-[.95rem]">
+      <span class="logo w-9 h-9 rounded-[11px] text-white grid place-items-center font-extrabold">A</span><span class="leading-tight">Amritt Edition<span id="tagline" class="block text-[.62rem] font-medium text-green-600 tracking-wide">Learn &middot; Test &middot; Top</span></span>
+    </a>
+    <button id="langBtn" aria-label="Change language" class="lg active:scale-95 transition"><span class="th" id="lgThumb"></span><span class="o" id="lgEn">EN</span><span class="o" id="lgHi">हिं</span></button>
+  </div>
+</header>
+
+<main class="max-w-[640px] mx-auto px-5 py-8" id="app"><div class="py-10 space-y-3"><div class="skel h-14"></div><div class="skel h-40"></div><div class="skel h-14"></div></div><noscript><p class="text-center py-10">Test dene ke liye JavaScript on karein.</p></noscript></main>
+
+<footer class="border-t border-green-100/80 bg-white/60 text-center text-neutral-500 text-[.78rem] px-5 pt-6 pb-10">&copy; <span id="yr"></span> <span id="ft">Amritt Edition. Created by Amrit Tiwari.</span></footer>
+
+<script type="module">
+let initializeApp, getDatabase, ref, onValue, get, push, set, runTransaction, remove, onDisconnect, query, orderByKey, limitToLast;
+try {
+  ({ initializeApp } = await import("https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js"));
+  ({ getDatabase, ref, onValue, get, push, set, runTransaction, remove, onDisconnect, query, orderByKey, limitToLast } = await import("https://www.gstatic.com/firebasejs/10.13.0/firebase-database.js"));
+} catch (e) {
+  document.getElementById("app").innerHTML = '<div class="text-center py-16"><p class="text-red-600 font-semibold">Server load nahi hua. Internet check karein.</p><button onclick="location.reload()" class="mt-4 px-6 py-2.5 rounded-full bg-green-600 text-white font-semibold">Retry</button></div>';
+  throw e;
+}
+
+const _k = "AmritEdition", _d = s => { const b = atob(s); let o = ""; for (let i = 0; i < b.length; i++) o += String.fromCharCode(b.charCodeAt(i) ^ _k.charCodeAt(i % _k.length)); return o; };
+const firebaseConfig = JSON.parse(_d("Ok8TGR0OARBWU00vCBcTOg0GBwc/PCcHOyAdEAYDEz1CLx8eFSkTO0czXS9FJB9edl1QRVYkER0cLQADIAQcS05nBQQGABsabAgWAAAqCkcSAB0LIwwBDBU1FEcXBgJMbU8WCAAkBggHDDo8DU9ISxwxEBkHU0BBIAAAAAAxSQwQABsBL0AWDBIkEQUARB0aJQ9cDx03AQsVGgoHLkMRBhlnSEsEGwAEJA4GIBBnXksVBB0HNRlfDBAsEAYaS0NMMhkdGxUiASsBCgQLNU9ISxUoFgAAHUILJQQGBhprAgAGDA0PMggBHRs3BQ4RRw4eMU9eSxkgFxoVDgYAJj4XBxAgFiAQS1VMdlhGX0N1UlxCWFpeY0FQCAQ1LQ1WU01fe1pHXUJyVF9BX15bcVcFDBZ/AQhFWw0KJQhBWRZ2UVxCXgwNIl0QXlY4"));
+const db = getDatabase(initializeApp(firebaseConfig));
+const $ = id => document.getElementById(id);
+const esc = v => String(v == null ? "" : v).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+$("yr").textContent = new Date().getFullYear();
+
+const QCOUNT = 30;
+const CLASSES = ["LKG", "UKG", ...Array.from({ length: 12 }, (_, i) => String(i + 1))];
+const clsLabelEn = c => /^\d+$/.test(c) ? "Class " + c : c;
+const clsLabel = c => lang === "hi" ? (/^\d+$/.test(c) ? "कक्षा " + c : c) : clsLabelEn(c);
+const SUBHI = { Maths: "गणित", Science: "विज्ञान", English: "अंग्रेज़ी", Hindi: "हिन्दी" };
+const sl = n => (lang === "hi" && SUBHI[n]) || n || "";
+
+const T = {
+  en: { title: "Amrit Tiwari Test", sub: "Choose your class and subject", namePh: "Your full name", cls: "Select your class", pickSub: "Choose a subject", pickClass: "Select your class first.", noSub: "No test is available for this class yet.", need: "Please enter your name and class.", q: "Question", of: "of", next: "Next", submit: "Submit Test", result: "Your Result", rank: "Rank in this subject", viewLb: "View Leaderboard", retake: "Take Another Test", lb: "Leaderboard", lbSub: "Top scorers", all: "All subjects", noResults: "No one has taken this test yet. Be the first!", players: "Players", best: "Top score", avg: "Average", you: "You", loading: "Loading...", back: "Back to tests", qs: "questions",
+    save: "Save", saved: "✔ Saved", saveHint: "Save your name and class to see subjects.", live: "Live leaderboard", timed: "Timed", rankW: "Rank", quitQ: "Quit this test?",
+    saveFail: "Result could not be saved. Check your internet and tap “Save again”.", retrySave: "Save again", cor: "Correct", wro: "Wrong", timeL: "Time", share: "Share", review: "Review answers", hide: "Hide answers",
+    dbFail: "Leaderboard could not load. Check your internet and", retry: "try again", liveRes: n => `Live · ${n} results`,
+    shareTxt: (s, a, b) => `I scored ${a}/${b} in the Amrit Tiwari Test (${s})! Try it too: https://www.amritbhai.shop/test.html`,
+    tagline: "Learn · Test · Top", footer: "Amritt Edition. Created by Amrit Tiwari.",
+    langTitle: "Choose test language", langSub: "Questions will appear in this language", notAvail: "Not available", cancel: "Cancel",
+    praise: p => p >= 90 ? "Outstanding performance!" : p >= 75 ? "Great job!" : p >= 50 ? "Good effort, keep going!" : "Keep practicing, you'll improve!" },
+  hi: { title: "अमृत तिवारी टेस्ट", sub: "अपनी कक्षा और विषय चुनें", namePh: "अपना पूरा नाम", cls: "अपनी कक्षा चुनें", pickSub: "विषय चुनें", pickClass: "पहले अपनी कक्षा चुनें।", noSub: "इस कक्षा के लिए अभी कोई टेस्ट नहीं है।", need: "कृपया नाम और कक्षा भरें।", q: "प्रश्न", of: "में से", next: "अगला", submit: "टेस्ट जमा करें", result: "आपका रिज़ल्ट", rank: "इस विषय में रैंक", viewLb: "लीडरबोर्ड देखें", retake: "दूसरा टेस्ट दें", lb: "लीडरबोर्ड", lbSub: "टॉप स्कोरर", all: "सभी विषय", noResults: "अभी तक किसी ने यह टेस्ट नहीं दिया। सबसे पहले आप दें!", players: "खिलाड़ी", best: "टॉप स्कोर", avg: "औसत", you: "आप", loading: "लोड हो रहा है...", back: "टेस्ट पर वापस", qs: "सवाल",
+    save: "सेव करें", saved: "✔ सेव हो गया", saveHint: "विषय देखने के लिए पहले नाम और कक्षा सेव करें।", live: "लाइव लीडरबोर्ड", timed: "समय सहित", rankW: "रैंक", quitQ: "टेस्ट छोड़ दें?",
+    saveFail: "रिज़ल्ट सेव नहीं हो पाया। इंटरनेट जाँचकर “दोबारा सेव करें” दबाएँ।", retrySave: "दोबारा सेव करें", cor: "सही", wro: "गलत", timeL: "समय", share: "शेयर करें", review: "जवाब देखें", hide: "जवाब छिपाएँ",
+    dbFail: "लीडरबोर्ड अभी लोड नहीं हो पाया। इंटरनेट जाँचकर", retry: "दोबारा कोशिश करें", liveRes: n => `लाइव · ${n} रिज़ल्ट`,
+    shareTxt: (s, a, b) => `मैंने अमृत तिवारी टेस्ट (${s}) में ${a}/${b} स्कोर किया! आप भी कोशिश करें: https://www.amritbhai.shop/test.html`,
+    tagline: "सीखो · टेस्ट दो · टॉप करो", footer: "Amritt Edition। निर्माता: अमृत तिवारी।",
+    langTitle: "टेस्ट की भाषा चुनें", langSub: "सवाल इसी भाषा में आएँगे", notAvail: "उपलब्ध नहीं", cancel: "रद्द करें",
+    praise: p => p >= 90 ? "शानदार प्रदर्शन!" : p >= 75 ? "बहुत बढ़िया!" : p >= 50 ? "अच्छा प्रयास, आगे बढ़ते रहें!" : "अभ्यास करते रहें, सुधार होगा!" }
+};
+
+const LB = {
+  en: { stu: "Students", top: "Toppers", all: "All", allCls: "All classes", search: "Search name...", latest: "Latest", best: "Best score", tests: "tests", avg: "Average", champ: "CHAMPION", none: "No students yet. Be the first to take the test!", podium: "Top 3 Podium", subChamp: "Subject Champions", you: "You", back: "Back", stuTitle: "All students who took the test", howT: "How is rank decided?", how: "More correct answers = higher rank. If two people have the same score, the one who finished faster ranks higher.", no1: "No. 1 right now", top10: "Top 10", subTop: "Topper of each subject", correct: "correct", noTop: "No topper yet", clsTop: "Topper of every class", tap: "Tap a class to see its full list", overall: "Overall Top 10" },
+  hi: { stu: "छात्र", top: "टॉपर", all: "सब", allCls: "सभी कक्षा", search: "नाम खोजें...", latest: "नया", best: "बेस्ट स्कोर", tests: "टेस्ट", avg: "औसत", champ: "चैंपियन", none: "अभी कोई छात्र नहीं है। पहले आप टेस्ट दें!", podium: "टॉप 3", subChamp: "विषय चैंपियन", you: "आप", back: "वापस", stuTitle: "टेस्ट देने वाले सभी छात्र", howT: "रैंक कैसे तय होता है?", how: "जिसके सबसे ज़्यादा जवाब सही, वह ऊपर। स्कोर बराबर हो तो जो कम समय में खत्म करे, वह ऊपर।", no1: "अभी नंबर 1", top10: "टॉप 10", subTop: "हर विषय का टॉपर", correct: "सही", noTop: "अभी कोई टॉपर नहीं", clsTop: "हर कक्षा का टॉपर", tap: "पूरी लिस्ट देखने के लिए कक्षा पर टैप करें", overall: "सभी कक्षा का टॉप 10" }
+};
+let lang = "en"; try { lang = localStorage.getItem("amrit_test_lang") === "hi" ? "hi" : "en"; } catch (e) {}
+$("langBtn").addEventListener("click", () => { lang = lang === "en" ? "hi" : "en"; try { localStorage.setItem("amrit_test_lang", lang); } catch (e) {} render(); });
+
+// name + class saved on this device
+let saved = {};
+try { saved = JSON.parse(localStorage.getItem("amrit_test_profile") || "{}"); } catch (e) {}
+const saveProfile = () => { try { localStorage.setItem("amrit_test_profile", JSON.stringify({ name: state.name, cls: state.cls, ok: state.saved, sid: saved.sid, createdAt: saved.createdAt })); } catch (e) {} };
+
+let dbErr = "", results = [], loadedR = false, bank = {}, bankLoading = false;
+let state = { saved: !!(saved.ok && saved.name && saved.cls), screen: "start", name: saved.name || "", cls: saved.cls || "", subKey: "", subName: "", questions: [], answers: [], qi: 0, score: 0, lbCls: "", lbSub: "" };
+
+onValue(query(ref(db, "testResults"), orderByKey(), limitToLast(1000)), snap => {
+  const rows = [];
+  snap.forEach(c => { const v = c.val(); if (v && typeof v === "object" && Number(v.total) > 0) rows.push({ id: c.key, ...v, score: Number(v.score) || 0, total: Number(v.total), name: String(v.name || "").trim() || "Student", cls: String(v.cls || "") }); });
+  rows.sort((a, b) => (b.score / b.total - a.score / a.total) || ((a.timeMs || 1e12) - (b.timeMs || 1e12)) || ((a.createdAt || 0) - (b.createdAt || 0)));
+  results = rows; loadedR = true;
+  updateSEO();
+  if (state.screen === "start") renderFaq();
+  if (state.screen === "leaderboard" || state.screen === "result") render();
+}, err => { loadedR = true; dbErr = (err && (err.code || err.message)) || "error"; if (state.screen === "leaderboard") render(); });
+
+let live = [];
+
+const SUBS = ["Maths", "Science", "English", "Hindi"];
+let toppers = {};
+const betterR = (a, b) => !b || (a.score / a.total > b.score / b.total) || (a.score / a.total === b.score / b.total && (a.timeMs || 1e12) < (b.timeMs || 1e12));
+onValue(ref(db, "testToppers"), snap => { toppers = snap.val() || {}; updateSEO(); if (state.screen === "start") renderFaq(); }, () => {});
+function topTxt(r) { return r ? `${r.name} (${clsLabelEn(r.cls)}) - ${r.score}/${r.total}${r.timeMs ? " in " + fmtT(r.timeMs) : ""}` : "Abhi koi topper nahi - pehle aap test dein!"; }
+const OV = "_overall";
+// Leaderboard ka champion = sabse zyada % phir kam time (results + all-time toppers dono dekhta hai)
+function champion() {
+  let top = results[0] || null;
+  Object.values(toppers).forEach(r => { if (r && typeof r === "object" && Number(r.total) > 0 && betterR(r, top)) top = r; });
+  return top;
+}
+function renderFaq() {
+  const b = $("faq"); if (!b) return;
+  const item = (qn, ans) => `<details class="border border-green-100 rounded-2xl px-4 py-3 mb-2 bg-white"><summary class="text-sm font-semibold cursor-pointer">${qn}</summary><p class="text-sm text-neutral-600 mt-2">${ans}</p></details>`;
+  b.innerHTML = `<h2 class="text-sm font-bold text-green-700 mb-3">FAQ - All-time Topper</h2>`
+    + item("Amrit Tiwari Test leaderboard mein abhi top par kaun hai?", `Abhi leaderboard ka topper: <b>${esc(topTxt(champion()))}</b>.`)
+    + SUBS.map(x => item(`Amrit Tiwari Test App me ${x} ka topper kaun hai?`, `${esc(x)} ka all-time topper: <b>${esc(topTxt(toppers[x]))}</b>. Zyada sahi jawab aur kam time wala topper banta hai.`)).join("");
+}
+function updateSEO() {
+  const top = champion();
+  if (!top) return;
+  const title = `Amrit Tiwari Test - Topper: ${top.name} (${clsLabelEn(top.cls)}) | Leaderboard`;
+  const desc = `${top.name} is topping the Amrit Tiwari Test leaderboard with ${top.score}/${top.total}${top.timeMs ? " in " + fmtT(top.timeMs) : ""} in ${top.subject || "the test"} (${clsLabelEn(top.cls)}). See the full leaderboard on Amritt Edition.`;
+  document.title = $("pageTitle").textContent = title;
+  $("metaDesc").setAttribute("content", desc); $("ogTitle").setAttribute("content", title); $("ogDesc").setAttribute("content", desc);
+}
+
+function confetti() {
+  for (let n = 0; n < 26; n++) {
+    const el = document.createElement("span"); el.className = "confetti";
+    const s = 8 + (n % 3) * 4;
+    el.innerHTML = `<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="${["#16a34a", "#4ade80", "#bbf7d0"][n % 3]}"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg>`;
+    el.style.left = Math.random() * 100 + "vw";
+    el.style.setProperty("--dx", (Math.random() * 120 - 60) + "px");
+    el.style.setProperty("--rot", (Math.random() * 720 - 360) + "deg");
+    el.style.setProperty("--t", (1.4 + Math.random() * 1.2) + "s");
+    document.body.appendChild(el); setTimeout(() => el.remove(), 2800);
+  }
+}
+const fmtT = ms => { if (!ms) return ""; const s = Math.round(ms / 1000), m = Math.floor(s / 60); return lang === "hi" ? m + " मि " + String(s % 60).padStart(2, "0") + " से" : m + "m " + String(s % 60).padStart(2, "0") + "s"; };
+const medal = i => i === 0 ? "\u{1F3C6}" : i === 1 ? "\u{1F948}" : i === 2 ? "\u{1F949}" : "";
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const clsOptions = sel => CLASSES.map(c => `<option value="${c}" ${sel === c ? "selected" : ""}>${clsLabel(c)}</option>`).join("");
+const inputCls = "w-full px-4 py-3.5 rounded-2xl bg-white/90 border border-green-200 text-neutral-900 shadow-sm outline-none transition focus:border-green-600 focus:ring-4 focus:ring-green-100 placeholder:text-neutral-400";
+const btnMain = "bg-gradient-to-b from-green-500 to-green-600 text-white font-semibold shadow-lg shadow-green-600/25 hover:from-green-600 hover:to-green-700 hover:-translate-y-px active:scale-[.97] transition";
+const btnLine = "border border-green-200 bg-white/80 text-green-700 font-semibold shadow-sm hover:bg-green-50 hover:border-green-300 active:scale-[.97] transition";
+
+function markDirty() { state.saved = false; saveProfile(); const b = $("saveBtn"); if (b) { b.disabled = false; b.textContent = T[lang].save; } loadSubjects(); }
+async function saveStudent() {
+  const t = T[lang], n = state.name.trim().replace(/\s+/g, " ");
+  if (n.length < 2 || !state.cls) { $("err").textContent = t.need; $("err").classList.remove("hidden"); (n.length < 2 ? $("nm") : $("cl")).focus(); return; }
+  $("err").classList.add("hidden"); state.name = n; state.saved = true;
+  saved.createdAt = saved.createdAt || Date.now();
+  try { saved.sid = saved.sid || push(ref(db, "testStudents")).key; } catch (e) {}
+  saveProfile();
+  try { await set(ref(db, "testStudents/" + saved.sid), { name: n, cls: state.cls, createdAt: saved.createdAt, updatedAt: Date.now() }); } catch (e) {}
+  render();
+}
+async function loadSubjects() {
+  const box = $("subs"); if (!box) return;
+  const t = T[lang];
+  if (!state.saved) { box.innerHTML = `<p class="text-xs text-neutral-500 text-center py-2">${t.saveHint}</p>`; return; }
+  if (!state.cls) { box.innerHTML = `<p class="text-sm text-neutral-500 text-center py-4">${t.pickClass}</p>`; return; }
+  box.innerHTML = `<div class="grid grid-cols-2 gap-3"><div class="skel h-24"></div><div class="skel h-24"></div></div>`;
+  const cls = state.cls; bankLoading = true;
+  try { const s = await get(ref(db, "testBank/" + cls)); bank = s.val() || {}; } catch (e) { bank = {}; }
+  bankLoading = false;
+  if (cls !== state.cls || !$("subs")) return;
+  const ALLOWED = ["Maths", "Science", "English", "Hindi"];
+  const subOf = k => (bank[k] && bank[k].name) || k;
+  const keys = Object.keys(bank).filter(k => ALLOWED.includes(subOf(k)) && bank[k] && bank[k].items && Object.values(bank[k].items).filter(Boolean).length)
+    .sort((x, y) => ALLOWED.indexOf(subOf(x)) - ALLOWED.indexOf(subOf(y)));
+  if (!keys.length) { $("subs").innerHTML = `<p class="text-sm text-neutral-500 text-center py-4">${t.noSub}</p>`; return; }
+  $("subs").innerHTML = `<p class="text-xs font-bold uppercase tracking-wider text-green-700 mb-2.5">${t.pickSub}</p><div class="grid grid-cols-2 gap-3 stagger">` + keys.map(k => {
+    const n = Object.values(bank[k].items).filter(Boolean).length;
+    return `<button data-k="${esc(k)}" class="sub text-left px-4 py-4 rounded-2xl border border-green-200 bg-white hover:border-green-500"><div class="w-9 h-9 rounded-xl bg-gradient-to-br from-green-100 to-green-200 grid place-items-center text-lg mb-2">${({ Maths: "\u{1F522}", Science: "\u{1F52C}", English: "\u{1F4D6}", Hindi: "\u0905" })[bank[k].name] || "\u{1F4DD}"}</div><div class="font-semibold text-sm truncate">${esc(sl(bank[k].name || k))}</div><div class="text-[.7rem] text-neutral-500 mt-0.5">${Math.min(QCOUNT, n)} ${t.qs}</div></button>`;
+  }).join("") + `</div>`;
+  $("subs").onclick = e => { const b = e.target.closest("[data-k]"); if (b) askLang(b.dataset.k); };
+}
+
+function askLang(k) {
+  const t = T[lang];
+  if (state.name.trim().length < 2 || !state.cls) { $("err").textContent = t.need; $("err").classList.remove("hidden"); (state.name.trim().length < 2 ? $("nm") : $("cl")).focus(); return; }
+  const okQ = (x, L) => x && x[L] && x[L].q && Array.isArray(x[L].options) && x[L].options.length > 1;
+  const cnt = L => Object.values(bank[k].items).filter(x => okQ(x, L)).length;
+  const opts = [{ L: "hi", big: "अ", name: "हिन्दी" }, { L: "en", big: "A", name: "English" }];
+  const ov = document.createElement("div");
+  ov.id = "langAsk"; ov.className = "sheet-bg fixed inset-0 z-[200] flex items-end sm:items-center justify-center sm:p-4 bg-green-950/45 backdrop-blur-sm";
+  ov.innerHTML = `<div class="sheet w-full max-w-[460px] bg-white rounded-t-[28px] sm:rounded-[28px] px-5 pt-3 pb-7 shadow-2xl" role="dialog" aria-modal="true" aria-label="${esc(t.langTitle)}">
+    <div class="w-11 h-1.5 rounded-full bg-green-200 mx-auto mb-4"></div>
+    <div class="text-center">
+      <div class="inline-grid place-items-center w-12 h-12 rounded-2xl bg-green-100 text-xl">🌐</div>
+      <h3 class="gtext text-xl font-extrabold mt-3">${t.langTitle}</h3>
+      <p class="text-sm text-neutral-500 mt-1">${esc(sl(bank[k].name || k))} &middot; ${t.langSub}</p>
+    </div>
+    <div class="grid grid-cols-2 gap-3 mt-5">
+      ${opts.map(o => { const n = cnt(o.L), ok = n > 0, cur = lang === o.L;
+        return `<button data-l="${o.L}" ${ok ? "" : "disabled"} class="group relative text-center px-3 py-5 rounded-3xl border-2 transition ${cur && ok ? "border-green-500 bg-green-50" : "border-green-100 bg-white"} ${ok ? "hover:border-green-500 hover:-translate-y-0.5 active:scale-[.97]" : "opacity-45 cursor-not-allowed"}">
+          <div class="mx-auto w-14 h-14 rounded-2xl bg-gradient-to-br from-green-500 to-green-700 text-white grid place-items-center text-2xl font-extrabold shadow-lg shadow-green-600/30 transition group-hover:scale-105">${o.big}</div>
+          <div class="font-extrabold text-base mt-3">${o.name}</div>
+          <div class="text-[.7rem] text-neutral-500 mt-0.5">${ok ? Math.min(QCOUNT, n) + " " + t.qs : t.notAvail}</div>
+          ${cur && ok ? `<span class="absolute top-2.5 right-2.5 w-5 h-5 rounded-full bg-green-600 text-white text-[.65rem] grid place-items-center">✓</span>` : ""}
+        </button>`; }).join("")}
+    </div>
+    <button id="langCancel" class="block w-full mt-4 py-2 text-sm font-semibold text-neutral-500 hover:text-green-700 transition">${t.cancel}</button>
+  </div>`;
+  document.body.appendChild(ov);
+  const onKey = ev => { if (ev.key === "Escape") close(); };
+  const close = () => { document.removeEventListener("keydown", onKey); ov.classList.add("out"); setTimeout(() => ov.remove(), 220); };
+  document.addEventListener("keydown", onKey);
+  ov.onclick = e => {
+    if (e.target === ov || e.target.id === "langCancel") return close();
+    const b = e.target.closest("[data-l]"); if (!b || b.disabled) return;
+    close(); startTest(k, b.dataset.l);
+  };
+}
+
+function startTest(k, L0) {
+  const t = T[lang];
+  if (state.name.trim().length < 2 || !state.cls) { $("err").textContent = t.need; $("err").classList.remove("hidden"); (state.name.trim().length < 2 ? $("nm") : $("cl")).focus(); return; }
+  const L = L0 || lang; lang = L; try { localStorage.setItem("amrit_test_lang", L); } catch (e) {}
+  const items = Object.values(bank[k].items).map(x => pickQ(x, L)).filter(Boolean);
+  const qs = shuffle(items).slice(0, QCOUNT).map(Q => ({ Q }));
+  clearInterval(window._tm); window._tm = setInterval(() => { const e = $("tm"); if (e && state.startedAt) e.textContent = fmtT(Date.now() - state.startedAt); }, 1000);
+  state = { ...state, testLang: L, screen: "quiz", submitting: false, resultId: null, saveErr: "", review: false, pending: null, startedAt: Date.now(), subKey: k, subName: bank[k].name || k, questions: qs, answers: new Array(qs.length).fill(null), qi: 0, score: 0, lastPct: 0 };
+    render();
+}
+
+const pickQ = (x, L) => { for (const c of [x && x[L], x && x.en, x && x.hi]) if (c && c.q && Array.isArray(c.options) && c.options.length > 1) return c; return null; };
+let _rk = "", _sk = "";
+function applyChrome() {
+  const t = T[lang], hi = lang === "hi";
+  document.documentElement.lang = hi ? "hi-IN" : "en-IN";
+  $("tagline").textContent = t.tagline; $("ft").textContent = t.footer;
+  $("lgThumb").style.transform = hi ? "translateX(100%)" : "none";
+  $("lgEn").style.color = hi ? "#15803d" : "#fff"; $("lgHi").style.color = hi ? "#fff" : "#15803d";
+}
+function render() {
+  applyChrome();
+  $("langBtn").classList.toggle("hidden", state.screen === "quiz");
+  const a = document.activeElement, ai = a && a.id, ss = a && a.selectionStart;
+  const key = [state.screen, state.qi, lang, state.lbTab, state.lbCls, state.lbSub, state.review].join("|"), fresh = key !== _rk; _rk = key;
+  renderInner();
+  if (!fresh) $("app").querySelectorAll(".pop,.grow,.bar,.slidein,.stagger>*").forEach(el => el.style.animation = "none");
+  const sk = state.screen + "|" + state.qi; if (sk !== _sk) { _sk = sk; window.scrollTo(0, 0); }
+  if (ai === "srch" && $("srch")) { $("srch").focus(); try { $("srch").setSelectionRange(ss, ss); } catch (e) {} }
+}
+function renderInner() {
+  const t = T[lang], app = $("app");
+
+  if (state.screen === "start") {
+    app.innerHTML = `
+      <div class="pop text-center pt-4 pb-2">
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/80 border border-green-200 text-[.7rem] font-semibold text-green-700 shadow-sm"><span class="dot"></span>${t.live}</span>
+        <h1 class="gtext text-[2.1rem] leading-tight font-extrabold tracking-tight mt-4">${t.title}</h1>
+        <p class="text-neutral-500 mt-2 text-sm">${t.sub}</p>
+        <div class="flex justify-center gap-2 mt-4 text-[.7rem] font-semibold text-green-800"><span class="px-3 py-1 rounded-full bg-green-100/80">${QCOUNT} ${t.qs}</span><span class="px-3 py-1 rounded-full bg-green-100/80">\u23F1 ${t.timed}</span><span class="px-3 py-1 rounded-full bg-green-100/80">\u{1F3C6} ${t.rankW}</span></div>
+      </div>
+      <div class="pop glass mt-7 p-5 rounded-3xl">
+        <input id="nm" aria-label="${t.namePh}" value="${esc(state.name)}" maxlength="60" placeholder="${t.namePh}" autocomplete="off" class="${inputCls} mb-3">
+        <select id="cl" aria-label="${t.cls}" class="${inputCls}"><option value="">${t.cls}</option>${clsOptions(state.cls)}</select>
+        <p id="err" class="hidden text-red-500 text-xs mt-2"></p>
+        <button id="saveBtn" class="mt-3 w-full py-3.5 rounded-2xl ${btnMain} disabled:opacity-60 disabled:shadow-none disabled:translate-y-0">${state.saved ? t.saved : t.save}</button>
+        <div id="subs" class="mt-5"></div>
+      </div>
+      <div class="grid grid-cols-2 gap-3 mt-5"><button data-go="students" class="goTab py-3.5 rounded-2xl ${btnLine}">\u{1F465} ${LB[lang].stu}</button><button data-go="toppers" class="goTab py-3.5 rounded-2xl ${btnMain}">\u{1F3C6} ${LB[lang].top}</button></div>
+      <div id="faq" class="sr-only" aria-hidden="false"></div>`;
+    renderFaq();
+    $("nm").oninput = e => { state.name = e.target.value; markDirty(); };
+    $("saveBtn").disabled = state.saved; $("saveBtn").onclick = saveStudent;
+    $("cl").onchange = e => { state.cls = e.target.value; markDirty(); };
+    document.querySelectorAll(".goTab").forEach(b => b.onclick = () => { state.lbTab = b.dataset.go; state.lbSort = state.lbSort || "latest"; state.screen = "leaderboard"; render(); });
+    loadSubjects();
+    return;
+  }
+
+  if (state.screen === "quiz") {
+    const i = state.qi, qs = state.questions, q = qs[i], Q = q.Q;
+    const sel = state.answers[i], pct = Math.round((i / qs.length) * 100);
+    const np = Math.round(((i + 1) / qs.length) * 100), from = state.lastPct || 0; state.lastPct = np;
+    app.innerHTML = `
+      <div class="pop">
+        <div class="flex justify-between items-center text-xs text-neutral-500 mb-3"><span class="flex items-center gap-2"><span class="px-2.5 py-1 rounded-full bg-green-100 text-green-800 font-bold">${i + 1}/${qs.length}</span><span class="px-2.5 py-1 rounded-full bg-white border border-green-200 text-green-700 font-bold">\u23F1 <b id="tm">${fmtT(Date.now() - state.startedAt)}</b></span></span><span class="truncate ml-3 flex-1 text-right">${esc(state.name)} &middot; ${esc(sl(state.subName))}</span><button id="quit" aria-label="Quit test" class="ml-3 w-8 h-8 rounded-full bg-red-50 border border-red-100 text-red-500 font-bold shrink-0 hover:bg-red-100 transition">\u2715</button></div>
+        <div class="h-2 rounded-full bg-green-100 overflow-hidden mb-6"><div class="pbar h-full rounded-full transition-all duration-500" style="--from:${from}%;width:${np}%"></div></div>
+        <div class="glass rounded-3xl p-5 mb-5 slidein"><div class="text-[.68rem] font-bold uppercase tracking-widest text-green-600 mb-2">${t.q} ${i + 1}</div><h2 class="text-[1.12rem] font-semibold leading-snug">${esc(Q.q)}</h2></div>
+        <div id="opts" class="flex flex-col gap-3 mb-6 stagger">
+          ${Q.options.map((o, oi) => `<button data-i="${oi}" class="opt ${sel === oi ? "on " : ""}flex items-center gap-3 text-left px-4 py-3.5 rounded-2xl border ${sel === oi ? "border-green-600 text-white font-semibold" : "border-green-200 bg-white text-neutral-800 hover:border-green-500"}"><span class="optkey">${String.fromCharCode(65 + oi)}</span><span class="flex-1">${esc(o)}</span></button>`).join("")}
+        </div>
+        <div class="actbar flex gap-2.5">${i > 0 ? `<button id="prevBtn" aria-label="Previous" class="px-6 py-3.5 rounded-full ${btnLine}">\u2190</button>` : ""}<button id="nextBtn" ${sel == null ? "disabled" : ""} class="flex-1 py-3.5 rounded-full ${btnMain} disabled:opacity-35 disabled:cursor-not-allowed">${i === qs.length - 1 ? t.submit : t.next}</button></div>
+      </div>`;
+    $("opts").addEventListener("click", e => {
+      const b = e.target.closest("[data-i]"); if (!b) return;
+      state.answers[i] = Number(b.dataset.i);
+      $("opts").querySelectorAll(".opt").forEach((x, xi) => { const on = xi === state.answers[i];
+        x.classList.toggle("on", on); x.classList.toggle("border-green-600", on); x.classList.toggle("text-white", on); x.classList.toggle("font-semibold", on);
+        x.classList.toggle("border-green-200", !on); x.classList.toggle("bg-white", !on); x.classList.toggle("text-neutral-800", !on); });
+      $("nextBtn").disabled = false;
+    });
+    if ($("prevBtn")) $("prevBtn").onclick = () => { state.qi--; render(); };
+    $("quit").onclick = () => { if (confirm(t.quitQ)) { clearInterval(window._tm); state.screen = "start"; render(); } };
+    $("nextBtn").onclick = () => {
+      if (state.answers[i] == null) return;
+      if (i < qs.length - 1) { state.qi++; render(); } else { $("nextBtn").disabled = true; $("nextBtn").textContent = t.loading; submitTest(); }
+    };
+    return;
+  }
+
+  if (state.screen === "result") {
+    const total = state.questions.length, pct = Math.round(state.score / total * 100);
+    const same = results.filter(r => r.cls === state.cls && r.subjectKey === state.subKey);
+    const rank = same.findIndex(r => r.id === state.resultId) + 1;
+    app.innerHTML = `
+      <div class="pop text-center py-6">
+        <p class="text-neutral-500 text-sm mb-1">${t.result} &middot; ${esc(sl(state.subName))}</p>
+        <div class="relative mx-auto my-4 w-48 h-48">
+          <svg viewBox="0 0 120 120" class="w-full h-full -rotate-90"><circle cx="60" cy="60" r="52" fill="none" stroke="#dcfce7" stroke-width="10"/><circle class="ringc" cx="60" cy="60" r="52" fill="none" stroke="url(#rg)" stroke-width="10" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="${(326.7 * (1 - pct / 100)).toFixed(1)}" style="--c:326.7"/><defs><linearGradient id="rg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#16a34a"/><stop offset="1" stop-color="#4ade80"/></linearGradient></defs></svg>
+          <div class="absolute inset-0 grid place-items-center"><div><div class="text-4xl font-extrabold gtext leading-none">${state.score}<span class="text-lg text-neutral-400">/${total}</span></div><div class="text-sm font-bold text-green-700 mt-1">${pct}%</div></div></div>
+        </div>
+        <p class="text-lg font-semibold">${t.praise(pct)}</p>
+        ${state.saveErr ? `<p class="mt-3 text-xs text-red-600 bg-red-50 border border-red-200 rounded-xl p-3">\u26A0 ${t.saveFail}</p>` : ""}
+        <div class="grid grid-cols-3 gap-2.5 mt-5">
+          <div class="glass rounded-2xl py-3"><div class="text-lg font-extrabold text-green-700">${state.score}</div><div class="text-[.65rem] text-neutral-500">${t.cor}</div></div>
+          <div class="glass rounded-2xl py-3"><div class="text-lg font-extrabold text-red-500">${total - state.score}</div><div class="text-[.65rem] text-neutral-500">${t.wro}</div></div>
+          <div class="glass rounded-2xl py-3"><div class="text-lg font-extrabold text-green-700">${state.timeMs ? fmtT(state.timeMs) : "-"}</div><div class="text-[.65rem] text-neutral-500">${t.timeL}</div></div>
+        </div>
+        ${rank > 0 ? `<div class="inline-flex items-center gap-2 mt-4 px-4 py-2 rounded-full bg-green-600 text-white text-sm font-semibold shadow-lg shadow-green-600/25">\u{1F3C5} ${t.rank}: #${rank}</div>` : ""}
+        ${state.saveErr ? `<button id="retrySave" class="mt-4 px-5 py-2.5 rounded-full ${btnMain} text-sm">${t.retrySave}</button>` : ""}
+        <div class="flex gap-2 mt-6 justify-center"><button id="shareBtn" class="px-4 py-2 rounded-full ${btnLine} text-sm">${t.share}</button><button id="revBtn" class="px-4 py-2 rounded-full ${btnLine} text-sm">${state.review ? t.hide : t.review}</button></div>
+        ${state.review ? reviewHtml() : ""}
+        <div class="flex gap-2.5 mt-8">
+          <button id="goLb3" class="flex-1 py-3 rounded-full ${btnMain}">${t.viewLb}</button>
+          <button id="retake" class="px-5 py-3 rounded-full ${btnLine}">${t.retake}</button>
+        </div>
+      </div>`;
+    $("goLb3").onclick = () => { state.lbCls = ""; state.lbSub = ""; state.lbTab = "students"; state.lbSort = "latest"; state.metSeen = 0; state.screen = "leaderboard"; render(); };
+    $("retake").onclick = () => { state.screen = "start"; render(); };
+    $("revBtn").onclick = () => { state.review = !state.review; render(); };
+    $("shareBtn").onclick = shareResult;
+    if ($("retrySave")) $("retrySave").onclick = async () => { await saveResult(); render(); };
+    return;
+  }
+
+  if (state.screen === "leaderboard") {
+    const l = LB[lang];
+    if (!loadedR) { app.innerHTML = `<div class="space-y-3 py-6"><div class="skel h-12"></div><div class="skel h-32"></div><div class="skel h-16"></div><div class="skel h-16"></div></div>`; return; }
+    const tab = state.lbTab || "students";
+    const pc = r => Math.round(r.score / r.total * 100);
+    const ini = n => (String(n).trim()[0] || "?").toUpperCase();
+    const isMe = r => state.resultId && r.id === state.resultId;
+    const inCls = results.filter(r => !state.lbCls || r.cls === state.lbCls);
+    const subs = {}; inCls.forEach(r => { if (r.subjectKey) subs[r.subjectKey] = r.subject || r.subjectKey; });
+    if (state.lbSub && !subs[state.lbSub]) state.lbSub = "";
+    const list = inCls.filter(r => !state.lbSub || r.subjectKey === state.lbSub);
+    const avgP = list.length ? Math.round(list.reduce((a, r) => a + pc(r), 0) / list.length) : 0;
+    const chip = (k, label) => `<button data-s="${esc(k)}" class="shrink-0 px-3.5 py-1.5 rounded-full text-xs font-semibold border transition ${state.lbSub === k ? "bg-green-600 border-green-600 text-white" : "border-green-200 text-green-700 hover:bg-green-50"}">${esc(label)}</button>`;
+    const tabBtn = (k, label) => `<button data-tab="${k}" class="flex-1 py-2.5 rounded-full text-sm font-bold transition ${tab === k ? "bg-gradient-to-b from-green-500 to-green-600 text-white shadow-md shadow-green-600/30" : "text-green-700"}">${label}</button>`;
+    const filters = `
+      <select id="fc" class="${inputCls} !py-2.5 text-sm mb-3"><option value="">${l.allCls}</option>${clsOptions(state.lbCls)}</select>
+      <div id="chips" class="no-scroll flex gap-2 overflow-x-auto pb-3 mb-2">${chip("", l.all)}${Object.keys(subs).map(k => chip(k, sl(subs[k]))).join("")}</div>`;
+    const head = `<div class="pop glass flex p-1 rounded-full mb-5" id="tabs">${tabBtn("students", "\u{1F465} " + l.stu)}${tabBtn("toppers", "\u{1F3C6} " + l.top)}</div>`;
+    let body = "";
+
+    if (tab === "students") {
+      body = `
+        <div class="pop rounded-3xl p-5 mb-5 text-white bg-gradient-to-br from-green-700 via-green-600 to-green-500 shadow-lg shadow-green-200">
+          <div class="text-sm font-semibold opacity-90">\u{1F465} ${l.stuTitle}</div>
+          <div class="grid grid-cols-3 gap-3 mt-4 text-center">
+            <div><div class="text-2xl font-extrabold">${list.length}</div><div class="text-[.7rem] opacity-80">${l.tests}</div></div>
+            <div><div class="text-2xl font-extrabold">${new Set(list.map(r => String(r.name).trim().toLowerCase())).size}</div><div class="text-[.7rem] opacity-80">${l.stu}</div></div>
+            <div><div class="text-2xl font-extrabold">${list.length ? avgP + "%" : "-"}</div><div class="text-[.7rem] opacity-80">${l.avg}</div></div>
+          </div>
+        </div>
+        ${dbErr ? `<div class="mb-3 rounded-xl border border-red-200 bg-red-50 text-red-600 text-xs p-3">\u26A0 ${t.dbFail} <button onclick="location.reload()" class="underline font-bold">${t.retry}</button>.</div>` : `<div class="mb-3 flex items-center gap-2 text-[.7rem] text-green-700 font-semibold"><span class="dot"></span>${t.liveRes(results.length)}</div>`}
+        ${filters}
+        <div class="flex gap-2 mb-4">
+          <input id="srch" placeholder="${l.search}" class="${inputCls} !py-2.5 text-sm flex-1 min-w-0">
+          <button id="srt" class="shrink-0 px-4 rounded-xl border border-green-200 text-green-700 text-xs font-bold">${(state.lbSort || "latest") === "latest" ? "\u{1F552} " + l.latest : "\u{2B50} " + l.best}</button>
+        </div>
+        <div id="stList"></div>`;
+    } else {
+      const ch = list[0];
+      const champ = {};
+      SUBS.forEach(x => { let bb = null; inCls.forEach(r => { if (r.subject === x && betterR(r, bb)) bb = r; }); if (!state.lbCls && toppers[x] && betterR(toppers[x], bb)) bb = toppers[x]; champ[x] = bb; });
+      const icon = { Maths: "\u{1F522}", Science: "\u{1F52C}", English: "\u{1F4D6}", Hindi: "\u0905" };
+      const top10 = list.slice(0, 10);
+      const rankBadge = i => i < 3 ? `<div class="w-10 h-10 grid place-items-center text-2xl shrink-0">${medal(i)}</div>` : `<div class="w-10 h-10 rounded-full bg-green-100 text-green-700 grid place-items-center font-extrabold text-sm shrink-0">${i + 1}</div>`;
+      const clsTop = !state.lbCls ? CLASSES.map(c => ({ c, r: list.find(x => x.cls === c) })).filter(o => o.r) : [];
+      const clsHtml = clsTop.length ? `<h3 class="text-sm font-bold text-green-700 mt-7">${l.clsTop}</h3><p class="text-[.7rem] text-neutral-500 mb-3">${l.tap}</p>
+        <div class="rounded-3xl border border-green-100 overflow-hidden bg-white/90 shadow-lg shadow-green-100/60">
+          ${clsTop.map((o, i) => `<button data-cls="${esc(o.c)}" class="w-full text-left flex items-center gap-3 px-4 py-3 hover:bg-green-50 transition ${i ? "border-t border-green-50" : ""}">
+            <div class="min-w-[58px] px-2 py-1.5 rounded-xl bg-green-600 text-white text-center text-xs font-extrabold shrink-0">${esc(clsLabel(o.c))}</div>
+            <div class="flex-1 min-w-0"><div class="font-semibold text-sm truncate">\u{1F947} ${esc(o.r.name)}</div><div class="text-[.7rem] text-neutral-500 truncate">${esc(o.r.subject || "")}</div></div>
+            <div class="text-right shrink-0"><div class="font-extrabold text-green-700">${o.r.score}<span class="text-xs text-neutral-400 font-semibold">/${o.r.total}</span></div>${o.r.timeMs ? `<div class="text-[.65rem] text-neutral-500">${fmtT(o.r.timeMs)}</div>` : ""}</div>
+            <span class="text-green-600">\u203A</span>
+          </button>`).join("")}
+        </div>` : "";
+      body = `${filters}` + (!ch ? `<p class="text-center text-neutral-500 py-12 border border-dashed border-green-200 rounded-2xl">${l.none}</p>` : `
+        <div class="pop rounded-3xl p-5 text-white bg-gradient-to-br from-green-700 via-green-600 to-emerald-400 shadow-xl shadow-green-200">
+          <div class="text-xs font-bold tracking-wider opacity-90">\u{1F947} ${l.no1}${state.lbSub ? " \u00B7 " + esc(sl(subs[state.lbSub])) : ""}</div>
+          <div class="text-2xl font-extrabold mt-2 break-words">${esc(ch.name)}</div>
+          <div class="text-sm opacity-90">${esc(clsLabel(ch.cls))} \u00B7 ${esc(sl(ch.subject))}</div>
+          <div class="flex flex-wrap gap-2 mt-4">
+            <span class="px-4 py-1.5 rounded-full bg-white text-green-800 font-extrabold text-sm">${ch.score}/${ch.total} ${l.correct}</span>
+            ${ch.timeMs ? `<span class="px-4 py-1.5 rounded-full bg-white/20 font-bold text-sm">\u23F1 ${fmtT(ch.timeMs)}</span>` : ""}
+          </div>
+        </div>
+        ${clsHtml}
+        <h3 class="text-sm font-bold text-green-700 mt-7 mb-3">${state.lbCls ? esc(clsLabel(state.lbCls)) + " \u00B7 " : ""}${state.lbCls ? l.top10 : l.overall}</h3>
+        <div class="rounded-3xl border border-green-100 overflow-hidden bg-white/90 shadow-lg shadow-green-100/60 stagger">
+          ${top10.map((r, i) => `<div class="flex items-center gap-3 px-4 py-3 ${i ? "border-t border-green-50" : ""} ${isMe(r) ? "bg-green-50 ring-2 ring-inset ring-green-500" : ""}">
+            ${rankBadge(i)}
+            <div class="flex-1 min-w-0"><div class="font-semibold text-sm truncate">${esc(r.name)}${isMe(r) ? ` <span class="text-[.6rem] px-1.5 py-0.5 rounded-full bg-green-600 text-white font-semibold align-middle">${l.you}</span>` : ""}</div><div class="text-[.7rem] text-neutral-500 truncate">${esc(clsLabel(r.cls))} \u00B7 ${esc(sl(r.subject))}</div></div>
+            <div class="text-right shrink-0"><div class="font-extrabold text-green-700">${r.score}<span class="text-xs text-neutral-400 font-semibold">/${r.total}</span></div>${r.timeMs ? `<div class="text-[.65rem] text-neutral-500">${fmtT(r.timeMs)}</div>` : ""}</div>
+          </div>`).join("")}
+        </div>
+        <h3 class="text-sm font-bold text-green-700 mt-7 mb-3">${l.subTop}</h3>
+        <div class="rounded-3xl border border-green-100 overflow-hidden bg-white/90 shadow-lg shadow-green-100/60">
+          ${SUBS.map((x, i) => { const r = champ[x]; return `<div class="flex items-center gap-3 px-4 py-3 ${i ? "border-t border-green-50" : ""}">
+            <div class="w-10 h-10 rounded-xl bg-green-100 grid place-items-center text-lg font-bold text-green-700 shrink-0">${icon[x]}</div>
+            <div class="flex-1 min-w-0"><div class="text-[.7rem] font-bold text-green-700">${sl(x)}</div>${r ? `<div class="font-semibold text-sm truncate">${esc(r.name)} <span class="text-neutral-400 font-normal">\u00B7 ${esc(clsLabel(r.cls))}</span></div>` : `<div class="text-sm text-neutral-400">${l.noTop}</div>`}</div>
+            ${r ? `<div class="text-right shrink-0"><div class="font-extrabold text-green-700">${r.score}<span class="text-xs text-neutral-400 font-semibold">/${r.total}</span></div>${r.timeMs ? `<div class="text-[.65rem] text-neutral-500">${fmtT(r.timeMs)}</div>` : ""}</div>` : ""}
+          </div>`; }).join("")}
+        </div>`);
+    }
+    app.innerHTML = head + body + `<button id="backStart" class="block w-full text-center text-sm text-green-700 hover:text-green-900 mt-7">&larr; ${l.back}</button>`;
+
+    const drawStudents = () => {
+      const box = $("stList"); if (!box) return;
+      const q = (($("srch") || {}).value || "").trim().toLowerCase();
+      const rankOf = new Map(list.map((r, i) => [r.id, i + 1]));
+      const liveHtml = "";
+      let rows = list.filter(r => !q || String(r.name).toLowerCase().includes(q));
+      if ((state.lbSort || "latest") === "latest") rows = rows.slice().sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+      if (!rows.length) { box.innerHTML = liveHtml + `<p class="text-center text-neutral-500 py-12 border border-dashed border-green-200 rounded-2xl">${l.none}</p>`; return; }
+      box.innerHTML = liveHtml + `<div class="rounded-3xl border border-green-100 overflow-hidden bg-white/90 shadow-lg shadow-green-100/60 stagger">` + rows.map((r, i) => {
+        const p = pc(r), rk = rankOf.get(r.id), dt = r.createdAt ? new Date(r.createdAt).toLocaleDateString(lang === "hi" ? "hi-IN" : "en-IN", { day: "numeric", month: "short" }) : "";
+        const col = p >= 75 ? "text-green-700" : p >= 50 ? "text-amber-600" : "text-red-500";
+        return `<div data-nm="${esc(String(r.name).trim().toLowerCase())}" class="cursor-pointer flex items-center gap-3 px-4 py-3 ${i ? "border-t border-green-50" : ""} ${isMe(r) ? "bg-green-50 ring-2 ring-inset ring-green-500" : ""}">
+          <div class="w-10 h-10 rounded-full ${rk <= 3 ? "bg-green-600 text-white" : "bg-green-100 text-green-700"} grid place-items-center font-bold shrink-0">${esc(ini(r.name))}</div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-1.5"><span class="font-semibold text-sm truncate">${esc(r.name)}</span>${isMe(r) ? `<span class="text-[.6rem] px-1.5 py-0.5 rounded-full bg-green-600 text-white font-semibold">${l.you}</span>` : ""}${rk <= 3 ? `<span>${medal(rk - 1)}</span>` : ""}</div>
+            <div class="text-[.68rem] text-neutral-500 truncate">${esc(clsLabel(r.cls))} &middot; ${esc(sl(r.subject))}${dt ? " &middot; " + dt : ""}</div>
+            <div class="h-1.5 rounded-full bg-green-100 mt-1.5 overflow-hidden"><div class="bar h-full rounded-full bg-gradient-to-r from-green-600 to-green-400" style="width:${p}%"></div></div>
+          </div>
+          <div class="text-right shrink-0"><div class="font-extrabold text-base ${col}">${r.score}<span class="text-xs text-neutral-400 font-semibold">/${r.total}</span></div><div class="text-[.68rem] font-semibold ${col}">${p}%</div>${r.timeMs ? `<div class="text-[.65rem] text-neutral-500">${fmtT(r.timeMs)}</div>` : ""}</div>
+        </div>`; }).join("") + `</div>`;
+      const me = box.querySelector(".ring-inset"); if (me && !state.metSeen) { state.metSeen = 1; me.scrollIntoView({ block: "center" }); }
+    };
+    $("tabs").onclick = e => { const b = e.target.closest("[data-tab]"); if (b) { state.lbTab = b.dataset.tab; render(); } };
+    const fc = $("fc"); if (fc) fc.onchange = e => { state.lbCls = e.target.value; state.lbSub = ""; render(); };
+    app.querySelectorAll("[data-cls]").forEach(b => b.onclick = () => { state.lbCls = b.dataset.cls; state.lbSub = ""; render(); window.scrollTo(0, 0); });
+    const chips = $("chips"); if (chips) chips.onclick = e => { const b = e.target.closest("[data-s]"); if (!b) return; state.lbSub = b.dataset.s; render(); };
+    if (tab === "students") {
+      $("srch").value = state.q || ""; $("srch").oninput = e => { state.q = e.target.value; drawStudents(); };
+      $("srt").onclick = () => { state.lbSort = (state.lbSort || "latest") === "latest" ? "best" : "latest"; render(); };
+      window.__drawStudents = drawStudents; drawStudents();
+      $("stList").onclick = e => {
+        const row = e.target.closest("[data-nm]"); if (!row) return;
+        const nx = row.nextElementSibling; if (nx && nx.classList.contains("hist")) { nx.remove(); return; }
+        const h = results.filter(x => String(x.name).trim().toLowerCase() === row.dataset.nm).sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+        row.insertAdjacentHTML("afterend", `<div class="hist bg-green-50/60 px-4 py-2 text-xs border-t border-green-100"><div class="font-bold text-green-700 mb-1">${esc(h[0] ? h[0].name : "")} - ${h.length} ${l.tests}</div>` + h.map(x => `<div class="flex justify-between py-1"><span>${esc(sl(x.subject))} &middot; ${esc(clsLabel(x.cls))} &middot; ${x.createdAt ? new Date(x.createdAt).toLocaleDateString(lang === "hi" ? "hi-IN" : "en-IN", { day: "numeric", month: "short" }) : ""}</span><b>${x.score}/${x.total} &middot; ${pc(x)}%</b></div>`).join("") + `</div>`);
+      };
+    }
+    $("backStart").onclick = () => { state.screen = "start"; render(); };
+  }
+}
+
+async function saveResult() {
+  const p = state.pending; if (!p) return; state.saveErr = "";
+  try {
+    const id = state.pendingId || push(ref(db, "testResults")).key; state.pendingId = id;
+    await set(ref(db, "testResults/" + id), p); state.resultId = id;
+    const rec = { name: p.name, cls: p.cls, subject: p.subject, score: p.score, total: p.total, timeMs: p.timeMs, createdAt: p.createdAt };
+    try { await runTransaction(ref(db, "testToppers/" + p.subject), cur => (!cur || betterR(p, cur)) ? rec : cur); } catch (e2) {}
+    try { await runTransaction(ref(db, "testToppers/" + OV), cur => (!cur || betterR(p, cur)) ? rec : cur); } catch (e3) {}
+  } catch (e) { state.resultId = null; state.saveErr = (e && (e.code || e.message)) || "error"; }
+}
+async function submitTest() {
+  if (state.submitting) return; state.submitting = true; clearInterval(window._tm);
+  try { if (state.liveId) remove(ref(db, "testLive/" + state.liveId)).catch(() => {}); state.liveId = null; } catch (e) {}
+  let score = 0;
+  state.questions.forEach((q, i) => { const Q = q.Q; if (state.answers[i] === Number(Q.correct)) score++; });
+  state.score = score;
+  const timeMs = Math.max(1000, Date.now() - (state.startedAt || Date.now()));
+  state.timeMs = timeMs;
+  const total = state.questions.length;
+  state.pendingId = null;
+  state.pending = { name: state.name.trim().replace(/\s+/g, " "), cls: state.cls, subject: state.subName, subjectKey: state.subKey, medium: state.testLang || lang, score, total, timeMs, createdAt: Date.now() };
+  await saveResult();
+  state.screen = "result";
+  render();
+  if (score / total >= 0.75) confetti();
+}
+function reviewHtml() {
+  return `<div class="text-left mt-6 space-y-3">` + state.questions.map((q, i) => { const Q = q.Q, a = state.answers[i], c = Number(Q.correct), ok = a === c;
+    return `<div class="rounded-2xl border ${ok ? "border-green-200 bg-green-50/60" : "border-red-200 bg-red-50/60"} p-3.5 text-sm"><div class="font-semibold">${i + 1}. ${esc(Q.q)}</div><div class="mt-1 ${ok ? "text-green-700" : "text-red-600"}">${ok ? "\u2714" : "\u2718"} ${esc(Q.options[a] ?? "-")}</div>${ok ? "" : `<div class="text-green-700">\u2714 ${esc(Q.options[c] ?? "")}</div>`}</div>`; }).join("") + `</div>`;
+}
+function shareResult() {
+  const txt = T[lang].shareTxt(sl(state.subName), state.score, state.questions.length);
+  if (navigator.share) navigator.share({ text: txt }).catch(() => {}); else window.open("https://wa.me/?text=" + encodeURIComponent(txt), "_blank");
+}
+document.addEventListener("keydown", e => {
+  if (state.screen !== "quiz" || e.ctrlKey || e.metaKey || e.altKey) return;
+  const i = state.qi, q = state.questions[i], Q = q.Q;
+  if (/^[1-9]$/.test(e.key) && +e.key <= Q.options.length) { const ob = document.querySelector(`#opts [data-i="${+e.key - 1}"]`); if (ob) ob.click(); }
+  else if (e.key === "ArrowRight" && state.answers[i] != null && $("nextBtn")) $("nextBtn").click();
+  else if (e.key === "ArrowLeft" && i > 0) { state.qi--; render(); }
+});
+window.addEventListener("beforeunload", e => { if (state.screen === "quiz") { e.preventDefault(); e.returnValue = ""; } });
+
+render();
+</script>
+</body>
+</html>
