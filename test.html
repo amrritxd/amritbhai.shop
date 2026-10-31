@@ -171,7 +171,7 @@ try {
 } catch (e) {}
 saved = profiles[cur] || {};
 const persist = () => { try { localStorage.setItem("amrit_test_profiles", JSON.stringify({ list: profiles, cur: Math.min(cur, Math.max(0, profiles.length - 1)) })); } catch (e) {} };
-const saveProfile = () => { if (state.saved && fullName(state.name) && state.cls) { profiles[cur] = { name: state.name, cls: state.cls, sid: saved.sid, createdAt: saved.createdAt }; saved = profiles[cur]; } persist(); };
+const saveProfile = () => { if (state.saved && fullName(state.name) && state.cls) { profiles[cur] = { name: state.name, cls: state.cls, sid: saved.sid, createdAt: saved.createdAt, photo: saved.photo }; saved = profiles[cur]; } persist(); };
 function switchProfile(i) {
   cur = i; saved = profiles[i] || {};
   state.name = saved.name || ""; state.cls = saved.cls || ""; state.saved = !!(saved.name && saved.cls);
@@ -192,6 +192,28 @@ onValue(query(ref(db, "testResults"), orderByKey(), limitToLast(1000)), snap => 
 }, err => { loadedR = true; dbErr = (err && (err.code || err.message)) || "error"; if (state.screen === "leaderboard") render(); });
 
 let live = [];
+
+// ---- student photo ----
+const nk = n => String(n || "").trim().toLowerCase().replace(/\s+/g, " ");
+const okPhoto = p => typeof p === "string" && p.length < 20000 && /^data:image\/(jpeg|png|webp);base64,[A-Za-z0-9+\/=]+$/.test(p);
+const photoMap = new Map();
+profiles.forEach(p => { if (okPhoto(p.photo)) photoMap.set(nk(p.name), p.photo); });
+try { onValue(query(ref(db, "testStudents"), orderByKey(), limitToLast(1000)), snap => {
+  snap.forEach(c => { const v = c.val(); if (v && okPhoto(v.photo)) photoMap.set(nk(v.name), v.photo); });
+  if (state.screen === "leaderboard") render();
+}, () => {}); } catch (e) {}
+const photoOf = n => photoMap.get(nk(n)) || "";
+const avImg = (n, cls = "w-10 h-10") => photoOf(n) ? `<img src="${photoOf(n)}" alt="" class="${cls} rounded-full object-cover border border-green-200 shrink-0">` : "";
+const stuRec = (n, cls) => { const o = { name: n, cls, createdAt: saved.createdAt || Date.now(), updatedAt: Date.now() }; if (okPhoto(saved.photo)) o.photo = saved.photo; return o; };
+function resizePhoto(file) {
+  return new Promise((res, rej) => {
+    const url = URL.createObjectURL(file), im = new Image();
+    im.onload = () => { const S = 96, c = document.createElement("canvas"); c.width = c.height = S; const w = im.naturalWidth, h = im.naturalHeight, m = Math.min(w, h);
+      c.getContext("2d").drawImage(im, (w - m) / 2, (h - m) / 2, m, m, 0, 0, S, S); URL.revokeObjectURL(url); res(c.toDataURL("image/jpeg", 0.7)); };
+    im.onerror = () => { URL.revokeObjectURL(url); rej(new Error("img")); };
+    im.src = url;
+  });
+}
 
 const SUBS = ["Maths", "Science", "English", "Hindi"];
 const betterR = (a, b) => !b || (a.score / a.total > b.score / b.total) || (a.score / a.total === b.score / b.total && (a.timeMs || 1e12) < (b.timeMs || 1e12));
@@ -251,17 +273,17 @@ const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { c
 function fullName(n) { const w = String(n || "").trim().split(/\s+/).filter(Boolean); return w.length >= 2 && w.every(x => x.length >= 2); }
 // ---- Ek naam = ek subject ka sirf ek test ----
 const QSEC = 60, MAXLEAVE = 2;
-function takenKey(n, subj) { return (String(n).toLowerCase().replace(/\s+/g, " ").trim() + "__" + String(subj).toLowerCase().trim()).replace(/[^\p{L}\p{N}\p{M}]+/gu, "_"); }
+function takenKey(n, subj, cls) { return (String(n).toLowerCase().replace(/\s+/g, " ").trim() + "__" + String(subj).toLowerCase().trim() + "__c" + String(cls || "").toLowerCase().trim()).replace(/[^\p{L}\p{N}\p{M}]+/gu, "_"); }
 function localTaken() { try { return JSON.parse(localStorage.getItem("amrit_test_taken") || "[]"); } catch (e) { return []; } }
-function markTaken(n, subj) { try { const a = localTaken(); const k = takenKey(n, subj); if (!a.includes(k)) a.push(k); localStorage.setItem("amrit_test_taken", JSON.stringify(a)); } catch (e) {} }
-function attemptCount(n, subj) {
-  const k = takenKey(n, subj); let loc = 0;
+function markTaken(n, subj, cls) { try { const a = localTaken(); const k = takenKey(n, subj, cls); if (!a.includes(k)) a.push(k); localStorage.setItem("amrit_test_taken", JSON.stringify(a)); } catch (e) {} }
+function attemptCount(n, subj, cls) {
+  const k = takenKey(n, subj, cls); let loc = 0;
   try { loc = Number(JSON.parse(localStorage.getItem("amrit_test_counts") || "{}")[k]) || 0; } catch (e) {}
   if (!loc && localTaken().includes(k)) loc = 1;
-  return Math.max(loc, results.filter(r => takenKey(r.name, r.subject) === k).length);
+  return Math.max(loc, results.filter(r => takenKey(r.name, r.subject, r.cls) === k).length);
 }
-function bumpCount(n, subj) { try { const o = JSON.parse(localStorage.getItem("amrit_test_counts") || "{}"), k = takenKey(n, subj); o[k] = Math.max(Number(o[k]) || 0, attemptCount(n, subj)) + 1; localStorage.setItem("amrit_test_counts", JSON.stringify(o)); } catch (e) {} }
-function isTaken(n, subj) { const k = takenKey(n, subj); return localTaken().includes(k) || results.some(r => takenKey(r.name, r.subject) === k); }
+function bumpCount(n, subj, cls) { try { const o = JSON.parse(localStorage.getItem("amrit_test_counts") || "{}"), k = takenKey(n, subj, cls); o[k] = Math.max(Number(o[k]) || 0, attemptCount(n, subj, cls)) + 1; localStorage.setItem("amrit_test_counts", JSON.stringify(o)); } catch (e) {} }
+function isTaken(n, subj, cls) { const k = takenKey(n, subj, cls); return localTaken().includes(k) || results.some(r => takenKey(r.name, r.subject, r.cls) === k); }
 const clsOptions = sel => CLASSES.map(c => `<option value="${c}" ${sel === c ? "selected" : ""}>${clsLabel(c)}</option>`).join("");
 const inputCls = "w-full px-4 py-3.5 rounded-2xl bg-white/90 border border-green-200 text-neutral-900 shadow-sm outline-none transition focus:border-green-600 focus:ring-4 focus:ring-green-100 placeholder:text-neutral-400";
 const btnMain = "bg-gradient-to-b from-green-500 to-green-600 text-white font-semibold shadow-lg shadow-green-600/25 hover:from-green-600 hover:to-green-700 hover:-translate-y-px active:scale-[.97] transition";
@@ -275,7 +297,7 @@ async function saveStudent() {
   saved.createdAt = saved.createdAt || Date.now();
   try { saved.sid = saved.sid || push(ref(db, "testStudents")).key; } catch (e) {}
   saveProfile();
-  try { await set(ref(db, "testStudents/" + saved.sid), { name: n, cls: state.cls, createdAt: saved.createdAt, updatedAt: Date.now() }); } catch (e) {}
+  try { await set(ref(db, "testStudents/" + saved.sid), stuRec(n, state.cls)); } catch (e) {}
   render();
 }
 async function loadSubjects() {
@@ -292,7 +314,7 @@ async function loadSubjects() {
     .sort((x, y) => ALLOWED.indexOf(subOf(x)) - ALLOWED.indexOf(subOf(y)));
   if (!keys.length) { $("subs").innerHTML = `<p class="text-sm text-neutral-500 text-center py-4">${t.noSub}</p>`; return; }
   $("subs").innerHTML = `<p class="text-xs font-bold uppercase tracking-wider text-green-700 mb-2.5">${t.pickSub}</p><div class="grid grid-cols-2 gap-3 stagger">` + keys.map(k => {
-    const n = Object.values(bank[k].items).filter(Boolean).length, c = attemptCount(state.name, bank[k].name || k);
+    const n = Object.values(bank[k].items).filter(Boolean).length, c = attemptCount(state.name, bank[k].name || k, state.cls);
     return `<button data-k="${esc(k)}" class="sub text-left px-4 py-4 rounded-2xl border ${c ? "border-green-300 bg-green-50/60" : "border-green-200 bg-white"} hover:border-green-500"><div class="w-9 h-9 rounded-xl bg-gradient-to-br from-green-100 to-green-200 grid place-items-center text-lg mb-2">${({ Maths: "\u{1F522}", Science: "\u{1F52C}", English: "\u{1F4D6}", Hindi: "\u0905" })[bank[k].name] || "\u{1F4DD}"}</div><div class="font-semibold text-sm truncate">${esc(sl(bank[k].name || k))}</div><div class="text-[.7rem] text-neutral-500 mt-0.5">${Math.min(QCOUNT, n) + " " + t.qs}</div>${c ? `<div class="text-[.72rem] font-bold text-green-700 mt-1">\u2714 ${lang === "hi" ? c + " बार दिया" : "Taken " + c + (c === 1 ? " time" : " times")}</div>` : ""}</button>`;
   }).join("") + `</div>`;
   $("subs").onclick = e => { const b = e.target.closest("[data-k]"); if (b) { try { askLang(b.dataset.k); } catch (er) { uiErr(er.message); } } };
@@ -357,7 +379,7 @@ async function startTest(k, L0) {
   const items = Object.values(bank[k].items || {}).map(x => pickQ(x, L)).filter(Boolean);
   if (!items.length) return showErr(lang === "hi" ? "इस विषय के सवाल अभी उपलब्ध नहीं हैं।" : "Questions for this subject are not available yet.");
   const qs = shuffle(items).slice(0, QCOUNT).map(Q => ({ Q: shufOpts(Q) }));
-  bumpCount(state.name, subj);
+  bumpCount(state.name, subj, state.cls);
   lang = L; try { localStorage.setItem("amrit_test_lang", L); } catch (e) {}
   clearInterval(window._tm); window._tm = setInterval(() => {
     const e = $("tm"); if (e && state.startedAt) e.textContent = fmtT(Date.now() - state.startedAt);
@@ -438,7 +460,12 @@ function renderInner() {
         <div class="flex justify-center gap-2 mt-4 text-[.7rem] font-semibold text-green-800"><span class="px-3 py-1 rounded-full bg-green-100/80">${QCOUNT} ${t.qs}</span><span class="px-3 py-1 rounded-full bg-green-100/80">\u23F1 ${t.timed}</span><span class="px-3 py-1 rounded-full bg-green-100/80">\u{1F3C6} ${t.rankW}</span></div>
       </div>
       <div class="pop glass mt-7 p-5 rounded-3xl">
-        ${profiles.length ? `<div id="prof" class="flex flex-wrap gap-2 mb-3">${profiles.map((p, i) => `<button data-p="${i}" class="max-w-[60%] truncate px-3.5 py-2 rounded-full text-sm font-semibold border ${i === cur ? "bg-green-600 text-white border-green-600 shadow" : "bg-white text-green-700 border-green-200"}">${esc(p.name)}</button>`).join("")}${profiles.length < MAXP ? `<button data-p="add" class="px-3.5 py-2 rounded-full text-sm font-semibold border ${cur >= profiles.length ? "bg-green-600 text-white border-green-600 shadow" : "border-dashed border-green-300 bg-white text-green-700"}">+ ${lang === "hi" ? "दूसरा नाम जोड़ें" : "Add another name"}</button>` : ""}</div>` : ""}
+        ${profiles.length ? `<div id="prof" class="flex flex-wrap gap-2 mb-3">${profiles.map((p, i) => `<button data-p="${i}" class="max-w-[60%] truncate px-3.5 py-2 rounded-full text-sm font-semibold border ${i === cur ? "bg-green-600 text-white border-green-600 shadow" : "bg-white text-green-700 border-green-200"}">${okPhoto(p.photo) ? `<img src="${p.photo}" alt="" class="inline-block w-5 h-5 rounded-full object-cover align-middle mr-1.5">` : ""}${esc(p.name)}</button>`).join("")}${profiles.length < MAXP ? `<button data-p="add" class="px-3.5 py-2 rounded-full text-sm font-semibold border ${cur >= profiles.length ? "bg-green-600 text-white border-green-600 shadow" : "border-dashed border-green-300 bg-white text-green-700"}">+ ${lang === "hi" ? "दूसरा नाम जोड़ें" : "Add another name"}</button>` : ""}</div>` : ""}
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-14 h-14 rounded-full overflow-hidden bg-green-100 border-2 border-green-200 grid place-items-center text-xl shrink-0">${okPhoto(saved.photo) ? `<img src="${saved.photo}" alt="" class="w-full h-full object-cover">` : "\u{1F464}"}</div>
+          <div class="flex-1 flex items-center gap-3 flex-wrap"><button id="photoBtn" type="button" class="px-4 py-2 rounded-full ${btnLine} text-sm">\u{1F4F7} ${okPhoto(saved.photo) ? (lang === "hi" ? "फोटो बदलें" : "Change photo") : (lang === "hi" ? "फोटो जोड़ें" : "Add photo")}</button>${okPhoto(saved.photo) ? `<button id="photoDel" type="button" class="text-xs font-semibold text-red-500">${lang === "hi" ? "हटाएँ" : "Remove"}</button>` : ""}</div>
+          <input id="photoIn" type="file" accept="image/*" class="hidden">
+        </div>
         ${state.saved ? `<div class="flex items-center gap-2 mb-3 px-4 py-2.5 rounded-2xl bg-green-50 border border-green-200 text-green-700 text-sm font-semibold">\u2714 ${lang === "hi" ? "आपका नाम इस डिवाइस पर सेव है" : "Your name is saved on this device"}</div>` : `<input id="nm" aria-label="${t.namePh}" value="${esc(state.name)}" maxlength="60" placeholder="${t.namePh}" autocomplete="off" class="${inputCls} mb-3">`}
         <select id="cl" aria-label="${t.cls}" class="${inputCls}"><option value="">${t.cls}</option>${clsOptions(state.cls)}</select>
         <p id="err" class="hidden text-red-500 text-xs mt-2"></p>
@@ -448,6 +475,14 @@ function renderInner() {
       <div class="grid grid-cols-2 gap-3 mt-5"><button data-go="students" class="goTab py-3.5 rounded-2xl ${btnLine}">\u{1F465} ${LB[lang].stu}</button><button data-go="toppers" class="goTab py-3.5 rounded-2xl ${btnMain}">\u{1F3C6} ${LB[lang].top}</button></div>
       <div id="faq" class="sr-only" aria-hidden="false"></div>`;
     renderFaq();
+    const syncPhoto = () => { if (state.saved) saveProfile(); try { if (state.saved && saved.sid) set(ref(db, "testStudents/" + saved.sid), stuRec(state.name, state.cls)).catch(() => {}); } catch (e2) {} };
+    $("photoBtn").onclick = () => $("photoIn").click();
+    $("photoIn").onchange = async e => {
+      const f = e.target.files && e.target.files[0]; if (!f) return;
+      try { saved.photo = await resizePhoto(f); if (fullName(state.name)) photoMap.set(nk(state.name), saved.photo); syncPhoto(); render(); }
+      catch (er) { $("err").textContent = lang === "hi" ? "फोटो नहीं लग पाई, दूसरी फोटो चुनें।" : "Could not load this photo. Try another one."; $("err").classList.remove("hidden"); }
+    };
+    if ($("photoDel")) $("photoDel").onclick = () => { photoMap.delete(nk(state.name)); delete saved.photo; syncPhoto(); render(); };
     if ($("prof")) $("prof").onclick = e => {
       const b = e.target.closest("[data-p]"); if (!b) return;
       if (b.dataset.p === "add") { if (cur < profiles.length) { cur = profiles.length; saved = {}; state.name = ""; state.cls = ""; state.saved = false; render(); } }
@@ -457,7 +492,7 @@ function renderInner() {
     if ($("saveBtn")) $("saveBtn").onclick = saveStudent;
     $("cl").onchange = e => {
       state.cls = e.target.value;
-      if (state.saved) { saveProfile(); try { if (saved.sid) set(ref(db, "testStudents/" + saved.sid), { name: state.name, cls: state.cls, createdAt: saved.createdAt || Date.now(), updatedAt: Date.now() }).catch(() => {}); } catch (e2) {} loadSubjects(); }
+      if (state.saved) { saveProfile(); try { if (saved.sid) set(ref(db, "testStudents/" + saved.sid), stuRec(state.name, state.cls)).catch(() => {}); } catch (e2) {} loadSubjects(); }
       else markDirty();
     };
     document.querySelectorAll(".goTab").forEach(b => b.onclick = () => { state.lbTab = b.dataset.go; state.lbSort = state.lbSort || "latest"; state.screen = "leaderboard"; render(); });
@@ -548,7 +583,7 @@ function renderInner() {
     const filters = `
       <select id="fc" class="${inputCls} !py-2.5 text-sm mb-3"><option value="">${l.allCls}</option>${clsOptions(state.lbCls)}</select>
       <div id="chips" class="no-scroll flex gap-2 overflow-x-auto pb-3 mb-2">${chip("", l.all)}${Object.keys(subs).map(k => chip(k, sl(subs[k]))).join("")}</div>`;
-    const head = `<div class="pop glass flex p-1 rounded-full mb-5" id="tabs">${tabBtn("students", "\u{1F465} " + l.stu)}${tabBtn("toppers", "\u{1F3C6} " + l.top)}</div>`;
+    const head = `<button id="backTop" class="sticky top-2 z-20 mb-3 inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full ${btnMain} text-sm shadow-lg">&larr; ${l.back}</button><div class="pop glass flex p-1 rounded-full mb-5" id="tabs">${tabBtn("students", "\u{1F465} " + l.stu)}${tabBtn("toppers", "\u{1F3C6} " + l.top)}</div>`;
     let body = "";
 
     if (tab === "students") {
@@ -599,7 +634,7 @@ function renderInner() {
         <h3 class="text-sm font-bold text-green-700 mt-7 mb-3">${state.lbCls ? esc(clsLabel(state.lbCls)) + " \u00B7 " : ""}${state.lbCls ? l.top10 : l.overall}</h3>
         <div class="rounded-3xl border border-green-100 overflow-hidden bg-white/90 shadow-lg shadow-green-100/60 stagger">
           ${top10.map((r, i) => `<div class="flex items-center gap-3 px-4 py-3 ${i ? "border-t border-green-50" : ""} ${isMe(r) ? "bg-green-50 ring-2 ring-inset ring-green-500" : ""}">
-            ${rankBadge(i)}
+            ${rankBadge(i)}${avImg(r.name, "w-9 h-9")}
             <div class="flex-1 min-w-0"><div class="font-semibold text-sm truncate">${esc(r.name)}${isMe(r) ? ` <span class="text-[.6rem] px-1.5 py-0.5 rounded-full bg-green-600 text-white font-semibold align-middle">${l.you}</span>` : ""}</div><div class="text-[.7rem] text-neutral-500 truncate">${esc(clsLabel(r.cls))} \u00B7 ${esc(sl(r.subject))}</div></div>
             <div class="text-right shrink-0"><div class="font-extrabold text-green-700">${r.score}<span class="text-xs text-neutral-400 font-semibold">/${r.total}</span></div>${r.timeMs ? `<div class="text-[.65rem] text-neutral-500">${fmtT(r.timeMs)}</div>` : ""}</div>
           </div>`).join("")}
@@ -613,12 +648,15 @@ function renderInner() {
           </div>`; }).join("")}
         </div>`);
     }
-    app.innerHTML = head + body + `<button id="backStart" class="block w-full text-center text-sm text-green-700 hover:text-green-900 mt-7">&larr; ${l.back}</button>`;
+    app.innerHTML = head + body + `<button id="backStart" class="block w-full text-center py-3.5 rounded-2xl ${btnMain} text-base mt-7">&larr; ${l.back}</button>`;
 
     const drawStudents = () => {
       const box = $("stList"); if (!box) return;
       const q = (($("srch") || {}).value || "").trim().toLowerCase();
       const rankOf = new Map(list.map((r, i) => [r.id, i + 1]));
+      const ck = x => String(x.name).trim().toLowerCase() + "|" + String(x.cls);
+      const cntOf = new Map(); results.forEach(x => { const k = ck(x); cntOf.set(k, (cntOf.get(k) || 0) + 1); });
+      const baar = n => lang === "hi" ? n + " बार" : n + (n === 1 ? " time" : " times");
       const liveHtml = "";
       let rows = list.filter(r => !q || String(r.name).toLowerCase().includes(q));
       if ((state.lbSort || "latest") === "latest") rows = rows.slice().sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
@@ -627,10 +665,10 @@ function renderInner() {
       box.innerHTML = liveHtml + `<div class="rounded-3xl border border-green-100 overflow-hidden bg-white/90 shadow-lg shadow-green-100/60 stagger">` + shown.map((r, i) => {
         const p = pc(r), rk = rankOf.get(r.id), dt = r.createdAt ? new Date(r.createdAt).toLocaleDateString(lang === "hi" ? "hi-IN" : "en-IN", { day: "numeric", month: "short" }) : "";
         const col = p >= 75 ? "text-green-700" : p >= 50 ? "text-amber-600" : "text-red-500";
-        return `<div data-nm="${esc(String(r.name).trim().toLowerCase())}" class="cursor-pointer flex items-center gap-3 px-4 py-3 ${i ? "border-t border-green-50" : ""} ${isMe(r) ? "bg-green-50 ring-2 ring-inset ring-green-500" : ""}">
-          <div class="w-10 h-10 rounded-full ${rk <= 3 ? "bg-green-600 text-white" : "bg-green-100 text-green-700"} grid place-items-center font-bold shrink-0">${esc(ini(r.name))}</div>
+        return `<div data-nm="${esc(String(r.name).trim().toLowerCase())}" data-cl="${esc(String(r.cls))}" class="cursor-pointer flex items-center gap-3 px-4 py-3 ${i ? "border-t border-green-50" : ""} ${isMe(r) ? "bg-green-50 ring-2 ring-inset ring-green-500" : ""}">
+          ${avImg(r.name) || `<div class="w-10 h-10 rounded-full ${rk <= 3 ? "bg-green-600 text-white" : "bg-green-100 text-green-700"} grid place-items-center font-bold shrink-0">${esc(ini(r.name))}</div>`}
           <div class="flex-1 min-w-0">
-            <div class="flex items-center gap-1.5"><span class="font-semibold text-sm truncate">${esc(r.name)}</span>${isMe(r) ? `<span class="text-[.6rem] px-1.5 py-0.5 rounded-full bg-green-600 text-white font-semibold">${l.you}</span>` : ""}${rk <= 3 ? `<span>${medal(rk - 1)}</span>` : ""}</div>
+            <div class="flex items-center gap-1.5"><span class="font-semibold text-sm truncate">${esc(r.name)}</span><span class="text-[.6rem] px-1.5 py-0.5 rounded-full bg-green-100 text-green-700 font-semibold shrink-0">${baar(cntOf.get(ck(r)) || 1)}</span>${isMe(r) ? `<span class="text-[.6rem] px-1.5 py-0.5 rounded-full bg-green-600 text-white font-semibold">${l.you}</span>` : ""}${rk <= 3 ? `<span>${medal(rk - 1)}</span>` : ""}</div>
             <div class="text-[.68rem] text-neutral-500 truncate">${esc(clsLabel(r.cls))} &middot; ${esc(sl(r.subject))}${dt ? " &middot; " + dt : ""}</div>
             <div class="h-1.5 rounded-full bg-green-100 mt-1.5 overflow-hidden"><div class="bar h-full rounded-full bg-gradient-to-r from-green-600 to-green-400" style="width:${p}%"></div></div>
           </div>
@@ -650,11 +688,11 @@ function renderInner() {
         if (e.target.closest("#moreBtn")) { state.lbLimit = (state.lbLimit || 60) + 60; drawStudents(); return; }
         const row = e.target.closest("[data-nm]"); if (!row) return;
         const nx = row.nextElementSibling; if (nx && nx.classList.contains("hist")) { nx.remove(); return; }
-        const h = results.filter(x => String(x.name).trim().toLowerCase() === row.dataset.nm).sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
-        row.insertAdjacentHTML("afterend", `<div class="hist bg-green-50/60 px-4 py-2 text-xs border-t border-green-100"><div class="font-bold text-green-700 mb-1">${esc(h[0] ? h[0].name : "")} - ${h.length} ${l.tests}</div>` + h.map(x => `<div class="flex justify-between py-1"><span>${esc(sl(x.subject))} &middot; ${esc(clsLabel(x.cls))} &middot; ${x.createdAt ? new Date(x.createdAt).toLocaleDateString(lang === "hi" ? "hi-IN" : "en-IN", { day: "numeric", month: "short" }) : ""}</span><b>${x.score}/${x.total} &middot; ${pc(x)}%</b></div>`).join("") + `</div>`);
+        const h = results.filter(x => String(x.name).trim().toLowerCase() === row.dataset.nm && String(x.cls) === row.dataset.cl).sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+        row.insertAdjacentHTML("afterend", `<div class="hist bg-green-50/60 px-4 py-2 text-xs border-t border-green-100"><div class="font-bold text-green-700 mb-1">${esc(h[0] ? h[0].name : "")} - ${h.length} ${l.tests}</div><div class="flex flex-wrap gap-1.5 mb-1.5">` + Object.entries(h.reduce((a, x) => { const c = String(x.cls); a[c] = (a[c] || 0) + 1; return a; }, {})).map(([c, n]) => `<span class="px-2 py-0.5 rounded-full bg-white border border-green-200 text-green-700 font-semibold">${esc(clsLabel(c))}: ${baar(n)}</span>`).join("") + `</div>` + h.map(x => `<div class="flex justify-between py-1"><span>${esc(sl(x.subject))} &middot; ${esc(clsLabel(x.cls))} &middot; ${x.createdAt ? new Date(x.createdAt).toLocaleDateString(lang === "hi" ? "hi-IN" : "en-IN", { day: "numeric", month: "short" }) : ""}</span><b>${x.score}/${x.total} &middot; ${pc(x)}%</b></div>`).join("") + `</div>`);
       };
     }
-    $("backStart").onclick = () => { state.screen = "start"; render(); };
+    $("backStart").onclick = $("backTop").onclick = () => { state.screen = "start"; render(); };
   }
 }
 
