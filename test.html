@@ -21,15 +21,17 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
+<link rel="modulepreload" href="https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js">
+<link rel="modulepreload" href="https://www.gstatic.com/firebasejs/10.13.0/firebase-database.js">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com/3.4.17"></script>
 <script>tailwind.config = { theme: { extend: { fontFamily: { sans: ['Poppins', 'Noto Sans Devanagari', 'system-ui', 'sans-serif'] } } } };</script>
 <style>
-html{background:#f6fbf7;scroll-behavior:smooth}
+html{background:#f6fbf7}
 body{background:
  radial-gradient(700px 320px at 12% -60px,rgba(34,197,94,.20),transparent 70%),
  radial-gradient(600px 300px at 95% 0,rgba(16,185,129,.14),transparent 70%),
- linear-gradient(#f6fbf7,#fff 420px);background-attachment:fixed}
+ linear-gradient(#f6fbf7,#fff 420px)}
 body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;
  background-image:radial-gradient(rgba(22,163,74,.13) 1px,transparent 1.2px);background-size:22px 22px;
  -webkit-mask-image:linear-gradient(#000,transparent 340px);mask-image:linear-gradient(#000,transparent 340px)}
@@ -40,8 +42,7 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;op
 .opt.on .optkey{background:rgba(255,255,255,.22);color:#fff}
 .opt{box-shadow:0 1px 2px rgba(22,163,74,.06)}
 .opt.on{background:linear-gradient(135deg,#16a34a,#22c55e);box-shadow:0 10px 22px -10px rgba(22,163,74,.7)}
-.opt:hover:not(.on){transform:translateY(-1px);box-shadow:0 8px 18px -10px rgba(22,163,74,.45)}
-.sub:hover{transform:translateY(-2px);box-shadow:0 10px 20px -12px rgba(22,163,74,.55)}
+@media (hover:hover){.opt:hover:not(.on){transform:translateY(-1px);box-shadow:0 8px 18px -10px rgba(22,163,74,.45)}.sub:hover{transform:translateY(-2px);box-shadow:0 10px 20px -12px rgba(22,163,74,.55)}}
 .pbar{background:linear-gradient(90deg,#16a34a,#4ade80);box-shadow:0 0 12px rgba(74,222,128,.7)}
 .actbar{position:sticky;bottom:0;margin:0 -20px;padding:12px 20px calc(12px + env(safe-area-inset-bottom));background:linear-gradient(transparent,rgba(255,255,255,.92) 35%);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 @keyframes ring{from{stroke-dashoffset:var(--c)}}
@@ -56,7 +57,11 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;op
 @keyframes sk{to{background-position:-200% 0}}
 select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2316a34a' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:40px}
 .no-scroll{-ms-overflow-style:none;scrollbar-width:none}
-html{-webkit-tap-highlight-color:transparent}button{touch-action:manipulation}
+html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}button,select,summary,a,input,[data-k],[data-l],[data-i]{touch-action:manipulation}
+.stagger>*:nth-child(n+9){animation:none}
+#stList>div>div{content-visibility:auto;contain-intrinsic-size:auto 64px}
+.opt,.sub,.sheet{will-change:transform}
+@media (max-width:640px){.glass{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(255,255,255,.94)}header{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:rgba(255,255,255,.96)!important}.actbar{backdrop-filter:none;-webkit-backdrop-filter:none;background:linear-gradient(transparent,#fff 40%)}.sheet-bg{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}}
 @keyframes pgrow{from{width:var(--from)}}
 .pbar{animation:pgrow .55s cubic-bezier(.2,.8,.2,1) both}
 @keyframes fadein{from{opacity:0}}
@@ -105,8 +110,9 @@ button:focus-visible,select:focus-visible,summary:focus-visible,a:focus-visible{
 <script type="module">
 let initializeApp, getDatabase, ref, onValue, get, push, set, runTransaction, remove, onDisconnect, query, orderByKey, limitToLast;
 try {
-  ({ initializeApp } = await import("https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js"));
-  ({ getDatabase, ref, onValue, get, push, set, runTransaction, remove, onDisconnect, query, orderByKey, limitToLast } = await import("https://www.gstatic.com/firebasejs/10.13.0/firebase-database.js"));
+  const [_A, _D] = await Promise.all([import("https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js"), import("https://www.gstatic.com/firebasejs/10.13.0/firebase-database.js")]);
+  ({ initializeApp } = _A);
+  ({ getDatabase, ref, onValue, get, push, set, runTransaction, remove, onDisconnect, query, orderByKey, limitToLast } = _D);
 } catch (e) {
   document.getElementById("app").innerHTML = '<div class="text-center py-16"><p class="text-red-600 font-semibold">Server load nahi hua. Internet check karein.</p><button onclick="location.reload()" class="mt-4 px-6 py-2.5 rounded-full bg-green-600 text-white font-semibold">Retry</button></div>';
   throw e;
@@ -118,6 +124,9 @@ const db = getDatabase(initializeApp(firebaseConfig));
 const $ = id => document.getElementById(id);
 const esc = v => String(v == null ? "" : v).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 $("yr").textContent = new Date().getFullYear();
+const uiErr = m => { const el = $("err"), msg = "\u26A0 " + m; if (el) { el.textContent = msg; el.classList.remove("hidden"); try { el.scrollIntoView({ block: "center" }); } catch (e) {} } else alert(msg); };
+window.addEventListener("error", ev => { if (state && state.screen === "start") uiErr(ev.message || "error"); });
+window.addEventListener("unhandledrejection", ev => { if (state && state.screen === "start") uiErr(String((ev.reason && ev.reason.message) || ev.reason || "error")); });
 
 const QCOUNT = 30;
 const CLASSES = ["LKG", "UKG", ...Array.from({ length: 12 }, (_, i) => String(i + 1))];
@@ -153,12 +162,24 @@ let lang = "en"; try { lang = localStorage.getItem("amrit_test_lang") === "hi" ?
 $("langBtn").addEventListener("click", () => { lang = lang === "en" ? "hi" : "en"; try { localStorage.setItem("amrit_test_lang", lang); } catch (e) {} render(); });
 
 // name + class saved on this device
-let saved = {};
-try { saved = JSON.parse(localStorage.getItem("amrit_test_profile") || "{}"); } catch (e) {}
-const saveProfile = () => { try { localStorage.setItem("amrit_test_profile", JSON.stringify({ name: state.name, cls: state.cls, ok: state.saved, sid: saved.sid, createdAt: saved.createdAt })); } catch (e) {} };
+const MAXP = 2; // ek phone par kitne naam (change here)
+let profiles = [], cur = 0, saved = {};
+try {
+  const o = JSON.parse(localStorage.getItem("amrit_test_profiles") || "null");
+  if (o && Array.isArray(o.list)) { profiles = o.list.filter(p => p && fullName(p.name) && p.cls).slice(0, MAXP); cur = Math.min(Number(o.cur) || 0, Math.max(0, profiles.length - 1)); }
+  else { const old = JSON.parse(localStorage.getItem("amrit_test_profile") || "{}"); if (old.ok && fullName(old.name) && old.cls) profiles = [{ name: old.name, cls: old.cls, sid: old.sid, createdAt: old.createdAt }]; }
+} catch (e) {}
+saved = profiles[cur] || {};
+const persist = () => { try { localStorage.setItem("amrit_test_profiles", JSON.stringify({ list: profiles, cur: Math.min(cur, Math.max(0, profiles.length - 1)) })); } catch (e) {} };
+const saveProfile = () => { if (state.saved && fullName(state.name) && state.cls) { profiles[cur] = { name: state.name, cls: state.cls, sid: saved.sid, createdAt: saved.createdAt }; saved = profiles[cur]; } persist(); };
+function switchProfile(i) {
+  cur = i; saved = profiles[i] || {};
+  state.name = saved.name || ""; state.cls = saved.cls || ""; state.saved = !!(saved.name && saved.cls);
+  state.err = ""; persist(); render();
+}
 
-let dbErr = "", results = [], loadedR = false, bank = {}, bankLoading = false;
-let state = { saved: !!(saved.ok && fullName(saved.name) && saved.cls), screen: "start", name: saved.name || "", cls: saved.cls || "", subKey: "", subName: "", questions: [], answers: [], qi: 0, score: 0, lbCls: "", lbSub: "" };
+let dbErr = "", results = [], loadedR = false, bank = {}, bankLoading = false, bankCache = {};
+let state = { saved: !!(saved.name && saved.cls), screen: "start", name: saved.name || "", cls: saved.cls || "", subKey: "", subName: "", questions: [], answers: [], qi: 0, score: 0, lbCls: "", lbSub: "" };
 
 onValue(query(ref(db, "testResults"), orderByKey(), limitToLast(1000)), snap => {
   const rows = [];
@@ -166,7 +187,7 @@ onValue(query(ref(db, "testResults"), orderByKey(), limitToLast(1000)), snap => 
   rows.sort((a, b) => (b.score / b.total - a.score / a.total) || ((a.timeMs || 1e12) - (b.timeMs || 1e12)) || ((a.createdAt || 0) - (b.createdAt || 0)));
   results = rows; loadedR = true;
   updateSEO();
-  if (state.screen === "start") renderFaq();
+  if (state.screen === "start") { renderFaq(); if (state.saved && $("subs") && bankCache[state.cls]) loadSubjects(); }
   if (state.screen === "leaderboard" || state.screen === "result") render();
 }, err => { loadedR = true; dbErr = (err && (err.code || err.message)) || "error"; if (state.screen === "leaderboard") render(); });
 
@@ -233,6 +254,13 @@ const QSEC = 60, MAXLEAVE = 2;
 function takenKey(n, subj) { return (String(n).toLowerCase().replace(/\s+/g, " ").trim() + "__" + String(subj).toLowerCase().trim()).replace(/[^\p{L}\p{N}\p{M}]+/gu, "_"); }
 function localTaken() { try { return JSON.parse(localStorage.getItem("amrit_test_taken") || "[]"); } catch (e) { return []; } }
 function markTaken(n, subj) { try { const a = localTaken(); const k = takenKey(n, subj); if (!a.includes(k)) a.push(k); localStorage.setItem("amrit_test_taken", JSON.stringify(a)); } catch (e) {} }
+function attemptCount(n, subj) {
+  const k = takenKey(n, subj); let loc = 0;
+  try { loc = Number(JSON.parse(localStorage.getItem("amrit_test_counts") || "{}")[k]) || 0; } catch (e) {}
+  if (!loc && localTaken().includes(k)) loc = 1;
+  return Math.max(loc, results.filter(r => takenKey(r.name, r.subject) === k).length);
+}
+function bumpCount(n, subj) { try { const o = JSON.parse(localStorage.getItem("amrit_test_counts") || "{}"), k = takenKey(n, subj); o[k] = Math.max(Number(o[k]) || 0, attemptCount(n, subj)) + 1; localStorage.setItem("amrit_test_counts", JSON.stringify(o)); } catch (e) {} }
 function isTaken(n, subj) { const k = takenKey(n, subj); return localTaken().includes(k) || results.some(r => takenKey(r.name, r.subject) === k); }
 const clsOptions = sel => CLASSES.map(c => `<option value="${c}" ${sel === c ? "selected" : ""}>${clsLabel(c)}</option>`).join("");
 const inputCls = "w-full px-4 py-3.5 rounded-2xl bg-white/90 border border-green-200 text-neutral-900 shadow-sm outline-none transition focus:border-green-600 focus:ring-4 focus:ring-green-100 placeholder:text-neutral-400";
@@ -255,10 +283,8 @@ async function loadSubjects() {
   const t = T[lang];
   if (!state.saved) { box.innerHTML = `<p class="text-xs text-neutral-500 text-center py-2">${t.saveHint}</p>`; return; }
   if (!state.cls) { box.innerHTML = `<p class="text-sm text-neutral-500 text-center py-4">${t.pickClass}</p>`; return; }
-  box.innerHTML = `<div class="grid grid-cols-2 gap-3"><div class="skel h-24"></div><div class="skel h-24"></div></div>`;
-  const cls = state.cls; bankLoading = true;
-  try { const s = await get(ref(db, "testBank/" + cls)); bank = s.val() || {}; } catch (e) { bank = {}; }
-  bankLoading = false;
+  const cls = state.cls;
+  const paint = () => {
   if (cls !== state.cls || !$("subs")) return;
   const ALLOWED = ["Maths", "Science", "English", "Hindi"];
   const subOf = k => (bank[k] && bank[k].name) || k;
@@ -266,17 +292,26 @@ async function loadSubjects() {
     .sort((x, y) => ALLOWED.indexOf(subOf(x)) - ALLOWED.indexOf(subOf(y)));
   if (!keys.length) { $("subs").innerHTML = `<p class="text-sm text-neutral-500 text-center py-4">${t.noSub}</p>`; return; }
   $("subs").innerHTML = `<p class="text-xs font-bold uppercase tracking-wider text-green-700 mb-2.5">${t.pickSub}</p><div class="grid grid-cols-2 gap-3 stagger">` + keys.map(k => {
-    const n = Object.values(bank[k].items).filter(Boolean).length, done = isTaken(state.name, bank[k].name || k);
-    return `<button data-k="${esc(k)}" ${done ? "disabled" : ""} class="sub text-left px-4 py-4 rounded-2xl border ${done ? "border-green-100 bg-green-50 opacity-60 cursor-not-allowed" : "border-green-200 bg-white hover:border-green-500"}"><div class="w-9 h-9 rounded-xl bg-gradient-to-br from-green-100 to-green-200 grid place-items-center text-lg mb-2">${({ Maths: "\u{1F522}", Science: "\u{1F52C}", English: "\u{1F4D6}", Hindi: "\u0905" })[bank[k].name] || "\u{1F4DD}"}</div><div class="font-semibold text-sm truncate">${esc(sl(bank[k].name || k))}</div><div class="text-[.7rem] text-neutral-500 mt-0.5">${done ? (lang === "hi" ? "\u2714 टेस्ट हो चुका" : "\u2714 Test done") : Math.min(QCOUNT, n) + " " + t.qs}</div></button>`;
+    const n = Object.values(bank[k].items).filter(Boolean).length, c = attemptCount(state.name, bank[k].name || k);
+    return `<button data-k="${esc(k)}" class="sub text-left px-4 py-4 rounded-2xl border ${c ? "border-green-300 bg-green-50/60" : "border-green-200 bg-white"} hover:border-green-500"><div class="w-9 h-9 rounded-xl bg-gradient-to-br from-green-100 to-green-200 grid place-items-center text-lg mb-2">${({ Maths: "\u{1F522}", Science: "\u{1F52C}", English: "\u{1F4D6}", Hindi: "\u0905" })[bank[k].name] || "\u{1F4DD}"}</div><div class="font-semibold text-sm truncate">${esc(sl(bank[k].name || k))}</div><div class="text-[.7rem] text-neutral-500 mt-0.5">${Math.min(QCOUNT, n) + " " + t.qs}</div>${c ? `<div class="text-[.72rem] font-bold text-green-700 mt-1">\u2714 ${lang === "hi" ? c + " बार दिया" : "Taken " + c + (c === 1 ? " time" : " times")}</div>` : ""}</button>`;
   }).join("") + `</div>`;
-  $("subs").onclick = e => { const b = e.target.closest("[data-k]"); if (b) askLang(b.dataset.k); };
+  $("subs").onclick = e => { const b = e.target.closest("[data-k]"); if (b) { try { askLang(b.dataset.k); } catch (er) { uiErr(er.message); } } };
+  };
+  const old = bankCache[cls];
+  if (old) { bank = old; paint(); } else box.innerHTML = `<div class="grid grid-cols-2 gap-3"><div class="skel h-24"></div><div class="skel h-24"></div></div>`;
+  try {
+    const sn = await get(ref(db, "testBank/" + cls)); const nb = sn.val() || {}; bankCache[cls] = nb;
+    if (cls === state.cls) { bank = nb; if (!old || Object.keys(old).length !== Object.keys(nb).length) paint(); }
+  } catch (e) { if (!old && cls === state.cls) { bank = {}; paint(); } }
 }
 
 function askLang(k) {
   const t = T[lang];
   if (!fullName(state.name) || !state.cls) { $("err").textContent = t.need; $("err").classList.remove("hidden"); (!fullName(state.name) ? $("nm") : $("cl")).focus(); return; }
-  const okQ = (x, L) => x && x[L] && x[L].q && Array.isArray(x[L].options) && x[L].options.length > 1;
-  const cnt = L => Object.values(bank[k].items).filter(x => okQ(x, L)).length;
+  const cnt = L => Object.values(bank[k].items || {}).filter(x => hasL(x, L)).length;
+  const nHi = cnt("hi"), nEn = cnt("en");
+  // Sirf ek hi bhasha ho (ya format alag ho) to sheet dikhaye bina seedha test shuru - tap kabhi atakta nahi
+  if (!nHi || !nEn) { startTest(k, nEn ? "en" : nHi ? "hi" : lang); return; }
   const opts = [{ L: "hi", big: "अ", name: "हिन्दी" }, { L: "en", big: "A", name: "English" }];
   const ov = document.createElement("div");
   ov.id = "langAsk"; ov.className = "sheet-bg fixed inset-0 z-[200] flex items-end sm:items-center justify-center sm:p-4 bg-green-950/45 backdrop-blur-sm";
@@ -314,24 +349,16 @@ async function startTest(k, L0) {
   if (!fullName(state.name) || !state.cls) { $("err").textContent = t.need; $("err").classList.remove("hidden"); (!fullName(state.name) ? $("nm") : $("cl")).focus(); return; }
   const subj = bank[k].name || k;
   const blockMsg = lang === "hi" ? "इस नाम से यह टेस्ट पहले ही हो चुका है। एक नाम से एक विषय का टेस्ट सिर्फ एक बार दे सकते हैं।" : "This name has already taken this subject's test. One name can take each test only once.";
-  const showErr = m => { $("err").textContent = m; $("err").classList.remove("hidden"); window.scrollTo(0, 0); };
+  const showErr = m => { $("err").textContent = m; $("err").classList.remove("hidden"); window.scrollTo({ top: 0, left: 0, behavior: "instant" }); };
   if (state.starting) return;
-  if (isTaken(state.name, subj)) return showErr(blockMsg);
-  state.starting = true;
-  try {
-    const tk = takenKey(state.name, subj);
-    let ex = false;
-    try { ex = (await get(ref(db, "testTaken/" + tk))).exists(); } catch (e) {}
-    if (ex) { markTaken(state.name, subj); loadSubjects(); return showErr(blockMsg); }
-    // Test shuru hote hi attempt lock - quit/refresh karne par bhi dobara nahi de sakte
-    try { await set(ref(db, "testTaken/" + tk), { t: Date.now(), cls: state.cls }); } catch (e) {}
-    markTaken(state.name, subj);
-  } finally { state.starting = false; }
-  const L = L0 || lang; lang = L; try { localStorage.setItem("amrit_test_lang", L); } catch (e) {}
+  const L = L0 || lang;
   const KEEP = /above|both|none of|all of|उपरोक्त|दोनों|इनमें से|सभी/i;
   const shufOpts = Q => { if (Q.options.some(o => KEEP.test(String(o)))) return Q; const c = Number(Q.correct), idx = shuffle(Q.options.map((_, i) => i)); return { ...Q, options: idx.map(i => Q.options[i]), correct: idx.indexOf(c) }; };
-  const items = Object.values(bank[k].items).map(x => pickQ(x, L)).filter(Boolean);
+  const items = Object.values(bank[k].items || {}).map(x => pickQ(x, L)).filter(Boolean);
+  if (!items.length) return showErr(lang === "hi" ? "इस विषय के सवाल अभी उपलब्ध नहीं हैं।" : "Questions for this subject are not available yet.");
   const qs = shuffle(items).slice(0, QCOUNT).map(Q => ({ Q: shufOpts(Q) }));
+  bumpCount(state.name, subj);
+  lang = L; try { localStorage.setItem("amrit_test_lang", L); } catch (e) {}
   clearInterval(window._tm); window._tm = setInterval(() => {
     const e = $("tm"); if (e && state.startedAt) e.textContent = fmtT(Date.now() - state.startedAt);
     if (state.screen === "quiz" && !state.submitting && state.qEnd) {
@@ -363,7 +390,23 @@ document.addEventListener("keydown", e => {
   if (e.key === "F12" || ((e.ctrlKey || e.metaKey) && ["c", "u", "s", "p", "a", "x", "v"].includes(k)) || ((e.ctrlKey || e.metaKey) && e.shiftKey && ["i", "j", "c"].includes(k))) e.preventDefault();
 });
 
-const pickQ = (x, L) => { for (const c of [x && x[L], x && x.en, x && x.hi]) if (c && c.q && Array.isArray(c.options) && c.options.length > 1) return c; return null; };
+// Firebase kabhi options ko array ki jagah object bana deta hai, aur kuch subjects (English) ka format alag ho sakta hai - sab handle.
+const normOpts = o => Array.isArray(o) ? o : (o && typeof o === "object" ? Object.keys(o).sort((a, b) => a - b).map(k => o[k]) : []);
+const normQ = (c, x) => {
+  if (!c || typeof c !== "object") return null;
+  const q = c.q || c.question, options = normOpts(c.options || c.opts).map(v => String(v == null ? "" : v));
+  if (!q || options.length < 2) return null;
+  let correct = c.correct; if (correct == null) correct = c.answer; if (correct == null && x) correct = x.correct != null ? x.correct : x.answer;
+  let ci = Number(correct);
+  if (correct == null || correct === "" || !Number.isFinite(ci)) {
+    const t = String(correct == null ? "" : correct).trim(), L1 = t.toUpperCase();
+    ci = /^[A-H]$/.test(L1) ? L1.charCodeAt(0) - 65 : options.findIndex(o => o.trim() === t);
+    if (ci < 0) ci = -1;
+  }
+  return { ...c, q: String(q), options, correct: ci };
+};
+const hasL = (x, L) => !!(x && normQ(x[L], x));
+const pickQ = (x, L) => { if (!x) return null; for (const c of [x[L], x.en, x.hi, x]) { const n = normQ(c, x); if (n) return n; } return null; };
 let _rk = "", _sk = "";
 function applyChrome() {
   const t = T[lang], hi = lang === "hi";
@@ -380,7 +423,7 @@ function render() {
   const key = [state.screen, state.qi, lang, state.lbTab, state.lbCls, state.lbSub, state.review].join("|"), fresh = key !== _rk; _rk = key;
   renderInner();
   if (!fresh) $("app").querySelectorAll(".pop,.grow,.bar,.slidein,.stagger>*").forEach(el => el.style.animation = "none");
-  const sk = state.screen + "|" + state.qi; if (sk !== _sk) { _sk = sk; window.scrollTo(0, 0); }
+  const sk = state.screen + "|" + state.qi; if (sk !== _sk) { _sk = sk; window.scrollTo({ top: 0, left: 0, behavior: "instant" }); }
   if (ai === "srch" && $("srch")) { $("srch").focus(); try { $("srch").setSelectionRange(ss, ss); } catch (e) {} }
 }
 function renderInner() {
@@ -395,6 +438,7 @@ function renderInner() {
         <div class="flex justify-center gap-2 mt-4 text-[.7rem] font-semibold text-green-800"><span class="px-3 py-1 rounded-full bg-green-100/80">${QCOUNT} ${t.qs}</span><span class="px-3 py-1 rounded-full bg-green-100/80">\u23F1 ${t.timed}</span><span class="px-3 py-1 rounded-full bg-green-100/80">\u{1F3C6} ${t.rankW}</span></div>
       </div>
       <div class="pop glass mt-7 p-5 rounded-3xl">
+        ${profiles.length ? `<div id="prof" class="flex flex-wrap gap-2 mb-3">${profiles.map((p, i) => `<button data-p="${i}" class="max-w-[60%] truncate px-3.5 py-2 rounded-full text-sm font-semibold border ${i === cur ? "bg-green-600 text-white border-green-600 shadow" : "bg-white text-green-700 border-green-200"}">${esc(p.name)}</button>`).join("")}${profiles.length < MAXP ? `<button data-p="add" class="px-3.5 py-2 rounded-full text-sm font-semibold border ${cur >= profiles.length ? "bg-green-600 text-white border-green-600 shadow" : "border-dashed border-green-300 bg-white text-green-700"}">+ ${lang === "hi" ? "दूसरा नाम जोड़ें" : "Add another name"}</button>` : ""}</div>` : ""}
         ${state.saved ? `<div class="flex items-center gap-2 mb-3 px-4 py-2.5 rounded-2xl bg-green-50 border border-green-200 text-green-700 text-sm font-semibold">\u2714 ${lang === "hi" ? "आपका नाम इस डिवाइस पर सेव है" : "Your name is saved on this device"}</div>` : `<input id="nm" aria-label="${t.namePh}" value="${esc(state.name)}" maxlength="60" placeholder="${t.namePh}" autocomplete="off" class="${inputCls} mb-3">`}
         <select id="cl" aria-label="${t.cls}" class="${inputCls}"><option value="">${t.cls}</option>${clsOptions(state.cls)}</select>
         <p id="err" class="hidden text-red-500 text-xs mt-2"></p>
@@ -404,6 +448,11 @@ function renderInner() {
       <div class="grid grid-cols-2 gap-3 mt-5"><button data-go="students" class="goTab py-3.5 rounded-2xl ${btnLine}">\u{1F465} ${LB[lang].stu}</button><button data-go="toppers" class="goTab py-3.5 rounded-2xl ${btnMain}">\u{1F3C6} ${LB[lang].top}</button></div>
       <div id="faq" class="sr-only" aria-hidden="false"></div>`;
     renderFaq();
+    if ($("prof")) $("prof").onclick = e => {
+      const b = e.target.closest("[data-p]"); if (!b) return;
+      if (b.dataset.p === "add") { if (cur < profiles.length) { cur = profiles.length; saved = {}; state.name = ""; state.cls = ""; state.saved = false; render(); } }
+      else if (Number(b.dataset.p) !== cur) switchProfile(Number(b.dataset.p));
+    };
     if ($("nm")) $("nm").oninput = e => { state.name = e.target.value; markDirty(); };
     if ($("saveBtn")) $("saveBtn").onclick = saveStudent;
     $("cl").onchange = e => {
@@ -439,7 +488,7 @@ function renderInner() {
         x.classList.toggle("border-green-200", !on); x.classList.toggle("bg-white", !on); x.classList.toggle("text-neutral-800", !on); });
       $("nextBtn").disabled = false;
     });
-    $("quit").onclick = () => { if (confirm(t.quitQ + (lang === "hi" ? "\n\n(यह प्रयास गिना जाएगा, इस विषय का टेस्ट दोबारा नहीं दे पाएंगे।)" : "\n\n(This attempt will be counted; you cannot retake this subject.)"))) { clearInterval(window._tm); state.screen = "start"; render(); } };
+    $("quit").onclick = () => { if (confirm(t.quitQ)) { clearInterval(window._tm); state.screen = "start"; render(); } };
     $("nextBtn").onclick = () => {
       if (state.answers[i] == null) return;
       if (i < qs.length - 1) { state.qi++; render(); } else { $("nextBtn").disabled = true; $("nextBtn").textContent = t.loading; submitTest(); }
@@ -573,8 +622,9 @@ function renderInner() {
       const liveHtml = "";
       let rows = list.filter(r => !q || String(r.name).toLowerCase().includes(q));
       if ((state.lbSort || "latest") === "latest") rows = rows.slice().sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+      const shown = rows.slice(0, state.lbLimit || 60);
       if (!rows.length) { box.innerHTML = liveHtml + `<p class="text-center text-neutral-500 py-12 border border-dashed border-green-200 rounded-2xl">${l.none}</p>`; return; }
-      box.innerHTML = liveHtml + `<div class="rounded-3xl border border-green-100 overflow-hidden bg-white/90 shadow-lg shadow-green-100/60 stagger">` + rows.map((r, i) => {
+      box.innerHTML = liveHtml + `<div class="rounded-3xl border border-green-100 overflow-hidden bg-white/90 shadow-lg shadow-green-100/60 stagger">` + shown.map((r, i) => {
         const p = pc(r), rk = rankOf.get(r.id), dt = r.createdAt ? new Date(r.createdAt).toLocaleDateString(lang === "hi" ? "hi-IN" : "en-IN", { day: "numeric", month: "short" }) : "";
         const col = p >= 75 ? "text-green-700" : p >= 50 ? "text-amber-600" : "text-red-500";
         return `<div data-nm="${esc(String(r.name).trim().toLowerCase())}" class="cursor-pointer flex items-center gap-3 px-4 py-3 ${i ? "border-t border-green-50" : ""} ${isMe(r) ? "bg-green-50 ring-2 ring-inset ring-green-500" : ""}">
@@ -585,18 +635,19 @@ function renderInner() {
             <div class="h-1.5 rounded-full bg-green-100 mt-1.5 overflow-hidden"><div class="bar h-full rounded-full bg-gradient-to-r from-green-600 to-green-400" style="width:${p}%"></div></div>
           </div>
           <div class="text-right shrink-0"><div class="font-extrabold text-base ${col}">${r.score}<span class="text-xs text-neutral-400 font-semibold">/${r.total}</span></div><div class="text-[.68rem] font-semibold ${col}">${p}%</div>${r.timeMs ? `<div class="text-[.65rem] text-neutral-500">${fmtT(r.timeMs)}</div>` : ""}</div>
-        </div>`; }).join("") + `</div>`;
+        </div>`; }).join("") + `</div>` + (rows.length > shown.length ? `<button id="moreBtn" class="block w-full mt-3 py-3 rounded-2xl ${btnLine} text-sm">${lang === "hi" ? "और दिखाएँ" : "Show more"} (${rows.length - shown.length})</button>` : "");
       const me = box.querySelector(".ring-inset"); if (me && !state.metSeen) { state.metSeen = 1; me.scrollIntoView({ block: "center" }); }
     };
     $("tabs").onclick = e => { const b = e.target.closest("[data-tab]"); if (b) { state.lbTab = b.dataset.tab; render(); } };
     const fc = $("fc"); if (fc) fc.onchange = e => { state.lbCls = e.target.value; state.lbSub = ""; render(); };
-    app.querySelectorAll("[data-cls]").forEach(b => b.onclick = () => { state.lbCls = b.dataset.cls; state.lbSub = ""; render(); window.scrollTo(0, 0); });
+    app.querySelectorAll("[data-cls]").forEach(b => b.onclick = () => { state.lbCls = b.dataset.cls; state.lbSub = ""; render(); window.scrollTo({ top: 0, left: 0, behavior: "instant" }); });
     const chips = $("chips"); if (chips) chips.onclick = e => { const b = e.target.closest("[data-s]"); if (!b) return; state.lbSub = b.dataset.s; render(); };
     if (tab === "students") {
-      $("srch").value = state.q || ""; $("srch").oninput = e => { state.q = e.target.value; drawStudents(); };
+      $("srch").value = state.q || ""; $("srch").oninput = e => { state.q = e.target.value; state.lbLimit = 60; clearTimeout(window._sq); window._sq = setTimeout(drawStudents, 120); };
       $("srt").onclick = () => { state.lbSort = (state.lbSort || "latest") === "latest" ? "best" : "latest"; render(); };
       window.__drawStudents = drawStudents; drawStudents();
       $("stList").onclick = e => {
+        if (e.target.closest("#moreBtn")) { state.lbLimit = (state.lbLimit || 60) + 60; drawStudents(); return; }
         const row = e.target.closest("[data-nm]"); if (!row) return;
         const nx = row.nextElementSibling; if (nx && nx.classList.contains("hist")) { nx.remove(); return; }
         const h = results.filter(x => String(x.name).trim().toLowerCase() === row.dataset.nm).sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
