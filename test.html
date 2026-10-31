@@ -82,6 +82,7 @@ html{-webkit-tap-highlight-color:transparent}button{touch-action:manipulation}
 @keyframes shine{0%,100%{box-shadow:0 0 0 0 rgba(253,224,71,.6)}50%{box-shadow:0 0 28px 8px rgba(253,224,71,.5)}}
 .shine{animation:shine 2.2s ease-in-out infinite}
 ::-webkit-scrollbar{display:none}
+.noselect,.noselect *{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 button:focus-visible,select:focus-visible,summary:focus-visible,a:focus-visible{outline:2px solid #16a34a;outline-offset:2px}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.confetti{display:none}}
 </style>
@@ -126,7 +127,7 @@ const SUBHI = { Maths: "गणित", Science: "विज्ञान", English
 const sl = n => (lang === "hi" && SUBHI[n]) || n || "";
 
 const T = {
-  en: { title: "Amrit Tiwari Test", sub: "Choose your class and subject", namePh: "Your full name", cls: "Select your class", pickSub: "Choose a subject", pickClass: "Select your class first.", noSub: "No test is available for this class yet.", need: "Please enter your name and class.", q: "Question", of: "of", next: "Next", submit: "Submit Test", result: "Your Result", rank: "Rank in this subject", viewLb: "View Leaderboard", retake: "Take Another Test", lb: "Leaderboard", lbSub: "Top scorers", all: "All subjects", noResults: "No one has taken this test yet. Be the first!", players: "Players", best: "Top score", avg: "Average", you: "You", loading: "Loading...", back: "Back to tests", qs: "questions",
+  en: { title: "Amrit Tiwari Test", sub: "Choose your class and subject", namePh: "Full name with surname", cls: "Select your class", pickSub: "Choose a subject", pickClass: "Select your class first.", noSub: "No test is available for this class yet.", need: "Please enter your full name with surname (e.g. Amrit Tiwari) and class.", q: "Question", of: "of", next: "Next", submit: "Submit Test", result: "Your Result", rank: "Rank in this subject", viewLb: "View Leaderboard", retake: "Take Another Test", lb: "Leaderboard", lbSub: "Top scorers", all: "All subjects", noResults: "No one has taken this test yet. Be the first!", players: "Players", best: "Top score", avg: "Average", you: "You", loading: "Loading...", back: "Back to tests", qs: "questions",
     save: "Save", saved: "✔ Saved", saveHint: "Save your name and class to see subjects.", live: "Live leaderboard", timed: "Timed", rankW: "Rank", quitQ: "Quit this test?",
     saveFail: "Result could not be saved. Check your internet and tap “Save again”.", retrySave: "Save again", cor: "Correct", wro: "Wrong", timeL: "Time", share: "Share", review: "Review answers", hide: "Hide answers",
     dbFail: "Leaderboard could not load. Check your internet and", retry: "try again", liveRes: n => `Live · ${n} results`,
@@ -134,7 +135,7 @@ const T = {
     tagline: "Learn · Test · Top", footer: "Amritt Edition. Created by Amrit Tiwari.",
     langTitle: "Choose test language", langSub: "Questions will appear in this language", notAvail: "Not available", cancel: "Cancel",
     praise: p => p >= 90 ? "Outstanding performance!" : p >= 75 ? "Great job!" : p >= 50 ? "Good effort, keep going!" : "Keep practicing, you'll improve!" },
-  hi: { title: "अमृत तिवारी टेस्ट", sub: "अपनी कक्षा और विषय चुनें", namePh: "अपना पूरा नाम", cls: "अपनी कक्षा चुनें", pickSub: "विषय चुनें", pickClass: "पहले अपनी कक्षा चुनें।", noSub: "इस कक्षा के लिए अभी कोई टेस्ट नहीं है।", need: "कृपया नाम और कक्षा भरें।", q: "प्रश्न", of: "में से", next: "अगला", submit: "टेस्ट जमा करें", result: "आपका रिज़ल्ट", rank: "इस विषय में रैंक", viewLb: "लीडरबोर्ड देखें", retake: "दूसरा टेस्ट दें", lb: "लीडरबोर्ड", lbSub: "टॉप स्कोरर", all: "सभी विषय", noResults: "अभी तक किसी ने यह टेस्ट नहीं दिया। सबसे पहले आप दें!", players: "खिलाड़ी", best: "टॉप स्कोर", avg: "औसत", you: "आप", loading: "लोड हो रहा है...", back: "टेस्ट पर वापस", qs: "सवाल",
+  hi: { title: "अमृत तिवारी टेस्ट", sub: "अपनी कक्षा और विषय चुनें", namePh: "surname के साथ पूरा नाम", cls: "अपनी कक्षा चुनें", pickSub: "विषय चुनें", pickClass: "पहले अपनी कक्षा चुनें।", noSub: "इस कक्षा के लिए अभी कोई टेस्ट नहीं है।", need: "कृपया surname के साथ पूरा नाम (जैसे अमृत तिवारी) और कक्षा भरें।", q: "प्रश्न", of: "में से", next: "अगला", submit: "टेस्ट जमा करें", result: "आपका रिज़ल्ट", rank: "इस विषय में रैंक", viewLb: "लीडरबोर्ड देखें", retake: "दूसरा टेस्ट दें", lb: "लीडरबोर्ड", lbSub: "टॉप स्कोरर", all: "सभी विषय", noResults: "अभी तक किसी ने यह टेस्ट नहीं दिया। सबसे पहले आप दें!", players: "खिलाड़ी", best: "टॉप स्कोर", avg: "औसत", you: "आप", loading: "लोड हो रहा है...", back: "टेस्ट पर वापस", qs: "सवाल",
     save: "सेव करें", saved: "✔ सेव हो गया", saveHint: "विषय देखने के लिए पहले नाम और कक्षा सेव करें।", live: "लाइव लीडरबोर्ड", timed: "समय सहित", rankW: "रैंक", quitQ: "टेस्ट छोड़ दें?",
     saveFail: "रिज़ल्ट सेव नहीं हो पाया। इंटरनेट जाँचकर “दोबारा सेव करें” दबाएँ।", retrySave: "दोबारा सेव करें", cor: "सही", wro: "गलत", timeL: "समय", share: "शेयर करें", review: "जवाब देखें", hide: "जवाब छिपाएँ",
     dbFail: "लीडरबोर्ड अभी लोड नहीं हो पाया। इंटरनेट जाँचकर", retry: "दोबारा कोशिश करें", liveRes: n => `लाइव · ${n} रिज़ल्ट`,
@@ -157,7 +158,7 @@ try { saved = JSON.parse(localStorage.getItem("amrit_test_profile") || "{}"); } 
 const saveProfile = () => { try { localStorage.setItem("amrit_test_profile", JSON.stringify({ name: state.name, cls: state.cls, ok: state.saved, sid: saved.sid, createdAt: saved.createdAt })); } catch (e) {} };
 
 let dbErr = "", results = [], loadedR = false, bank = {}, bankLoading = false;
-let state = { saved: !!(saved.ok && saved.name && saved.cls), screen: "start", name: saved.name || "", cls: saved.cls || "", subKey: "", subName: "", questions: [], answers: [], qi: 0, score: 0, lbCls: "", lbSub: "" };
+let state = { saved: !!(saved.ok && fullName(saved.name) && saved.cls), screen: "start", name: saved.name || "", cls: saved.cls || "", subKey: "", subName: "", questions: [], answers: [], qi: 0, score: 0, lbCls: "", lbSub: "" };
 
 onValue(query(ref(db, "testResults"), orderByKey(), limitToLast(1000)), snap => {
   const rows = [];
@@ -172,31 +173,42 @@ onValue(query(ref(db, "testResults"), orderByKey(), limitToLast(1000)), snap => 
 let live = [];
 
 const SUBS = ["Maths", "Science", "English", "Hindi"];
-let toppers = {};
 const betterR = (a, b) => !b || (a.score / a.total > b.score / b.total) || (a.score / a.total === b.score / b.total && (a.timeMs || 1e12) < (b.timeMs || 1e12));
-onValue(ref(db, "testToppers"), snap => { toppers = snap.val() || {}; updateSEO(); if (state.screen === "start") renderFaq(); }, () => {});
 function topTxt(r) { return r ? `${r.name} (${clsLabelEn(r.cls)}) - ${r.score}/${r.total}${r.timeMs ? " in " + fmtT(r.timeMs) : ""}` : "Abhi koi topper nahi - pehle aap test dein!"; }
-const OV = "_overall";
-// Leaderboard ka champion = sabse zyada % phir kam time (results + all-time toppers dono dekhta hai)
-function champion() {
-  let top = results[0] || null;
-  Object.values(toppers).forEach(r => { if (r && typeof r === "object" && Number(r.total) > 0 && betterR(r, top)) top = r; });
-  return top;
+// Sirf LIVE data (testResults) se - koi all-time / purana topper nahi.
+// results pehle se sorted hai: zyada % phir kam time, to har class ka pehla result = us class ka topper.
+function champion() { return results[0] || null; }
+function classToppers() {
+  return CLASSES.map(c => ({ c, r: results.find(x => x.cls === c) || null }));
+}
+function classListTxt() {
+  return classToppers().map(o => `${clsLabelEn(o.c)}: ${o.r ? `${o.r.name} (${o.r.score}/${o.r.total}${o.r.timeMs ? ", " + fmtT(o.r.timeMs) : ""})` : "abhi koi topper nahi"}`).join(" | ");
 }
 function renderFaq() {
   const b = $("faq"); if (!b) return;
   const item = (qn, ans) => `<details class="border border-green-100 rounded-2xl px-4 py-3 mb-2 bg-white"><summary class="text-sm font-semibold cursor-pointer">${qn}</summary><p class="text-sm text-neutral-600 mt-2">${ans}</p></details>`;
-  b.innerHTML = `<h2 class="text-sm font-bold text-green-700 mb-3">FAQ - All-time Topper</h2>`
-    + item("Amrit Tiwari Test leaderboard mein abhi top par kaun hai?", `Abhi leaderboard ka topper: <b>${esc(topTxt(champion()))}</b>.`)
-    + SUBS.map(x => item(`Amrit Tiwari Test App me ${x} ka topper kaun hai?`, `${esc(x)} ka all-time topper: <b>${esc(topTxt(toppers[x]))}</b>. Zyada sahi jawab aur kam time wala topper banta hai.`)).join("");
+  const ct = classToppers();
+  const listHtml = `<ul class="list-disc pl-5 space-y-0.5">` + ct.map(o => `<li><b>${esc(clsLabelEn(o.c))}</b>: ${o.r ? `<b>${esc(o.r.name)}</b> - ${o.r.score}/${o.r.total}${o.r.timeMs ? " in " + fmtT(o.r.timeMs) : ""} (${esc(o.r.subject || "")})` : "abhi koi topper nahi - pehle aap test dein!"}</li>`).join("") + `</ul>`;
+  b.innerHTML = `<h2 class="text-sm font-bold text-green-700 mb-3">FAQ - Class-wise Latest Topper (Live)</h2>`
+    + item("Amrit Tiwari Test mein topper kaun hai? (Sabhi class ke topper)", `Sabhi class ke live topper:${listHtml}`)
+    + ct.map(o => item(`Amrit Tiwari Test mein ${clsLabelEn(o.c)} ka topper kaun hai?`, `${esc(clsLabelEn(o.c))} ka latest topper: <b>${esc(o.r ? topTxt(o.r) : "Abhi koi topper nahi - pehle aap test dein!")}</b>. Zyada sahi jawab aur kam time wala topper banta hai.`)).join("");
 }
 function updateSEO() {
   const top = champion();
   if (!top) return;
-  const title = `Amrit Tiwari Test - Topper: ${top.name} (${clsLabelEn(top.cls)}) | Leaderboard`;
-  const desc = `${top.name} is topping the Amrit Tiwari Test leaderboard with ${top.score}/${top.total}${top.timeMs ? " in " + fmtT(top.timeMs) : ""} in ${top.subject || "the test"} (${clsLabelEn(top.cls)}). See the full leaderboard on Amritt Edition.`;
+  const title = `Amrit Tiwari Test - Sabhi Class ke Topper (Live) | Leaderboard`;
+  const desc = `Amrit Tiwari Test live class-wise toppers - ${classListTxt()}`.slice(0, 600);
   document.title = $("pageTitle").textContent = title;
-  $("metaDesc").setAttribute("content", desc); $("ogTitle").setAttribute("content", title); $("ogDesc").setAttribute("content", desc);
+  $("metaDesc").setAttribute("content", desc.slice(0, 300)); $("ogTitle").setAttribute("content", title); $("ogDesc").setAttribute("content", desc.slice(0, 300));
+  // Search engine / AI ke liye structured FAQ (har class ka topper)
+  let ld = document.getElementById("ldFaq");
+  if (!ld) { ld = document.createElement("script"); ld.type = "application/ld+json"; ld.id = "ldFaq"; document.head.appendChild(ld); }
+  const qa = (q, a) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } });
+  ld.textContent = JSON.stringify({
+    "@context": "https://schema.org", "@type": "FAQPage",
+    mainEntity: [qa("Amrit Tiwari Test mein topper kaun hai? Sabhi class ke topper ki list", classListTxt())]
+      .concat(classToppers().map(o => qa(`Amrit Tiwari Test mein ${clsLabelEn(o.c)} ka topper kaun hai?`, o.r ? `${clsLabelEn(o.c)} ka latest topper ${topTxt(o.r)} hai.` : `${clsLabelEn(o.c)} ka abhi koi topper nahi hai.`)))
+  });
 }
 
 function confetti() {
@@ -214,6 +226,14 @@ function confetti() {
 const fmtT = ms => { if (!ms) return ""; const s = Math.round(ms / 1000), m = Math.floor(s / 60); return lang === "hi" ? m + " मि " + String(s % 60).padStart(2, "0") + " से" : m + "m " + String(s % 60).padStart(2, "0") + "s"; };
 const medal = i => i === 0 ? "\u{1F3C6}" : i === 1 ? "\u{1F948}" : i === 2 ? "\u{1F949}" : "";
 const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+// Naam + surname dono zaruri (kam se kam 2 shabd, har shabd 2+ akshar) taaki duplicate naam na aayein
+function fullName(n) { const w = String(n || "").trim().split(/\s+/).filter(Boolean); return w.length >= 2 && w.every(x => x.length >= 2); }
+// ---- Ek naam = ek subject ka sirf ek test ----
+const QSEC = 60, MAXLEAVE = 2;
+function takenKey(n, subj) { return (String(n).toLowerCase().replace(/\s+/g, " ").trim() + "__" + String(subj).toLowerCase().trim()).replace(/[^\p{L}\p{N}\p{M}]+/gu, "_"); }
+function localTaken() { try { return JSON.parse(localStorage.getItem("amrit_test_taken") || "[]"); } catch (e) { return []; } }
+function markTaken(n, subj) { try { const a = localTaken(); const k = takenKey(n, subj); if (!a.includes(k)) a.push(k); localStorage.setItem("amrit_test_taken", JSON.stringify(a)); } catch (e) {} }
+function isTaken(n, subj) { const k = takenKey(n, subj); return localTaken().includes(k) || results.some(r => takenKey(r.name, r.subject) === k); }
 const clsOptions = sel => CLASSES.map(c => `<option value="${c}" ${sel === c ? "selected" : ""}>${clsLabel(c)}</option>`).join("");
 const inputCls = "w-full px-4 py-3.5 rounded-2xl bg-white/90 border border-green-200 text-neutral-900 shadow-sm outline-none transition focus:border-green-600 focus:ring-4 focus:ring-green-100 placeholder:text-neutral-400";
 const btnMain = "bg-gradient-to-b from-green-500 to-green-600 text-white font-semibold shadow-lg shadow-green-600/25 hover:from-green-600 hover:to-green-700 hover:-translate-y-px active:scale-[.97] transition";
@@ -222,7 +242,7 @@ const btnLine = "border border-green-200 bg-white/80 text-green-700 font-semibol
 function markDirty() { state.saved = false; saveProfile(); const b = $("saveBtn"); if (b) { b.disabled = false; b.textContent = T[lang].save; } loadSubjects(); }
 async function saveStudent() {
   const t = T[lang], n = state.name.trim().replace(/\s+/g, " ");
-  if (n.length < 2 || !state.cls) { $("err").textContent = t.need; $("err").classList.remove("hidden"); (n.length < 2 ? $("nm") : $("cl")).focus(); return; }
+  if (!fullName(n) || !state.cls) { $("err").textContent = t.need; $("err").classList.remove("hidden"); (!fullName(n) ? $("nm") : $("cl")).focus(); return; }
   $("err").classList.add("hidden"); state.name = n; state.saved = true;
   saved.createdAt = saved.createdAt || Date.now();
   try { saved.sid = saved.sid || push(ref(db, "testStudents")).key; } catch (e) {}
@@ -246,15 +266,15 @@ async function loadSubjects() {
     .sort((x, y) => ALLOWED.indexOf(subOf(x)) - ALLOWED.indexOf(subOf(y)));
   if (!keys.length) { $("subs").innerHTML = `<p class="text-sm text-neutral-500 text-center py-4">${t.noSub}</p>`; return; }
   $("subs").innerHTML = `<p class="text-xs font-bold uppercase tracking-wider text-green-700 mb-2.5">${t.pickSub}</p><div class="grid grid-cols-2 gap-3 stagger">` + keys.map(k => {
-    const n = Object.values(bank[k].items).filter(Boolean).length;
-    return `<button data-k="${esc(k)}" class="sub text-left px-4 py-4 rounded-2xl border border-green-200 bg-white hover:border-green-500"><div class="w-9 h-9 rounded-xl bg-gradient-to-br from-green-100 to-green-200 grid place-items-center text-lg mb-2">${({ Maths: "\u{1F522}", Science: "\u{1F52C}", English: "\u{1F4D6}", Hindi: "\u0905" })[bank[k].name] || "\u{1F4DD}"}</div><div class="font-semibold text-sm truncate">${esc(sl(bank[k].name || k))}</div><div class="text-[.7rem] text-neutral-500 mt-0.5">${Math.min(QCOUNT, n)} ${t.qs}</div></button>`;
+    const n = Object.values(bank[k].items).filter(Boolean).length, done = isTaken(state.name, bank[k].name || k);
+    return `<button data-k="${esc(k)}" ${done ? "disabled" : ""} class="sub text-left px-4 py-4 rounded-2xl border ${done ? "border-green-100 bg-green-50 opacity-60 cursor-not-allowed" : "border-green-200 bg-white hover:border-green-500"}"><div class="w-9 h-9 rounded-xl bg-gradient-to-br from-green-100 to-green-200 grid place-items-center text-lg mb-2">${({ Maths: "\u{1F522}", Science: "\u{1F52C}", English: "\u{1F4D6}", Hindi: "\u0905" })[bank[k].name] || "\u{1F4DD}"}</div><div class="font-semibold text-sm truncate">${esc(sl(bank[k].name || k))}</div><div class="text-[.7rem] text-neutral-500 mt-0.5">${done ? (lang === "hi" ? "\u2714 टेस्ट हो चुका" : "\u2714 Test done") : Math.min(QCOUNT, n) + " " + t.qs}</div></button>`;
   }).join("") + `</div>`;
   $("subs").onclick = e => { const b = e.target.closest("[data-k]"); if (b) askLang(b.dataset.k); };
 }
 
 function askLang(k) {
   const t = T[lang];
-  if (state.name.trim().length < 2 || !state.cls) { $("err").textContent = t.need; $("err").classList.remove("hidden"); (state.name.trim().length < 2 ? $("nm") : $("cl")).focus(); return; }
+  if (!fullName(state.name) || !state.cls) { $("err").textContent = t.need; $("err").classList.remove("hidden"); (!fullName(state.name) ? $("nm") : $("cl")).focus(); return; }
   const okQ = (x, L) => x && x[L] && x[L].q && Array.isArray(x[L].options) && x[L].options.length > 1;
   const cnt = L => Object.values(bank[k].items).filter(x => okQ(x, L)).length;
   const opts = [{ L: "hi", big: "अ", name: "हिन्दी" }, { L: "en", big: "A", name: "English" }];
@@ -289,16 +309,59 @@ function askLang(k) {
   };
 }
 
-function startTest(k, L0) {
+async function startTest(k, L0) {
   const t = T[lang];
-  if (state.name.trim().length < 2 || !state.cls) { $("err").textContent = t.need; $("err").classList.remove("hidden"); (state.name.trim().length < 2 ? $("nm") : $("cl")).focus(); return; }
+  if (!fullName(state.name) || !state.cls) { $("err").textContent = t.need; $("err").classList.remove("hidden"); (!fullName(state.name) ? $("nm") : $("cl")).focus(); return; }
+  const subj = bank[k].name || k;
+  const blockMsg = lang === "hi" ? "इस नाम से यह टेस्ट पहले ही हो चुका है। एक नाम से एक विषय का टेस्ट सिर्फ एक बार दे सकते हैं।" : "This name has already taken this subject's test. One name can take each test only once.";
+  const showErr = m => { $("err").textContent = m; $("err").classList.remove("hidden"); window.scrollTo(0, 0); };
+  if (state.starting) return;
+  if (isTaken(state.name, subj)) return showErr(blockMsg);
+  state.starting = true;
+  try {
+    const tk = takenKey(state.name, subj);
+    let ex = false;
+    try { ex = (await get(ref(db, "testTaken/" + tk))).exists(); } catch (e) {}
+    if (ex) { markTaken(state.name, subj); loadSubjects(); return showErr(blockMsg); }
+    // Test shuru hote hi attempt lock - quit/refresh karne par bhi dobara nahi de sakte
+    try { await set(ref(db, "testTaken/" + tk), { t: Date.now(), cls: state.cls }); } catch (e) {}
+    markTaken(state.name, subj);
+  } finally { state.starting = false; }
   const L = L0 || lang; lang = L; try { localStorage.setItem("amrit_test_lang", L); } catch (e) {}
+  const KEEP = /above|both|none of|all of|उपरोक्त|दोनों|इनमें से|सभी/i;
+  const shufOpts = Q => { if (Q.options.some(o => KEEP.test(String(o)))) return Q; const c = Number(Q.correct), idx = shuffle(Q.options.map((_, i) => i)); return { ...Q, options: idx.map(i => Q.options[i]), correct: idx.indexOf(c) }; };
   const items = Object.values(bank[k].items).map(x => pickQ(x, L)).filter(Boolean);
-  const qs = shuffle(items).slice(0, QCOUNT).map(Q => ({ Q }));
-  clearInterval(window._tm); window._tm = setInterval(() => { const e = $("tm"); if (e && state.startedAt) e.textContent = fmtT(Date.now() - state.startedAt); }, 1000);
-  state = { ...state, testLang: L, screen: "quiz", submitting: false, resultId: null, saveErr: "", review: false, pending: null, startedAt: Date.now(), subKey: k, subName: bank[k].name || k, questions: qs, answers: new Array(qs.length).fill(null), qi: 0, score: 0, lastPct: 0 };
-    render();
+  const qs = shuffle(items).slice(0, QCOUNT).map(Q => ({ Q: shufOpts(Q) }));
+  clearInterval(window._tm); window._tm = setInterval(() => {
+    const e = $("tm"); if (e && state.startedAt) e.textContent = fmtT(Date.now() - state.startedAt);
+    if (state.screen === "quiz" && !state.submitting && state.qEnd) {
+      const left = Math.max(0, Math.ceil((state.qEnd - Date.now()) / 1000)), q = $("qt");
+      if (q) { q.textContent = left; q.parentElement.classList.toggle("text-red-500", left <= 10); }
+      if (left <= 0) autoNext();
+    }
+  }, 1000);
+  state = { ...state, testLang: L, screen: "quiz", submitting: false, resultId: null, saveErr: "", review: false, pending: null, startedAt: Date.now(), subKey: k, subName: bank[k].name || k, questions: qs, answers: new Array(qs.length).fill(null), qi: 0, score: 0, lastPct: 0, leaves: 0, cheatMsg: "", _qIdx: -1, qEnd: 0 };
+  render();
 }
+function autoNext() {
+  if (state.screen !== "quiz" || state.submitting) return;
+  if (state.qi < state.questions.length - 1) { state.qi++; render(); } else submitTest();
+}
+// Tab/app chhodne par warning, doosri baar test apne aap submit
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) {
+    if (state.screen !== "quiz" || state.submitting) return;
+    state.leaves = (state.leaves || 0) + 1;
+    if (state.leaves >= MAXLEAVE) { state.cheatMsg = lang === "hi" ? "आपने टेस्ट छोड़ा, इसलिए टेस्ट अपने आप जमा हो गया।" : "You left the test, so it was submitted automatically."; submitTest(); }
+    else state.cheatMsg = lang === "hi" ? "चेतावनी: टेस्ट छोड़कर दूसरी जगह न जाएं। दोबारा जाने पर टेस्ट अपने आप जमा हो जाएगा।" : "Warning: do not leave the test. Leaving again will submit it automatically.";
+  } else if (state.cheatMsg) { const m = state.cheatMsg; state.cheatMsg = ""; setTimeout(() => alert(m), 60); }
+});
+["contextmenu", "copy", "cut", "paste", "dragstart"].forEach(ev => document.addEventListener(ev, e => { if (state.screen === "quiz") e.preventDefault(); }));
+document.addEventListener("keydown", e => {
+  if (state.screen !== "quiz") return;
+  const k = String(e.key).toLowerCase();
+  if (e.key === "F12" || ((e.ctrlKey || e.metaKey) && ["c", "u", "s", "p", "a", "x", "v"].includes(k)) || ((e.ctrlKey || e.metaKey) && e.shiftKey && ["i", "j", "c"].includes(k))) e.preventDefault();
+});
 
 const pickQ = (x, L) => { for (const c of [x && x[L], x && x.en, x && x.hi]) if (c && c.q && Array.isArray(c.options) && c.options.length > 1) return c; return null; };
 let _rk = "", _sk = "";
@@ -311,6 +374,7 @@ function applyChrome() {
 }
 function render() {
   applyChrome();
+  document.body.classList.toggle("noselect", state.screen === "quiz");
   $("langBtn").classList.toggle("hidden", state.screen === "quiz");
   const a = document.activeElement, ai = a && a.id, ss = a && a.selectionStart;
   const key = [state.screen, state.qi, lang, state.lbTab, state.lbCls, state.lbSub, state.review].join("|"), fresh = key !== _rk; _rk = key;
@@ -331,18 +395,22 @@ function renderInner() {
         <div class="flex justify-center gap-2 mt-4 text-[.7rem] font-semibold text-green-800"><span class="px-3 py-1 rounded-full bg-green-100/80">${QCOUNT} ${t.qs}</span><span class="px-3 py-1 rounded-full bg-green-100/80">\u23F1 ${t.timed}</span><span class="px-3 py-1 rounded-full bg-green-100/80">\u{1F3C6} ${t.rankW}</span></div>
       </div>
       <div class="pop glass mt-7 p-5 rounded-3xl">
-        <input id="nm" aria-label="${t.namePh}" value="${esc(state.name)}" maxlength="60" placeholder="${t.namePh}" autocomplete="off" class="${inputCls} mb-3">
+        ${state.saved ? `<div class="flex items-center gap-2 mb-3 px-4 py-2.5 rounded-2xl bg-green-50 border border-green-200 text-green-700 text-sm font-semibold">\u2714 ${lang === "hi" ? "आपका नाम इस डिवाइस पर सेव है" : "Your name is saved on this device"}</div>` : `<input id="nm" aria-label="${t.namePh}" value="${esc(state.name)}" maxlength="60" placeholder="${t.namePh}" autocomplete="off" class="${inputCls} mb-3">`}
         <select id="cl" aria-label="${t.cls}" class="${inputCls}"><option value="">${t.cls}</option>${clsOptions(state.cls)}</select>
         <p id="err" class="hidden text-red-500 text-xs mt-2"></p>
-        <button id="saveBtn" class="mt-3 w-full py-3.5 rounded-2xl ${btnMain} disabled:opacity-60 disabled:shadow-none disabled:translate-y-0">${state.saved ? t.saved : t.save}</button>
+        ${state.saved ? "" : `<button id="saveBtn" class="mt-3 w-full py-3.5 rounded-2xl ${btnMain} disabled:opacity-60 disabled:shadow-none disabled:translate-y-0">${t.save}</button>`}
         <div id="subs" class="mt-5"></div>
       </div>
       <div class="grid grid-cols-2 gap-3 mt-5"><button data-go="students" class="goTab py-3.5 rounded-2xl ${btnLine}">\u{1F465} ${LB[lang].stu}</button><button data-go="toppers" class="goTab py-3.5 rounded-2xl ${btnMain}">\u{1F3C6} ${LB[lang].top}</button></div>
       <div id="faq" class="sr-only" aria-hidden="false"></div>`;
     renderFaq();
-    $("nm").oninput = e => { state.name = e.target.value; markDirty(); };
-    $("saveBtn").disabled = state.saved; $("saveBtn").onclick = saveStudent;
-    $("cl").onchange = e => { state.cls = e.target.value; markDirty(); };
+    if ($("nm")) $("nm").oninput = e => { state.name = e.target.value; markDirty(); };
+    if ($("saveBtn")) $("saveBtn").onclick = saveStudent;
+    $("cl").onchange = e => {
+      state.cls = e.target.value;
+      if (state.saved) { saveProfile(); try { if (saved.sid) set(ref(db, "testStudents/" + saved.sid), { name: state.name, cls: state.cls, createdAt: saved.createdAt || Date.now(), updatedAt: Date.now() }).catch(() => {}); } catch (e2) {} loadSubjects(); }
+      else markDirty();
+    };
     document.querySelectorAll(".goTab").forEach(b => b.onclick = () => { state.lbTab = b.dataset.go; state.lbSort = state.lbSort || "latest"; state.screen = "leaderboard"; render(); });
     loadSubjects();
     return;
@@ -350,17 +418,18 @@ function renderInner() {
 
   if (state.screen === "quiz") {
     const i = state.qi, qs = state.questions, q = qs[i], Q = q.Q;
+    if (state._qIdx !== i) { state._qIdx = i; state.qEnd = Date.now() + QSEC * 1000; }
     const sel = state.answers[i], pct = Math.round((i / qs.length) * 100);
     const np = Math.round(((i + 1) / qs.length) * 100), from = state.lastPct || 0; state.lastPct = np;
     app.innerHTML = `
       <div class="pop">
-        <div class="flex justify-between items-center text-xs text-neutral-500 mb-3"><span class="flex items-center gap-2"><span class="px-2.5 py-1 rounded-full bg-green-100 text-green-800 font-bold">${i + 1}/${qs.length}</span><span class="px-2.5 py-1 rounded-full bg-white border border-green-200 text-green-700 font-bold">\u23F1 <b id="tm">${fmtT(Date.now() - state.startedAt)}</b></span></span><span class="truncate ml-3 flex-1 text-right">${esc(state.name)} &middot; ${esc(sl(state.subName))}</span><button id="quit" aria-label="Quit test" class="ml-3 w-8 h-8 rounded-full bg-red-50 border border-red-100 text-red-500 font-bold shrink-0 hover:bg-red-100 transition">\u2715</button></div>
+        <div class="flex justify-between items-center text-xs text-neutral-500 mb-3"><span class="flex items-center gap-2"><span class="px-2.5 py-1 rounded-full bg-green-100 text-green-800 font-bold">${i + 1}/${qs.length}</span><span class="px-2.5 py-1 rounded-full bg-white border border-green-200 text-green-700 font-bold">\u23F1 <b id="tm">${fmtT(Date.now() - state.startedAt)}</b></span><span class="px-2.5 py-1 rounded-full bg-white border border-green-200 text-green-700 font-bold">\u23F3 <b id="qt">${QSEC}</b>s</span></span><span class="truncate ml-3 flex-1 text-right">${esc(sl(state.subName))}</span><button id="quit" aria-label="Quit test" class="ml-3 w-8 h-8 rounded-full bg-red-50 border border-red-100 text-red-500 font-bold shrink-0 hover:bg-red-100 transition">\u2715</button></div>
         <div class="h-2 rounded-full bg-green-100 overflow-hidden mb-6"><div class="pbar h-full rounded-full transition-all duration-500" style="--from:${from}%;width:${np}%"></div></div>
         <div class="glass rounded-3xl p-5 mb-5 slidein"><div class="text-[.68rem] font-bold uppercase tracking-widest text-green-600 mb-2">${t.q} ${i + 1}</div><h2 class="text-[1.12rem] font-semibold leading-snug">${esc(Q.q)}</h2></div>
         <div id="opts" class="flex flex-col gap-3 mb-6 stagger">
           ${Q.options.map((o, oi) => `<button data-i="${oi}" class="opt ${sel === oi ? "on " : ""}flex items-center gap-3 text-left px-4 py-3.5 rounded-2xl border ${sel === oi ? "border-green-600 text-white font-semibold" : "border-green-200 bg-white text-neutral-800 hover:border-green-500"}"><span class="optkey">${String.fromCharCode(65 + oi)}</span><span class="flex-1">${esc(o)}</span></button>`).join("")}
         </div>
-        <div class="actbar flex gap-2.5">${i > 0 ? `<button id="prevBtn" aria-label="Previous" class="px-6 py-3.5 rounded-full ${btnLine}">\u2190</button>` : ""}<button id="nextBtn" ${sel == null ? "disabled" : ""} class="flex-1 py-3.5 rounded-full ${btnMain} disabled:opacity-35 disabled:cursor-not-allowed">${i === qs.length - 1 ? t.submit : t.next}</button></div>
+        <div class="actbar flex gap-2.5"><button id="nextBtn" ${sel == null ? "disabled" : ""} class="flex-1 py-3.5 rounded-full ${btnMain} disabled:opacity-35 disabled:cursor-not-allowed">${i === qs.length - 1 ? t.submit : t.next}</button></div>
       </div>`;
     $("opts").addEventListener("click", e => {
       const b = e.target.closest("[data-i]"); if (!b) return;
@@ -370,8 +439,7 @@ function renderInner() {
         x.classList.toggle("border-green-200", !on); x.classList.toggle("bg-white", !on); x.classList.toggle("text-neutral-800", !on); });
       $("nextBtn").disabled = false;
     });
-    if ($("prevBtn")) $("prevBtn").onclick = () => { state.qi--; render(); };
-    $("quit").onclick = () => { if (confirm(t.quitQ)) { clearInterval(window._tm); state.screen = "start"; render(); } };
+    $("quit").onclick = () => { if (confirm(t.quitQ + (lang === "hi" ? "\n\n(यह प्रयास गिना जाएगा, इस विषय का टेस्ट दोबारा नहीं दे पाएंगे।)" : "\n\n(This attempt will be counted; you cannot retake this subject.)"))) { clearInterval(window._tm); state.screen = "start"; render(); } };
     $("nextBtn").onclick = () => {
       if (state.answers[i] == null) return;
       if (i < qs.length - 1) { state.qi++; render(); } else { $("nextBtn").disabled = true; $("nextBtn").textContent = t.loading; submitTest(); }
@@ -454,7 +522,7 @@ function renderInner() {
     } else {
       const ch = list[0];
       const champ = {};
-      SUBS.forEach(x => { let bb = null; inCls.forEach(r => { if (r.subject === x && betterR(r, bb)) bb = r; }); if (!state.lbCls && toppers[x] && betterR(toppers[x], bb)) bb = toppers[x]; champ[x] = bb; });
+      SUBS.forEach(x => { let bb = null; inCls.forEach(r => { if (r.subject === x && betterR(r, bb)) bb = r; }); champ[x] = bb; });
       const icon = { Maths: "\u{1F522}", Science: "\u{1F52C}", English: "\u{1F4D6}", Hindi: "\u0905" };
       const top10 = list.slice(0, 10);
       const rankBadge = i => i < 3 ? `<div class="w-10 h-10 grid place-items-center text-2xl shrink-0">${medal(i)}</div>` : `<div class="w-10 h-10 rounded-full bg-green-100 text-green-700 grid place-items-center font-extrabold text-sm shrink-0">${i + 1}</div>`;
@@ -544,9 +612,6 @@ async function saveResult() {
   try {
     const id = state.pendingId || push(ref(db, "testResults")).key; state.pendingId = id;
     await set(ref(db, "testResults/" + id), p); state.resultId = id;
-    const rec = { name: p.name, cls: p.cls, subject: p.subject, score: p.score, total: p.total, timeMs: p.timeMs, createdAt: p.createdAt };
-    try { await runTransaction(ref(db, "testToppers/" + p.subject), cur => (!cur || betterR(p, cur)) ? rec : cur); } catch (e2) {}
-    try { await runTransaction(ref(db, "testToppers/" + OV), cur => (!cur || betterR(p, cur)) ? rec : cur); } catch (e3) {}
   } catch (e) { state.resultId = null; state.saveErr = (e && (e.code || e.message)) || "error"; }
 }
 async function submitTest() {
@@ -559,7 +624,7 @@ async function submitTest() {
   state.timeMs = timeMs;
   const total = state.questions.length;
   state.pendingId = null;
-  state.pending = { name: state.name.trim().replace(/\s+/g, " "), cls: state.cls, subject: state.subName, subjectKey: state.subKey, medium: state.testLang || lang, score, total, timeMs, createdAt: Date.now() };
+  state.pending = { name: state.name.trim().replace(/\s+/g, " "), cls: state.cls, subject: state.subName, subjectKey: state.subKey, medium: state.testLang || lang, score, total, timeMs, leaves: state.leaves || 0, createdAt: Date.now() };
   await saveResult();
   state.screen = "result";
   render();
@@ -578,7 +643,6 @@ document.addEventListener("keydown", e => {
   const i = state.qi, q = state.questions[i], Q = q.Q;
   if (/^[1-9]$/.test(e.key) && +e.key <= Q.options.length) { const ob = document.querySelector(`#opts [data-i="${+e.key - 1}"]`); if (ob) ob.click(); }
   else if (e.key === "ArrowRight" && state.answers[i] != null && $("nextBtn")) $("nextBtn").click();
-  else if (e.key === "ArrowLeft" && i > 0) { state.qi--; render(); }
 });
 window.addEventListener("beforeunload", e => { if (state.screen === "quiz") { e.preventDefault(); e.returnValue = ""; } });
 
