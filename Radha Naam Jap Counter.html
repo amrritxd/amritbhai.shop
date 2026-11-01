@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Radha Naam Jap Counter – Free Online Digital Jap Mala | राधा नाम जप काउंटर</title>
+  <meta name="description" content="Free Radha Naam Jap Counter online. राधा और सीता राम नाम जाप की गिनती करें, माला track करें और रोज़ का jap count save करें। Digital jap mala, mobile-friendly." />
+  <meta name="keywords" content="radha naam jap counter, radha naam jaap counter online, राधा नाम जप काउंटर, digital jap mala, naam jap counter, online mala counter, sita ram jap counter, radha naam jaap" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#faf3e8" />
+  <!-- TODO: apni site ka asli URL yahan daalein -->
+  <link rel="canonical" href="https://YOUR-SITE-URL/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Radha Naam Jap Counter – Free Online Digital Jap Mala" />
+  <meta property="og:description" content="राधा व सीता राम नाम जाप की गिनती करें। Free digital jap mala counter with daily stats." />
+  <meta property="og:url" content="https://YOUR-SITE-URL/" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Radha Naam Jap Counter – Free Online Digital Jap Mala" />
+  <meta name="twitter:description" content="राधा व सीता राम नाम जाप की गिनती करें। Free digital jap mala counter." />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Radha Naam Jap Counter",
+    "alternateName": ["राधा नाम जप काउंटर", "Digital Jap Mala"],
+    "description": "Free online Radha Naam and Sita Ram jap counter with mala tracking and daily stats.",
+    "applicationCategory": "LifestyleApplication",
+    "operatingSystem": "Any",
+    "inLanguage": ["hi", "en"],
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" }
+  }
+  </script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      background: #faf3e8;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 16px;
+    }
+
+    .app-container {
+      width: 100%;
+      max-width: 380px;
+      background: rgba(255, 245, 235, 0.8);
+      backdrop-filter: blur(15px);
+      border-radius: 40px;
+      padding: 20px 16px;
+      box-shadow: 0 25px 40px -15px #b2977e;
+      border: 1px solid #fff1e0;
+    }
+
+    /* Overlay for Krishna vachan */
+    .welcome-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #1f3b2c;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.8s;
+      pointer-events: none;
+      opacity: 0;
+    }
+    
+    .welcome-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+    
+    .welcome-content {
+      text-align: center;
+      color: #ffeac2;
+      max-width: 300px;
+      padding: 24px;
+      background: #2c4a36c0;
+      backdrop-filter: blur(8px);
+      border-radius: 32px;
+    }
+    
+    .welcome-content h2 {
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+    
+    .welcome-content p {
+      font-size: 1.2rem;
+      color: #ffdfa7;
+      font-style: italic;
+    }
+    
+    .welcome-sub {
+      margin-top: 20px;
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+
+    /* Header with Left Button and Toggle */
+    .header-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+
+    /* Left Side Button - without emoji */
+    .stats-menu-btn {
+      background: #fcf3e7;
+      border: none;
+      width: 55px;
+      height: 45px;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: 600;
+      box-shadow: 0 8px 15px -5px #cfa87b, 0 0 0 2px #fff5e6, 0 0 0 4px #ffe6cc;
+      cursor: pointer;
+      transition: transform 0.2s;
+      color: #77450e;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 0 12px;
+    }
+    
+    .stats-menu-btn:active {
+      transform: scale(0.92);
+    }
+    
+    /* Stats Panel (hidden by default) */
+    .stats-panel {
+      background: #f3e4d3;
+      border-radius: 30px;
+      padding: 16px;
+      margin-bottom: 20px;
+      display: none;
+      box-shadow: inset 0 2px 10px #ffffff, 0 8px 15px -8px #967552;
+      border: 1px solid #fff3e0;
+    }
+    
+    .stats-panel.show {
+      display: block;
+    }
+    
+    .stats-panel-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      padding: 8px 12px;
+      background: #fffbf2;
+      border-radius: 20px;
+    }
+    
+    .stats-panel-label {
+      font-weight: 600;
+      color: #6b4f32;
+    }
+    
+    .stats-panel-value {
+      font-weight: 700;
+      color: #a3490c;
+      font-size: 1.1rem;
+    }
+    
+    .stats-panel-title {
+      text-align: center;
+      font-weight: 700;
+      color: #4e3920;
+      margin-bottom: 12px;
+      font-size: 1.1rem;
+    }
+
+    .toggle-container {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #efe0cf;
+      padding: 4px 10px 4px 16px;
+      border-radius: 40px;
+    }
+
+    .toggle-label {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #6b4f32;
+    }
+
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 30px;
+    }
+
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #ffdbb5;
+      border-radius: 30px;
+      transition: 0.3s;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 24px;
+      width: 24px;
+      left: 3px;
+      bottom: 3px;
+      background: white;
+      border-radius: 50%;
+      transition: 0.3s;
+      box-shadow: 0 2px 6px #b47d4e;
+    }
+
+    input:checked + .slider {
+      background: #c7a5d9;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(30px);
+    }
+
+    /* Main Circle */
+    .main-circle-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 32px;
+    }
+
+    .main-counter-btn {
+      width: 200px;
+      height: 200px;
+      background: linear-gradient(145deg, #ffb882, #ff9f5b);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 18px 25px -8px #b45f2a, 0 0 0 5px #fff3e5, 0 0 0 8px #ffe0c0;
+      cursor: pointer;
+      transition: transform 0.1s;
+    }
+
+    .main-counter-btn:active {
+      transform: scale(0.96);
+    }
+
+    .mantra-text {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #3e2a14;
+      margin-bottom: 4px;
+    }
+
+    .japa-count {
+      font-size: 1.6rem;
+      background: #ffffffc0;
+      padding: 4px 16px;
+      border-radius: 50px;
+      color: #402e1b;
+      font-weight: 500;
+      border: 1px solid #fff0d0;
+    }
+
+    /* Stats Row */
+    .stats-row {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin: 32px 0 24px;
+    }
+
+    .stat-circle {
+      width: 85px;
+      height: 85px;
+      background: #fef3e5;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 10px 15px -5px #cbad8b;
+      border: 2px solid white;
+    }
+
+    .stat-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #9b7a57;
+      letter-spacing: 0.5px;
+    }
+
+    .stat-number {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #4e3920;
+      line-height: 1.1;
+    }
+
+    /* Play Button */
+    .play-btn {
+      background: #527a60;
+      border: none;
+      border-radius: 50px;
+      padding: 14px 20px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: 500;
+      box-shadow: 0 12px 18px -8px #2b4d36, 0 3px 0 #2b4a33;
+      cursor: pointer;
+      margin: 8px 0 16px;
+      opacity: 0.5;
+      pointer-events: none;
+    }
+    
+    .play-btn.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .play-btn:active {
+      transform: translateY(3px);
+      box-shadow: 0 8px 12px -6px #1d3523;
+    }
+
+    .play-icon {
+      font-size: 1.5rem;
+    }
+
+    .footer-note {
+      text-align: center;
+      color: #a78e71;
+      font-size: 0.9rem;
+      padding: 12px 0 4px;
+      border-top: 1px solid #e7d6c2;
+    }
+
+    /* Animations */
+    @keyframes pop {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.06); }
+      100% { transform: scale(1); }
+    }
+
+    .pop-animation {
+      animation: pop 0.3s ease;
+    }
+
+    .float-text {
+      position: fixed;
+      pointer-events: none;
+      font-size: 1.8rem;
+      opacity: 0;
+      animation: float 1.5s ease-out forwards;
+      z-index: 100;
+      color: #a3490c;
+      font-weight: 600;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) scale(0.9); opacity: 1; }
+      100% { transform: translateY(-150px) scale(1.2); opacity: 0; }
+    }
+
+    .flower-particle {
+      position: fixed;
+      pointer-events: none;
+      font-size: 2rem;
+      animation: burst 1.5s ease-out forwards;
+      z-index: 200;
+    }
+
+    @keyframes burst {
+      0% { transform: translate(0, 0) scale(0.5); opacity: 1; }
+      100% { transform: translate(var(--tx), var(--ty)) scale(1.5); opacity: 0; }
+    }
+
+    /* Notification Toast */
+    .notif-toast {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      background: #2b4a38;
+      color: #fef9e7;
+      padding: 14px 18px;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border: 1px solid #9ac7a8;
+      z-index: 10000;
+      max-width: 340px;
+      margin: 0 auto;
+      transform: translateY(150%);
+      transition: transform 0.4s;
+      box-shadow: 0 15px 30px -10px #1b3627;
+    }
+    
+    .notif-toast.show {
+      transform: translateY(0);
+    }
+    
+    .notif-toast span {
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+    
+    .notif-btn {
+      background: #ffe6b3;
+      border: none;
+      color: #2a4a34;
+      padding: 8px 16px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      box-shadow: 0 3px 0 #b99458;
+    }
+    
+    .notif-btn:active {
+      transform: translateY(3px);
+      box-shadow: none;
+    }
+
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+    .seo-text {
+      margin-top: 14px;
+      font-size: 0.72rem;
+      line-height: 1.5;
+      color: #8a6a4a;
+      text-align: center;
+    }
+    .seo-text h2 { font-size: 0.8rem; font-weight: 600; margin-bottom: 4px; color: #77450e; }
+  </style>
+</head>
+<body>
+  <!-- Welcome Overlay -->
+  <div class="welcome-overlay active" id="welcomeOverlay">
+    <div class="welcome-content">
+      <h2>श्री कृष्ण वचन</h2>
+      <p>"परमात्मा को दिया गया समय कभी व्यर्थ नहीं जाता"</p>
+      <div class="welcome-sub">जाप शुरू हो रहा है...</div>
+    </div>
+  </div>
+
+  <!-- Notification Toast -->
+  <div class="notif-toast" id="notifToast">
+    <span>🔔 हर घंटे रिमाइंडर चाहिए?</span>
+    <button class="notif-btn" id="allowNotifBtn">हां जी</button>
+  </div>
+
+  <div class="app-container">
+    <h1 class="sr-only">Radha Naam Jap Counter – Free Online Digital Jap Mala (राधा नाम जप काउंटर)</h1>
+    <div class="counter-card">
+      <!-- Header with Left Button and Toggle -->
+      <div class="header-section">
+        <button class="stats-menu-btn" id="statsMenuBtn">STATS</button>
+        
+        <div class="toggle-container">
+          <span class="toggle-label" id="toggleLabelRight">राधा</span>
+          <label class="toggle-switch">
+            <input type="checkbox" id="modeToggle" disabled>
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+      
+      <!-- Stats Panel (hidden by default) -->
+      <div class="stats-panel" id="statsPanel">
+        <div class="stats-panel-title">दोनों के आँकड़े</div>
+        <div class="stats-panel-row">
+          <span class="stats-panel-label">राधा कुल:</span>
+          <span class="stats-panel-value" id="radhaTotalStats">0</span>
+        </div>
+        <div class="stats-panel-row">
+          <span class="stats-panel-label">राधा माला:</span>
+          <span class="stats-panel-value" id="radhaMalaStats">0</span>
+        </div>
+        <div class="stats-panel-row">
+          <span class="stats-panel-label">सीता राम कुल:</span>
+          <span class="stats-panel-value" id="sitaTotalStats">0</span>
+        </div>
+        <div class="stats-panel-row">
+          <span class="stats-panel-label">सीता राम माला:</span>
+          <span class="stats-panel-value" id="sitaMalaStats">0</span>
+        </div>
+        <div class="stats-panel-row" style="margin-top: 8px; background: #ffe5d0;">
+          <span class="stats-panel-label">आज कुल:</span>
+          <span class="stats-panel-value" id="todayTotalStats">0</span>
+        </div>
+      </div>
+
+      <div class="main-circle-wrapper">
+        <div class="main-counter-btn" id="mainCounterBtn" style="pointer-events: none; opacity: 0.7;">
+          <div class="mantra-text" id="mantraDisplay">राधा</div>
+          <div class="japa-count" id="currentJapaCount">0</div>
+        </div>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat-circle">
+          <div class="stat-label">TOTAL</div>
+          <div class="stat-number" id="totalCount">0</div>
+        </div>
+        <div class="stat-circle">
+          <div class="stat-label">MALA</div>
+          <div class="stat-number" id="malaCount">0</div>
+        </div>
+        <div class="stat-circle">
+          <div class="stat-label">TODAY</div>
+          <div class="stat-number" id="todayCount">0</div>
+        </div>
+      </div>
+
+      <button class="play-btn" id="playPauseBtn" disabled>
+        <span class="play-icon" id="playIcon">▶️</span>
+        <span id="playButtonText">Play Mantra</span>
+      </button>
+
+      <section class="seo-text">
+        <h2>राधा नाम जप काउंटर – Online Digital Jap Mala</h2>
+        <p>Radha Naam Jap Counter se apna naam jaap gino, mala track karo aur roz ka jap count dekho. राधा और सीता राम नाम जाप के लिए free, simple और mobile-friendly digital mala.</p>
+      </section>
+
+      <div class="footer-note">
+        Made with Amrit 2026
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      // ===================== AUDIO FILES =====================
+      const MANDATORY_AUDIO = 'https://image2url.com/r2/default/audio/1768747501205-e6aa7f29-013e-416e-8712-878e6db23a43.mp3';
+      const SITA_RAM_AUDIO = 'https://image2url.com/r2/default/audio/1768790049659-b01e4798-4547-4232-92b7-5ce267edad1b.m4a';
+      const RADHA_AUDIO = 'https://image2url.com/r2/bucket1/audio/1767588030972-ad522ca3-5462-487b-bf35-c5d41075d842.wav';
+      
+      // ===================== STATE ========================
+      let state = {
+        radha: {
+          total: 0,
+          malas: 0
+        },
+        sitaram: {
+          total: 0,
+          malas: 0
+        },
+        today: {
+          radha: 0,
+          sitaram: 0,
+          date: new Date().toDateString()
+        },
+        currentMode: 'radha',
+        isPlaying: false,
+        audioElement: null,
+        appReady: false,
+        notifInterval: null
+      };
+
+      // DOM Elements
+      const welcomeOverlay = document.getElementById('welcomeOverlay');
+      const notifToast = document.getElementById('notifToast');
+      const allowNotifBtn = document.getElementById('allowNotifBtn');
+      const mainCounterBtn = document.getElementById('mainCounterBtn');
+      const mantraDisplay = document.getElementById('mantraDisplay');
+      const currentJapaSpan = document.getElementById('currentJapaCount');
+      const totalSpan = document.getElementById('totalCount');
+      const malaSpan = document.getElementById('malaCount');
+      const todaySpan = document.getElementById('todayCount');
+      const toggleCheckbox = document.getElementById('modeToggle');
+      const toggleLabelRight = document.getElementById('toggleLabelRight');
+      const playPauseBtn = document.getElementById('playPauseBtn');
+      const playIcon = document.getElementById('playIcon');
+      const playButtonText = document.getElementById('playButtonText');
+      
+      // Stats Panel Elements
+      const statsMenuBtn = document.getElementById('statsMenuBtn');
+      const statsPanel = document.getElementById('statsPanel');
+      const radhaTotalStats = document.getElementById('radhaTotalStats');
+      const radhaMalaStats = document.getElementById('radhaMalaStats');
+      const sitaTotalStats = document.getElementById('sitaTotalStats');
+      const sitaMalaStats = document.getElementById('sitaMalaStats');
+      const todayTotalStats = document.getElementById('todayTotalStats');
+
+      // ========== STATS PANEL TOGGLE ==========
+      statsMenuBtn.addEventListener('click', () => {
+        statsPanel.classList.toggle('show');
+        updateStatsPanel();
+      });
+
+      function updateStatsPanel() {
+        radhaTotalStats.textContent = state.radha.total;
+        radhaMalaStats.textContent = state.radha.malas;
+        sitaTotalStats.textContent = state.sitaram.total;
+        sitaMalaStats.textContent = state.sitaram.malas;
+        todayTotalStats.textContent = state.today.radha + state.today.sitaram;
+      }
+
+      // ========== 1. NOTIFICATION PERMISSION ==========
+      function askNotificationPermission() {
+        if (!('Notification' in window)) {
+          console.log('Notifications not supported');
+          return;
+        }
+        
+        setTimeout(() => {
+          if (Notification.permission === 'granted') {
+            startHourlyReminders();
+            return;
+          }
+          
+          if (Notification.permission !== 'denied') {
+            notifToast.classList.add('show');
+          }
+        }, 4000);
+      }
+
+      allowNotifBtn.addEventListener('click', () => {
+        Notification.requestPermission().then(permission => {
+          if (permission === 'granted') {
+            notifToast.classList.remove('show');
+            startHourlyReminders();
+            
+            new Notification('🌸 जाप रिमाइंडर', {
+              body: 'हर घंटे याद दिलाएंगे! जय श्री राम 🙏',
+              icon: '/favicon.ico',
+              tag: 'japa-reminder',
+              requireInteraction: false
+            });
+          } else {
+            notifToast.classList.remove('show');
+          }
+        });
+      });
+
+      // ========== 2. HOURLY REMINDERS ==========
+      function startHourlyReminders() {
+        if (state.notifInterval) clearInterval(state.notifInterval);
+        
+        setTimeout(() => {
+          sendReminder();
+        }, 5 * 60 * 1000);
+        
+        state.notifInterval = setInterval(() => {
+          sendReminder();
+        }, 60 * 60 * 1000);
+      }
+
+      function sendReminder() {
+        if (Notification.permission === 'granted') {
+          const mode = state.currentMode === 'radha' ? 'राधा' : 'सीता राम';
+          const todayTotal = state.today.radha + state.today.sitaram;
+          
+          const notification = new Notification('🕉️ जाप का समय', {
+            body: `${mode} जाप करें! आज कुल ${todayTotal} जाप किए हैं`,
+            icon: '/favicon.ico',
+            tag: 'japa-reminder',
+            silent: false,
+            vibrate: [200, 100, 200]
+          });
+          
+          notification.onclick = function() {
+            window.focus();
+            this.close();
+          };
+        }
+      }
+
+      // ========== 3. MANDATORY AUDIO ==========
+      function playMandatoryAudio() {
+        const mandatoryAudio = new Audio(MANDATORY_AUDIO);
+        const subText = document.querySelector('.welcome-sub');
+        
+        mandatoryAudio.play().catch(() => {
+          subText.innerHTML = 'स्क्रीन पर क्लिक करें';
+          welcomeOverlay.addEventListener('click', function start() {
+            mandatoryAudio.play();
+            welcomeOverlay.removeEventListener('click', start);
+          }, { once: true });
+        });
+        
+        mandatoryAudio.addEventListener('ended', () => {
+          welcomeOverlay.style.opacity = '0';
+          setTimeout(() => {
+            welcomeOverlay.classList.remove('active');
+            welcomeOverlay.style.display = 'none';
+            activateApp();
+          }, 500);
+        });
+        
+        mandatoryAudio.addEventListener('error', () => {
+          setTimeout(() => {
+            welcomeOverlay.style.opacity = '0';
+            setTimeout(() => {
+              welcomeOverlay.classList.remove('active');
+              welcomeOverlay.style.display = 'none';
+              activateApp();
+            }, 500);
+          }, 2000);
+        });
+      }
+
+      // ========== 4. ACTIVATE MAIN APP ==========
+      function activateApp() {
+        state.appReady = true;
+        
+        mainCounterBtn.style.pointerEvents = 'auto';
+        mainCounterBtn.style.opacity = '1';
+        toggleCheckbox.disabled = false;
+        playPauseBtn.disabled = false;
+        playPauseBtn.classList.add('active');
+        
+        loadState();
+        setupAudio('radha');
+        refreshUI();
+        askNotificationPermission();
+      }
+
+      // ========== HELPER FUNCTIONS ==========
+      function loadState() {
+        try {
+          const saved = localStorage.getItem('japaDataV2');
+          if (saved) {
+            const data = JSON.parse(saved);
+            state.radha = data.radha || { total: 0, malas: 0 };
+            state.sitaram = data.sitaram || { total: 0, malas: 0 };
+            state.today = data.today || { radha: 0, sitaram: 0, date: new Date().toDateString() };
+          }
+        } catch (e) {}
+
+        const today = new Date().toDateString();
+        if (state.today.date !== today) {
+          state.today = {
+            radha: 0,
+            sitaram: 0,
+            date: today
+          };
+          saveState();
+        }
+      }
+
+      function saveState() {
+        localStorage.setItem('japaDataV2', JSON.stringify({
+          radha: state.radha,
+          sitaram: state.sitaram,
+          today: state.today
+        }));
+      }
+
+      function refreshUI() {
+        const currentData = state.currentMode === 'radha' ? state.radha : state.sitaram;
+        const todayCount = state.currentMode === 'radha' ? state.today.radha : state.today.sitaram;
+        
+        totalSpan.textContent = currentData.total;
+        currentJapaSpan.textContent = currentData.total % 108;
+        malaSpan.textContent = currentData.malas;
+        todaySpan.textContent = todayCount;
+
+        if (state.currentMode === 'radha') {
+          mantraDisplay.textContent = 'राधा';
+          toggleLabelRight.textContent = 'राधा';
+        } else {
+          mantraDisplay.textContent = 'सीता राम';
+          toggleLabelRight.textContent = 'सीता राम';
+        }
+        
+        updateStatsPanel();
+      }
+
+      function setupAudio(mode) {
+        if (state.audioElement) {
+          state.audioElement.pause();
+        }
+        
+        const url = mode === 'radha' ? RADHA_AUDIO : SITA_RAM_AUDIO;
+        state.audioElement = new Audio(url);
+        state.audioElement.loop = true;
+        state.currentMode = mode;
+        refreshUI();
+        
+        if (state.isPlaying) {
+          state.audioElement.play().catch(() => {});
+        }
+      }
+
+      function togglePlayback() {
+        if (!state.appReady) return;
+        
+        if (!state.audioElement) {
+          setupAudio(state.currentMode);
+        }
+
+        if (state.isPlaying) {
+          state.audioElement.pause();
+          state.isPlaying = false;
+          playIcon.textContent = '▶️';
+          playButtonText.textContent = 'Play Mantra';
+        } else {
+          state.audioElement.play().catch(() => {});
+          state.isPlaying = true;
+          playIcon.textContent = '⏸️';
+          playButtonText.textContent = 'Pause Mantra';
+        }
+      }
+
+      // ========== FLOWER BURST FUNCTION ==========
+      function burstFlowers() {
+        for (let i = 0; i < 24; i++) {
+          setTimeout(() => {
+            const flower = document.createElement('div');
+            flower.className = 'flower-particle';
+            flower.textContent = ['🌸','🌺','🌼','🌻','🌷','💮'][Math.floor(Math.random()*6)];
+            const angle = Math.random() * 2 * Math.PI;
+            const distance = 120 + Math.random() * 180;
+            const tx = Math.cos(angle) * distance;
+            const ty = Math.sin(angle) * distance - 30;
+            flower.style.setProperty('--tx', tx + 'px');
+            flower.style.setProperty('--ty', ty + 'px');
+            flower.style.left = (window.innerWidth/2 - 20) + 'px';
+            flower.style.top = (window.innerHeight/2 - 20) + 'px';
+            document.body.appendChild(flower);
+            setTimeout(() => { flower.remove(); }, 1600);
+          }, i * 20);
+        }
+      }
+
+      // ========== INCREMENT COUNTER ==========
+      function incrementCounter(e) {
+        if (!state.appReady) return;
+        
+        // Floating text
+        const rect = mainCounterBtn.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const floatDiv = document.createElement('div');
+        floatDiv.className = 'float-text';
+        floatDiv.textContent = state.currentMode === 'radha' ? 'राधा' : 'सीता राम';
+        floatDiv.style.left = (rect.left + x - 20) + 'px';
+        floatDiv.style.top = (rect.top + y - 30) + 'px';
+        document.body.appendChild(floatDiv);
+        setTimeout(() => floatDiv.remove(), 1500);
+
+        // Update counts based on current mode
+        if (state.currentMode === 'radha') {
+          state.radha.total++;
+          state.today.radha++;
+          
+          if (state.radha.total % 108 === 0) {
+            state.radha.malas++;
+            burstFlowers();
+            if (navigator.vibrate) navigator.vibrate(200);
+            mainCounterBtn.classList.add('pop-animation');
+            setTimeout(() => mainCounterBtn.classList.remove('pop-animation'), 300);
+          }
+        } else {
+          state.sitaram.total++;
+          state.today.sitaram++;
+          
+          if (state.sitaram.total % 108 === 0) {
+            state.sitaram.malas++;
+            burstFlowers();
+            if (navigator.vibrate) navigator.vibrate(200);
+            mainCounterBtn.classList.add('pop-animation');
+            setTimeout(() => mainCounterBtn.classList.remove('pop-animation'), 300);
+          }
+        }
+
+        saveState();
+        refreshUI();
+
+        // Button press effect
+        mainCounterBtn.style.transform = 'scale(0.97)';
+        setTimeout(() => mainCounterBtn.style.transform = '', 100);
+      }
+
+      function resetToday() {
+        if (!state.appReady) return;
+        if (confirm('Reset today\'s count for both?')) {
+          state.today.radha = 0;
+          state.today.sitaram = 0;
+          state.today.date = new Date().toDateString();
+          saveState();
+          refreshUI();
+        }
+      }
+
+      // ========== EVENT LISTENERS ==========
+      mainCounterBtn.addEventListener('click', incrementCounter);
+      
+      toggleCheckbox.addEventListener('change', (e) => {
+        if (!state.appReady) return;
+        const mode = e.target.checked ? 'sitaram' : 'radha';
+        setupAudio(mode);
+      });
+
+      playPauseBtn.addEventListener('click', togglePlayback);
+
+      document.querySelector('.footer-note').addEventListener('dblclick', resetToday);
+
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden && state.isPlaying && state.audioElement) {
+          state.audioElement.pause();
+          state.isPlaying = false;
+          playIcon.textContent = '▶️';
+          playButtonText.textContent = 'Play Mantra';
+        }
+      });
+
+      // ========== START ==========
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', playMandatoryAudio);
+      } else {
+        playMandatoryAudio();
+      }
+    })();
+  </script>
+</body>
+</html>
