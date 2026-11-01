@@ -87,6 +87,10 @@ html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}butto
 @keyframes shine{0%,100%{box-shadow:0 0 0 0 rgba(253,224,71,.6)}50%{box-shadow:0 0 28px 8px rgba(253,224,71,.5)}}
 .shine{animation:shine 2.2s ease-in-out infinite}
 ::-webkit-scrollbar{display:none}
+@keyframes slidedown{from{opacity:0;transform:translateY(-18px) scale(.97)}to{opacity:1;transform:none}}
+.slidedown{animation:slidedown .35s cubic-bezier(.2,.9,.25,1) both}
+@keyframes chipPop{0%{transform:scale(.82)}60%{transform:scale(1.18)}100%{transform:scale(1.05)}}
+.cchip[aria-checked="true"]{animation:chipPop .28s ease}
 .noselect,.noselect *{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 button:focus-visible,select:focus-visible,summary:focus-visible,a:focus-visible{outline:2px solid #16a34a;outline-offset:2px}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.confetti{display:none}}
@@ -99,7 +103,7 @@ button:focus-visible,select:focus-visible,summary:focus-visible,a:focus-visible{
     <a href="/" class="flex items-center gap-2.5 font-bold tracking-tight text-[.95rem]">
       <span class="logo w-9 h-9 rounded-[11px] text-white grid place-items-center font-extrabold">A</span><span class="leading-tight">Amritt Edition<span id="tagline" class="block text-[.62rem] font-medium text-green-600 tracking-wide">Learn &middot; Test &middot; Top</span></span>
     </a>
-    <button id="langBtn" aria-label="Change language" class="lg active:scale-95 transition"><span class="th" id="lgThumb"></span><span class="o" id="lgEn">EN</span><span class="o" id="lgHi">हिं</span></button>
+    <div class="flex items-center gap-2"><button id="bellBtn" type="button" class="relative w-9 h-9 rounded-full border border-green-200 bg-white/80 grid place-items-center text-base shadow-sm active:scale-95 transition" aria-label="Announcements">&#128276;</button><button id="langBtn" aria-label="Change language" class="lg active:scale-95 transition"><span class="th" id="lgThumb"></span><span class="o" id="lgEn">EN</span><span class="o" id="lgHi">हिं</span></button></div>
   </div>
 </header>
 
@@ -120,7 +124,8 @@ try {
 
 const _k = "AmritEdition", _d = s => { const b = atob(s); let o = ""; for (let i = 0; i < b.length; i++) o += String.fromCharCode(b.charCodeAt(i) ^ _k.charCodeAt(i % _k.length)); return o; };
 const firebaseConfig = JSON.parse(_d("Ok8TGR0OARBWU00vCBcTOg0GBwc/PCcHOyAdEAYDEz1CLx8eFSkTO0czXS9FJB9edl1QRVYkER0cLQADIAQcS05nBQQGABsabAgWAAAqCkcSAB0LIwwBDBU1FEcXBgJMbU8WCAAkBggHDDo8DU9ISxwxEBkHU0BBIAAAAAAxSQwQABsBL0AWDBIkEQUARB0aJQ9cDx03AQsVGgoHLkMRBhlnSEsEGwAEJA4GIBBnXksVBB0HNRlfDBAsEAYaS0NMMhkdGxUiASsBCgQLNU9ISxUoFgAAHUILJQQGBhprAgAGDA0PMggBHRs3BQ4RRw4eMU9eSxkgFxoVDgYAJj4XBxAgFiAQS1VMdlhGX0N1UlxCWFpeY0FQCAQ1LQ1WU01fe1pHXUJyVF9BX15bcVcFDBZ/AQhFWw0KJQhBWRZ2UVxCXgwNIl0QXlY4"));
-const db = getDatabase(initializeApp(firebaseConfig));
+const fbApp = initializeApp(firebaseConfig);
+const db = getDatabase(fbApp);
 const $ = id => document.getElementById(id);
 const esc = v => String(v == null ? "" : v).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 $("yr").textContent = new Date().getFullYear();
@@ -155,8 +160,8 @@ const T = {
 };
 
 const LB = {
-  en: { stu: "Students", top: "Toppers", all: "All", allCls: "All classes", search: "Search name...", latest: "Latest", best: "Best score", tests: "tests", avg: "Average", champ: "CHAMPION", none: "No students yet. Be the first to take the test!", podium: "Top 3 Podium", subChamp: "Subject Champions", you: "You", back: "Back", stuTitle: "All students who took the test", howT: "How is rank decided?", how: "More correct answers = higher rank. If two people have the same score, the one who finished faster ranks higher.", no1: "No. 1 right now", top10: "Top 10", subTop: "Topper of each subject", correct: "correct", noTop: "No topper yet", clsTop: "Topper of every class", tap: "Tap a class to see its full list", overall: "Overall Top 10" },
-  hi: { stu: "छात्र", top: "टॉपर", all: "सब", allCls: "सभी कक्षा", search: "नाम खोजें...", latest: "नया", best: "बेस्ट स्कोर", tests: "टेस्ट", avg: "औसत", champ: "चैंपियन", none: "अभी कोई छात्र नहीं है। पहले आप टेस्ट दें!", podium: "टॉप 3", subChamp: "विषय चैंपियन", you: "आप", back: "वापस", stuTitle: "टेस्ट देने वाले सभी छात्र", howT: "रैंक कैसे तय होता है?", how: "जिसके सबसे ज़्यादा जवाब सही, वह ऊपर। स्कोर बराबर हो तो जो कम समय में खत्म करे, वह ऊपर।", no1: "अभी नंबर 1", top10: "टॉप 10", subTop: "हर विषय का टॉपर", correct: "सही", noTop: "अभी कोई टॉपर नहीं", clsTop: "हर कक्षा का टॉपर", tap: "पूरी लिस्ट देखने के लिए कक्षा पर टैप करें", overall: "सभी कक्षा का टॉप 10" }
+  en: { stu: "Students", top: "Toppers", all: "All", allCls: "All classes", search: "Search name...", latest: "Latest", best: "Best score", tests: "tests", avg: "Average", champ: "CHAMPION", none: "No students yet. Be the first to take the test!", podium: "Top 3 Podium", subChamp: "Subject Champions", you: "You", back: "Back", stuTitle: "All students who took the test", howT: "How is rank decided?", how: "More correct answers = higher rank. If two people have the same score, the one who finished faster ranks higher.", no1: "No. 1 right now", top10: "Top 10", subTop: "Topper of each subject", correct: "correct", noTop: "No topper yet", clsTop: "Topper of every class", tap: "Tap a class to see its full list", overall: "Overall Top 10", classL: "Class", subjL: "Subject", showing: "Showing", rest: "Rank 4 to 10", restD: "Students after the top 3", rankStu: "Rank · Student", scoreTime: "Score · Time", taken: "Test taken", podD: "Best 3 results right now", subTopD: "Best result in each subject" },
+  hi: { stu: "छात्र", top: "टॉपर", all: "सब", allCls: "सभी कक्षा", search: "नाम खोजें...", latest: "नया", best: "बेस्ट स्कोर", tests: "टेस्ट", avg: "औसत", champ: "चैंपियन", none: "अभी कोई छात्र नहीं है। पहले आप टेस्ट दें!", podium: "टॉप 3", subChamp: "विषय चैंपियन", you: "आप", back: "वापस", stuTitle: "टेस्ट देने वाले सभी छात्र", howT: "रैंक कैसे तय होता है?", how: "जिसके सबसे ज़्यादा जवाब सही, वह ऊपर। स्कोर बराबर हो तो जो कम समय में खत्म करे, वह ऊपर।", no1: "अभी नंबर 1", top10: "टॉप 10", subTop: "हर विषय का टॉपर", correct: "सही", noTop: "अभी कोई टॉपर नहीं", clsTop: "हर कक्षा का टॉपर", tap: "पूरी लिस्ट देखने के लिए कक्षा पर टैप करें", overall: "सभी कक्षा का टॉप 10", classL: "कक्षा", subjL: "विषय", showing: "दिखा रहे हैं", rest: "रैंक 4 से 10", restD: "टॉप 3 के बाद के छात्र", rankStu: "रैंक · छात्र", scoreTime: "स्कोर · समय", taken: "टेस्ट दिया", podD: "अभी के सबसे अच्छे 3 रिज़ल्ट", subTopD: "हर विषय का सबसे अच्छा रिज़ल्ट" }
 };
 let lang = "en"; try { lang = localStorage.getItem("amrit_test_lang") === "hi" ? "hi" : "en"; } catch (e) {}
 $("langBtn").addEventListener("click", () => { lang = lang === "en" ? "hi" : "en"; try { localStorage.setItem("amrit_test_lang", lang); } catch (e) {} render(); });
@@ -186,6 +191,7 @@ onValue(query(ref(db, "testResults"), orderByKey(), limitToLast(1000)), snap => 
   snap.forEach(c => { const v = c.val(); if (v && typeof v === "object" && Number(v.total) > 0) rows.push({ id: c.key, ...v, score: Number(v.score) || 0, total: Number(v.total), name: String(v.name || "").trim() || "Student", cls: String(v.cls || "") }); });
   rows.sort((a, b) => (b.score / b.total - a.score / a.total) || ((a.timeMs || 1e12) - (b.timeMs || 1e12)) || ((a.createdAt || 0) - (b.createdAt || 0)));
   results = rows; loadedR = true;
+  try { checkAnnounce(); } catch (e) {}
   updateSEO();
   if (state.screen === "start") { renderFaq(); if (state.saved && $("subs") && bankCache[state.cls]) loadSubjects(); }
   if (state.screen === "leaderboard" || state.screen === "result") render();
@@ -254,6 +260,144 @@ function updateSEO() {
   });
 }
 
+// =================== Announcements + Notifications ===================
+const NT = {
+  en: { bell: "Announcements", okT: "\u{1F514} Notifications on", okB: "You'll hear about new toppers and leaderboard updates.", denyT: "Notifications are blocked", denyB: "Allow notifications for this site in your browser settings.", unsupT: "System notifications not available", unsupB: "This browser can't show system notifications. Announcements will still appear inside the app.", onT: "Announcements on", offT: "Announcements off",
+    gateT: "Please allow notifications", gateB: "To use this test you need to allow notifications. You'll get new topper and leaderboard news instantly, even when the website is closed.", gateBtn: "Allow notifications", gateDenied: "Notifications are blocked for this site. Tap the lock icon next to the address bar, open Site settings, set Notifications to Allow, then come back and tap the button below.", gateRecheck: "I allowed it, check again", gateNote: "We only send topper and leaderboard updates.",
+    topT: "\u{1F3C6} New No. 1!", clsT: c => `\u{1F947} New topper in ${c}`, line: r => `${r.name} scored ${r.score}/${r.total} in ${sl(r.subject)} (${clsLabel(r.cls)})`,
+    newT: "\u{1F195} Leaderboard update", newOne: r => `${r.name} took the ${sl(r.subject)} test: ${r.score}/${r.total}`, newMany: n => `${n} new results just came in` },
+  hi: { bell: "घोषणाएँ", okT: "\u{1F514} नोटिफिकेशन चालू", okB: "नए टॉपर और लीडरबोर्ड की खबर आपको मिलती रहेगी।", denyT: "नोटिफिकेशन बंद हैं", denyB: "ब्राउज़र की सेटिंग में इस साइट के लिए नोटिफिकेशन Allow करें।", unsupT: "सिस्टम नोटिफिकेशन उपलब्ध नहीं", unsupB: "यह ब्राउज़र सिस्टम नोटिफिकेशन नहीं दिखा सकता। घोषणाएँ ऐप के अंदर दिखेंगी।", onT: "घोषणाएँ चालू", offT: "घोषणाएँ बंद",
+    gateT: "कृपया नोटिफिकेशन Allow करें", gateB: "यह टेस्ट इस्तेमाल करने के लिए नोटिफिकेशन Allow करना ज़रूरी है। नया टॉपर और लीडरबोर्ड की खबर आपको तुरंत मिलेगी, वेबसाइट बंद होने पर भी।", gateBtn: "नोटिफिकेशन Allow करें", gateDenied: "इस साइट के लिए नोटिफिकेशन बंद हैं। एड्रेस बार के पास 🔒 आइकन दबाएँ, Site settings खोलें, Notifications को Allow करें, फिर वापस आकर नीचे का बटन दबाएँ।", gateRecheck: "मैंने Allow कर दिया, दोबारा जाँचें", gateNote: "हम सिर्फ टॉपर और लीडरबोर्ड की खबर भेजते हैं।",
+    topT: "\u{1F3C6} नया नंबर 1!", clsT: c => `\u{1F947} ${c} का नया टॉपर`, line: r => `${r.name} ने ${sl(r.subject)} में ${r.score}/${r.total} स्कोर किया (${clsLabel(r.cls)})`,
+    newT: "\u{1F195} लीडरबोर्ड अपडेट", newOne: r => `${r.name} ने ${sl(r.subject)} टेस्ट दिया: ${r.score}/${r.total}`, newMany: n => `${n} नए रिज़ल्ट आए` }
+};
+let _snap = null, _ids = null; const pendingAnn = [];
+const hasNotif = () => "Notification" in window;
+const annPref = () => { try { return localStorage.getItem("amrit_test_notif") !== "off"; } catch (e) { return true; } };
+try { if ("serviceWorker" in navigator) navigator.serviceWorker.register("/sw.js").catch(() => {}); } catch (e) {}
+
+function paintBell() {
+  const b = $("bellBtn"); if (!b) return;
+  const need = hasNotif() && Notification.permission === "default";
+  b.innerHTML = (annPref() ? "\u{1F514}" : "\u{1F515}") + (need ? `<span class="dot absolute -top-0.5 -right-0.5"></span>` : "");
+  b.setAttribute("aria-label", NT[lang].bell); b.title = NT[lang].bell;
+}
+function toast(a) {
+  let box = $("toasts");
+  if (!box) { box = document.createElement("div"); box.id = "toasts"; box.style.top = "calc(env(safe-area-inset-top, 0px) + 10px)"; box.className = "fixed left-0 right-0 z-[250] flex flex-col items-center gap-2 px-4 pointer-events-none"; document.body.appendChild(box); }
+  const el = document.createElement("button"); el.type = "button";
+  el.className = "slidedown pointer-events-auto w-full max-w-[440px] text-left rounded-2xl px-4 py-3 text-white shadow-xl shadow-green-900/20 bg-gradient-to-r from-green-700 to-green-500";
+  el.innerHTML = `<div class="text-sm font-extrabold">${esc(a.t)}</div>${a.b ? `<div class="text-xs opacity-90 mt-0.5">${esc(a.b)}</div>` : ""}`;
+  el.onclick = () => { el.remove(); if (state.screen === "quiz") return; state.lbTab = "toppers"; state.lbCls = ""; state.lbSub = ""; state.screen = "leaderboard"; render(); };
+  box.appendChild(el); setTimeout(() => el.remove(), 7000);
+}
+async function systemNotify(title, body, tag, force) {
+  if (!annPref() || !hasNotif() || Notification.permission !== "granted") return;
+  if (!force && !document.hidden) return; // page khula ho to toast kaafi hai
+  const opts = { body, icon: "/apple-touch-icon.png", badge: "/favicon.ico", tag: tag || "amrit-test", renotify: true, data: { url: "/test.html" } };
+  try { const reg = "serviceWorker" in navigator ? await navigator.serviceWorker.getRegistration() : null; if (reg && reg.showNotification) { await reg.showNotification(title, opts); return; } } catch (e) {}
+  try { new Notification(title, opts); } catch (e) {}
+}
+function deliver(anns) {
+  if (!anns.length || !annPref()) return;
+  if (state.screen === "quiz") { pendingAnn.push(...anns); return; } // test ke beech disturb nahi
+  anns.slice(0, 3).forEach((a, i) => setTimeout(() => { toast(a); systemNotify(a.t, a.b, a.tag); }, i * 450));
+}
+async function enableNotifs() {
+  const t = NT[lang];
+  if (!hasNotif()) { toast({ t: t.unsupT, b: t.unsupB }); return; }
+  let perm = Notification.permission;
+  if (perm === "default") { try { perm = await Notification.requestPermission(); } catch (e) { perm = Notification.permission; } }
+  if (perm === "granted") { try { localStorage.setItem("amrit_test_notif", "on"); } catch (e) {} toast({ t: t.okT, b: t.okB }); systemNotify(t.okT, t.okB, "welcome", true); registerPush(); }
+  else if (perm === "denied") toast({ t: t.denyT, b: t.denyB });
+  paintBell(); gateCheck();
+}
+// ---- Background push (website band ho tab bhi) via Firebase Cloud Messaging ----
+// Firebase Console > Project settings > Cloud Messaging > Web Push certificates > "Generate key pair" ka Key yahan paste karein
+const VAPID_KEY = "BLf9MSWC3D5akYxXtx9EZB67YSg6IZt_aMya_CArr98jczeR9tP-4GoxaI0lZNspLcTQCoWxWFPneFh72V9IM1c";
+let _pushReg = false;
+async function registerPush() {
+  if (!VAPID_KEY || !hasNotif() || Notification.permission !== "granted" || !("serviceWorker" in navigator)) return;
+  try {
+    const M = await import("https://www.gstatic.com/firebasejs/10.13.0/firebase-messaging.js");
+    if (!(await M.isSupported())) return;
+    const reg = await navigator.serviceWorker.register("/sw.js"); await navigator.serviceWorker.ready;
+    const token = await M.getToken(M.getMessaging(fbApp), { vapidKey: VAPID_KEY, serviceWorkerRegistration: reg });
+    if (!token) return;
+    await set(ref(db, "testPushTokens/" + token), { token, name: String(state.name || "").trim().toLowerCase(), cls: state.cls || "", lang, updatedAt: Date.now() });
+  } catch (e) {}
+}
+// Notification allow kiye bina app use nahi hoga
+function gateCheck() {
+  const need = hasNotif() && Notification.permission !== "granted" && state.screen !== "quiz";
+  const shell = [document.querySelector("header"), $("app"), document.querySelector("footer")];
+  let g = $("gate");
+  if (!need) {
+    if (g) g.remove(); shell.forEach(e => { if (e) e.inert = false; }); document.body.style.overflow = "";
+    if (hasNotif() && Notification.permission === "granted" && !_pushReg) { _pushReg = true; registerPush(); }
+    return;
+  }
+  const t = NT[lang], denied = Notification.permission === "denied";
+  if (!g) { g = document.createElement("div"); g.id = "gate"; g.setAttribute("role", "dialog"); g.setAttribute("aria-modal", "true"); document.body.appendChild(g); }
+  g.className = "fixed inset-0 z-[400] overflow-y-auto bg-gradient-to-b from-green-50 to-white";
+  g.innerHTML = `<div class="min-h-full grid place-items-center px-6 py-10"><div class="w-full max-w-[400px] text-center">
+    <div class="mx-auto w-20 h-20 rounded-3xl bg-gradient-to-br from-green-500 to-green-700 text-white grid place-items-center text-4xl shadow-xl shadow-green-600/30 floaty">\u{1F514}</div>
+    <h2 class="gtext text-2xl font-extrabold mt-6">${t.gateT}</h2>
+    <p class="text-sm text-neutral-600 mt-2 leading-relaxed">${t.gateB}</p>
+    ${denied ? `<div class="mt-5 text-left text-xs leading-relaxed rounded-2xl border border-red-200 bg-red-50 text-red-700 p-4">${t.gateDenied}</div>` : ""}
+    <button id="gateBtn" type="button" class="mt-6 w-full py-4 rounded-2xl text-base ${btnMain}">${denied ? t.gateRecheck : t.gateBtn}</button>
+    <p class="text-[.7rem] text-neutral-400 mt-3">${t.gateNote}</p>
+    <button id="gateLang" type="button" class="mt-5 px-4 py-1.5 rounded-full text-xs font-bold ${btnLine}">${lang === "hi" ? "English" : "हिन्दी"}</button>
+  </div></div>`;
+  shell.forEach(e => { if (e) e.inert = true; }); document.body.style.overflow = "hidden";
+  $("gateLang").onclick = () => { lang = lang === "en" ? "hi" : "en"; try { localStorage.setItem("amrit_test_lang", lang); } catch (e) {} render(); };
+  $("gateBtn").onclick = async () => {
+    if (Notification.permission === "default") { try { await Notification.requestPermission(); } catch (e) {} }
+    if (Notification.permission === "granted") { try { localStorage.setItem("amrit_test_notif", "on"); } catch (e) {} systemNotify(t.okT, t.okB, "welcome", true); paintBell(); }
+    gateCheck();
+  };
+}
+document.addEventListener("visibilitychange", () => { if (!document.hidden) { paintBell(); gateCheck(); } });
+window.addEventListener("focus", () => { paintBell(); gateCheck(); });
+
+// naya topper / leaderboard change pakadta hai (jab page khula ho, ya pichhli visit ke baad)
+function checkAnnounce() {
+  const top = results[0] || null, cl = {};
+  classToppers().forEach(o => { if (o.r) cl[o.c] = o.r.id; });
+  const cur = { top: top ? top.id : "", cl };
+  let prev = _snap; if (!prev) { try { prev = JSON.parse(localStorage.getItem("amrit_test_seen") || "null"); } catch (e) { prev = null; } }
+  const t = NT[lang], anns = [], used = new Set(), mine = id => !!id && (id === state.resultId || id === state.pendingId);
+  if (prev) {
+    if (cur.top && cur.top !== prev.top && !mine(cur.top)) { anns.push({ t: t.topT, b: t.line(top), tag: "top" }); used.add(cur.top); }
+    CLASSES.forEach(c => { const id = cur.cl[c]; if (id && id !== (prev.cl || {})[c] && !used.has(id) && !mine(id)) { const r = results.find(x => x.id === id); if (r) { anns.push({ t: t.clsT(clsLabel(c)), b: t.line(r), tag: "cls" + c }); used.add(id); } } });
+  }
+  if (_ids) {
+    const fresh = results.filter(r => !_ids.has(r.id) && !mine(r.id) && !used.has(r.id));
+    if (fresh.length === 1) anns.push({ t: t.newT, b: t.newOne(fresh[0]), tag: "new" });
+    else if (fresh.length > 1) anns.push({ t: t.newT, b: t.newMany(fresh.length), tag: "new" });
+  }
+  _snap = cur; _ids = new Set(results.map(r => r.id));
+  try { localStorage.setItem("amrit_test_seen", JSON.stringify(cur)); } catch (e) {}
+  deliver(anns);
+}
+// Owner ki manual announcement: Firebase mein testAnnounce/<koi key> = { title, body, createdAt }
+try { onValue(query(ref(db, "testAnnounce"), orderByKey(), limitToLast(1)), snap => {
+  snap.forEach(c => {
+    const v = c.val(); if (!v || typeof v !== "object") return;
+    let seen = null; try { seen = localStorage.getItem("amrit_test_ann_seen"); } catch (e) {}
+    if (seen === c.key) return; try { localStorage.setItem("amrit_test_ann_seen", c.key); } catch (e) {}
+    if (v.createdAt && Date.now() - Number(v.createdAt) > 3 * 864e5) return;
+    deliver([{ t: "\u{1F4E2} " + String(v.title || "Announcement").slice(0, 80), b: String(v.body || v.text || "").slice(0, 200), tag: "adm" }]);
+  });
+}, () => {}); } catch (e) {}
+$("bellBtn").addEventListener("click", () => {
+  const t = NT[lang];
+  if (hasNotif() && Notification.permission === "default") return enableNotifs();
+  if (hasNotif() && Notification.permission === "denied") { toast({ t: t.denyT, b: t.denyB }); return; }
+  const on = !annPref(); try { localStorage.setItem("amrit_test_notif", on ? "on" : "off"); } catch (e) {}
+  paintBell(); toast({ t: on ? t.onT : t.offT, b: on ? (hasNotif() ? t.okB : t.unsupB) : "" });
+});
+
 function confetti() {
   for (let n = 0; n < 26; n++) {
     const el = document.createElement("span"); el.className = "confetti";
@@ -268,6 +412,17 @@ function confetti() {
 }
 const fmtT = ms => { if (!ms) return ""; const s = Math.round(ms / 1000), m = Math.floor(s / 60); return lang === "hi" ? m + " मि " + String(s % 60).padStart(2, "0") + " से" : m + "m " + String(s % 60).padStart(2, "0") + "s"; };
 const medal = i => i === 0 ? "\u{1F3C6}" : i === 1 ? "\u{1F948}" : i === 2 ? "\u{1F949}" : "";
+// Test kab diya: "Aaj, 3:45 PM" / "Kal, 9:10 AM" / "28 Oct, 6:00 PM"
+const fmtDT = ts => {
+  if (!ts) return "";
+  const d = new Date(ts), hi = lang === "hi", loc = hi ? "hi-IN" : "en-IN";
+  const tm = d.toLocaleTimeString(loc, { hour: "numeric", minute: "2-digit", hour12: true });
+  const sod = x => { const z = new Date(x); z.setHours(0, 0, 0, 0); return z.getTime(); };
+  const diff = Math.round((sod(Date.now()) - sod(ts)) / 864e5);
+  const day = diff === 0 ? (hi ? "आज" : "Today") : diff === 1 ? (hi ? "कल" : "Yesterday")
+    : d.toLocaleDateString(loc, { day: "numeric", month: "short", year: d.getFullYear() !== new Date().getFullYear() ? "numeric" : undefined });
+  return day + ", " + tm;
+};
 const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 // Naam + surname dono zaruri (kam se kam 2 shabd, har shabd 2+ akshar) taaki duplicate naam na aayein
 function fullName(n) { const w = String(n || "").trim().split(/\s+/).filter(Boolean); return w.length >= 2 && w.every(x => x.length >= 2); }
@@ -284,6 +439,18 @@ function attemptCount(n, subj, cls) {
 }
 function bumpCount(n, subj, cls) { try { const o = JSON.parse(localStorage.getItem("amrit_test_counts") || "{}"), k = takenKey(n, subj, cls); o[k] = Math.max(Number(o[k]) || 0, attemptCount(n, subj, cls)) + 1; localStorage.setItem("amrit_test_counts", JSON.stringify(o)); } catch (e) {} }
 function isTaken(n, subj, cls) { const k = takenKey(n, subj, cls); return localTaken().includes(k) || results.some(r => takenKey(r.name, r.subject, r.cls) === k); }
+const clsChip = (c, on) => `<button type="button" role="radio" aria-checked="${on}" aria-label="${esc(clsLabel(c))}" data-c="${esc(c)}" class="cchip aspect-square rounded-full grid place-items-center font-extrabold transition-all duration-200 active:scale-90 ${c.length > 2 ? "text-[.62rem]" : "text-sm"} ${on ? "bg-gradient-to-br from-green-500 to-green-700 text-white shadow-lg shadow-green-600/40 scale-105 ring-2 ring-green-300" : "bg-green-50 text-green-800 border border-green-200 hover:bg-green-100"}">${esc(c)}</button>`;
+const clsSelTxt = () => state.cls ? "\u2714 " + clsLabel(state.cls) : (lang === "hi" ? "चुनें" : "Pick one");
+const clsSelCls = () => "text-xs font-bold px-2.5 py-1 rounded-full transition " + (state.cls ? "bg-green-600 text-white" : "bg-neutral-100 text-neutral-400");
+function classPicker(sel) {
+  return `<div class="flex items-center justify-between mb-2.5"><label id="clLbl" class="text-sm font-bold text-green-800">\u{1F393} ${T[lang].cls}</label><span id="clSel" class="${clsSelCls()}">${esc(clsSelTxt())}</span></div>
+  <div id="cl" tabindex="-1" role="radiogroup" aria-labelledby="clLbl" class="grid grid-cols-7 gap-1.5 px-1.5 py-2 rounded-2xl bg-white/60 border border-green-100 focus:outline-none focus:ring-4 focus:ring-red-200">${CLASSES.map(c => clsChip(c, sel === c)).join("")}</div>`;
+}
+function paintCls() {
+  const box = $("cl"); if (!box) return;
+  box.innerHTML = CLASSES.map(c => clsChip(c, state.cls === c)).join("");
+  const s = $("clSel"); if (s) { s.textContent = clsSelTxt(); s.className = clsSelCls(); }
+}
 const clsOptions = sel => CLASSES.map(c => `<option value="${c}" ${sel === c ? "selected" : ""}>${clsLabel(c)}</option>`).join("");
 const inputCls = "w-full px-4 py-3.5 rounded-2xl bg-white/90 border border-green-200 text-neutral-900 shadow-sm outline-none transition focus:border-green-600 focus:ring-4 focus:ring-green-100 placeholder:text-neutral-400";
 const btnMain = "bg-gradient-to-b from-green-500 to-green-600 text-white font-semibold shadow-lg shadow-green-600/25 hover:from-green-600 hover:to-green-700 hover:-translate-y-px active:scale-[.97] transition";
@@ -298,6 +465,7 @@ async function saveStudent() {
   try { saved.sid = saved.sid || push(ref(db, "testStudents")).key; } catch (e) {}
   saveProfile();
   try { await set(ref(db, "testStudents/" + saved.sid), stuRec(n, state.cls)); } catch (e) {}
+  registerPush();
   render();
 }
 async function loadSubjects() {
@@ -433,13 +601,15 @@ let _rk = "", _sk = "";
 function applyChrome() {
   const t = T[lang], hi = lang === "hi";
   document.documentElement.lang = hi ? "hi-IN" : "en-IN";
-  $("tagline").textContent = t.tagline; $("ft").textContent = t.footer;
+  paintBell(); gateCheck(); $("tagline").textContent = t.tagline; $("ft").textContent = t.footer;
   $("lgThumb").style.transform = hi ? "translateX(100%)" : "none";
   $("lgEn").style.color = hi ? "#15803d" : "#fff"; $("lgHi").style.color = hi ? "#fff" : "#15803d";
 }
 function render() {
   applyChrome();
   document.body.classList.toggle("noselect", state.screen === "quiz");
+  { const bb = $("bellBtn"); if (bb) bb.classList.toggle("hidden", state.screen === "quiz"); }
+  if (state.screen !== "quiz" && pendingAnn.length) { const q = pendingAnn.splice(0); setTimeout(() => deliver(q), 350); }
   $("langBtn").classList.toggle("hidden", state.screen === "quiz");
   const a = document.activeElement, ai = a && a.id, ss = a && a.selectionStart;
   const key = [state.screen, state.qi, lang, state.lbTab, state.lbCls, state.lbSub, state.review].join("|"), fresh = key !== _rk; _rk = key;
@@ -467,7 +637,7 @@ function renderInner() {
           <input id="photoIn" type="file" accept="image/*" class="hidden">
         </div>
         ${state.saved ? `<div class="flex items-center gap-2 mb-3 px-4 py-2.5 rounded-2xl bg-green-50 border border-green-200 text-green-700 text-sm font-semibold">\u2714 ${lang === "hi" ? "आपका नाम इस डिवाइस पर सेव है" : "Your name is saved on this device"}</div>` : `<input id="nm" aria-label="${t.namePh}" value="${esc(state.name)}" maxlength="60" placeholder="${t.namePh}" autocomplete="off" class="${inputCls} mb-3">`}
-        <select id="cl" aria-label="${t.cls}" class="${inputCls}"><option value="">${t.cls}</option>${clsOptions(state.cls)}</select>
+        ${classPicker(state.cls)}
         <p id="err" class="hidden text-red-500 text-xs mt-2"></p>
         ${state.saved ? "" : `<button id="saveBtn" class="mt-3 w-full py-3.5 rounded-2xl ${btnMain} disabled:opacity-60 disabled:shadow-none disabled:translate-y-0">${t.save}</button>`}
         <div id="subs" class="mt-5"></div>
@@ -490,9 +660,10 @@ function renderInner() {
     };
     if ($("nm")) $("nm").oninput = e => { state.name = e.target.value; markDirty(); };
     if ($("saveBtn")) $("saveBtn").onclick = saveStudent;
-    $("cl").onchange = e => {
-      state.cls = e.target.value;
-      if (state.saved) { saveProfile(); try { if (saved.sid) set(ref(db, "testStudents/" + saved.sid), stuRec(state.name, state.cls)).catch(() => {}); } catch (e2) {} loadSubjects(); }
+    $("cl").onclick = e => {
+      const b = e.target.closest("[data-c]"); if (!b) return;
+      state.cls = b.dataset.c; paintCls(); { const er = $("err"); if (er) er.classList.add("hidden"); }
+      if (state.saved) { saveProfile(); try { if (saved.sid) set(ref(db, "testStudents/" + saved.sid), stuRec(state.name, state.cls)).catch(() => {}); } catch (e2) {} registerPush(); loadSubjects(); }
       else markDirty();
     };
     document.querySelectorAll(".goTab").forEach(b => b.onclick = () => { state.lbTab = b.dataset.go; state.lbSort = state.lbSort || "latest"; state.screen = "leaderboard"; render(); });
@@ -538,6 +709,7 @@ function renderInner() {
     app.innerHTML = `
       <div class="pop text-center py-6">
         <p class="text-neutral-500 text-sm mb-1">${t.result} &middot; ${esc(sl(state.subName))}</p>
+        ${state.pending && state.pending.createdAt ? `<p class="text-xs font-semibold text-green-700">\u{1F552} ${LB[lang].taken}: ${fmtDT(state.pending.createdAt)}</p>` : ""}
         <div class="relative mx-auto my-4 w-48 h-48">
           <svg viewBox="0 0 120 120" class="w-full h-full -rotate-90"><circle cx="60" cy="60" r="52" fill="none" stroke="#dcfce7" stroke-width="10"/><circle class="ringc" cx="60" cy="60" r="52" fill="none" stroke="url(#rg)" stroke-width="10" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="${(326.7 * (1 - pct / 100)).toFixed(1)}" style="--c:326.7"/><defs><linearGradient id="rg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#16a34a"/><stop offset="1" stop-color="#4ade80"/></linearGradient></defs></svg>
           <div class="absolute inset-0 grid place-items-center"><div><div class="text-4xl font-extrabold gtext leading-none">${state.score}<span class="text-lg text-neutral-400">/${total}</span></div><div class="text-sm font-bold text-green-700 mt-1">${pct}%</div></div></div>
@@ -578,11 +750,15 @@ function renderInner() {
     if (state.lbSub && !subs[state.lbSub]) state.lbSub = "";
     const list = inCls.filter(r => !state.lbSub || r.subjectKey === state.lbSub);
     const avgP = list.length ? Math.round(list.reduce((a, r) => a + pc(r), 0) / list.length) : 0;
-    const chip = (k, label) => `<button data-s="${esc(k)}" class="shrink-0 px-3.5 py-1.5 rounded-full text-xs font-semibold border transition ${state.lbSub === k ? "bg-green-600 border-green-600 text-white" : "border-green-200 text-green-700 hover:bg-green-50"}">${esc(label)}</button>`;
+    const chip = (k, label) => `<button data-s="${esc(k)}" class="shrink-0 px-3.5 h-9 rounded-xl text-xs font-bold border-2 transition ${state.lbSub === k ? "bg-green-600 border-green-600 text-white" : "bg-white border-green-300 text-green-800"}">${esc(label)}</button>`;
+    const lchip = (c, label) => `<button data-fc="${esc(c)}" class="px-3 h-9 rounded-xl text-xs font-bold border-2 transition ${state.lbCls === c ? "bg-green-600 border-green-600 text-white" : "bg-white border-green-300 text-green-800"}">${esc(label)}</button>`;
     const tabBtn = (k, label) => `<button data-tab="${k}" class="flex-1 py-2.5 rounded-full text-sm font-bold transition ${tab === k ? "bg-gradient-to-b from-green-500 to-green-600 text-white shadow-md shadow-green-600/30" : "text-green-700"}">${label}</button>`;
     const filters = `
-      <select id="fc" class="${inputCls} !py-2.5 text-sm mb-3"><option value="">${l.allCls}</option>${clsOptions(state.lbCls)}</select>
-      <div id="chips" class="no-scroll flex gap-2 overflow-x-auto pb-3 mb-2">${chip("", l.all)}${Object.keys(subs).map(k => chip(k, sl(subs[k]))).join("")}</div>`;
+      <div class="text-xs font-bold text-green-800 mb-2">${l.classL}</div>
+      <div id="clsChips" class="flex flex-wrap gap-2 mb-4">${lchip("", l.allCls)}${CLASSES.map(c => lchip(c, c)).join("")}</div>
+      <div class="text-xs font-bold text-green-800 mb-2">${l.subjL}</div>
+      <div id="chips" class="no-scroll flex gap-2 overflow-x-auto pb-3">${chip("", l.all)}${Object.keys(subs).map(k => chip(k, sl(subs[k]))).join("")}</div>
+      <div class="mb-4 px-3 py-2 rounded-xl bg-green-50 border border-green-100 text-xs text-green-900">\u{1F4CD} ${l.showing}: <b>${state.lbCls ? esc(clsLabel(state.lbCls)) : l.allCls}</b> &middot; <b>${state.lbSub ? esc(sl(subs[state.lbSub])) : t.all}</b> &middot; ${list.length} ${l.tests}</div>`;
     const head = `<button id="backTop" class="sticky top-2 z-20 mb-3 inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full ${btnMain} text-sm shadow-lg">&larr; ${l.back}</button><div class="pop glass flex p-1 rounded-full mb-5" id="tabs">${tabBtn("students", "\u{1F465} " + l.stu)}${tabBtn("toppers", "\u{1F3C6} " + l.top)}</div>`;
     let body = "";
 
@@ -604,49 +780,48 @@ function renderInner() {
         </div>
         <div id="stList"></div>`;
     } else {
-      const ch = list[0];
       const champ = {};
       SUBS.forEach(x => { let bb = null; inCls.forEach(r => { if (r.subject === x && betterR(r, bb)) bb = r; }); champ[x] = bb; });
       const icon = { Maths: "\u{1F522}", Science: "\u{1F52C}", English: "\u{1F4D6}", Hindi: "\u0905" };
-      const top10 = list.slice(0, 10);
-      const rankBadge = i => i < 3 ? `<div class="w-10 h-10 grid place-items-center text-2xl shrink-0">${medal(i)}</div>` : `<div class="w-10 h-10 rounded-full bg-green-100 text-green-700 grid place-items-center font-extrabold text-sm shrink-0">${i + 1}</div>`;
       const clsTop = !state.lbCls ? CLASSES.map(c => ({ c, r: list.find(x => x.cls === c) })).filter(o => o.r) : [];
-      const clsHtml = clsTop.length ? `<h3 class="text-sm font-bold text-green-700 mt-7">${l.clsTop}</h3><p class="text-[.7rem] text-neutral-500 mb-3">${l.tap}</p>
-        <div class="rounded-3xl border border-green-100 overflow-hidden bg-white/90 shadow-lg shadow-green-100/60">
-          ${clsTop.map((o, i) => `<button data-cls="${esc(o.c)}" class="w-full text-left flex items-center gap-3 px-4 py-3 hover:bg-green-50 transition ${i ? "border-t border-green-50" : ""}">
+      const when = r => r.createdAt ? `<div class="text-[.65rem] font-semibold text-green-700 truncate">\u{1F552} ${fmtDT(r.createdAt)}</div>` : "";
+      const meTag = r => isMe(r) ? `<span class="text-[.6rem] px-1.5 py-0.5 rounded-full bg-green-600 text-white font-semibold align-middle">${l.you}</span>` : "";
+      const scoreBox = r => `<div class="text-right shrink-0"><div class="font-extrabold text-base text-green-700 leading-tight">${r.score}<span class="text-xs text-neutral-400 font-semibold">/${r.total}</span></div><div class="text-[.68rem] font-bold text-green-700">${pc(r)}%</div>${r.timeMs ? `<div class="text-[.65rem] text-neutral-500">\u23F1 ${fmtT(r.timeMs)}</div>` : ""}</div>`;
+      const sec = (title, desc, mt = "mt-8") => `<h3 class="text-base font-extrabold text-green-800 ${mt}">${title}</h3><p class="text-xs text-neutral-500 mb-3">${desc}</p>`;
+      const box = inner => `<div class="rounded-3xl border border-green-100 overflow-hidden bg-white/90 shadow-lg shadow-green-100/60">${inner}</div>`;
+      const info = `<div class="rounded-2xl border border-green-200 bg-green-50 px-4 py-3 text-xs leading-relaxed text-green-900 mb-5"><div class="font-bold mb-0.5">\u2139\uFE0F ${l.howT}</div>${l.how}</div>`;
+
+      // Top 3 podium (2nd - 1st - 3rd)
+      const tones = ["from-amber-200 to-amber-300 text-amber-900", "from-neutral-200 to-neutral-300 text-neutral-700", "from-orange-200 to-orange-300 text-orange-900"];
+      const hts = ["h-28", "h-20", "h-16"];
+      const slot = i => {
+        const r = list[i];
+        const ped = `<div class="w-full ${hts[i]} mt-2 rounded-t-2xl bg-gradient-to-b ${tones[i]} flex flex-col items-center justify-center leading-none"><span class="text-2xl">${medal(i)}</span><span class="text-sm font-extrabold mt-1">#${i + 1}</span></div>`;
+        if (!r) return `<div class="flex flex-col items-center justify-end min-w-0 opacity-40"><div class="text-xs font-semibold text-neutral-400 py-6">-</div>${ped}</div>`;
+        const av = avImg(r.name, i === 0 ? "w-14 h-14" : "w-11 h-11") || `<div class="${i === 0 ? "w-14 h-14 text-lg" : "w-11 h-11"} rounded-full bg-green-100 text-green-700 grid place-items-center font-extrabold shrink-0">${esc(ini(r.name))}</div>`;
+        return `<div class="flex flex-col items-center justify-end min-w-0"><div class="w-full flex flex-col items-center px-1 py-2 rounded-2xl ${isMe(r) ? "bg-green-100 ring-2 ring-green-500" : ""}">${av}<div class="w-full text-center text-xs font-bold truncate mt-1.5">${esc(r.name)}</div><div class="text-[.62rem] text-neutral-500 text-center leading-tight">${esc(clsLabel(r.cls))}<br>${esc(sl(r.subject))}</div><div class="font-extrabold text-green-700 mt-1 leading-none">${r.score}<span class="text-xs text-neutral-400 font-semibold">/${r.total}</span></div><div class="text-[.65rem] font-bold text-green-700">${pc(r)}%</div>${r.timeMs ? `<div class="text-[.62rem] text-neutral-500">\u23F1 ${fmtT(r.timeMs)}</div>` : ""}${r.createdAt ? `<div class="text-[.58rem] text-green-700 font-semibold text-center leading-tight mt-0.5">\u{1F552} ${fmtDT(r.createdAt)}</div>` : ""}</div>${ped}</div>`;
+      };
+      const podium = sec("\u{1F3C6} " + l.podium, l.podD, "mt-0") + `<div class="pop grid grid-cols-3 gap-2 items-end rounded-3xl px-3 pt-4 bg-gradient-to-b from-green-50 to-white border border-green-100 shadow-lg shadow-green-100/60">${slot(1)}${slot(0)}${slot(2)}</div>`;
+
+      // Rank 4 to 10
+      const rest = list.slice(3, 10);
+      const restHtml = rest.length ? sec("\u{1F4CB} " + l.rest, l.restD) + box(`<div class="flex justify-between px-4 py-2 bg-green-50 text-[.68rem] font-bold text-green-800"><span>${l.rankStu}</span><span>${l.scoreTime}</span></div>` + rest.map((r, j) => `<div class="flex items-center gap-3 px-4 py-3 border-t border-green-50 ${isMe(r) ? "bg-green-50 ring-2 ring-inset ring-green-500" : ""}"><div class="w-8 h-8 rounded-full bg-green-100 text-green-700 grid place-items-center font-extrabold text-sm shrink-0">${j + 4}</div>${avImg(r.name, "w-9 h-9")}<div class="flex-1 min-w-0"><div class="font-semibold text-sm truncate">${esc(r.name)} ${meTag(r)}</div><div class="text-[.7rem] text-neutral-500 truncate">${esc(clsLabel(r.cls))} &middot; ${esc(sl(r.subject))}</div>${when(r)}</div>${scoreBox(r)}</div>`).join("")) : "";
+
+      // Topper of every class
+      const clsHtml = clsTop.length ? sec("\u{1F3EB} " + l.clsTop, l.tap) + box(clsTop.map((o, i) => `<button data-cls="${esc(o.c)}" class="w-full text-left flex items-center gap-3 px-4 py-3 hover:bg-green-50 transition ${i ? "border-t border-green-50" : ""}">
             <div class="min-w-[58px] px-2 py-1.5 rounded-xl bg-green-600 text-white text-center text-xs font-extrabold shrink-0">${esc(clsLabel(o.c))}</div>
-            <div class="flex-1 min-w-0"><div class="font-semibold text-sm truncate">\u{1F947} ${esc(o.r.name)}</div><div class="text-[.7rem] text-neutral-500 truncate">${esc(o.r.subject || "")}</div></div>
-            <div class="text-right shrink-0"><div class="font-extrabold text-green-700">${o.r.score}<span class="text-xs text-neutral-400 font-semibold">/${o.r.total}</span></div>${o.r.timeMs ? `<div class="text-[.65rem] text-neutral-500">${fmtT(o.r.timeMs)}</div>` : ""}</div>
-            <span class="text-green-600">\u203A</span>
-          </button>`).join("")}
-        </div>` : "";
-      body = `${filters}` + (!ch ? `<p class="text-center text-neutral-500 py-12 border border-dashed border-green-200 rounded-2xl">${l.none}</p>` : `
-        <div class="pop rounded-3xl p-5 text-white bg-gradient-to-br from-green-700 via-green-600 to-emerald-400 shadow-xl shadow-green-200">
-          <div class="text-xs font-bold tracking-wider opacity-90">\u{1F947} ${l.no1}${state.lbSub ? " \u00B7 " + esc(sl(subs[state.lbSub])) : ""}</div>
-          <div class="text-2xl font-extrabold mt-2 break-words">${esc(ch.name)}</div>
-          <div class="text-sm opacity-90">${esc(clsLabel(ch.cls))} \u00B7 ${esc(sl(ch.subject))}</div>
-          <div class="flex flex-wrap gap-2 mt-4">
-            <span class="px-4 py-1.5 rounded-full bg-white text-green-800 font-extrabold text-sm">${ch.score}/${ch.total} ${l.correct}</span>
-            ${ch.timeMs ? `<span class="px-4 py-1.5 rounded-full bg-white/20 font-bold text-sm">\u23F1 ${fmtT(ch.timeMs)}</span>` : ""}
-          </div>
-        </div>
-        ${clsHtml}
-        <h3 class="text-sm font-bold text-green-700 mt-7 mb-3">${state.lbCls ? esc(clsLabel(state.lbCls)) + " \u00B7 " : ""}${state.lbCls ? l.top10 : l.overall}</h3>
-        <div class="rounded-3xl border border-green-100 overflow-hidden bg-white/90 shadow-lg shadow-green-100/60 stagger">
-          ${top10.map((r, i) => `<div class="flex items-center gap-3 px-4 py-3 ${i ? "border-t border-green-50" : ""} ${isMe(r) ? "bg-green-50 ring-2 ring-inset ring-green-500" : ""}">
-            ${rankBadge(i)}${avImg(r.name, "w-9 h-9")}
-            <div class="flex-1 min-w-0"><div class="font-semibold text-sm truncate">${esc(r.name)}${isMe(r) ? ` <span class="text-[.6rem] px-1.5 py-0.5 rounded-full bg-green-600 text-white font-semibold align-middle">${l.you}</span>` : ""}</div><div class="text-[.7rem] text-neutral-500 truncate">${esc(clsLabel(r.cls))} \u00B7 ${esc(sl(r.subject))}</div></div>
-            <div class="text-right shrink-0"><div class="font-extrabold text-green-700">${r.score}<span class="text-xs text-neutral-400 font-semibold">/${r.total}</span></div>${r.timeMs ? `<div class="text-[.65rem] text-neutral-500">${fmtT(r.timeMs)}</div>` : ""}</div>
-          </div>`).join("")}
-        </div>
-        <h3 class="text-sm font-bold text-green-700 mt-7 mb-3">${l.subTop}</h3>
-        <div class="rounded-3xl border border-green-100 overflow-hidden bg-white/90 shadow-lg shadow-green-100/60">
-          ${SUBS.map((x, i) => { const r = champ[x]; return `<div class="flex items-center gap-3 px-4 py-3 ${i ? "border-t border-green-50" : ""}">
+            <div class="flex-1 min-w-0"><div class="font-semibold text-sm truncate">\u{1F947} ${esc(o.r.name)}</div><div class="text-[.7rem] text-neutral-500 truncate">${esc(sl(o.r.subject))}</div>${when(o.r)}</div>
+            ${scoreBox(o.r)}<span class="text-green-600 text-lg">\u203A</span>
+          </button>`).join("")) : "";
+
+      // Topper of every subject
+      const subHtml = sec("\u{1F4DA} " + l.subTop, l.subTopD) + box(SUBS.map((x, i) => { const r = champ[x]; return `<div class="flex items-center gap-3 px-4 py-3 ${i ? "border-t border-green-50" : ""}">
             <div class="w-10 h-10 rounded-xl bg-green-100 grid place-items-center text-lg font-bold text-green-700 shrink-0">${icon[x]}</div>
-            <div class="flex-1 min-w-0"><div class="text-[.7rem] font-bold text-green-700">${sl(x)}</div>${r ? `<div class="font-semibold text-sm truncate">${esc(r.name)} <span class="text-neutral-400 font-normal">\u00B7 ${esc(clsLabel(r.cls))}</span></div>` : `<div class="text-sm text-neutral-400">${l.noTop}</div>`}</div>
-            ${r ? `<div class="text-right shrink-0"><div class="font-extrabold text-green-700">${r.score}<span class="text-xs text-neutral-400 font-semibold">/${r.total}</span></div>${r.timeMs ? `<div class="text-[.65rem] text-neutral-500">${fmtT(r.timeMs)}</div>` : ""}</div>` : ""}
-          </div>`; }).join("")}
-        </div>`);
+            <div class="flex-1 min-w-0"><div class="text-xs font-bold text-green-700">${sl(x)}</div>${r ? `<div class="font-semibold text-sm truncate">${esc(r.name)} <span class="text-neutral-400 font-normal">&middot; ${esc(clsLabel(r.cls))}</span></div>${when(r)}` : `<div class="text-sm text-neutral-400">${l.noTop}</div>`}</div>
+            ${r ? scoreBox(r) : ""}
+          </div>`; }).join(""));
+
+      body = `${filters}` + (!list.length ? `<p class="text-center text-neutral-500 py-12 border border-dashed border-green-200 rounded-2xl">${l.none}</p>` : info + podium + restHtml + clsHtml + subHtml);
     }
     app.innerHTML = head + body + `<button id="backStart" class="block w-full text-center py-3.5 rounded-2xl ${btnMain} text-base mt-7">&larr; ${l.back}</button>`;
 
@@ -663,21 +838,21 @@ function renderInner() {
       const shown = rows.slice(0, state.lbLimit || 60);
       if (!rows.length) { box.innerHTML = liveHtml + `<p class="text-center text-neutral-500 py-12 border border-dashed border-green-200 rounded-2xl">${l.none}</p>`; return; }
       box.innerHTML = liveHtml + `<div class="rounded-3xl border border-green-100 overflow-hidden bg-white/90 shadow-lg shadow-green-100/60 stagger">` + shown.map((r, i) => {
-        const p = pc(r), rk = rankOf.get(r.id), dt = r.createdAt ? new Date(r.createdAt).toLocaleDateString(lang === "hi" ? "hi-IN" : "en-IN", { day: "numeric", month: "short" }) : "";
+        const p = pc(r), rk = rankOf.get(r.id), dt = fmtDT(r.createdAt);
         const col = p >= 75 ? "text-green-700" : p >= 50 ? "text-amber-600" : "text-red-500";
         return `<div data-nm="${esc(String(r.name).trim().toLowerCase())}" data-cl="${esc(String(r.cls))}" class="cursor-pointer flex items-center gap-3 px-4 py-3 ${i ? "border-t border-green-50" : ""} ${isMe(r) ? "bg-green-50 ring-2 ring-inset ring-green-500" : ""}">
           ${avImg(r.name) || `<div class="w-10 h-10 rounded-full ${rk <= 3 ? "bg-green-600 text-white" : "bg-green-100 text-green-700"} grid place-items-center font-bold shrink-0">${esc(ini(r.name))}</div>`}
           <div class="flex-1 min-w-0">
             <div class="flex items-center gap-1.5"><span class="font-semibold text-sm truncate">${esc(r.name)}</span><span class="text-[.6rem] px-1.5 py-0.5 rounded-full bg-green-100 text-green-700 font-semibold shrink-0">${baar(cntOf.get(ck(r)) || 1)}</span>${isMe(r) ? `<span class="text-[.6rem] px-1.5 py-0.5 rounded-full bg-green-600 text-white font-semibold">${l.you}</span>` : ""}${rk <= 3 ? `<span>${medal(rk - 1)}</span>` : ""}</div>
-            <div class="text-[.68rem] text-neutral-500 truncate">${esc(clsLabel(r.cls))} &middot; ${esc(sl(r.subject))}${dt ? " &middot; " + dt : ""}</div>
+            <div class="text-[.68rem] text-neutral-500 truncate">${esc(clsLabel(r.cls))} &middot; ${esc(sl(r.subject))}</div>${dt ? `<div class="text-[.68rem] font-semibold text-green-700">\u{1F552} ${dt}</div>` : ""}
             <div class="h-1.5 rounded-full bg-green-100 mt-1.5 overflow-hidden"><div class="bar h-full rounded-full bg-gradient-to-r from-green-600 to-green-400" style="width:${p}%"></div></div>
           </div>
-          <div class="text-right shrink-0"><div class="font-extrabold text-base ${col}">${r.score}<span class="text-xs text-neutral-400 font-semibold">/${r.total}</span></div><div class="text-[.68rem] font-semibold ${col}">${p}%</div>${r.timeMs ? `<div class="text-[.65rem] text-neutral-500">${fmtT(r.timeMs)}</div>` : ""}</div>
+          <div class="text-right shrink-0"><div class="font-extrabold text-base ${col}">${r.score}<span class="text-xs text-neutral-400 font-semibold">/${r.total}</span></div><div class="text-[.68rem] font-semibold ${col}">${p}%</div>${r.timeMs ? `<div class="text-[.65rem] text-neutral-500">\u23F1 ${fmtT(r.timeMs)}</div>` : ""}</div>
         </div>`; }).join("") + `</div>` + (rows.length > shown.length ? `<button id="moreBtn" class="block w-full mt-3 py-3 rounded-2xl ${btnLine} text-sm">${lang === "hi" ? "और दिखाएँ" : "Show more"} (${rows.length - shown.length})</button>` : "");
       const me = box.querySelector(".ring-inset"); if (me && !state.metSeen) { state.metSeen = 1; me.scrollIntoView({ block: "center" }); }
     };
     $("tabs").onclick = e => { const b = e.target.closest("[data-tab]"); if (b) { state.lbTab = b.dataset.tab; render(); } };
-    const fc = $("fc"); if (fc) fc.onchange = e => { state.lbCls = e.target.value; state.lbSub = ""; render(); };
+    const cc = $("clsChips"); if (cc) cc.onclick = e => { const b = e.target.closest("[data-fc]"); if (!b) return; state.lbCls = b.dataset.fc; state.lbSub = ""; render(); };
     app.querySelectorAll("[data-cls]").forEach(b => b.onclick = () => { state.lbCls = b.dataset.cls; state.lbSub = ""; render(); window.scrollTo({ top: 0, left: 0, behavior: "instant" }); });
     const chips = $("chips"); if (chips) chips.onclick = e => { const b = e.target.closest("[data-s]"); if (!b) return; state.lbSub = b.dataset.s; render(); };
     if (tab === "students") {
@@ -689,7 +864,7 @@ function renderInner() {
         const row = e.target.closest("[data-nm]"); if (!row) return;
         const nx = row.nextElementSibling; if (nx && nx.classList.contains("hist")) { nx.remove(); return; }
         const h = results.filter(x => String(x.name).trim().toLowerCase() === row.dataset.nm && String(x.cls) === row.dataset.cl).sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
-        row.insertAdjacentHTML("afterend", `<div class="hist bg-green-50/60 px-4 py-2 text-xs border-t border-green-100"><div class="font-bold text-green-700 mb-1">${esc(h[0] ? h[0].name : "")} - ${h.length} ${l.tests}</div><div class="flex flex-wrap gap-1.5 mb-1.5">` + Object.entries(h.reduce((a, x) => { const c = String(x.cls); a[c] = (a[c] || 0) + 1; return a; }, {})).map(([c, n]) => `<span class="px-2 py-0.5 rounded-full bg-white border border-green-200 text-green-700 font-semibold">${esc(clsLabel(c))}: ${baar(n)}</span>`).join("") + `</div>` + h.map(x => `<div class="flex justify-between py-1"><span>${esc(sl(x.subject))} &middot; ${esc(clsLabel(x.cls))} &middot; ${x.createdAt ? new Date(x.createdAt).toLocaleDateString(lang === "hi" ? "hi-IN" : "en-IN", { day: "numeric", month: "short" }) : ""}</span><b>${x.score}/${x.total} &middot; ${pc(x)}%</b></div>`).join("") + `</div>`);
+        row.insertAdjacentHTML("afterend", `<div class="hist bg-green-50/60 px-4 py-2 text-xs border-t border-green-100"><div class="font-bold text-green-700 mb-1">${esc(h[0] ? h[0].name : "")} - ${h.length} ${l.tests}</div><div class="flex flex-wrap gap-1.5 mb-1.5">` + Object.entries(h.reduce((a, x) => { const c = String(x.cls); a[c] = (a[c] || 0) + 1; return a; }, {})).map(([c, n]) => `<span class="px-2 py-0.5 rounded-full bg-white border border-green-200 text-green-700 font-semibold">${esc(clsLabel(c))}: ${baar(n)}</span>`).join("") + `</div>` + h.map(x => `<div class="flex justify-between gap-3 py-1"><span>${esc(sl(x.subject))} &middot; ${esc(clsLabel(x.cls))}${x.createdAt ? `<br><span class="font-semibold text-green-700">\u{1F552} ${fmtDT(x.createdAt)}</span>` : ""}</span><b class="shrink-0">${x.score}/${x.total} &middot; ${pc(x)}%</b></div>`).join("") + `</div>`);
       };
     }
     $("backStart").onclick = $("backTop").onclick = () => { state.screen = "start"; render(); };
