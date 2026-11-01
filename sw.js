@@ -12,10 +12,17 @@ self.addEventListener("notificationclick", e => {
   }));
 });
 
-// Future ke liye: server se push aaye (FCM / Web Push) to bhi notification dikhe
+// Server se push (FCM / Web Push) aaye to notification dikhaye
 self.addEventListener("push", e => {
-  let d = {}; try { d = e.data ? e.data.json() : {}; } catch (_) {}
-  e.waitUntil(self.registration.showNotification(d.title || "Amritt Edition", {
-    body: d.body || "", icon: "/apple-touch-icon.png", badge: "/favicon.ico", data: { url: d.url || "/test.html" }
+  let d = {};
+  try { d = e.data ? e.data.json() : {}; } catch (_) { try { d = { body: e.data.text() }; } catch (__) {} }
+  // FCM Console: { notification: { title, body }, data: {...} }  |  data-only: { title, body, url }
+  const n = d.notification || {};
+  const x = d.data || {};
+  const title = n.title || x.title || d.title || "Amritt Edition";
+  const body = n.body || x.body || d.body || "";
+  const url = x.url || d.url || (d.fcmOptions && d.fcmOptions.link) || (n.click_action) || "/test.html";
+  e.waitUntil(self.registration.showNotification(title, {
+    body, icon: "/apple-touch-icon.png", badge: "/favicon.ico", data: { url }
   }));
 });
