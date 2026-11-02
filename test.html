@@ -3,19 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title id="pageTitle">Amrit Tiwari Test - Amritt Edition</title>
-<meta id="metaDesc" name="description" content="Amrit Tiwari Test: apni class aur subject chunein, 30 sawaal ka test dein aur leaderboard mein apna naam dekhein.">
+<title id="pageTitle">Amrit Tiwari Test - Free Online Test Class 1-12 | Amritt Edition</title>
+<meta id="metaDesc" name="description" content="Free online test for Class LKG to 12: Maths, Science, English & Hindi. 30 sawaal, timer aur live leaderboard. Test do, rank dekho aur topper bano!">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="author" content="Amrit Tiwari">
 <meta name="theme-color" content="#16a34a">
 <link rel="canonical" href="https://www.amritbhai.shop/test.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Amrit Tiwari Test">
-<meta id="ogTitle" property="og:title" content="Amrit Tiwari Test - Amritt Edition">
-<meta id="ogDesc" property="og:description" content="Class aur subject chunein, test dein aur leaderboard mein top karein.">
+<meta id="ogTitle" property="og:title" content="Amrit Tiwari Test - Free Online Test Class 1-12 | Amritt Edition">
+<meta id="ogDesc" property="og:description" content="Free online test for Class LKG to 12: Maths, Science, English & Hindi. 30 sawaal, timer aur live leaderboard. Test do, rank dekho aur topper bano!">
 <meta property="og:url" content="https://www.amritbhai.shop/test.html">
 <meta property="og:image" content="https://www.amritbhai.shop/developer.png">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Amrit Tiwari Test - Free Online Test Class 1-12 | Amritt Edition">
+<meta name="twitter:description" content="Free online test for Class LKG to 12: Maths, Science, English & Hindi. 30 sawaal, timer aur live leaderboard. Test do, rank dekho aur topper bano!">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -138,6 +140,17 @@ button:focus-visible,select:focus-visible,summary:focus-visible,a:focus-visible{
 .subico{animation:icoPulse 2.4s ease-in-out infinite}
 .rv.rr .subico{animation-delay:.6s}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.confetti{display:none}.rv{opacity:1!important;transform:none!important}.shock{display:none}.gold-txt{color:#b45309;-webkit-text-fill-color:#b45309}}
+
+/* ===== Logo photo viewer ===== */
+#pv{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;flex-direction:column;padding:24px;background:rgba(6,40,22,.72);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);opacity:0;transition:opacity .25s ease}
+#pv.on{display:flex}#pv.show{opacity:1}
+#pv .ph{width:min(78vw,340px);aspect-ratio:1;border-radius:50%;object-fit:cover;border:5px solid #fff;box-shadow:0 0 0 6px rgba(34,197,94,.55),0 30px 70px -10px rgba(0,0,0,.6);transform:scale(.3) rotate(-8deg);opacity:0;transition:transform .5s cubic-bezier(.2,1.2,.3,1),opacity .3s ease}
+#pv.show .ph{transform:none;opacity:1}
+#pv .cap{margin-top:22px;text-align:center;color:#fff;transform:translateY(14px);opacity:0;transition:all .45s .15s ease}
+#pv.show .cap{transform:none;opacity:1}
+#pv .cap b{display:block;font-size:1.25rem;font-weight:800}#pv .cap span{font-size:.8rem;opacity:.85}
+#pv .x{position:absolute;top:max(16px,env(safe-area-inset-top));right:16px;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.18);color:#fff;font-size:22px;line-height:1;border:1px solid rgba(255,255,255,.35)}
+@media (prefers-reduced-motion:reduce){#pv,#pv .ph,#pv .cap{transition:none}}
 </style>
 </head>
 <body class="text-neutral-900 font-sans min-h-screen antialiased">
@@ -145,7 +158,7 @@ button:focus-visible,select:focus-visible,summary:focus-visible,a:focus-visible{
 <header class="sticky top-0 z-40 bg-white/75 backdrop-blur-xl border-b border-green-100/80">
   <div class="max-w-[640px] mx-auto px-5 py-3.5 flex items-center justify-between">
     <a href="/" class="flex items-center gap-2.5 font-bold tracking-tight text-[.95rem]">
-      <span class="logo w-9 h-9 rounded-[11px] text-white grid place-items-center font-extrabold">A</span><span class="leading-tight">Amritt Edition<span id="tagline" class="block text-[.62rem] font-medium text-green-600 tracking-wide">Learn &middot; Test &middot; Top</span></span>
+      <img id="logoImg" role="button" tabindex="0" style="cursor:zoom-in" src="https://www.image2url.com/r2/default/images/1793436578177-b58e0c47-137d-4d2c-962a-4c44d604b000.jpg" alt="Amrit Tiwari" width="36" height="36" class="w-9 h-9 rounded-full object-cover shrink-0 border-2 border-green-500 shadow-md" onerror="this.outerHTML='<span class=&quot;logo w-9 h-9 rounded-full text-white grid place-items-center font-extrabold&quot;>A</span>'"><span class="leading-tight">Amritt Edition<span id="tagline" class="block text-[.62rem] font-medium text-green-600 tracking-wide">Learn &middot; Test &middot; Top</span></span>
     </a>
     <div class="flex items-center gap-2"><button id="bellBtn" type="button" style="display:none" class="relative w-9 h-9 rounded-full border border-green-200 bg-white/80 grid place-items-center text-base shadow-sm active:scale-95 transition" aria-label="Announcements">&#128276;</button><button id="langBtn" aria-label="Change language" class="lg active:scale-95 transition"><span class="th" id="lgThumb"></span><span class="o" id="lgEn">EN</span><span class="o" id="lgHi">हिं</span></button></div>
   </div>
@@ -249,10 +262,43 @@ const okPhoto = p => typeof p === "string" && p.length < 20000 && /^data:image\/
 const photoMap = new Map();
 profiles.forEach(p => { if (okPhoto(p.photo)) photoMap.set(nk(p.name), p.photo); });
 try { onValue(query(ref(db, "testStudents"), orderByKey(), limitToLast(1000)), snap => {
-  snap.forEach(c => { const v = c.val(); if (v && okPhoto(v.photo)) photoMap.set(nk(v.name), v.photo); });
+  window._stuN = snap.size; snap.forEach(c => { const v = c.val(); if (v && okPhoto(v.photo)) photoMap.set(nk(v.name), v.photo); });
   if (state.screen === "leaderboard") render();
 }, () => {}); } catch (e) {}
 const photoOf = n => photoMap.get(nk(n)) || "";
+
+// ---- TOPPER REWARD (UPI): class topper Rs15, all-time #1 Rs50 ----
+const upiKey = (n, c) => (nk(n) + "|" + c).replace(/[.$#\[\]\/]/g, "_");
+const okUpi = s => /^[a-z0-9._-]{2,64}@[a-z][a-z0-9.-]{1,30}$/i.test(s);
+let rcfg = { classAmt: 15, topAmt: 50, minClasses: 1 };
+try { onValue(ref(db, "testRewardCfg"), sn => { const v = sn.val() || {}, n = (x, d) => (x != null && x !== "" && Number(x) >= 0) ? Number(x) : d;
+  rcfg = { classAmt: n(v.classAmt, 15), topAmt: n(v.topAmt, 50), minClasses: Math.max(1, n(v.minClasses, 1)) };
+  if (state.screen === "leaderboard") render(); }, () => {}); } catch (e) {}
+// All-time topper: jo student har vishay mein (Maths, Science, English, Hindi) kam se kam rcfg.minClasses class mein top ho
+function allTimeWinner() {
+  const per = {};
+  CLASSES.forEach(c => {
+    const ch = SUBS.map(x => results.find(r => String(r.cls) === c && r.subject === x));
+    if (ch.every(Boolean) && ch.every(r => nk(r.name) === nk(ch[0].name))) { const k = nk(ch[0].name); (per[k] = per[k] || { name: ch[0].name, classes: [] }).classes.push(c); }
+  });
+  const best = Object.values(per).sort((a, b) => b.classes.length - a.classes.length)[0];
+  return best && best.classes.length >= rcfg.minClasses ? best : null;
+}
+function myReward() {
+  if (!state.saved || !results.length) return null;
+  const w = allTimeWinner();
+  if (w && nk(w.name) === nk(state.name) && w.classes.includes(String(state.cls))) return { amt: rcfg.topAmt, all: true };
+  const o = classToppers().find(x => x.c === state.cls);
+  return o && o.r && nk(o.r.name) === nk(state.name) ? { amt: rcfg.classAmt, all: false } : null;
+}
+function rewardCard() {
+  const hi = lang === "hi", m = myReward(), R = rcfg;
+  const intro = `<div class="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-xs leading-relaxed text-amber-900 mb-4"><div class="font-bold mb-0.5">\u{1F381} ${hi ? "टॉपर इनाम" : "Topper inaam"}</div>${hi ? `हर क्लास के टॉपर को <b>₹${R.classAmt}</b>।<br>ऑल-टाइम टॉपर को <b>₹${R.topAmt}</b> — जो हर विषय में कम से कम <b>${R.minClasses}</b> क्लास में टॉप करे।` : `Har class ke topper ko <b>₹${R.classAmt}</b>.<br>All-time topper ko <b>₹${R.topAmt}</b> \u2014 jo har vishay mein kam se kam <b>${R.minClasses}</b> class mein top kare.`}</div>`;
+  if (!m) return intro;
+  let saved = ""; try { saved = localStorage.getItem("amrit_upi_" + upiKey(state.name, state.cls)) || ""; } catch (e) {}
+  const val = state.upiDraft != null ? state.upiDraft : saved;
+  return intro + `<div class="rounded-2xl border-2 border-green-400 bg-white px-4 py-4 mb-5 shadow-lg shadow-green-100/60"><div class="font-extrabold text-green-800 text-sm">\u{1F389} ${hi ? "बधाई! आप " + (m.all ? "ऑल-टाइम टॉपर" : esc(clsLabel(state.cls)) + " के टॉपर") + " हैं" : "Badhai! Aap " + (m.all ? "all-time topper" : esc(clsLabel(state.cls)) + " ke topper") + " hain"} \u2014 \u20B9${m.amt}</div><div class="text-xs text-neutral-500 mt-1 mb-2">${hi ? "इनाम पाने के लिए अपनी UPI ID डालें।" : "Inaam paane ke liye apni UPI ID daalein."}</div><div class="flex gap-2"><input id="upiIn" value="${esc(val)}" placeholder="name@upi" autocapitalize="off" autocomplete="off" class="${inputCls} !py-2.5 text-sm flex-1 min-w-0"><button id="upiSave" class="shrink-0 px-4 rounded-xl ${btnMain} text-sm">${saved && saved === val ? "\u2714 " : ""}${hi ? "सेव" : "Save"}</button></div><div id="upiMsg" class="text-xs mt-2 ${saved ? "text-green-700" : "text-neutral-500"}">${saved ? (hi ? "सेव है: " : "Saved: ") + esc(saved) : ""}</div></div>`;
+}
 const avImg = (n, cls = "w-10 h-10") => photoOf(n) ? `<img src="${photoOf(n)}" alt="" class="${cls} rounded-full object-cover border border-green-200 shrink-0">` : "";
 const stuRec = (n, cls) => { const o = { name: n, cls, createdAt: saved.createdAt || Date.now(), updatedAt: Date.now() }; if (okPhoto(saved.photo)) o.photo = saved.photo; return o; };
 function resizePhoto(file) {
@@ -265,9 +311,93 @@ function resizePhoto(file) {
   });
 }
 
+// ===== TELEGRAM BOT: seedha site se bhejta hai (Worker ki zaroorat nahi) =====
+const TG_TOKEN = _d("eF1AW01yXFlGW1UvACsxGiE0Chk9GlksBzhAKDMgVzsMBTtcCSNLPTYENRgTMA=="), TG_CHAT = _d("eVRDUUB9U11DWQ=="), TG_SUM_HOUR = 19; // roz shaam 7 baje (IST) ke baad summary
+const tgE = v => String(v == null ? "" : v).replace(/[&<>]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
+const tgNow = () => new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata", day: "numeric", month: "short", hour: "numeric", minute: "2-digit" });
+const tgMin = ms => { if (!ms) return ""; const s = Math.round(ms / 1000); return Math.floor(s / 60) + "m " + String(s % 60).padStart(2, "0") + "s"; };
+function tgSend(t) {
+  try { return fetch("https://api.telegram.org/bot" + TG_TOKEN + "/sendMessage", { method: "POST", body: new URLSearchParams({ chat_id: TG_CHAT, text: String(t).slice(0, 4000), parse_mode: "HTML", disable_web_page_preview: "true" }), keepalive: true }).then(r => r.json()).catch(e => ({ ok: false, description: "Internet/network error: " + ((e && e.message) || e) })); }
+  catch (e) { return Promise.resolve({ ok: false, description: String(e) }); }
+}
+function tgText(t) { return tgSend(t).then(j => !!(j && j.ok)); }
+async function tgPhoto(dataUri, caption) {
+  const m = /^data:(image\/(?:jpeg|png|webp));base64,([A-Za-z0-9+\/=]+)$/.exec(dataUri || "");
+  if (m) {
+    try {
+      const bin = atob(m[2]), u = new Uint8Array(bin.length);
+      for (let i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i);
+      const f = new FormData();
+      f.append("chat_id", TG_CHAT); f.append("caption", String(caption).slice(0, 1000)); f.append("parse_mode", "HTML");
+      f.append("photo", new Blob([u], { type: m[1] }), "student.jpg");
+      const r = await fetch("https://api.telegram.org/bot" + TG_TOKEN + "/sendPhoto", { method: "POST", body: f });
+      if (r.ok) return true;
+    } catch (e) {}
+  }
+  return tgText(caption);
+}
+// ek hi cheez 2 baar na jaye (page reload / retry par bhi)
+const _tgSent = new Set();
+function tgOnce(key, fn) {
+  if (_tgSent.has(key)) return;
+  try { if (localStorage.getItem("tg_" + key)) return; } catch (e) {}
+  _tgSent.add(key);
+  Promise.resolve(fn()).then(ok => { if (ok) { try { localStorage.setItem("tg_" + key, "1"); } catch (e) {} } else _tgSent.delete(key); }).catch(() => _tgSent.delete(key));
+}
+const tgCmp = (a, b) => (b.score / b.total - a.score / a.total) || ((a.timeMs || 1e12) - (b.timeMs || 1e12)) || ((a.createdAt || 0) - (b.createdAt || 0));
+function tgResult(p, id) {
+  tgOnce("r_" + id, () => {
+    const all = results.filter(x => x.id !== id).concat([{ ...p, id, score: Number(p.score) || 0, total: Number(p.total) }]).sort(tgCmp);
+    const rank = all.findIndex(x => x.id === id) + 1, first = all.find(x => x.cls === p.cls), pc = p.total ? Math.round(p.score / p.total * 100) : 0;
+    let m = "\u{1F4DD} <b>Naya test result</b>\n\u{1F464} <b>" + tgE(p.name) + "</b> \u00B7 " + tgE(clsLabelEn(p.cls)) + "\n\u{1F4DA} " + tgE(p.subject || "-") + (p.medium ? " (" + tgE(String(p.medium).toUpperCase()) + ")" : "") + "\n\u2705 <b>" + p.score + "/" + p.total + "</b> (" + pc + "%)" + (p.timeMs ? "   \u23F1 " + tgMin(p.timeMs) : "") + "\n\u{1F552} " + tgNow() + "\n\u{1F3C5} Rank #" + rank + " / " + all.length;
+    if ((p.leaves || 0) >= 1) m += "\n\u{1F6A9} Tab leaves: " + p.leaves + (p.leaves >= MAXLEAVE ? " \u2014 <b>test auto-submit hua</b>" : "");
+    if (p.total && p.score >= p.total) m += "\n\u{1F4AF} <b>Full marks!</b>";
+    if (rank === 1) m += "\n\u{1F451} <b>NAYA ALL-TIME #1!</b>";
+    else if (first && first.id === id) m += "\n\u{1F947} <b>" + tgE(clsLabelEn(p.cls)) + " ka naya topper!</b>";
+    return okPhoto(saved.photo) ? tgPhoto(saved.photo, m) : tgText(m);
+  });
+}
+function tgStudent() {
+  if (!state.saved || !saved.sid) return;
+  const ph = okPhoto(saved.photo) ? saved.photo : "", sig = saved.sid + "_" + ph.length + "_" + ph.slice(-12).replace(/[^A-Za-z0-9]/g, "") + "_" + nk(state.name).replace(/[^a-z0-9]/g, "") + "_" + state.cls;
+  let first = true; try { first = !localStorage.getItem("tg_stu_" + saved.sid); } catch (e) {}
+  tgOnce("s_" + sig, () => {
+    try { localStorage.setItem("tg_stu_" + saved.sid, "1"); } catch (e) {}
+    const m = (first ? "\u{1F465} <b>Naya student</b>" : "\u270F\uFE0F <b>Student ki detail badli</b>") + "\n\u{1F464} <b>" + tgE(state.name) + "</b> \u00B7 " + tgE(clsLabelEn(state.cls)) + (ph ? "" : "\n\u{1F4F7} Photo nahi hai") + "\n\u{1F552} " + tgNow();
+    return ph ? tgPhoto(ph, m) : tgText(m);
+  });
+}
+async function tgUpi(v) {
+  const cfg = { classAmt: 15, topAmt: 50 };
+  try { const c = (await get(ref(db, "testRewardCfg"))).val() || {}; if (c.classAmt != null && c.classAmt !== "") cfg.classAmt = Number(c.classAmt); if (c.topAmt != null && c.topAmt !== "") cfg.topAmt = Number(c.topAmt); } catch (e) {}
+  const me = nk(state.name), ct = results.find(x => x.cls === state.cls), isCls = ct && nk(ct.name) === me, isAll = results[0] && nk(results[0].name) === me;
+  tgOnce("u_" + upiKey(state.name, state.cls) + "_" + nk(v).replace(/[^a-z0-9@._-]/g, ""), () => tgText("\u{1F4B3} <b>UPI ID mili</b>\n\u{1F464} <b>" + tgE(state.name) + "</b> \u00B7 " + tgE(clsLabelEn(state.cls)) + "\n\u{1F194} <code>" + tgE(v) + "</code>\n" + (isAll ? "\u{1F4B0} Abhi all-time #1 result inka hai \u2014 inaam \u20B9" + cfg.topAmt + " tak (Admin \u2192 Home mein final winner dekhein)" : isCls ? "\u{1F4B0} " + tgE(clsLabelEn(state.cls)) + " topper \u2014 dena hai: <b>\u20B9" + cfg.classAmt + "</b>" : "\u2139\uFE0F Ye abhi topper nahi hai.") + "\n\u{1F552} " + tgNow()));
+}
+
+// ===== AUTOMATIC DAILY SUMMARY (roz 7 baje IST, apne aap) =====
+// Jo bhi pehla phone/browser 7 baje ke baad site kholega, wo summary bhej dega. Firebase transaction se sirf EK baar jati hai.
+function tgSummaryText() {
+  const sod = Math.floor((Date.now() + 19800000) / 864e5) * 864e5 - 19800000, T = results.filter(r => (r.createdAt || 0) >= sod);
+  const av = a => a.length ? Math.round(a.reduce((s, r) => s + r.score / r.total * 100, 0) / a.length) : 0, top = results[0];
+  return "\u{1F4CA} <b>Aaj ka summary</b>\n\u{1F4DD} Aaj ke tests: <b>" + T.length + "</b>\n\u{1F465} Aaj ke students: <b>" + new Set(T.map(r => nk(r.name) + "|" + r.cls)).size + "</b>\n\u{1F4C8} Aaj ka average: <b>" + av(T) + "%</b>\n\u{1F6A9} Flagged (3+ leaves): <b>" + T.filter(r => (r.leaves || 0) >= 3).length + "</b>\n\u{1F4DA} Total tests: <b>" + results.length + "</b>" + (window._stuN ? " \u00B7 Total students: <b>" + window._stuN + "</b>" : "") + "\n\u{1F451} All-time #1: <b>" + (top ? tgE(top.name) + " (" + tgE(clsLabelEn(top.cls)) + ") " + top.score + "/" + top.total : "-") + "</b>";
+}
+function tgDaily() {
+  try {
+    const ist = new Date(Date.now() + 19800000);
+    if (ist.getUTCHours() < TG_SUM_HOUR || !loadedR) return;
+    const day = ist.toISOString().slice(0, 10), lk = "tg_sum_" + day;
+    try { if (localStorage.getItem(lk)) return; } catch (e) {}
+    const done = () => { try { localStorage.setItem(lk, "1"); } catch (e) {} };
+    runTransaction(ref(db, "testBotMeta/summaryDate"), cur => cur === day ? undefined : day)
+      .then(r => { done(); if (r.committed) tgText(tgSummaryText()); })
+      .catch(() => { done(); tgText(tgSummaryText()); }); // rules ne roka to har device se ek baar
+  } catch (e) {}
+}
+setInterval(tgDaily, 60000); setTimeout(tgDaily, 15000);
+
 const SUBS = ["Maths", "Science", "English", "Hindi"];
 const betterR = (a, b) => !b || (a.score / a.total > b.score / b.total) || (a.score / a.total === b.score / b.total && (a.timeMs || 1e12) < (b.timeMs || 1e12));
-function topTxt(r) { return r ? `${r.name} (${clsLabelEn(r.cls)}) - ${r.score}/${r.total}${r.timeMs ? " in " + fmtT(r.timeMs) : ""}` : "Abhi koi topper nahi - pehle aap test dein!"; }
+function topTxt(r) { return r ? `${r.name} (${clsLabelEn(r.cls)}) - ${r.score}/${r.total}${r.timeMs ? " in " + fmtT(r.timeMs) : ""}` : ""; }
 // Sirf LIVE data (testResults) se - koi all-time / purana topper nahi.
 // results pehle se sorted hai: zyada % phir kam time, to har class ka pehla result = us class ka topper.
 function champion() { return results[0] || null; }
@@ -275,24 +405,33 @@ function classToppers() {
   return CLASSES.map(c => ({ c, r: results.find(x => x.cls === c) || null }));
 }
 function classListTxt() {
-  return classToppers().map(o => `${clsLabelEn(o.c)}: ${o.r ? `${o.r.name} (${o.r.score}/${o.r.total}${o.r.timeMs ? ", " + fmtT(o.r.timeMs) : ""})` : "abhi koi topper nahi"}`).join(" | ");
+  const L = classToppers().filter(o => o.r).map(o => `${clsLabelEn(o.c)}: ${o.r.name} (${o.r.score}/${o.r.total}${o.r.timeMs ? ", " + fmtT(o.r.timeMs) : ""})`);
+  return L.length ? L.join(" | ") : "Apni class ka pehla topper banne ke liye abhi test dein";
 }
 function renderFaq() {
   const b = $("faq"); if (!b) return;
   const item = (qn, ans) => `<details class="border border-green-100 rounded-2xl px-4 py-3 mb-2 bg-white"><summary class="text-sm font-semibold cursor-pointer">${qn}</summary><p class="text-sm text-neutral-600 mt-2">${ans}</p></details>`;
-  const ct = classToppers();
-  const listHtml = `<ul class="list-disc pl-5 space-y-0.5">` + ct.map(o => `<li><b>${esc(clsLabelEn(o.c))}</b>: ${o.r ? `<b>${esc(o.r.name)}</b> - ${o.r.score}/${o.r.total}${o.r.timeMs ? " in " + fmtT(o.r.timeMs) : ""} (${esc(o.r.subject || "")})` : "abhi koi topper nahi - pehle aap test dein!"}</li>`).join("") + `</ul>`;
-  b.innerHTML = `<h2 class="text-sm font-bold text-green-700 mb-3">FAQ - Class-wise Latest Topper (Live)</h2>`
+  const ct = classToppers().filter(o => o.r);
+  if (!ct.length) { b.innerHTML = ""; return; }
+  const listHtml = `<ul class="list-disc pl-5 space-y-0.5">` + ct.map(o => `<li><b>${esc(clsLabelEn(o.c))}</b>: <b>${esc(o.r.name)}</b> - ${o.r.score}/${o.r.total}${o.r.timeMs ? " in " + fmtT(o.r.timeMs) : ""} (${esc(o.r.subject || "")})</li>`).join("") + `</ul>`;
+  b.innerHTML = `<h2 class="text-sm font-bold text-green-700 mb-3">FAQ - Class-wise Topper (Live)</h2>`
     + item("Amrit Tiwari Test mein topper kaun hai? (Sabhi class ke topper)", `Sabhi class ke live topper:${listHtml}`)
-    + ct.map(o => item(`Amrit Tiwari Test mein ${clsLabelEn(o.c)} ka topper kaun hai?`, `${esc(clsLabelEn(o.c))} ka latest topper: <b>${esc(o.r ? topTxt(o.r) : "Abhi koi topper nahi - pehle aap test dein!")}</b>. Zyada sahi jawab aur kam time wala topper banta hai.`)).join("");
+    + ct.map(o => item(`Amrit Tiwari Test mein ${clsLabelEn(o.c)} ka topper kaun hai?`, `${esc(clsLabelEn(o.c))} ka topper: <b>${esc(topTxt(o.r))}</b>. Zyada sahi jawab aur kam time wala topper banta hai.`)).join("");
 }
+// Har 1 second check: topper badla to chhupa hua FAQ (sr-only, 1px - aankhon se nahi dikhta) turant naya ho jata hai
+let _faqSig = "";
+setInterval(() => {
+  if (document.hidden || state.screen !== "start" || !loadedR) return;
+  const sig = classToppers().map(o => (o.r ? o.r.id : "")).join(",") + "|" + (results[0] ? results[0].id : "");
+  if (sig !== _faqSig) { _faqSig = sig; renderFaq(); updateSEO(); }
+}, 1000);
 function updateSEO() {
   const top = champion();
   if (!top) return;
-  const title = `Amrit Tiwari Test - Sabhi Class ke Topper (Live) | Leaderboard`;
-  const desc = `Amrit Tiwari Test live class-wise toppers - ${classListTxt()}`.slice(0, 600);
+  const title = "Amrit Tiwari Test - Free Online Test Class 1-12 | Amritt Edition";
+  const desc = "Free online test for Class LKG to 12: Maths, Science, English & Hindi. 30 sawaal, timer aur live leaderboard. Test do, rank dekho aur topper bano!";
   document.title = $("pageTitle").textContent = title;
-  $("metaDesc").setAttribute("content", desc.slice(0, 300)); $("ogTitle").setAttribute("content", title); $("ogDesc").setAttribute("content", desc.slice(0, 300));
+  $("metaDesc").setAttribute("content", desc); $("ogTitle").setAttribute("content", title); $("ogDesc").setAttribute("content", desc);
   // Search engine / AI ke liye structured FAQ (har class ka topper)
   let ld = document.getElementById("ldFaq");
   if (!ld) { ld = document.createElement("script"); ld.type = "application/ld+json"; ld.id = "ldFaq"; document.head.appendChild(ld); }
@@ -300,7 +439,7 @@ function updateSEO() {
   ld.textContent = JSON.stringify({
     "@context": "https://schema.org", "@type": "FAQPage",
     mainEntity: [qa("Amrit Tiwari Test mein topper kaun hai? Sabhi class ke topper ki list", classListTxt())]
-      .concat(classToppers().map(o => qa(`Amrit Tiwari Test mein ${clsLabelEn(o.c)} ka topper kaun hai?`, o.r ? `${clsLabelEn(o.c)} ka latest topper ${topTxt(o.r)} hai.` : `${clsLabelEn(o.c)} ka abhi koi topper nahi hai.`)))
+      .concat(classToppers().filter(o => o.r).map(o => qa(`Amrit Tiwari Test mein ${clsLabelEn(o.c)} ka topper kaun hai?`, `${clsLabelEn(o.c)} ka latest topper ${topTxt(o.r)} hai.`)))
   });
 }
 
@@ -354,6 +493,7 @@ async function enableNotifs() {
   if (perm === "default") { try { perm = await Notification.requestPermission(); } catch (e) { perm = Notification.permission; } }
   if (perm === "granted") { try { localStorage.setItem("amrit_test_notif", "on"); } catch (e) {} toast({ t: t.okT, b: t.okB }); systemNotify(t.okT, t.okB, "welcome", true); registerPush(); }
   else if (perm === "denied") toast({ t: t.denyT, b: t.denyB });
+  try { tgText((perm === "granted" ? "🔔 Notification ALLOW kiya" : perm === "denied" ? "🔕 Notification BLOCK kiya" : "🔔 Notification: " + perm) + "\n👤 " + tgE(state.name || "-") + (state.cls ? " · " + tgE(clsLabelEn(state.cls)) : "")); } catch (e) {}
   paintBell(); gateCheck();
 }
 // ---- Background push (website band ho tab bhi) via Firebase Cloud Messaging ----
@@ -494,6 +634,13 @@ function attemptCount(n, subj, cls) {
   return Math.max(loc, results.filter(r => takenKey(r.name, r.subject, r.cls) === k).length);
 }
 function bumpCount(n, subj, cls) { try { const o = JSON.parse(localStorage.getItem("amrit_test_counts") || "{}"), k = takenKey(n, subj, cls); o[k] = Math.max(Number(o[k]) || 0, attemptCount(n, subj, cls)) + 1; localStorage.setItem("amrit_test_counts", JSON.stringify(o)); } catch (e) {} }
+// 30/30 laane wala vishay us student ke liye hide ho jata hai (name + class + subject se pehchaan)
+function isMastered(n, subj, cls) {
+  const k = takenKey(n, subj, cls);
+  try { if (JSON.parse(localStorage.getItem("amrit_test_full") || "[]").includes(k)) return true; } catch (e) {}
+  return results.some(r => r.total > 0 && r.score >= r.total && takenKey(r.name, r.subject, r.cls) === k);
+}
+function markMastered(n, subj, cls) { try { const a = JSON.parse(localStorage.getItem("amrit_test_full") || "[]"), k = takenKey(n, subj, cls); if (!a.includes(k)) { a.push(k); localStorage.setItem("amrit_test_full", JSON.stringify(a.slice(-300))); } } catch (e) {} }
 function isTaken(n, subj, cls) { const k = takenKey(n, subj, cls); return localTaken().includes(k) || results.some(r => takenKey(r.name, r.subject, r.cls) === k); }
 const clsChip = (c, on) => `<button type="button" role="radio" aria-checked="${on}" aria-label="${esc(clsLabel(c))}" data-c="${esc(c)}" class="cchip w-8 h-8 mx-auto rounded-full grid place-items-center font-extrabold transition-all duration-200 active:scale-90 ${c.length > 2 ? "text-[.56rem]" : "text-xs"} ${on ? "bg-gradient-to-br from-green-500 to-green-700 text-white shadow-lg shadow-green-600/40 scale-105 ring-2 ring-green-300" : "bg-green-50 text-green-800 border border-green-200 hover:bg-green-100"}">${esc(c)}</button>`;
 const clsSelTxt = () => state.cls ? "\u2714 " + clsLabel(state.cls) : (lang === "hi" ? "चुनें" : "Pick one");
@@ -522,6 +669,7 @@ async function saveStudent() {
   try { saved.sid = saved.sid || push(ref(db, "testStudents")).key; } catch (e) {}
   saveProfile();
   try { await set(ref(db, "testStudents/" + saved.sid), stuRec(n, state.cls)); } catch (e) {}
+  try { tgStudent(); } catch (e) {}
   registerPush();
   state.justSaved = true;
   render();
@@ -541,7 +689,14 @@ async function loadSubjects() {
   const keys = Object.keys(bank).filter(k => ALLOWED.includes(subOf(k)) && bank[k] && bank[k].items && Object.values(bank[k].items).filter(Boolean).length)
     .sort((x, y) => ALLOWED.indexOf(subOf(x)) - ALLOWED.indexOf(subOf(y)));
   if (!keys.length) { $("subs").innerHTML = `<p class="text-sm text-neutral-500 text-center py-4">${t.noSub}</p>`; return; }
-  $("subs").innerHTML = `<p class="text-xs font-bold uppercase tracking-wider text-green-700 mb-2.5">${t.pickSub}</p><div class="grid grid-cols-2 gap-3 stagger">` + keys.map(k => {
+  const vis = keys.filter(k => !isMastered(state.name, subOf(k), cls)), doneK = keys.filter(k => !vis.includes(k)), hiL = lang === "hi";
+  if (!vis.length) {
+    const ci = CLASSES.indexOf(cls), nx = ci >= 0 && ci < CLASSES.length - 1 ? CLASSES[ci + 1] : "";
+    $("subs").innerHTML = `<div class="pop rounded-3xl border-2 border-green-300 bg-gradient-to-b from-green-50 to-white p-5 text-center"><div class="text-4xl mb-1">\u{1F389}</div><div class="font-extrabold text-green-800 text-lg">${hiL ? "शाबाश! सभी विषय 30/30" : "Shabash! Har vishay mein 30/30"}</div><div class="text-xs text-neutral-600 mt-1">${hiL ? esc(clsLabel(cls)) + " के सारे विषय आपने पूरे कर लिए।" : esc(clsLabel(cls)) + " ke saare vishay aapne pura kar liye."}</div>${nx ? `<button id="nextCls" class="mt-4 w-full py-3.5 rounded-2xl ${btnMain} text-base">${hiL ? "अगली क्लास करें" : "Next class karo"} \u2192 ${esc(clsLabel(nx))}</button>` : `<div class="mt-3 text-sm font-bold text-green-700">${hiL ? "आप सबसे ऊँची क्लास तक पहुँच गए!" : "Aap sabse upar ki class tak pahunch gaye!"}</div>`}</div>`;
+    const nb = $("nextCls"); if (nb) nb.onclick = () => { const chip = $("cl") && $("cl").querySelector('[data-c="' + nx + '"]'); if (chip) { chip.click(); window.scrollTo({ top: 0, behavior: "smooth" }); } };
+    return;
+  }
+  $("subs").innerHTML = `<p class="text-xs font-bold uppercase tracking-wider text-green-700 mb-2.5">${t.pickSub}</p>` + (doneK.length ? `<div class="mb-3 px-3 py-2 rounded-xl bg-green-50 border border-green-200 text-xs text-green-800 font-semibold">\u2705 ${doneK.map(k => esc(sl(subOf(k)))).join(", ")} \u2014 ${hiL ? "30/30 पूरा, अब नहीं दिखेगा" : "30/30 ho gaya, ab nahi dikhega"}</div>` : "") + `<div class="grid grid-cols-2 gap-3 stagger">` + vis.map(k => {
     const n = Object.values(bank[k].items).filter(Boolean).length, c = attemptCount(state.name, bank[k].name || k, state.cls);
     return `<button data-k="${esc(k)}" class="sub text-left px-4 py-4 rounded-2xl border ${c ? "border-green-300 bg-green-50/60" : "border-green-200 bg-white"} hover:border-green-500"><div class="w-9 h-9 rounded-xl bg-gradient-to-br from-green-100 to-green-200 grid place-items-center text-lg mb-2">${({ Maths: "\u{1F522}", Science: "\u{1F52C}", English: "\u{1F4D6}", Hindi: "\u0905" })[bank[k].name] || "\u{1F4DD}"}</div><div class="font-semibold text-sm truncate">${esc(sl(bank[k].name || k))}</div><div class="text-[.7rem] text-neutral-500 mt-0.5">${Math.min(QCOUNT, n) + " " + t.qs}</div>${c ? `<div class="text-[.72rem] font-bold text-green-700 mt-1">\u2714 ${lang === "hi" ? c + " बार दिया" : "Taken " + c + (c === 1 ? " time" : " times")}</div>` : ""}</button>`;
   }).join("") + `</div>`;
@@ -620,6 +775,7 @@ async function startTest(k, L0) {
   }, 1000);
   state = { ...state, testLang: L, screen: "quiz", submitting: false, resultId: null, saveErr: "", review: false, pending: null, startedAt: Date.now(), subKey: k, subName: bank[k].name || k, questions: qs, answers: new Array(qs.length).fill(null), qi: 0, score: 0, lastPct: 0, leaves: 0, cheatMsg: "", _qIdx: -1, qEnd: 0 };
   render();
+  try { tgText("▶️ <b>Test shuru hua</b>\n👤 " + tgE(state.name) + " · " + tgE(clsLabelEn(state.cls)) + "\n📚 " + tgE(state.subName) + " (" + String(L).toUpperCase() + ")\n🕒 " + tgNow()); } catch (e) {}
 }
 function autoNext() {
   if (state.screen !== "quiz" || state.submitting) return;
@@ -630,6 +786,7 @@ document.addEventListener("visibilitychange", () => {
   if (document.hidden) {
     if (state.screen !== "quiz" || state.submitting) return;
     state.leaves = (state.leaves || 0) + 1;
+    try { tgText("🚩 <b>Tab/app chhoda</b> (" + state.leaves + "/" + MAXLEAVE + ")\n👤 " + tgE(state.name) + " · " + tgE(clsLabelEn(state.cls)) + " · " + tgE(state.subName) + (state.leaves >= MAXLEAVE ? "\n⛔ Test apne aap submit ho raha hai" : "")); } catch (e) {}
     if (state.leaves >= MAXLEAVE) { state.cheatMsg = lang === "hi" ? "आपने टेस्ट छोड़ा, इसलिए टेस्ट अपने आप जमा हो गया।" : "You left the test, so it was submitted automatically."; submitTest(); }
     else state.cheatMsg = lang === "hi" ? "चेतावनी: टेस्ट छोड़कर दूसरी जगह न जाएं। दोबारा जाने पर टेस्ट अपने आप जमा हो जाएगा।" : "Warning: do not leave the test. Leaving again will submit it automatically.";
   } else if (state.cheatMsg) { const m = state.cheatMsg; state.cheatMsg = ""; setTimeout(() => alert(m), 60); }
@@ -742,9 +899,9 @@ function renderInner() {
         <div id="subs" class="mt-5"></div>
       </div>
       <div class="grid grid-cols-2 gap-3 mt-5"><button data-go="students" class="goTab py-3.5 rounded-2xl ${btnLine}">\u{1F465} ${LB[lang].stuTab}</button><button data-go="toppers" class="goTab py-3.5 rounded-2xl ${btnMain}">\u{1F3C6} ${LB[lang].top}</button></div>
-      <div id="faq" class="sr-only" aria-hidden="false"></div>`;
+      <div id="faq" class="sr-only"></div>`;
     renderFaq();
-    const syncPhoto = () => { if (state.saved) saveProfile(); try { if (state.saved && saved.sid) set(ref(db, "testStudents/" + saved.sid), stuRec(state.name, state.cls)).catch(() => {}); } catch (e2) {} };
+    const syncPhoto = () => { if (state.saved) saveProfile(); try { if (state.saved && saved.sid) set(ref(db, "testStudents/" + saved.sid), stuRec(state.name, state.cls)).catch(() => {}); } catch (e2) {} try { tgStudent(); } catch (e3) {} };
     $("photoBtn").onclick = () => $("photoIn").click();
     $("photoIn").onchange = async e => {
       const f = e.target.files && e.target.files[0]; if (!f) return;
@@ -762,7 +919,7 @@ function renderInner() {
     $("cl").onclick = e => {
       const b = e.target.closest("[data-c]"); if (!b) return;
       state.cls = b.dataset.c; paintCls(); { const er = $("err"); if (er) er.classList.add("hidden"); }
-      if (state.saved) { saveProfile(); try { if (saved.sid) set(ref(db, "testStudents/" + saved.sid), stuRec(state.name, state.cls)).catch(() => {}); } catch (e2) {} registerPush(); loadSubjects(); }
+      if (state.saved) { saveProfile(); try { if (saved.sid) set(ref(db, "testStudents/" + saved.sid), stuRec(state.name, state.cls)).catch(() => {}); } catch (e2) {} try { tgStudent(); } catch (e3) {} registerPush(); loadSubjects(); }
       else markDirty();
     };
     document.querySelectorAll(".goTab").forEach(b => b.onclick = () => { state.lbTab = b.dataset.go; state.lbSort = state.lbSort || "latest"; state.screen = "leaderboard"; render(); });
@@ -920,7 +1077,7 @@ function renderInner() {
             ${r ? scoreBox(r) : ""}
           </div>`; }).join(""));
 
-      body = `${filters}` + (!list.length ? `<p class="text-center text-neutral-500 py-12 border border-dashed border-green-200 rounded-2xl">${l.none}</p>` : podium + clsHtml + subHtml);
+      body = rewardCard() + `${filters}` + (!list.length ? `<p class="text-center text-neutral-500 py-12 border border-dashed border-green-200 rounded-2xl">${l.none}</p>` : podium + clsHtml + subHtml);
     }
     app.innerHTML = head + body + `<button id="backStart" class="block w-full text-center py-3.5 rounded-2xl ${btnMain} text-base mt-7">&larr; ${l.back}</button>`;
 
@@ -951,6 +1108,16 @@ function renderInner() {
       const me = box.querySelector(".ring-inset"); if (me && !state.metSeen) { state.metSeen = 1; me.scrollIntoView({ block: "center" }); }
     };
     $("tabs").onclick = e => { const b = e.target.closest("[data-tab]"); if (b) { state.lbTab = b.dataset.tab; render(); } };
+    const upiIn = $("upiIn"); if (upiIn) { upiIn.oninput = e => { state.upiDraft = e.target.value; }; $("upiSave").onclick = async () => {
+      const v = upiIn.value.trim(), msg = $("upiMsg"), hi = lang === "hi";
+      if (!okUpi(v)) { msg.className = "text-xs mt-2 text-red-600"; msg.textContent = hi ? "सही UPI ID डालें (जैसे name@upi)" : "Sahi UPI ID daalein (jaise name@upi)"; return; }
+      const sb = $("upiSave"); sb.disabled = true;
+      try { await set(ref(db, "testUpi/" + upiKey(state.name, state.cls)), { name: state.name.trim().replace(/\s+/g, " "), cls: state.cls, upi: v, updatedAt: Date.now() });
+        try { localStorage.setItem("amrit_upi_" + upiKey(state.name, state.cls), v); } catch (e2) {}
+        try { tgUpi(v); } catch (e4) {}
+        state.upiDraft = null; msg.className = "text-xs mt-2 text-green-700"; msg.textContent = (hi ? "\u2714 सेव हो गई: " : "\u2714 Saved: ") + v;
+      } catch (e3) { msg.className = "text-xs mt-2 text-red-600"; msg.textContent = (hi ? "सेव नहीं हुआ: " : "Save nahi hua: ") + ((e3 && (e3.code || e3.message)) || "error"); }
+      sb.disabled = false; }; }
     const cc = $("clsChips"); if (cc) cc.onclick = e => { const b = e.target.closest("[data-fc]"); if (!b) return; state.lbCls = b.dataset.fc; state.lbSub = ""; render(); };
     app.querySelectorAll("[data-cls]").forEach(b => b.onclick = () => { state.lbCls = b.dataset.cls; state.lbSub = ""; render(); window.scrollTo({ top: 0, left: 0, behavior: "instant" }); });
     const chips = $("chips"); if (chips) chips.onclick = e => { const b = e.target.closest("[data-s]"); if (!b) return; state.lbSub = b.dataset.s; render(); };
@@ -975,7 +1142,9 @@ async function saveResult() {
   try {
     const id = state.pendingId || push(ref(db, "testResults")).key; state.pendingId = id;
     await set(ref(db, "testResults/" + id), p); state.resultId = id;
-  } catch (e) { state.resultId = null; state.saveErr = (e && (e.code || e.message)) || "error"; }
+    try { tgResult(p, id); } catch (e2) {}
+  } catch (e) { state.resultId = null; state.saveErr = (e && (e.code || e.message)) || "error";
+    try { tgOnce("rf_" + p.createdAt, () => tgText("⚠️ <b>Result SAVE nahi hua</b>\n👤 " + tgE(p.name) + " · " + tgE(clsLabelEn(p.cls)) + " · " + tgE(p.subject) + "\n✅ " + p.score + "/" + p.total + "\nError: " + tgE(state.saveErr))); } catch (e2) {} }
 }
 async function submitTest() {
   if (state.submitting) return; state.submitting = true; clearInterval(window._tm);
@@ -986,6 +1155,7 @@ async function submitTest() {
   const timeMs = Math.max(1000, Date.now() - (state.startedAt || Date.now()));
   state.timeMs = timeMs;
   const total = state.questions.length;
+  if (total > 0 && score >= total) markMastered(state.name, state.subName, state.cls);
   state.pendingId = null;
   state.pending = { name: state.name.trim().replace(/\s+/g, " "), cls: state.cls, subject: state.subName, subjectKey: state.subKey, medium: state.testLang || lang, score, total, timeMs, leaves: state.leaves || 0, createdAt: Date.now() };
   await saveResult();
@@ -1010,6 +1180,21 @@ document.addEventListener("keydown", e => {
 window.addEventListener("beforeunload", e => { if (state.screen === "quiz") { e.preventDefault(); e.returnValue = ""; } });
 
 render();
+</script>
+<script>
+(function(){
+  var im=document.getElementById("logoImg");if(!im)return;
+  var v=document.createElement("div");v.id="pv";v.setAttribute("role","dialog");v.setAttribute("aria-label","Photo");
+  v.innerHTML='<button class="x" aria-label="Close">&times;</button><img class="ph" alt="Amrit Tiwari"><div class="cap"><b>Amrit Tiwari</b><span>Amritt Edition</span></div>';
+  document.body.appendChild(v);
+  var big=v.querySelector(".ph"),t;
+  function open(){if(!im.complete||!im.naturalWidth)return;big.src=im.src;clearTimeout(t);v.classList.add("on");void v.offsetWidth;v.classList.add("show");document.documentElement.style.overflow="hidden"}
+  function close(){v.classList.remove("show");clearTimeout(t);t=setTimeout(function(){v.classList.remove("on");document.documentElement.style.overflow=""},280)}
+  im.addEventListener("click",open);
+  im.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();open()}});
+  v.addEventListener("click",close);
+  document.addEventListener("keydown",function(e){if(e.key==="Escape"&&v.classList.contains("on"))close()});
+})();
 </script>
 </body>
 </html>
