@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title id="pageTitle">Amrit Tiwari Test - Free Online Test Class 1-12 | Amritt Edition</title>
-<meta id="metaDesc" name="description" content="Free online test for Class LKG to 12: Maths, Science, English & Hindi. 30 sawaal, timer aur live leaderboard. Test do, rank dekho aur topper bano!">
+<meta id="metaDesc" name="description" content="Free online test Class LKG-12: Maths, Science, English, Hindi (30 sawaal). Har class ke topper ko reward milta hai! 4 subject mein 30/30 laao aur topper bano.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="author" content="Amrit Tiwari">
 <meta name="theme-color" content="#16a34a">
@@ -12,12 +12,12 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Amrit Tiwari Test">
 <meta id="ogTitle" property="og:title" content="Amrit Tiwari Test - Free Online Test Class 1-12 | Amritt Edition">
-<meta id="ogDesc" property="og:description" content="Free online test for Class LKG to 12: Maths, Science, English & Hindi. 30 sawaal, timer aur live leaderboard. Test do, rank dekho aur topper bano!">
+<meta id="ogDesc" property="og:description" content="Free online test Class LKG-12: Maths, Science, English, Hindi (30 sawaal). Har class ke topper ko reward milta hai! 4 subject mein 30/30 laao aur topper bano.">
 <meta property="og:url" content="https://www.amritbhai.shop/test.html">
 <meta property="og:image" content="https://www.amritbhai.shop/developer.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Amrit Tiwari Test - Free Online Test Class 1-12 | Amritt Edition">
-<meta name="twitter:description" content="Free online test for Class LKG to 12: Maths, Science, English & Hindi. 30 sawaal, timer aur live leaderboard. Test do, rank dekho aur topper bano!">
+<meta name="twitter:description" content="Free online test Class LKG-12: Maths, Science, English, Hindi (30 sawaal). Har class ke topper ko reward milta hai! 4 subject mein 30/30 laao aur topper bano.">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -113,6 +113,84 @@ button:focus-visible,select:focus-visible,summary:focus-visible,a:focus-visible{
 .pod-play .pod-1 .pod-ped{animation-delay:.75s}.pod-play .pod-1 .pod-av{animation-delay:1.25s}.pod-play .pod-1 .pod-info{animation-delay:1.75s}
 .pod-play .pod-crown{animation:crownIn .7s cubic-bezier(.2,.9,.3,1.3) 2.1s both,crownBob 1.8s ease-in-out 2.8s infinite}
 .pod-play .pod-1 .pod-gold{animation:goldPulse 2.2s ease-in-out 1.9s infinite}
+
+/* ===== CLASS TOPPER HERO (4 subject x 30/30) ===== */
+@keyframes thGlow{0%,100%{box-shadow:0 0 0 0 rgba(250,204,21,.55),0 10px 30px -10px rgba(245,158,11,.5)}50%{box-shadow:0 0 0 9px rgba(250,204,21,0),0 14px 40px -8px rgba(245,158,11,.85)}}
+@keyframes thTrophy{0%{transform:translateY(-46px) scale(0) rotate(-35deg);opacity:0}60%{transform:translateY(4px) scale(1.3) rotate(10deg);opacity:1}100%{transform:none;opacity:1}}
+@keyframes thFloat{0%,100%{transform:translateY(0) rotate(-7deg)}50%{transform:translateY(-8px) rotate(7deg)}}
+@keyframes thChip{0%{transform:scale(0) rotate(-14deg);opacity:0}70%{transform:scale(1.15) rotate(2deg);opacity:1}100%{transform:none;opacity:1}}
+@keyframes thSpark{0%,100%{opacity:0;transform:scale(.3) rotate(0)}50%{opacity:1;transform:scale(1.25) rotate(120deg)}}
+@keyframes thLock{0%,60%,100%{transform:rotate(0)}10%{transform:rotate(-14deg)}25%{transform:rotate(12deg)}40%{transform:rotate(-8deg)}50%{transform:rotate(5deg)}}
+@keyframes thBorder{to{--ang:360deg}}
+.th-wrap{position:relative;padding:3px;border-radius:1.6rem;background:conic-gradient(from var(--ang),#facc15,#f59e0b,#fff7c2,#16a34a,#facc15);animation:thBorder 4s linear infinite}
+.th-card{position:relative;overflow:hidden;border-radius:calc(1.6rem - 3px);padding:1rem;background:linear-gradient(135deg,#fffbeb,#fef3c7 55%,#fde68a);animation:thGlow 2.4s ease-in-out infinite}
+.th-card::after{content:"";position:absolute;top:0;bottom:0;left:0;width:35%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.8),transparent);animation:shineSweep 3s ease-in-out infinite;pointer-events:none}
+.th-trophy{display:inline-block;font-size:2.4rem;line-height:1;animation:thTrophy .85s cubic-bezier(.2,.9,.3,1.3) both,thFloat 2.2s ease-in-out .9s infinite}
+.th-chip{display:inline-flex;align-items:center;gap:.3rem;padding:.3rem .6rem;border-radius:999px;background:#fff;border:1px solid #fcd34d;font-size:.68rem;font-weight:700;color:#92400e;animation:thChip .5s cubic-bezier(.2,.9,.3,1.4) both;animation-delay:calc(.45s + var(--i) * .15s)}
+.th-spark{position:absolute;font-size:15px;line-height:1;opacity:0;pointer-events:none;animation:thSpark 1.8s ease-in-out infinite}
+.th-lock{display:inline-block;font-size:2.2rem;animation:thLock 2.6s ease-in-out infinite}
+.th-ring{position:absolute;inset:-6px;border-radius:50%;border:3px solid #facc15;opacity:0;animation:shock2 2.4s ease-out infinite}
+@keyframes shock2{0%{transform:scale(.7);opacity:.9}100%{transform:scale(1.5);opacity:0}}
+
+/* ===== PODIUM v2: dark stage, medal rings, metal pedestals ===== */
+.pod-stage{overflow:hidden;background:radial-gradient(ellipse at 50% 0,rgba(250,204,21,.24),transparent 62%),radial-gradient(1.5px 1.5px at 12% 22%,#fff 50%,transparent 51%),radial-gradient(1.5px 1.5px at 80% 14%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 42% 38%,#fde68a 50%,transparent 51%),radial-gradient(1.5px 1.5px at 92% 52%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 22% 60%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 66% 30%,#fde68a 50%,transparent 51%),linear-gradient(180deg,#052e16,#14532d 62%,#166534);border:1px solid #166534;box-shadow:0 20px 44px -14px rgba(5,46,22,.75),inset 0 1px 0 rgba(255,255,255,.14)}
+.pod-stage::after{content:"";position:absolute;left:50%;top:0;bottom:0;width:70%;transform:translateX(-50%);background:linear-gradient(180deg,rgba(254,243,199,.34),transparent 75%);clip-path:polygon(38% 0,62% 0,100% 100%,0 100%);z-index:-1;pointer-events:none;opacity:0;animation:fadeOn 1s ease 1.2s forwards}
+.pod-floor{position:absolute;left:0;right:0;bottom:0;height:5px;background:linear-gradient(90deg,transparent,#facc15,transparent);opacity:.85}
+.pod-ring{padding:3px;border-radius:999px;display:inline-block}
+.pod-ring.r1{background:conic-gradient(#fde047,#f59e0b,#fff7c2,#f59e0b,#fde047);box-shadow:0 0 20px rgba(250,204,21,.75)}
+.pod-ring.r2{background:conic-gradient(#f8fafc,#94a3b8,#ffffff,#94a3b8,#f8fafc);box-shadow:0 0 14px rgba(203,213,225,.55)}
+.pod-ring.r3{background:conic-gradient(#fdba74,#c2410c,#ffedd5,#c2410c,#fdba74);box-shadow:0 0 14px rgba(234,88,12,.5)}
+.pod-badge{position:absolute;right:-5px;bottom:-5px;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:.72rem;font-weight:900;border:2px solid #052e16;z-index:2}
+.pod-badge.b1{background:#facc15;color:#713f12}.pod-badge.b2{background:#e2e8f0;color:#334155}.pod-badge.b3{background:#fb923c;color:#7c2d12}
+.pod-card{width:100%;border-radius:.85rem;padding:.35rem .25rem;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.pod-ped{border-top:3px solid rgba(255,255,255,.75);box-shadow:inset 0 -12px 18px rgba(0,0,0,.14),inset 0 10px 14px rgba(255,255,255,.18)}
+.pod-ped.p1{background:linear-gradient(180deg,#fde68a,#f59e0b 55%,#b45309)}
+.pod-ped.p2{background:linear-gradient(180deg,#f1f5f9,#cbd5e1 55%,#64748b)}
+.pod-ped.p3{background:linear-gradient(180deg,#fed7aa,#fb923c 55%,#9a3412)}
+.pod-num{font-size:2.5rem;font-weight:900;line-height:1;color:rgba(255,255,255,.62);text-shadow:0 2px 0 rgba(0,0,0,.18)}
+.pod-stage .gold-txt{background-image:linear-gradient(90deg,#fde047,#fff7c2,#f59e0b,#fff7c2,#fde047)}
+
+/* ===== SMOOTH + CLEAN POLISH ===== */
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;scrollbar-width:none}
+::selection{background:#bbf7d0;color:#14532d}
+body{overflow-x:hidden}
+button,summary,[data-cls],input,select,textarea{transition:transform .2s cubic-bezier(.2,.8,.2,1),box-shadow .28s ease,background-color .28s ease,border-color .28s ease,color .2s ease,opacity .25s ease}
+button:not(:disabled):active,summary:active,.opt:active,.sub:active{transform:scale(.97)}
+input:focus,select:focus,textarea:focus{outline:none;border-color:#16a34a;box-shadow:0 0 0 4px rgba(34,197,94,.18)}
+[data-n],.tnum,#timer,.timer{font-variant-numeric:tabular-nums}
+.glass{transition:box-shadow .3s ease,transform .3s cubic-bezier(.2,.8,.2,1)}
+.pod-ped,.pod-av,.pod-info,.pod-crown,.th-card{will-change:transform,opacity;backface-visibility:hidden;transform:translateZ(0)}
+img{image-rendering:auto}
+@media (hover:hover){.glass:hover{box-shadow:0 16px 36px -14px rgba(22,163,74,.38),0 1px 0 rgba(255,255,255,.9) inset}.th-wrap{transition:transform .3s cubic-bezier(.2,.8,.2,1)}.th-wrap:hover{transform:translateY(-3px) scale(1.01)}}
+.actbar,footer{padding-bottom:max(env(safe-area-inset-bottom),0px)}
+@keyframes screenFade{from{opacity:.0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.screen-in{animation:screenFade .38s cubic-bezier(.2,.8,.2,1) both}
+
+/* ===== ROCKET RACE (kids top 3) ===== */
+@keyframes rkUp{0%{transform:translateY(19rem) scale(.7);opacity:0}12%{opacity:1}68%{transform:translateY(-.9rem) scale(1.04)}85%{transform:translateY(.25rem)}100%{transform:none;opacity:1}}
+@keyframes rkHover{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-7px) rotate(1.5deg)}}
+@keyframes rkFlame{from{transform:scaleY(.65) scaleX(.9);opacity:.85}to{transform:scaleY(1.25) scaleX(1.08);opacity:1}}
+@keyframes rkTrail{from{opacity:0;transform:scaleY(0)}to{opacity:1;transform:scaleY(1)}}
+@keyframes rkCloud{from{transform:translateX(-14px)}to{transform:translateX(14px)}}
+@keyframes rkTwinkle{0%{opacity:.35}100%{opacity:1}}
+@keyframes rkPop{0%{transform:scale(0) rotate(-20deg);opacity:0}70%{transform:scale(1.2) rotate(4deg);opacity:1}100%{transform:none;opacity:1}}
+.rk-sky{position:relative;overflow:hidden;border-radius:1.6rem;padding:.9rem .5rem .8rem;background:linear-gradient(180deg,#1e1b4b 0%,#4c1d95 40%,#be185d 76%,#fb923c 100%);box-shadow:0 20px 44px -14px rgba(76,29,149,.6),inset 0 1px 0 rgba(255,255,255,.18);isolation:isolate}
+.rk-sky::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(2px 2px at 10% 18%,#fff 50%,transparent 52%),radial-gradient(1.5px 1.5px at 24% 8%,#fde68a 50%,transparent 52%),radial-gradient(2px 2px at 40% 26%,#fff 50%,transparent 52%),radial-gradient(1.5px 1.5px at 58% 10%,#fff 50%,transparent 52%),radial-gradient(2px 2px at 72% 30%,#fde68a 50%,transparent 52%),radial-gradient(1.5px 1.5px at 86% 14%,#fff 50%,transparent 52%),radial-gradient(1.5px 1.5px at 94% 40%,#fff 50%,transparent 52%),radial-gradient(1.5px 1.5px at 6% 46%,#fff 50%,transparent 52%);animation:rkTwinkle 1.8s ease-in-out infinite alternate}
+.rk-moon{position:absolute;top:8px;left:12px;font-size:1.7rem;animation:rkHover 4s ease-in-out infinite}
+.rk-planet{position:absolute;top:12px;right:14px;font-size:1.4rem;animation:rkHover 5s ease-in-out 1s infinite}
+.rk-fly{position:relative;height:17.2rem;overflow:hidden}
+.rk-cloud{position:absolute;bottom:-8px;font-size:2.2rem;opacity:.92;animation:rkCloud 7s ease-in-out infinite alternate;filter:drop-shadow(0 2px 4px rgba(0,0,0,.15))}
+.rk-up{position:absolute;left:50%;bottom:var(--b);width:var(--w);margin-left:calc(var(--w) / -2);animation:rkUp 1.35s cubic-bezier(.2,.9,.25,1) var(--d) both;z-index:2}
+.rk-hover{position:relative;animation:rkHover 2.6s ease-in-out calc(var(--d) + 1.4s) infinite}
+.rk-hover svg{display:block;width:100%;height:auto;filter:drop-shadow(0 6px 8px rgba(0,0,0,.3))}
+.rk-win{position:absolute;left:50%;top:calc(var(--w) * .536);width:calc(var(--w) * .4);height:calc(var(--w) * .4);transform:translate(-50%,-50%);border-radius:50%;overflow:hidden;background:#e0f2fe;border:2px solid #fff;display:grid;place-items:center;font-weight:800;color:#0369a1;font-size:calc(var(--w) * .18)}
+.rk-win img{width:100%;height:100%;object-fit:cover;border:0;border-radius:0}
+.rk-flame{width:calc(var(--w) * .3);height:calc(var(--w) * .55);margin:-5px auto 0;border-radius:50% 50% 60% 60% / 30% 30% 70% 70%;background:linear-gradient(180deg,#fff7c2,#fbbf24 38%,#f97316 72%,transparent);transform-origin:top center;animation:rkFlame .17s ease-in-out infinite alternate}
+.rk-trail{position:absolute;left:50%;bottom:0;width:8px;margin-left:-4px;height:var(--b);border-radius:8px;background:linear-gradient(0deg,transparent,rgba(253,224,71,.0) 5%,rgba(253,224,71,.5));transform-origin:bottom;animation:rkTrail .7s ease-out calc(var(--d) + .5s) both;z-index:1}
+.rk-crown{position:absolute;left:50%;top:-1.55rem;margin-left:-.8rem;font-size:1.6rem;line-height:1;animation:rkPop .6s cubic-bezier(.2,.9,.3,1.3) calc(var(--d) + 1.3s) both}
+.rk-card{position:relative;border-radius:1rem;padding:.45rem .3rem .5rem;background:rgba(255,255,255,.94);text-align:center;box-shadow:0 10px 20px -10px rgba(0,0,0,.45);animation:rkPop .55s cubic-bezier(.2,.9,.3,1.2) calc(var(--d) + 1.1s) both}
+.rk-tag{display:inline-block;padding:.08rem .5rem;border-radius:999px;font-size:.56rem;font-weight:800;color:#fff;margin-bottom:.2rem}
+.rk-stars{font-size:.8rem;letter-spacing:1px;color:#f59e0b;line-height:1}.rk-stars i{font-style:normal;color:#d6d3d1}
 /* ===== TOPPERS: extra katarnak animations ===== */
 @property --ang{syntax:"<angle>";inherits:false;initial-value:0deg}
 @keyframes rays{to{--ang:360deg}}
@@ -198,16 +276,16 @@ const SUBHI = { Maths: "गणित", Science: "विज्ञान", English
 const sl = n => (lang === "hi" && SUBHI[n]) || n || "";
 
 const T = {
-  en: { title: "Amrit Tiwari Test", sub: "Choose your class and subject", namePh: "Full name with surname", cls: "Select your class", pickSub: "Choose a subject", pickClass: "Select your class first.", noSub: "No test is available for this class yet.", need: "Please enter your full name with surname (e.g. Amrit Tiwari) and class.", q: "Question", of: "of", next: "Next", submit: "Submit Test", result: "Your Result", rank: "Rank in this subject", viewLb: "View Leaderboard", retake: "Take Another Test", lb: "Leaderboard", lbSub: "Top scorers", all: "All subjects", noResults: "No one has taken this test yet. Be the first!", players: "Players", best: "Top score", avg: "Average", you: "You", loading: "Loading...", back: "Back to tests", qs: "questions",
-    photoNeed: "Please add your photo first. Photo is required.", save: "Save", saved: "✔ Saved", saveHint: "Save your name and class to see subjects.", live: "Live leaderboard", timed: "Timed", rankW: "Rank", quitQ: "Quit this test?",
+  en: { title: "Amrit Tiwari Test", sub: "Choose your class and subject", namePh: "Full name with surname", cls: "Select your class", pickSub: "Choose a subject", pickClass: "Select your class first.", noSub: "No test is available for this class yet.", need: "Full name is required: first name + surname, letters only (e.g. Amrit Tiwari), and pick your class.", q: "Question", of: "of", next: "Next", submit: "Submit Test", result: "Your Result", rank: "Rank in this subject", viewLb: "View Leaderboard", retake: "Take Another Test", lb: "Leaderboard", lbSub: "Top scorers", all: "All subjects", noResults: "No one has taken this test yet. Be the first!", players: "Players", best: "Top score", avg: "Average", you: "You", loading: "Loading...", back: "Back to tests", qs: "questions",
+    photoNeed: "Photo is optional.", save: "Save", saved: "✔ Saved", saveHint: "Save your name and class to see subjects.", live: "Live leaderboard", timed: "Timed", rankW: "Rank", quitQ: "Quit this test?",
     saveFail: "Result could not be saved. Check your internet and tap “Save again”.", retrySave: "Save again", cor: "Correct", wro: "Wrong", timeL: "Time", share: "Share", review: "Review answers", hide: "Hide answers",
     dbFail: "Leaderboard could not load. Check your internet and", retry: "try again", liveRes: n => `Live · ${n} results`,
     shareTxt: (s, a, b) => `I scored ${a}/${b} in the Amrit Tiwari Test (${s})! Try it too: https://www.amritbhai.shop/test.html`,
     tagline: "Learn · Test · Top", footer: "Amritt Edition. Created by Amrit Tiwari.",
     langTitle: "Choose test language", langSub: "Questions will appear in this language", notAvail: "Not available", cancel: "Cancel",
     praise: p => p >= 90 ? "Outstanding performance!" : p >= 75 ? "Great job!" : p >= 50 ? "Good effort, keep going!" : "Keep practicing, you'll improve!" },
-  hi: { title: "अमृत तिवारी टेस्ट", sub: "अपनी कक्षा और विषय चुनें", namePh: "surname के साथ पूरा नाम", cls: "अपनी कक्षा चुनें", pickSub: "विषय चुनें", pickClass: "पहले अपनी कक्षा चुनें।", noSub: "इस कक्षा के लिए अभी कोई टेस्ट नहीं है।", need: "कृपया surname के साथ पूरा नाम (जैसे अमृत तिवारी) और कक्षा भरें।", q: "प्रश्न", of: "में से", next: "अगला", submit: "टेस्ट जमा करें", result: "आपका रिज़ल्ट", rank: "इस विषय में रैंक", viewLb: "लीडरबोर्ड देखें", retake: "दूसरा टेस्ट दें", lb: "लीडरबोर्ड", lbSub: "टॉप स्कोरर", all: "सभी विषय", noResults: "अभी तक किसी ने यह टेस्ट नहीं दिया। सबसे पहले आप दें!", players: "खिलाड़ी", best: "टॉप स्कोर", avg: "औसत", you: "आप", loading: "लोड हो रहा है...", back: "टेस्ट पर वापस", qs: "सवाल",
-    photoNeed: "पहले अपनी फोटो जोड़ें। फोटो ज़रूरी है।", save: "सेव करें", saved: "✔ सेव हो गया", saveHint: "विषय देखने के लिए पहले नाम और कक्षा सेव करें।", live: "लाइव लीडरबोर्ड", timed: "समय सहित", rankW: "रैंक", quitQ: "टेस्ट छोड़ दें?",
+  hi: { title: "अमृत तिवारी टेस्ट", sub: "अपनी कक्षा और विषय चुनें", namePh: "surname के साथ पूरा नाम", cls: "अपनी कक्षा चुनें", pickSub: "विषय चुनें", pickClass: "पहले अपनी कक्षा चुनें।", noSub: "इस कक्षा के लिए अभी कोई टेस्ट नहीं है।", need: "पूरा नाम ज़रूरी है: नाम + surname, सिर्फ़ अक्षर (जैसे अमृत तिवारी), और कक्षा चुनें।", q: "प्रश्न", of: "में से", next: "अगला", submit: "टेस्ट जमा करें", result: "आपका रिज़ल्ट", rank: "इस विषय में रैंक", viewLb: "लीडरबोर्ड देखें", retake: "दूसरा टेस्ट दें", lb: "लीडरबोर्ड", lbSub: "टॉप स्कोरर", all: "सभी विषय", noResults: "अभी तक किसी ने यह टेस्ट नहीं दिया। सबसे पहले आप दें!", players: "खिलाड़ी", best: "टॉप स्कोर", avg: "औसत", you: "आप", loading: "लोड हो रहा है...", back: "टेस्ट पर वापस", qs: "सवाल",
+    photoNeed: "फोटो वैकल्पिक है।", save: "सेव करें", saved: "✔ सेव हो गया", saveHint: "विषय देखने के लिए पहले नाम और कक्षा सेव करें।", live: "लाइव लीडरबोर्ड", timed: "समय सहित", rankW: "रैंक", quitQ: "टेस्ट छोड़ दें?",
     saveFail: "रिज़ल्ट सेव नहीं हो पाया। इंटरनेट जाँचकर “दोबारा सेव करें” दबाएँ।", retrySave: "दोबारा सेव करें", cor: "सही", wro: "गलत", timeL: "समय", share: "शेयर करें", review: "जवाब देखें", hide: "जवाब छिपाएँ",
     dbFail: "लीडरबोर्ड अभी लोड नहीं हो पाया। इंटरनेट जाँचकर", retry: "दोबारा कोशिश करें", liveRes: n => `लाइव · ${n} रिज़ल्ट`,
     shareTxt: (s, a, b) => `मैंने अमृत तिवारी टेस्ट (${s}) में ${a}/${b} स्कोर किया! आप भी कोशिश करें: https://www.amritbhai.shop/test.html`,
@@ -274,32 +352,34 @@ let rcfg = { classAmt: 15, topAmt: 50, minClasses: 1 };
 try { onValue(ref(db, "testRewardCfg"), sn => { const v = sn.val() || {}, n = (x, d) => (x != null && x !== "" && Number(x) >= 0) ? Number(x) : d;
   rcfg = { classAmt: n(v.classAmt, 15), topAmt: n(v.topAmt, 50), minClasses: Math.max(1, n(v.minClasses, 1)) };
   if (state.screen === "leaderboard") render(); }, () => {}); } catch (e) {}
-// All-time topper: jo student har vishay mein (Maths, Science, English, Hindi) kam se kam rcfg.minClasses class mein top ho
+// All-time topper: jo student kam se kam rcfg.minClasses class mein 4 subject x 30/30 karke topper bana ho
 function allTimeWinner() {
   const per = {};
-  CLASSES.forEach(c => {
-    const ch = SUBS.map(x => results.find(r => String(r.cls) === c && r.subject === x));
-    if (ch.every(Boolean) && ch.every(r => nk(r.name) === nk(ch[0].name))) { const k = nk(ch[0].name); (per[k] = per[k] || { name: ch[0].name, classes: [] }).classes.push(c); }
-  });
+  classToppers().forEach(o => { if (!o.r) return; const k = nk(o.r.name); (per[k] = per[k] || { name: o.r.name, classes: [] }).classes.push(o.c); });
   const best = Object.values(per).sort((a, b) => b.classes.length - a.classes.length)[0];
   return best && best.classes.length >= rcfg.minClasses ? best : null;
 }
+// Reward RULE: topper ko inaam tabhi jab ek hafte (7 din) tak use koi hara na paye. r.createdAt = jab wo topper bana.
+const HOLD_MS = 7 * 864e5;
+const holdLeft = r => Math.max(0, (r && r.createdAt ? r.createdAt : Date.now()) + HOLD_MS - Date.now());
 function myReward() {
   if (!state.saved || !results.length) return null;
-  const w = allTimeWinner();
-  if (w && nk(w.name) === nk(state.name) && w.classes.includes(String(state.cls))) return { amt: rcfg.topAmt, all: true };
-  const o = classToppers().find(x => x.c === state.cls);
-  return o && o.r && nk(o.r.name) === nk(state.name) ? { amt: rcfg.classAmt, all: false } : null;
+  const tops = classToppers(), mine = tops.find(x => x.c === state.cls);
+  if (!mine || !mine.r || nk(mine.r.name) !== nk(state.name)) return null;
+  const w = allTimeWinner(), left = holdLeft(mine.r);
+  if (w && nk(w.name) === nk(state.name) && w.classes.includes(String(state.cls))) return { amt: rcfg.topAmt, all: true, left: Math.max(...w.classes.map(c => holdLeft((tops.find(x => x.c === c) || {}).r))) };
+  return { amt: rcfg.classAmt, all: false, left };
 }
 function rewardCard() {
   const hi = lang === "hi", m = myReward(), R = rcfg;
-  const intro = `<div class="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-xs leading-relaxed text-amber-900 mb-4"><div class="font-bold mb-0.5">\u{1F381} ${hi ? "टॉपर इनाम" : "Topper inaam"}</div>${hi ? `हर क्लास के टॉपर को <b>₹${R.classAmt}</b>।<br>ऑल-टाइम टॉपर को <b>₹${R.topAmt}</b> — जो हर विषय में कम से कम <b>${R.minClasses}</b> क्लास में टॉप करे।` : `Har class ke topper ko <b>₹${R.classAmt}</b>.<br>All-time topper ko <b>₹${R.topAmt}</b> \u2014 jo har vishay mein kam se kam <b>${R.minClasses}</b> class mein top kare.`}</div>`;
+  const intro = `<div class="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-xs leading-relaxed text-amber-900 mb-4"><div class="font-bold mb-0.5">\u{1F381} ${hi ? "टॉपर इनाम" : "Topper inaam"}</div>${hi ? `टॉपर = चारों विषयों में 30/30।<br>इनाम तब मिलेगा जब टॉपर को <b>एक हफ़्ते (7 दिन)</b> तक कोई हरा न पाए।<br>हर क्लास के टॉपर को <b>₹${R.classAmt}</b>।<br>ऑल-टाइम टॉपर को <b>₹${R.topAmt}</b> — जो हर विषय में कम से कम <b>${R.minClasses}</b> क्लास में टॉप करे।` : `Topper = chaaron subject mein 30/30.<br>Inaam tab milega jab topper ko <b>ek hafte (7 din)</b> tak koi hara na paye.<br>Har class ke topper ko <b>₹${R.classAmt}</b>.<br>All-time topper ko <b>₹${R.topAmt}</b> \u2014 jo har vishay mein kam se kam <b>${R.minClasses}</b> class mein top kare.`}</div>`;
   if (!m) return intro;
+  if (m.left > 0) { const dd = Math.ceil(m.left / 864e5); return intro + `<div class="rounded-2xl border-2 border-dashed border-amber-300 bg-white px-4 py-4 mb-5 text-center"><div class="text-2xl">\u23F3</div><div class="font-extrabold text-amber-800 text-sm mt-1">${hi ? "आप " + (m.all ? "ऑल-टाइम टॉपर" : esc(clsLabel(state.cls)) + " के टॉपर") + " हैं!" : "Aap " + (m.all ? "all-time topper" : esc(clsLabel(state.cls)) + " ke topper") + " hain!"}</div><div class="text-xs text-neutral-600 mt-1 leading-relaxed">${hi ? `इनाम पाने के लिए अभी <b>${dd} दिन</b> और टॉपर बने रहिए — कोई हरा न पाए।` : `Inaam ke liye abhi <b>${dd} din</b> aur topper bane rahiye \u2014 koi hara na paye.`}</div></div>`; }
   let saved = ""; try { saved = localStorage.getItem("amrit_upi_" + upiKey(state.name, state.cls)) || ""; } catch (e) {}
   const val = state.upiDraft != null ? state.upiDraft : saved;
   return intro + `<div class="rounded-2xl border-2 border-green-400 bg-white px-4 py-4 mb-5 shadow-lg shadow-green-100/60"><div class="font-extrabold text-green-800 text-sm">\u{1F389} ${hi ? "बधाई! आप " + (m.all ? "ऑल-टाइम टॉपर" : esc(clsLabel(state.cls)) + " के टॉपर") + " हैं" : "Badhai! Aap " + (m.all ? "all-time topper" : esc(clsLabel(state.cls)) + " ke topper") + " hain"} \u2014 \u20B9${m.amt}</div><div class="text-xs text-neutral-500 mt-1 mb-2">${hi ? "इनाम पाने के लिए अपनी UPI ID डालें।" : "Inaam paane ke liye apni UPI ID daalein."}</div><div class="flex gap-2"><input id="upiIn" value="${esc(val)}" placeholder="name@upi" autocapitalize="off" autocomplete="off" class="${inputCls} !py-2.5 text-sm flex-1 min-w-0"><button id="upiSave" class="shrink-0 px-4 rounded-xl ${btnMain} text-sm">${saved && saved === val ? "\u2714 " : ""}${hi ? "सेव" : "Save"}</button></div><div id="upiMsg" class="text-xs mt-2 ${saved ? "text-green-700" : "text-neutral-500"}">${saved ? (hi ? "सेव है: " : "Saved: ") + esc(saved) : ""}</div></div>`;
 }
-const avImg = (n, cls = "w-10 h-10") => photoOf(n) ? `<img src="${photoOf(n)}" alt="" class="${cls} rounded-full object-cover border border-green-200 shrink-0">` : "";
+const avImg = (n, cls = "w-10 h-10") => photoOf(n) ? `<img src="${photoOf(n)}" alt="" decoding="async" class="${cls} rounded-full object-cover border border-green-200 shrink-0">` : "";
 const stuRec = (n, cls) => { const o = { name: n, cls, createdAt: saved.createdAt || Date.now(), updatedAt: Date.now() }; if (okPhoto(saved.photo)) o.photo = saved.photo; return o; };
 function resizePhoto(file) {
   return new Promise((res, rej) => {
@@ -347,13 +427,17 @@ function tgOnce(key, fn) {
 const tgCmp = (a, b) => (b.score / b.total - a.score / a.total) || ((a.timeMs || 1e12) - (b.timeMs || 1e12)) || ((a.createdAt || 0) - (b.createdAt || 0));
 function tgResult(p, id) {
   tgOnce("r_" + id, () => {
-    const all = results.filter(x => x.id !== id).concat([{ ...p, id, score: Number(p.score) || 0, total: Number(p.total) }]).sort(tgCmp);
-    const rank = all.findIndex(x => x.id === id) + 1, first = all.find(x => x.cls === p.cls), pc = p.total ? Math.round(p.score / p.total * 100) : 0;
+    const me = { ...p, id, score: Number(p.score) || 0, total: Number(p.total) };
+    const all = results.filter(x => x.id !== id).concat([me]).sort(tgCmp);
+    const rank = all.findIndex(x => x.id === id) + 1, pc = p.total ? Math.round(p.score / p.total * 100) : 0;
+    const before = fullTopperOf(p.cls), after = fullTopperOf(p.cls, [me]), subs = fullSubs(p.name, p.cls, [me]), nd = SUBS.filter(x => subs[x]);
     let m = "\u{1F4DD} <b>Naya test result</b>\n\u{1F464} <b>" + tgE(p.name) + "</b> \u00B7 " + tgE(clsLabelEn(p.cls)) + "\n\u{1F4DA} " + tgE(p.subject || "-") + (p.medium ? " (" + tgE(String(p.medium).toUpperCase()) + ")" : "") + "\n\u2705 <b>" + p.score + "/" + p.total + "</b> (" + pc + "%)" + (p.timeMs ? "   \u23F1 " + tgMin(p.timeMs) : "") + "\n\u{1F552} " + tgNow() + "\n\u{1F3C5} Rank #" + rank + " / " + all.length;
     if ((p.leaves || 0) >= 1) m += "\n\u{1F6A9} Tab leaves: " + p.leaves + (p.leaves >= MAXLEAVE ? " \u2014 <b>test auto-submit hua</b>" : "");
-    if (p.total && p.score >= p.total) m += "\n\u{1F4AF} <b>Full marks!</b>";
-    if (rank === 1) m += "\n\u{1F451} <b>NAYA ALL-TIME #1!</b>";
-    else if (first && first.id === id) m += "\n\u{1F947} <b>" + tgE(clsLabelEn(p.cls)) + " ka naya topper!</b>";
+    if (p.total && p.score >= p.total) {
+      m += "\n\u{1F4AF} <b>Full marks!</b>  Topper progress: <b>" + nd.length + "/" + SUBS.length + "</b> (" + nd.map(tgE).join(", ") + ")";
+      if (after && nk(after.name) === nk(p.name) && (!before || nk(before.name) !== nk(p.name))) m += "\n\u{1F3C6}\u{1F451} <b>NAYA " + tgE(clsLabelEn(p.cls)) + " TOPPER!</b> (4 subject \u00D7 30/30, kul time " + tgMin(after.timeMs) + ")";
+      else if (after && nk(after.name) !== nk(p.name) && nd.length === SUBS.length) m += "\n\u{1F31F} Chaaron subject 30/30 \u2014 par abhi topper " + tgE(after.name) + " hai (kam time)";
+    }
     return okPhoto(saved.photo) ? tgPhoto(saved.photo, m) : tgText(m);
   });
 }
@@ -370,16 +454,16 @@ function tgStudent() {
 async function tgUpi(v) {
   const cfg = { classAmt: 15, topAmt: 50 };
   try { const c = (await get(ref(db, "testRewardCfg"))).val() || {}; if (c.classAmt != null && c.classAmt !== "") cfg.classAmt = Number(c.classAmt); if (c.topAmt != null && c.topAmt !== "") cfg.topAmt = Number(c.topAmt); } catch (e) {}
-  const me = nk(state.name), ct = results.find(x => x.cls === state.cls), isCls = ct && nk(ct.name) === me, isAll = results[0] && nk(results[0].name) === me;
-  tgOnce("u_" + upiKey(state.name, state.cls) + "_" + nk(v).replace(/[^a-z0-9@._-]/g, ""), () => tgText("\u{1F4B3} <b>UPI ID mili</b>\n\u{1F464} <b>" + tgE(state.name) + "</b> \u00B7 " + tgE(clsLabelEn(state.cls)) + "\n\u{1F194} <code>" + tgE(v) + "</code>\n" + (isAll ? "\u{1F4B0} Abhi all-time #1 result inka hai \u2014 inaam \u20B9" + cfg.topAmt + " tak (Admin \u2192 Home mein final winner dekhein)" : isCls ? "\u{1F4B0} " + tgE(clsLabelEn(state.cls)) + " topper \u2014 dena hai: <b>\u20B9" + cfg.classAmt + "</b>" : "\u2139\uFE0F Ye abhi topper nahi hai.") + "\n\u{1F552} " + tgNow()));
+  const me = nk(state.name), ct = (classToppers().find(x => x.c === state.cls) || {}).r, isCls = ct && nk(ct.name) === me, isAll = (() => { const w = allTimeWinner(); return !!(w && nk(w.name) === me); })();
+  tgOnce("u_" + upiKey(state.name, state.cls) + "_" + nk(v).replace(/[^a-z0-9@._-]/g, ""), () => tgText("\u{1F4B3} <b>UPI ID mili</b>\n\u{1F464} <b>" + tgE(state.name) + "</b> \u00B7 " + tgE(clsLabelEn(state.cls)) + "\n\u{1F194} <code>" + tgE(v) + "</code>\n" + (isAll ? "\u{1F4B0} All-time topper \u2014 dena hai: <b>\u20B9" + cfg.topAmt + "</b>" : isCls ? "\u{1F4B0} " + tgE(clsLabelEn(state.cls)) + " topper \u2014 dena hai: <b>\u20B9" + cfg.classAmt + "</b>" : "\u2139\uFE0F Ye abhi topper nahi hai (4 subject 30/30 nahi).") + "\n\u{1F552} " + tgNow()));
 }
 
 // ===== AUTOMATIC DAILY SUMMARY (roz 7 baje IST, apne aap) =====
 // Jo bhi pehla phone/browser 7 baje ke baad site kholega, wo summary bhej dega. Firebase transaction se sirf EK baar jati hai.
 function tgSummaryText() {
   const sod = Math.floor((Date.now() + 19800000) / 864e5) * 864e5 - 19800000, T = results.filter(r => (r.createdAt || 0) >= sod);
-  const av = a => a.length ? Math.round(a.reduce((s, r) => s + r.score / r.total * 100, 0) / a.length) : 0, top = results[0];
-  return "\u{1F4CA} <b>Aaj ka summary</b>\n\u{1F4DD} Aaj ke tests: <b>" + T.length + "</b>\n\u{1F465} Aaj ke students: <b>" + new Set(T.map(r => nk(r.name) + "|" + r.cls)).size + "</b>\n\u{1F4C8} Aaj ka average: <b>" + av(T) + "%</b>\n\u{1F6A9} Flagged (3+ leaves): <b>" + T.filter(r => (r.leaves || 0) >= 3).length + "</b>\n\u{1F4DA} Total tests: <b>" + results.length + "</b>" + (window._stuN ? " \u00B7 Total students: <b>" + window._stuN + "</b>" : "") + "\n\u{1F451} All-time #1: <b>" + (top ? tgE(top.name) + " (" + tgE(clsLabelEn(top.cls)) + ") " + top.score + "/" + top.total : "-") + "</b>";
+  const av = a => a.length ? Math.round(a.reduce((s, r) => s + r.score / r.total * 100, 0) / a.length) : 0, tops = classToppers().filter(o => o.r);
+  return "\u{1F4CA} <b>Aaj ka summary</b>\n\u{1F4DD} Aaj ke tests: <b>" + T.length + "</b>\n\u{1F465} Aaj ke students: <b>" + new Set(T.map(r => nk(r.name) + "|" + r.cls)).size + "</b>\n\u{1F4C8} Aaj ka average: <b>" + av(T) + "%</b>\n\u{1F6A9} Flagged (3+ leaves): <b>" + T.filter(r => (r.leaves || 0) >= 3).length + "</b>\n\u{1F4DA} Total tests: <b>" + results.length + "</b>" + (window._stuN ? " \u00B7 Total students: <b>" + window._stuN + "</b>" : "") + "\n\u{1F3C6} Class toppers (4 subject 30/30): <b>" + (tops.length ? tops.map(o => tgE(o.r.name) + " (" + tgE(clsLabelEn(o.c)) + ")" + (holdLeft(o.r) === 0 ? " \u{1F381}" : "")).join(", ") : "abhi koi nahi") + "</b>\n\u{1F381} = 7 din se topper (inaam ka time)";
 }
 function tgDaily() {
   try {
@@ -398,15 +482,38 @@ setInterval(tgDaily, 60000); setTimeout(tgDaily, 15000);
 const SUBS = ["Maths", "Science", "English", "Hindi"];
 const betterR = (a, b) => !b || (a.score / a.total > b.score / b.total) || (a.score / a.total === b.score / b.total && (a.timeMs || 1e12) < (b.timeMs || 1e12));
 function topTxt(r) { return r ? `${r.name} (${clsLabelEn(r.cls)}) - ${r.score}/${r.total}${r.timeMs ? " in " + fmtT(r.timeMs) : ""}` : ""; }
-// Sirf LIVE data (testResults) se - koi all-time / purana topper nahi.
-// results pehle se sorted hai: zyada % phir kam time, to har class ka pehla result = us class ka topper.
-function champion() { return results[0] || null; }
-function classToppers() {
-  return CLASSES.map(c => ({ c, r: results.find(x => x.cls === c) || null }));
+// TOPPER RULE: kisi class ka topper TABHI jab student ne Maths, Science, English aur Hindi - chaaron mein 30/30 (full marks) laye ho.
+// Jab tak koi aisa nahi, us class ka topper khali rehta hai. Ek se zyada hon to chaaron ka kul time kam wala topper.
+const FULL_Q = 30;
+function fullSubs(name, cls, extra) {
+  const got = {}; (extra ? results.concat(extra) : results).forEach(r => {
+    if (String(r.cls) !== String(cls) || nk(r.name) !== nk(name) || !SUBS.includes(r.subject) || !(Number(r.total) >= FULL_Q) || Number(r.score) !== Number(r.total)) return;
+    if (betterR(r, got[r.subject])) got[r.subject] = r;
+  });
+  return got;
 }
+function fullTopperOf(c, extra) {
+  const names = {}; (extra ? results.concat(extra) : results).forEach(r => { if (String(r.cls) === String(c)) names[nk(r.name)] = r.name; });
+  let best = null;
+  Object.keys(names).forEach(k => {
+    const subs = fullSubs(names[k], c, extra); if (!SUBS.every(x => subs[x])) return;
+    const timeMs = SUBS.reduce((s, x) => s + (subs[x].timeMs || 0), 0), done = Math.max(...SUBS.map(x => subs[x].createdAt || 0));
+    if (!best || timeMs < best.timeMs || (timeMs === best.timeMs && done < best.done)) best = { name: names[k], subs, timeMs, done };
+  });
+  return best;
+}
+function classToppers() {
+  return CLASSES.map(c => {
+    const o = fullTopperOf(c); if (!o) return { c, r: null };
+    return { c, r: { id: "top_" + c + "_" + nk(o.name), name: o.name, cls: c, subject: "All 4 subjects", score: SUBS.length * FULL_Q, total: SUBS.length * FULL_Q, timeMs: o.timeMs, createdAt: o.done, subs: o.subs, full: true } };
+  });
+}
+// champion = sabhi class toppers mein sabse kam kul time wala (koi topper nahi to null)
+function champion() { return classToppers().filter(o => o.r).map(o => o.r).sort((a, b) => a.timeMs - b.timeMs)[0] || null; }
+const isTopperName = n => classToppers().some(o => o.r && nk(o.r.name) === nk(n));
 function classListTxt() {
   const L = classToppers().filter(o => o.r).map(o => `${clsLabelEn(o.c)}: ${o.r.name} (${o.r.score}/${o.r.total}${o.r.timeMs ? ", " + fmtT(o.r.timeMs) : ""})`);
-  return L.length ? L.join(" | ") : "Apni class ka pehla topper banne ke liye abhi test dein";
+  return L.length ? L.join(" | ") : "Abhi koi class topper nahi \u2014 Maths, Science, English, Hindi chaaron mein 30/30 laao aur pehle topper bano!";
 }
 function renderFaq() {
   const b = $("faq"); if (!b) return;
@@ -422,14 +529,12 @@ function renderFaq() {
 let _faqSig = "";
 setInterval(() => {
   if (document.hidden || state.screen !== "start" || !loadedR) return;
-  const sig = classToppers().map(o => (o.r ? o.r.id : "")).join(",") + "|" + (results[0] ? results[0].id : "");
+  const sig = classToppers().map(o => (o.r ? o.r.id : "")).join(",") + "|" + (champion() ? champion().id : "");
   if (sig !== _faqSig) { _faqSig = sig; renderFaq(); updateSEO(); }
 }, 1000);
 function updateSEO() {
-  const top = champion();
-  if (!top) return;
   const title = "Amrit Tiwari Test - Free Online Test Class 1-12 | Amritt Edition";
-  const desc = "Free online test for Class LKG to 12: Maths, Science, English & Hindi. 30 sawaal, timer aur live leaderboard. Test do, rank dekho aur topper bano!";
+  const desc = "Free online test Class LKG-12: Maths, Science, English, Hindi (30 sawaal). Har class ke topper ko reward milta hai! 4 subject mein 30/30 laao aur topper bano.";
   document.title = $("pageTitle").textContent = title;
   $("metaDesc").setAttribute("content", desc); $("ogTitle").setAttribute("content", title); $("ogDesc").setAttribute("content", desc);
   // Search engine / AI ke liye structured FAQ (har class ka topper)
@@ -439,7 +544,7 @@ function updateSEO() {
   ld.textContent = JSON.stringify({
     "@context": "https://schema.org", "@type": "FAQPage",
     mainEntity: [qa("Amrit Tiwari Test mein topper kaun hai? Sabhi class ke topper ki list", classListTxt())]
-      .concat(classToppers().filter(o => o.r).map(o => qa(`Amrit Tiwari Test mein ${clsLabelEn(o.c)} ka topper kaun hai?`, `${clsLabelEn(o.c)} ka latest topper ${topTxt(o.r)} hai.`)))
+      .concat([qa("Amrit Tiwari Test mein topper ko reward kab milta hai?", "Har class ke topper ko reward milta hai. Topper wahi hai jisne Maths, Science, English aur Hindi chaaron mein 30/30 kiya ho. Reward tab milta hai jab topper ko ek hafte (7 din) tak koi hara na paye."), qa("Amrit Tiwari Test mein class topper kaise bante hain?", "Chaaron subject (Maths, Science, English, Hindi) mein 30 mein se 30 number laane wala student us class ka topper banta hai.")]).concat(classToppers().filter(o => o.r).map(o => qa(`Amrit Tiwari Test mein ${clsLabelEn(o.c)} ka topper kaun hai?`, `${clsLabelEn(o.c)} ka latest topper ${topTxt(o.r)} hai.`)))
   });
 }
 
@@ -447,11 +552,11 @@ function updateSEO() {
 const NT = {
   en: { askT: "Allow notifications?", askB: "Get instant news about new toppers and leaderboard updates. You can use the test even if you say no.", askYes: "Allow", askNo: "Not now", bell: "Announcements", okT: "\u{1F514} Notifications on", okB: "You'll hear about new toppers and leaderboard updates.", denyT: "Notifications are blocked", denyB: "Optional: allow it in browser settings to get alerts. The test works fine without it.", unsupT: "System notifications not available", unsupB: "This browser can't show system notifications. Announcements will still appear inside the app.", onT: "Announcements on", offT: "Announcements off",
     gateT: "Please allow notifications", gateB: "To use this test you need to allow notifications. You'll get new topper and leaderboard news instantly, even when the website is closed.", gateBtn: "Allow notifications", gateDenied: "Notifications are blocked for this site. Tap the lock icon next to the address bar, open Site settings, set Notifications to Allow, then come back and tap the button below.", gateRecheck: "I allowed it, check again", gateNote: "We only send topper and leaderboard updates.",
-    topT: "\u{1F3C6} New No. 1!", clsT: c => `\u{1F947} New topper in ${c}`, line: r => `${r.name} scored ${r.score}/${r.total} in ${sl(r.subject)} (${clsLabel(r.cls)})`,
+    topT: "\u{1F3C6} New No. 1!", clsT: c => `\u{1F947} New topper in ${c}`, line: r => r.full ? `${r.name} scored 30/30 in all 4 subjects (${clsLabel(r.cls)})` : `${r.name} scored ${r.score}/${r.total} in ${sl(r.subject)} (${clsLabel(r.cls)})`,
     newT: "\u{1F195} Leaderboard update", newOne: r => `${r.name} took the ${sl(r.subject)} test: ${r.score}/${r.total}`, newMany: n => `${n} new results just came in` },
   hi: { askT: "नोटिफिकेशन Allow करें?", askB: "नए टॉपर और लीडरबोर्ड की खबर तुरंत पाएँ। मना करने पर भी आप टेस्ट दे सकते हैं।", askYes: "Allow करें", askNo: "अभी नहीं", bell: "घोषणाएँ", okT: "\u{1F514} नोटिफिकेशन चालू", okB: "नए टॉपर और लीडरबोर्ड की खबर आपको मिलती रहेगी।", denyT: "नोटिफिकेशन बंद हैं", denyB: "वैकल्पिक: अलर्ट चाहिए तो ब्राउज़र सेटिंग में Allow करें। इसके बिना भी टेस्ट पूरा चलेगा।", unsupT: "सिस्टम नोटिफिकेशन उपलब्ध नहीं", unsupB: "यह ब्राउज़र सिस्टम नोटिफिकेशन नहीं दिखा सकता। घोषणाएँ ऐप के अंदर दिखेंगी।", onT: "घोषणाएँ चालू", offT: "घोषणाएँ बंद",
     gateT: "कृपया नोटिफिकेशन Allow करें", gateB: "यह टेस्ट इस्तेमाल करने के लिए नोटिफिकेशन Allow करना ज़रूरी है। नया टॉपर और लीडरबोर्ड की खबर आपको तुरंत मिलेगी, वेबसाइट बंद होने पर भी।", gateBtn: "नोटिफिकेशन Allow करें", gateDenied: "इस साइट के लिए नोटिफिकेशन बंद हैं। एड्रेस बार के पास 🔒 आइकन दबाएँ, Site settings खोलें, Notifications को Allow करें, फिर वापस आकर नीचे का बटन दबाएँ।", gateRecheck: "मैंने Allow कर दिया, दोबारा जाँचें", gateNote: "हम सिर्फ टॉपर और लीडरबोर्ड की खबर भेजते हैं।",
-    topT: "\u{1F3C6} नया नंबर 1!", clsT: c => `\u{1F947} ${c} का नया टॉपर`, line: r => `${r.name} ने ${sl(r.subject)} में ${r.score}/${r.total} स्कोर किया (${clsLabel(r.cls)})`,
+    topT: "\u{1F3C6} नया नंबर 1!", clsT: c => `\u{1F947} ${c} का नया टॉपर`, line: r => r.full ? `${r.name} ने चारों विषयों में 30/30 स्कोर किया (${clsLabel(r.cls)})` : `${r.name} ने ${sl(r.subject)} में ${r.score}/${r.total} स्कोर किया (${clsLabel(r.cls)})`,
     newT: "\u{1F195} लीडरबोर्ड अपडेट", newOne: r => `${r.name} ने ${sl(r.subject)} टेस्ट दिया: ${r.score}/${r.total}`, newMany: n => `${n} नए रिज़ल्ट आए` }
 };
 let _snap = null, _ids = null; const pendingAnn = [];
@@ -545,14 +650,14 @@ window.addEventListener("focus", () => { paintBell(); gateCheck(); });
 
 // naya topper / leaderboard change pakadta hai (jab page khula ho, ya pichhli visit ke baad)
 function checkAnnounce() {
-  const top = results[0] || null, cl = {};
+  const top = champion(), cl = {};
   classToppers().forEach(o => { if (o.r) cl[o.c] = o.r.id; });
   const cur = { top: top ? top.id : "", cl };
   let prev = _snap; if (!prev) { try { prev = JSON.parse(localStorage.getItem("amrit_test_seen") || "null"); } catch (e) { prev = null; } }
   const t = NT[lang], anns = [], used = new Set(), mine = id => !!id && (id === state.resultId || id === state.pendingId);
   if (prev) {
     if (cur.top && cur.top !== prev.top && !mine(cur.top)) { anns.push({ t: t.topT, b: t.line(top), tag: "top" }); used.add(cur.top); }
-    CLASSES.forEach(c => { const id = cur.cl[c]; if (id && id !== (prev.cl || {})[c] && !used.has(id) && !mine(id)) { const r = results.find(x => x.id === id); if (r) { anns.push({ t: t.clsT(clsLabel(c)), b: t.line(r), tag: "cls" + c }); used.add(id); } } });
+    CLASSES.forEach(c => { const id = cur.cl[c]; if (id && id !== (prev.cl || {})[c] && !used.has(id) && !mine(id)) { const r = (classToppers().find(z => z.c === c) || {}).r; if (r) { anns.push({ t: t.clsT(clsLabel(c)), b: t.line(r), tag: "cls" + c }); used.add(id); } } });
   }
   if (_ids) {
     const fresh = results.filter(r => !_ids.has(r.id) && !mine(r.id) && !used.has(r.id));
@@ -621,7 +726,7 @@ const fmtDT = ts => {
 };
 const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 // Naam + surname dono zaruri (kam se kam 2 shabd, har shabd 2+ akshar) taaki duplicate naam na aayein
-function fullName(n) { const w = String(n || "").trim().split(/\s+/).filter(Boolean); return w.length >= 2 && w.every(x => x.length >= 2); }
+function fullName(n) { const s = String(n || "").trim(); if (!/^[\p{L}\p{M}][\p{L}\p{M}.'\-\s]*$/u.test(s)) return false; const w = s.split(/\s+/).filter(Boolean); return w.length >= 2 && w.every(x => x.replace(/[.'\-]/g, "").length >= 2); }
 // ---- Ek naam = ek subject ka sirf ek test ----
 const QSEC = 60, MAXLEAVE = 2;
 function takenKey(n, subj, cls) { return (String(n).toLowerCase().replace(/\s+/g, " ").trim() + "__" + String(subj).toLowerCase().trim() + "__c" + String(cls || "").toLowerCase().trim()).replace(/[^\p{L}\p{N}\p{M}]+/gu, "_"); }
@@ -663,7 +768,6 @@ function markDirty() { state.saved = false; saveProfile(); const b = $("saveBtn"
 async function saveStudent() {
   const t = T[lang], n = state.name.trim().replace(/\s+/g, " ");
   if (!fullName(n) || !state.cls) { $("err").textContent = t.need; $("err").classList.remove("hidden"); (!fullName(n) ? $("nm") : $("cl")).focus(); return; }
-  if (!okPhoto(saved.photo)) { $("err").textContent = t.photoNeed; $("err").classList.remove("hidden"); const pb = $("photoBtn"); if (pb) pb.focus(); return; }
   $("err").classList.add("hidden"); state.name = n; state.saved = true;
   saved.createdAt = saved.createdAt || Date.now();
   try { saved.sid = saved.sid || push(ref(db, "testStudents")).key; } catch (e) {}
@@ -679,7 +783,6 @@ async function loadSubjects() {
   const box = $("subs"); if (!box) return;
   const t = T[lang];
   if (!state.saved) { box.innerHTML = `<p class="text-xs text-neutral-500 text-center py-2">${t.saveHint}</p>`; return; }
-  if (!okPhoto(saved.photo)) { box.innerHTML = `<p class="text-xs text-red-500 text-center py-2 font-semibold">${t.photoNeed}</p>`; return; }
   if (!state.cls) { box.innerHTML = `<p class="text-sm text-neutral-500 text-center py-4">${t.pickClass}</p>`; return; }
   const cls = state.cls;
   const paint = () => {
@@ -752,7 +855,6 @@ function askLang(k) {
 async function startTest(k, L0) {
   const t = T[lang];
   if (!fullName(state.name) || !state.cls) { $("err").textContent = t.need; $("err").classList.remove("hidden"); (!fullName(state.name) ? $("nm") : $("cl")).focus(); return; }
-  if (!okPhoto(saved.photo)) { $("err").textContent = t.photoNeed; $("err").classList.remove("hidden"); return; }
   const subj = bank[k].name || k;
   const blockMsg = lang === "hi" ? "इस नाम से यह टेस्ट पहले ही हो चुका है। एक नाम से एक विषय का टेस्ट सिर्फ एक बार दे सकते हैं।" : "This name has already taken this subject's test. One name can take each test only once.";
   const showErr = m => { $("err").textContent = m; $("err").classList.remove("hidden"); window.scrollTo({ top: 0, left: 0, behavior: "instant" }); };
@@ -846,6 +948,18 @@ function toppersFx(fresh) {
     e.style.animationDelay = (e.dataset.d || 0) + "ms"; e.classList.add("in"); e.querySelectorAll("[data-n]").forEach(x => countUp(x, +(e.dataset.d || 0) + 200));
   }), { threshold: .12 }) : null;
   rv.forEach((e, i) => { e.classList.add(i % 2 ? "rr" : "rl"); e.dataset.d = (i % 6) * 80; if (io) io.observe(e); else e.classList.add("in"); });
+  const heroes = root.querySelectorAll(".top-hero .th-trophy");
+  if (heroes.length && !matchMedia("(prefers-reduced-motion:reduce)").matches) {
+    const hc = ["#facc15", "#fbbf24", "#f59e0b", "#fde68a", "#ffffff", "#4ade80"], okH = () => state.screen === "leaderboard" && state.lbTab === "toppers";
+    heroes.forEach((h, i) => { if (i > 2) return; [700 + i * 450, 1700 + i * 450].forEach(d => setTimeout(() => { if (!okH()) return; const b = h.getBoundingClientRect(); if (b.top < innerHeight && b.bottom > 0) firework(b.left + b.width / 2, b.top + b.height / 2, 30, hc); }, d)); });
+    setTimeout(() => { if (okH()) { try { navigator.vibrate && navigator.vibrate([30, 40, 30]); } catch (e) {} } }, 700);
+  }
+  const rks = root.querySelectorAll(".rk-col[data-k] .rk-rocket");
+  if (rks.length && !matchMedia("(prefers-reduced-motion:reduce)").matches) {
+    const rc = ["#facc15", "#f472b6", "#60a5fa", "#4ade80", "#ffffff", "#fb923c"], okR = () => state.screen === "leaderboard" && state.lbTab === "toppers", dl = { 3: 1500, 2: 1850, 1: 2200 };
+    root.querySelectorAll(".rk-col[data-k] [data-n]").forEach(e => countUp(e, dl[+e.closest(".rk-col").dataset.k] - 300));
+    rks.forEach(el => { const k = +el.closest(".rk-col").dataset.k; setTimeout(() => { if (!okR()) return; const b = el.getBoundingClientRect(); if (b.bottom > 0 && b.top < innerHeight) firework(b.left + b.width / 2, b.top + b.height * .35, k === 1 ? 40 : 26, rc); if (k === 1) { root.classList.add("quake"); setTimeout(() => root.classList.remove("quake"), 600); try { navigator.vibrate && navigator.vibrate([40, 30, 60]); } catch (e) {} } }, dl[k]); });
+  }
   const pp = root.querySelector(".pod-play"); if (!pp || matchMedia("(prefers-reduced-motion:reduce)").matches) return;
   pp.querySelectorAll("[data-n]").forEach(e => countUp(e, e.closest(".pod-1") ? 1750 : e.closest(".pod-2") ? 1400 : 1100));
   const ok = () => state.screen === "leaderboard" && state.lbTab === "toppers" && $("app").querySelector(".pod-play");
@@ -868,8 +982,9 @@ function render() {
   const a = document.activeElement, ai = a && a.id, ss = a && a.selectionStart;
   const key = [state.screen, state.qi, lang, state.lbTab, state.lbCls, state.lbSub, state.review].join("|"), fresh = key !== _rk; _rk = key;
   renderInner();
+  if (fresh && state.screen !== "quiz") { const ap = $("app"); ap.classList.remove("screen-in"); void ap.offsetWidth; ap.classList.add("screen-in"); setTimeout(() => ap.classList.remove("screen-in"), 450); }
   if (fresh && state.screen === "leaderboard" && state.lbTab === "toppers") setTimeout(() => { if (state.screen === "leaderboard" && state.lbTab === "toppers" && results.length) podBurst(); }, 1900);
-  if (!fresh) $("app").querySelectorAll(".pop,.grow,.bar,.slidein,.stagger>*,.pod-ped,.pod-av,.pod-info,.pod-crown").forEach(el => el.style.animation = "none");
+  if (!fresh) $("app").querySelectorAll(".pop,.grow,.bar,.slidein,.stagger>*,.pod-ped,.pod-av,.pod-info,.pod-crown,.rk-up,.rk-trail,.rk-card,.rk-crown").forEach(el => el.style.animation = "none");
   if (state.screen === "leaderboard" && state.lbTab === "toppers") toppersFx(fresh);
   const sk = state.screen + "|" + state.qi; if (sk !== _sk) { _sk = sk; window.scrollTo({ top: 0, left: 0, behavior: "instant" }); }
   if (ai === "srch" && $("srch")) { $("srch").focus(); try { $("srch").setSelectionRange(ss, ss); } catch (e) {} }
@@ -889,7 +1004,7 @@ function renderInner() {
         ${profiles.length ? `<div id="prof" class="flex flex-wrap gap-2 mb-3">${profiles.map((p, i) => `<button data-p="${i}" class="max-w-[60%] truncate px-3.5 py-2 rounded-full text-sm font-semibold border ${i === cur ? "bg-green-600 text-white border-green-600 shadow" : "bg-white text-green-700 border-green-200"}">${okPhoto(p.photo) ? `<img src="${p.photo}" alt="" class="inline-block w-5 h-5 rounded-full object-cover align-middle mr-1.5">` : ""}${esc(p.name)}</button>`).join("")}${profiles.length < MAXP ? `<button data-p="add" class="px-3.5 py-2 rounded-full text-sm font-semibold border ${cur >= profiles.length ? "bg-green-600 text-white border-green-600 shadow" : "border-dashed border-green-300 bg-white text-green-700"}">+ ${lang === "hi" ? "दूसरा नाम जोड़ें" : "Add another name"}</button>` : ""}</div>` : ""}
         <div class="flex items-center gap-3 mb-3">
           <div class="w-14 h-14 rounded-full overflow-hidden bg-green-100 border-2 border-green-200 grid place-items-center text-xl shrink-0">${okPhoto(saved.photo) ? `<img src="${saved.photo}" alt="" class="w-full h-full object-cover">` : "\u{1F464}"}</div>
-          <div class="flex-1 flex items-center gap-3 flex-wrap"><button id="photoBtn" type="button" class="px-4 py-2 rounded-full ${btnLine} text-sm">\u{1F4F7} ${okPhoto(saved.photo) ? (lang === "hi" ? "फोटो बदलें" : "Change photo") : (lang === "hi" ? "फोटो जोड़ें (ज़रूरी)" : "Add photo (required)")}</button></div>
+          <div class="flex-1 flex items-center gap-3 flex-wrap"><button id="photoBtn" type="button" class="px-4 py-2 rounded-full ${btnLine} text-sm">\u{1F4F7} ${okPhoto(saved.photo) ? (lang === "hi" ? "फोटो बदलें" : "Change photo") : (lang === "hi" ? "फोटो जोड़ें (वैकल्पिक)" : "Add photo (optional)")}</button></div>
           <input id="photoIn" type="file" accept="image/*" class="hidden">
         </div>
         ${state.saved ? (state.justSaved ? `<div id="savedMsg" class="slidein flex items-center gap-2 mb-3 px-4 py-2.5 rounded-2xl bg-green-50 border border-green-200 text-green-700 text-sm font-semibold">\u2714 ${lang === "hi" ? "आपका नाम इस डिवाइस पर सेव है" : "Your name is saved on this device"}</div>` : "") : `<input id="nm" aria-label="${t.namePh}" value="${esc(state.name)}" maxlength="60" placeholder="${t.namePh}" autocomplete="off" class="${inputCls} mb-3">`}
@@ -977,6 +1092,7 @@ function renderInner() {
           <div class="glass rounded-2xl py-3"><div class="text-lg font-extrabold text-red-500">${total - state.score}</div><div class="text-[.65rem] text-neutral-500">${t.wro}</div></div>
           <div class="glass rounded-2xl py-3"><div class="text-lg font-extrabold text-green-700">${state.timeMs ? fmtT(state.timeMs) : "-"}</div><div class="text-[.65rem] text-neutral-500">${t.timeL}</div></div>
         </div>
+        ${topProgressHtml()}
         ${rank > 0 ? `<div class="inline-flex items-center gap-2 mt-4 px-4 py-2 rounded-full bg-green-600 text-white text-sm font-semibold shadow-lg shadow-green-600/25">\u{1F3C5} ${t.rank}: #${rank}</div>` : ""}
         ${state.saveErr ? `<button id="retrySave" class="mt-4 px-5 py-2.5 rounded-full ${btnMain} text-sm">${t.retrySave}</button>` : ""}
         <div class="flex gap-2 mt-6 justify-center"><button id="shareBtn" class="px-4 py-2 rounded-full ${btnLine} text-sm">${t.share}</button><button id="revBtn" class="px-4 py-2 rounded-full ${btnLine} text-sm">${state.review ? t.hide : t.review}</button></div>
@@ -1039,7 +1155,7 @@ function renderInner() {
       const champ = {};
       SUBS.forEach(x => { let bb = null; inCls.forEach(r => { if (r.subject === x && betterR(r, bb)) bb = r; }); champ[x] = bb; });
       const icon = { Maths: "\u{1F522}", Science: "\u{1F52C}", English: "\u{1F4D6}", Hindi: "\u0905" };
-      const clsTop = !state.lbCls ? CLASSES.map(c => ({ c, r: list.find(x => x.cls === c) })).filter(o => o.r) : [];
+      const clsTop = classToppers().filter(o => o.r && (!state.lbCls || o.c === state.lbCls));
       const when = r => r.createdAt ? `<div class="text-[.65rem] font-semibold text-green-700 truncate">\u{1F552} ${fmtDT(r.createdAt)}</div>` : "";
       const meTag = r => isMe(r) ? `<span class="text-[.6rem] px-1.5 py-0.5 rounded-full bg-green-600 text-white font-semibold align-middle">${l.you}</span>` : "";
       const scoreBox = r => `<div class="text-right shrink-0"><div data-n="${r.score}" class="font-extrabold text-base text-green-700 leading-tight">${r.score}<span class="text-xs text-neutral-400 font-semibold">/${r.total}</span></div><div class="text-[.6rem] text-neutral-400 leading-none">${l.correct}</div><div class="text-[.68rem] font-bold text-green-700 mt-0.5">${pc(r)}%</div>${r.timeMs ? `<div class="text-[.65rem] text-neutral-500">\u23F1 ${fmtT(r.timeMs)}</div>` : ""}</div>`;
@@ -1048,27 +1164,49 @@ function renderInner() {
       const info = `<div class="rounded-2xl border border-green-200 bg-green-50 px-4 py-3 text-xs leading-relaxed text-green-900 mb-5"><div class="font-bold mb-0.5">\u2139\uFE0F ${l.howT}</div>${l.how}</div>`;
 
       // Top 3 podium (2nd - 1st - 3rd)
-      const tones = ["from-amber-200 to-amber-300 text-amber-900", "from-neutral-200 to-neutral-300 text-neutral-700", "from-orange-200 to-orange-300 text-orange-900"];
-      const hts = ["h-28", "h-20", "h-16"];
+      const pHi = lang === "hi", W = [80, 68, 68], BOT = ["6.8rem", "3.7rem", ".7rem"], DLY = [".9s", ".55s", ".2s"];
+      const BODY = [["#fbbf24", "#f97316"], ["#e2e8f0", "#6366f1"], ["#fdba74", "#ef4444"]], TAG = ["#f59e0b", "#6366f1", "#ea580c"];
+      const TAGT = pHi ? ["सुपर स्टार", "शानदार", "बहुत बढ़िया"] : ["Super Star", "Brilliant", "Great Job"];
+      const starsOf = r => { const p = pc(r), n = p >= 90 ? 5 : p >= 75 ? 4 : p >= 60 ? 3 : p >= 40 ? 2 : 1; return "\u2605".repeat(n) + "<i>" + "\u2605".repeat(5 - n) + "</i>"; };
+      const rocketSvg = i => `<svg viewBox="0 0 56 84" aria-hidden="true"><path d="M12 42L1 66l12-5z" fill="${BODY[i][1]}"/><path d="M44 42l11 24-12-5z" fill="${BODY[i][1]}"/><path d="M28 1C41 14 47 31 45 56H11C9 31 15 14 28 1Z" fill="${BODY[i][0]}" stroke="rgba(0,0,0,.14)" stroke-width="1"/><path d="M28 1C34 8 38 15 40 22H16C18 15 22 8 28 1Z" fill="${BODY[i][1]}"/><rect x="19" y="54" width="18" height="7" rx="2.5" fill="${BODY[i][1]}"/><circle cx="28" cy="30" r="13" fill="#fff" opacity=".92"/></svg>`;
       const slot = i => {
         const r = list[i];
-        const ped = `<div class="pod-ped relative overflow-hidden w-full ${hts[i]} mt-2 rounded-t-2xl bg-gradient-to-b ${tones[i]} flex flex-col items-center justify-center leading-none"><span class="text-2xl">${medal(i)}</span><span class="text-sm font-extrabold mt-1">#${i + 1}</span>${i === 0 ? '<span class="pod-shine"></span>' : ""}</div>`;
-        if (!r) return `<div class="pod-${i + 1} flex flex-col items-center justify-end min-w-0 opacity-40"><div class="text-xs font-semibold text-neutral-400 py-6">-</div>${ped}</div>`;
-        const av = avImg(r.name, i === 0 ? "w-14 h-14" : "w-11 h-11") || `<div class="${i === 0 ? "w-14 h-14 text-lg" : "w-11 h-11"} rounded-full bg-green-100 text-green-700 grid place-items-center font-extrabold shrink-0">${esc(ini(r.name))}</div>`;
-        return `<div class="pod-${i + 1} flex flex-col items-center justify-end min-w-0"><div class="w-full flex flex-col items-center px-1 py-2 rounded-2xl ${isMe(r) ? "bg-green-100 ring-2 ring-green-500" : ""}">${i === 0 ? '<span class="pod-crown text-2xl leading-none">\u{1F451}</span>' : ""}<div class="pod-av flex justify-center"><div class="${i === 0 ? "pod-gold" : ""}">${av}</div></div><div class="pod-info w-full flex flex-col items-center"><div class="w-full text-center text-xs font-bold truncate mt-1.5${i === 0 ? " gold-txt" : ""}">${esc(r.name)}</div><div class="text-[.62rem] text-neutral-500 text-center leading-tight">${esc(clsLabel(r.cls))}<br>${esc(sl(r.subject))}</div><div data-n="${r.score}" class="font-extrabold text-green-700 mt-1 leading-none">${r.score}<span class="text-xs text-neutral-400 font-semibold">/${r.total}</span></div><div class="text-[.65rem] font-bold text-green-700">${pc(r)}%</div>${r.timeMs ? `<div class="text-[.62rem] text-neutral-500">\u23F1 ${fmtT(r.timeMs)}</div>` : ""}${r.createdAt ? `<div class="text-[.58rem] text-green-700 font-semibold text-center leading-tight mt-0.5">\u{1F552} ${fmtDT(r.createdAt)}</div>` : ""}</div></div>${ped}</div>`;
+        if (!r) return `<div class="rk-col min-w-0"><div class="rk-fly"><span class="absolute left-1/2 -translate-x-1/2 text-2xl opacity-60" style="bottom:${BOT[i]}">\u{1F6F8}</span></div><div class="rk-card" style="--d:${DLY[i]};opacity:.7"><div class="text-xs font-semibold text-neutral-400 py-3">-</div></div></div>`;
+        const win = avImg(r.name, "") ? avImg(r.name, "").replace('rounded-full object-cover border border-green-200 shrink-0', "") : esc(ini(r.name));
+        return `<div class="rk-col min-w-0" data-k="${i + 1}"><div class="rk-fly"><span class="rk-cloud" style="left:${i === 1 ? 2 : i === 0 ? 30 : 4}%">\u2601\uFE0F</span>
+          <div class="rk-trail" style="--b:${BOT[i]};--d:${DLY[i]}"></div>
+          <div class="rk-up" style="--b:${BOT[i]};--w:${W[i]}px;--d:${DLY[i]}">${i === 0 && isTopperName(r.name) ? '<span class="rk-crown pod-crown">\u{1F451}</span>' : ""}<div class="rk-hover rk-rocket">${rocketSvg(i)}<div class="rk-win">${win}</div><div class="rk-flame"></div></div></div></div>
+          <div class="rk-card ${isMe(r) ? "ring-4 ring-emerald-300" : ""}" style="--d:${DLY[i]}"><span class="rk-tag" style="background:${TAG[i]}">${medal(i)} ${TAGT[i]}</span>
+            <div class="text-[.78rem] font-extrabold truncate text-neutral-800">${esc(r.name)}${isMe(r) ? " \u00B7 " + l.you : ""}</div>
+            <div class="text-[.58rem] text-neutral-500 leading-tight truncate">${esc(clsLabel(r.cls))} \u00B7 ${esc(sl(r.subject))}</div>
+            <div class="rk-stars mt-1">${starsOf(r)}</div>
+            <div data-n="${r.score}" class="font-extrabold text-green-700 text-lg leading-none mt-1">${r.score}<span class="text-[.65rem] text-neutral-400 font-semibold">/${r.total}</span></div>
+            <div class="text-[.68rem] font-extrabold text-green-700">${pc(r)}%${r.timeMs ? ` <span class="text-neutral-500 font-semibold">\u00B7 \u23F1 ${fmtT(r.timeMs)}</span>` : ""}</div>
+          </div></div>`;
       };
-      const podium = sec("\u{1F3C6} " + l.podium, l.podD, "mt-0") + `<div class="pop pod-play grid grid-cols-3 gap-2 items-end rounded-3xl px-3 pt-4 bg-gradient-to-b from-green-50 to-white border border-green-100 shadow-lg shadow-green-100/60">${slot(1)}${slot(0)}${slot(2)}</div>`;
+      const chipP = "px-2 py-0.5 rounded-full bg-white border border-green-200 font-bold text-green-800";
+      const podNote = `<div class="mt-3 rounded-2xl border border-green-200 bg-green-50 px-4 py-3 text-[.72rem] leading-relaxed text-green-900"><div class="font-bold mb-1.5">\u{1F4CC} ${pHi ? "रॉकेट किस आधार पर ऊपर जाते हैं?" : "Rocket kis aadhar par upar jaate hain?"}</div><div class="flex flex-wrap gap-1.5 mb-1.5"><span class="${chipP}">\u2460 ${pHi ? "ज़्यादा %" : "Zyada % (score)"}</span><span class="${chipP}">\u2461 ${pHi ? "कम समय" : "Kam time"}</span><span class="${chipP}">\u2462 ${pHi ? "जिसने पहले दिया" : "Jisne pehle diya"}</span></div>${pHi ? "हर <b>टेस्ट-रिज़ल्ट</b> अलग गिना जाता है — एक ही छात्र के कई अच्छे टेस्ट हों तो वह कई जगह आ सकता है। क्लास/विषय फ़िल्टर लगाने पर उसी में से टॉप 3 दिखते हैं।" : "Har <b>test-result</b> alag ginta hai \u2014 ek hi student ke kai achhe test hon to wo kai jagah aa sakta hai. Class/subject filter lagane par usi mein se top 3 dikhte hain."}</div>`;
+      const podium = sec("\u{1F680} " + (pHi ? "रॉकेट रेस \u2014 टॉप 3" : "Rocket Race \u2014 Top 3"), pHi ? "सबसे तेज़ उड़ने वाले 3 रॉकेट!" : "Sabse tez udne wale 3 rocket!", "mt-6") + `<div class="pop rk-sky"><span class="rk-moon">\u{1F319}</span><span class="rk-planet">\u{1FA90}</span><div class="grid grid-cols-3 gap-2 items-end">${slot(1)}${slot(0)}${slot(2)}</div></div>` + podNote;
 
       // Rank 4 to 10
       const rest = list.slice(3, 10);
       const restHtml = rest.length ? sec("\u{1F4CB} " + l.rest, l.restD) + box(`<div class="flex justify-between px-4 py-2 bg-green-50 text-[.68rem] font-bold text-green-800"><span>${l.rankStu}</span><span>${l.scoreTime}</span></div>` + rest.map((r, j) => `<div class="rv flex items-center gap-3 px-4 py-3 border-t border-green-50 ${isMe(r) ? "bg-green-50 ring-2 ring-inset ring-green-500" : ""}"><div class="w-8 h-8 rounded-full bg-green-100 text-green-700 grid place-items-center font-extrabold text-sm shrink-0">${j + 4}</div>${avImg(r.name, "w-9 h-9")}<div class="flex-1 min-w-0"><div class="font-semibold text-sm truncate">${esc(r.name)} ${meTag(r)}</div><div class="text-[.7rem] text-neutral-500 truncate">${esc(clsLabel(r.cls))} &middot; ${esc(sl(r.subject))}</div>${when(r)}</div>${scoreBox(r)}</div>`).join("")) : "";
 
-      // Topper of every class
-      const clsHtml = clsTop.length ? sec("\u{1F3EB} " + l.clsTop, l.tap) + box(clsTop.map((o, i) => `<button data-cls="${esc(o.c)}" class="rv w-full text-left flex items-center gap-3 px-4 py-3 hover:bg-green-50 transition ${i ? "border-t border-green-50" : ""}">
-            <div class="min-w-[44px] px-1.5 py-1 rounded-lg bg-green-600 text-white text-center text-[.65rem] font-extrabold shrink-0">${esc(clsLabel(o.c))}</div>
-            <div class="flex-1 min-w-0"><div class="font-semibold text-sm truncate">\u{1F947} ${esc(o.r.name)}</div><div class="text-[.7rem] text-neutral-500 truncate">${esc(sl(o.r.subject))}</div>${when(o.r)}</div>
-            ${scoreBox(o.r)}<span class="text-green-600 text-lg">\u203A</span>
-          </button>`).join("")) : "";
+      // CLASS TOPPERS: sirf wahi jisne 4 subject mein 30/30 kiya
+      const hi = lang === "hi", sp = (c, st) => `<span class="th-spark" style="${st};animation-delay:${c}s">\u2728</span>`;
+      const heroCard = (o, i) => { const r = o.r, av = avImg(r.name, "w-16 h-16") || `<div class="w-16 h-16 rounded-full bg-amber-100 text-amber-700 grid place-items-center text-xl font-extrabold shrink-0">${esc(ini(r.name))}</div>`;
+        return `<div class="rv mb-4"><div class="th-wrap"><button data-cls="${esc(o.c)}" class="th-card top-hero w-full text-left block">
+          ${sp(.2, "top:8px;right:14px")}${sp(.9, "top:46%;right:6px")}${sp(1.4, "bottom:10px;left:10px")}${sp(.5, "top:10px;left:46%")}
+          <div class="flex items-center gap-3"><div class="relative shrink-0"><span class="th-ring"></span><div class="rounded-full ring-4 ring-amber-300">${av}</div></div>
+            <div class="flex-1 min-w-0"><div class="text-[.62rem] font-extrabold tracking-wider text-amber-700 uppercase">${esc(clsLabel(o.c))} ${hi ? "टॉपर" : "TOPPER"}</div>
+              <div class="text-lg font-extrabold truncate gold-txt" style="animation:goldTxt 2s linear infinite">${esc(r.name)}</div>
+              <div class="text-[.68rem] font-semibold text-amber-800">${hi ? "चारों विषय में 30/30" : "4 subject \u00D7 30/30"} \u00B7 \u23F1 ${fmtT(r.timeMs)}</div></div>
+            <span class="th-trophy">\u{1F3C6}</span></div>
+          <div class="flex flex-wrap gap-1.5 mt-3">${SUBS.map((x, k) => `<span class="th-chip" style="--i:${k}">${icon[x]} ${esc(sl(x))} <b class="text-green-700">${r.subs[x].score}/${r.subs[x].total} \u2714</b></span>`).join("")}</div>
+          ${when(r)}</button></div></div>`; };
+      const lockCard = `<div class="rv mb-4 rounded-3xl border-2 border-dashed border-amber-300 bg-amber-50/70 px-5 py-6 text-center"><div class="th-lock">\u{1F512}</div><div class="font-extrabold text-amber-800 mt-2">${hi ? "अभी कोई क्लास टॉपर नहीं" : "Abhi koi class topper nahi"}</div><div class="text-xs text-amber-900 mt-1 leading-relaxed">${hi ? "टॉपर वही बनेगा जो <b>Maths, Science, English और Hindi — चारों में 30/30</b> लाए।" : "Topper wahi banega jo <b>Maths, Science, English aur Hindi \u2014 chaaron mein 30/30</b> laye."}</div></div>`;
+      const anyTop = classToppers().some(o => o.r);
+      const clsHtml = sec("\u{1F393} " + (hi ? "क्लास टॉपर" : "Class Toppers"), hi ? "4 विषय \u00D7 30/30 वाले असली टॉपर (क्लास पर टैप करें)।" : "Asli toppers \u2014 4 subject \u00D7 30/30 (class par tap karein).", "mt-0") + (clsTop.length ? clsTop.map(heroCard).join("") : (anyTop ? "" : lockCard));
 
       // Topper of every subject
       const subHtml = sec("\u{1F4DA} " + l.subTop, l.subTopD) + box(SUBS.map((x, i) => { const r = champ[x]; return `<div class="rv flex items-center gap-3 px-4 py-3 ${i ? "border-t border-green-50" : ""}">
@@ -1077,7 +1215,7 @@ function renderInner() {
             ${r ? scoreBox(r) : ""}
           </div>`; }).join(""));
 
-      body = rewardCard() + `${filters}` + (!list.length ? `<p class="text-center text-neutral-500 py-12 border border-dashed border-green-200 rounded-2xl">${l.none}</p>` : podium + clsHtml + subHtml);
+      body = rewardCard() + `${filters}` + (!list.length ? `<p class="text-center text-neutral-500 py-12 border border-dashed border-green-200 rounded-2xl">${l.none}</p>` : clsHtml + podium + subHtml);
     }
     app.innerHTML = head + body + `<button id="backStart" class="block w-full text-center py-3.5 rounded-2xl ${btnMain} text-base mt-7">&larr; ${l.back}</button>`;
 
@@ -1162,6 +1300,18 @@ async function submitTest() {
   state.screen = "result";
   render();
   if (score / total >= 0.75) confetti();
+  try { const cur = fullTopperOf(state.cls); if (score >= total && cur && nk(cur.name) === nk(state.name)) { podBurst(); setTimeout(() => { const h = document.querySelector("#app .th-trophy"); if (h) { const b = h.getBoundingClientRect(); firework(b.left + b.width / 2, b.top + b.height / 2, 36, ["#facc15", "#fbbf24", "#f59e0b", "#ffffff", "#4ade80"]); } }, 700); } } catch (e) {}
+}
+
+// result screen: 4 subject x 30/30 ka progress (topper banne ka raasta)
+function topProgressHtml() {
+  if (!state.pending) return "";
+  const p = state.pending, extra = state.resultId ? null : [{ ...p, id: "pending" }], hi = lang === "hi", subs = fullSubs(state.name, state.cls, extra), nd = SUBS.filter(x => subs[x]);
+  const cur = fullTopperOf(state.cls, extra), iAm = cur && nk(cur.name) === nk(state.name);
+  const chips = SUBS.map(x => `<span class="th-chip" style="--i:${SUBS.indexOf(x)};${subs[x] ? "" : "opacity:.55;filter:grayscale(1)"}">${subs[x] ? "\u2714" : "\u{1F512}"} ${esc(sl(x))}</span>`).join("");
+  if (iAm && nd.length === SUBS.length) return `<div class="th-wrap mt-5"><div class="th-card text-center"><span class="th-trophy">\u{1F3C6}</span><div class="font-extrabold text-amber-800 mt-1 gold-txt">${hi ? "बधाई! आप " + esc(clsLabel(state.cls)) + " के टॉपर हैं!" : "Badhai! Aap " + esc(clsLabel(state.cls)) + " ke TOPPER hain!"}</div><div class="text-[.7rem] text-amber-900 mt-1">${hi ? "चारों विषय में 30/30" : "Chaaron subject mein 30/30"}</div><div class="flex flex-wrap justify-center gap-1.5 mt-2">${chips}</div></div></div>`;
+  if (!nd.length && state.score < state.questions.length) return `<div class="mt-5 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-xs text-amber-900 text-left">\u{1F3AF} ${hi ? "क्लास टॉपर बनने के लिए <b>चारों विषयों में 30/30</b> लाना होगा।" : "Class topper banne ke liye <b>chaaron subject mein 30/30</b> laana hoga."}</div>`;
+  return `<div class="mt-5 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-left"><div class="text-xs font-bold text-amber-900 mb-2">\u{1F3AF} ${hi ? "टॉपर प्रोग्रेस" : "Topper progress"}: ${nd.length}/${SUBS.length} ${hi ? "विषय में 30/30" : "subject mein 30/30"}${nd.length === SUBS.length && cur ? " \u2014 " + (hi ? "अभी टॉपर " : "abhi topper ") + esc(cur.name) + (hi ? " है (कम समय)" : " hai (kam time)") : ""}</div><div class="flex flex-wrap gap-1.5">${chips}</div></div>`;
 }
 function reviewHtml() {
   return `<div class="text-left mt-6 space-y-3">` + state.questions.map((q, i) => { const Q = q.Q, a = state.answers[i], c = Number(Q.correct), ok = a === c;
@@ -1180,6 +1330,43 @@ document.addEventListener("keydown", e => {
 window.addEventListener("beforeunload", e => { if (state.screen === "quiz") { e.preventDefault(); e.returnValue = ""; } });
 
 render();
+
+// ===== FIRST VISIT: rules (sirf ek baar) =====
+function showRulesOnce() {
+  try { if (localStorage.getItem("amrit_rules_seen_v1")) return; localStorage.setItem("amrit_rules_seen_v1", "1"); } catch (e) { return; }
+  let L = lang === "hi" ? "hi" : "en";
+  const RULES = {
+    en: { h: "Test Rules", s: "Please read once \u2014 shown only the first time", ok: "Samajh gaya \u2714", sw: "\u0939\u093F\u0902\u0926\u0940", items: [
+      ["\u{1F4DD}", "Full name is required (first name + surname). Photo is optional."],
+      ["\u23F1", "Each test has 30 questions with a timer. Do not leave the tab/app \u2014 after " + MAXLEAVE + " times the test submits automatically."],
+      ["\u{1F3C5}", "Rank: higher % first, then less time."],
+      ["\u{1F3C6}", "Class Topper = 30/30 in all 4 subjects: Maths, Science, English and Hindi."],
+      ["\u{1F381}", "Every class's topper gets a reward."],
+      ["\u23F3", "The reward is given only when the topper is NOT beaten by anyone for one full week (7 days). Only then the UPI box appears for the topper."]] },
+    hi: { h: "टेस्ट के नियम", s: "एक बार पढ़ लीजिए \u2014 ये सिर्फ़ पहली बार दिखेगा", ok: "समझ गया \u2714", sw: "English", items: [
+      ["\u{1F4DD}", "पूरा नाम ज़रूरी है (नाम + surname)। फोटो वैकल्पिक है।"],
+      ["\u23F1", "हर टेस्ट में 30 सवाल और टाइमर है। टैब/ऐप न छोड़ें \u2014 " + MAXLEAVE + " बार छोड़ने पर टेस्ट अपने आप जमा हो जाएगा।"],
+      ["\u{1F3C5}", "रैंक: पहले ज़्यादा %, फिर कम समय।"],
+      ["\u{1F3C6}", "क्लास टॉपर = चारों विषयों (Maths, Science, English, Hindi) में 30/30।"],
+      ["\u{1F381}", "हर क्लास के टॉपर को इनाम मिलता है।"],
+      ["\u23F3", "इनाम तभी मिलेगा जब टॉपर को पूरे एक हफ़्ते (7 दिन) तक कोई हरा न पाए। तभी टॉपर को UPI डालने का बॉक्स दिखेगा।"]] }
+  };
+  const o = document.createElement("div");
+  o.id = "rulesM"; o.setAttribute("role", "dialog"); o.setAttribute("aria-modal", "true");
+  o.style.cssText = "position:fixed;inset:0;z-index:600;display:grid;place-items:center;padding:16px;background:rgba(5,46,22,.62);opacity:0;transition:opacity .32s ease";
+  const paint = () => { const R = RULES[L];
+    o.innerHTML = `<div id="rulesBox" style="max-width:420px;width:100%;max-height:90vh;overflow:auto;background:#fff;border-radius:26px;padding:20px 18px 18px;box-shadow:0 30px 70px -20px rgba(0,0,0,.55);transform:translateY(16px) scale(.95);transition:transform .38s cubic-bezier(.2,.9,.3,1.25)">
+      <div style="display:flex;justify-content:flex-end"><button id="rulesLg" type="button" style="font-size:.7rem;font-weight:700;color:#15803d;border:1px solid #bbf7d0;border-radius:99px;padding:.2rem .7rem;background:#fff">${R.sw}</button></div>
+      <div style="text-align:center;margin-top:-4px"><div style="font-size:2.4rem;line-height:1">\u{1F3C6}</div><div style="font-weight:800;font-size:1.15rem;color:#14532d;margin-top:4px">${R.h}</div><div style="font-size:.7rem;color:#737373;margin-top:2px">${R.s}</div></div>
+      <div style="margin-top:14px;display:flex;flex-direction:column;gap:8px">${R.items.map((x, i) => `<div style="display:flex;gap:10px;align-items:flex-start;background:${i >= 3 ? "#fffbeb" : "#f0fdf4"};border:1px solid ${i >= 3 ? "#fde68a" : "#bbf7d0"};border-radius:16px;padding:10px 12px;font-size:.8rem;line-height:1.45;color:#1f2937"><span style="font-size:1.2rem;line-height:1.2">${x[0]}</span><span>${x[1]}</span></div>`).join("")}</div>
+      <button id="rulesOk" type="button" style="margin-top:16px;width:100%;padding:.8rem;border-radius:999px;background:linear-gradient(135deg,#22c55e,#15803d);color:#fff;font-weight:800;font-size:.95rem;box-shadow:0 10px 22px -10px rgba(22,163,74,.8)">${R.ok}</button></div>`;
+    o.querySelector("#rulesLg").onclick = () => { L = L === "hi" ? "en" : "hi"; paint(); const b = o.querySelector("#rulesBox"); if (b) b.style.transform = "none"; };
+    o.querySelector("#rulesOk").onclick = () => { o.style.opacity = "0"; setTimeout(() => o.remove(), 340); };
+  };
+  paint(); document.body.appendChild(o);
+  requestAnimationFrame(() => requestAnimationFrame(() => { o.style.opacity = "1"; const b = o.querySelector("#rulesBox"); if (b) b.style.transform = "none"; }));
+}
+setTimeout(showRulesOnce, 700);
 </script>
 <script>
 (function(){
