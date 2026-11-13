@@ -229,6 +229,44 @@ img{image-rendering:auto}
 #pv .cap b{display:block;font-size:1.25rem;font-weight:800}#pv .cap span{font-size:.8rem;opacity:.85}
 #pv .x{position:absolute;top:max(16px,env(safe-area-inset-top));right:16px;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.18);color:#fff;font-size:22px;line-height:1;border:1px solid rgba(255,255,255,.35)}
 @media (prefers-reduced-motion:reduce){#pv,#pv .ph,#pv .cap{transition:none}}
+
+/* ===== BOTTOM MENU (full-width floating pill: Test / Topper / Student) ===== */
+#bnav{position:fixed;left:50%;bottom:calc(10px + env(safe-area-inset-bottom));z-index:45;transform:translateX(-50%);width:calc(100% - 20px);max-width:640px;padding:6px;border-radius:999px;background:#f8fffa;box-shadow:0 12px 30px -10px rgba(22,163,74,.40),0 2px 8px -2px rgba(0,0,0,.10),0 0 0 1px rgba(34,197,94,.22);transition:transform .35s cubic-bezier(.2,.8,.2,1),opacity .25s ease}
+#bnav .in{display:flex;align-items:center;gap:0}
+#bnav .dv{flex:none;width:1px;height:24px;background:#bbf7d0;margin:0 4px}
+#bnav button{flex:1 1 0;min-width:0;display:flex;align-items:center;justify-content:center;gap:6px;height:38px;padding:0 8px;border-radius:999px;color:#14532d;background:transparent;border:1px solid transparent;font-size:.8rem;font-weight:600;line-height:1;white-space:nowrap;transition:background-color .25s ease,border-color .25s ease}
+#bnav button svg{width:20px;height:20px;flex:none;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+#bnav button span{overflow:hidden;text-overflow:ellipsis}
+#bnav button.on{background:#dcfce7;border-color:#86efac;color:#15803d}
+@media (hover:hover){#bnav button:not(.on):hover{background:#ecfdf3}}
+@media (max-width:360px){#bnav button{font-size:.76rem;gap:5px;padding:0 5px}#bnav button svg{width:20px;height:20px}}
+body{padding-bottom:calc(70px + env(safe-area-inset-bottom))}
+body.noselect{padding-bottom:0}
+body.noselect #bnav{transform:translateX(-50%) translateY(160%);opacity:0;pointer-events:none}
+
+/* ===== LEADERBOARD PODIUM (green) ===== */
+.lbx{border-radius:1.8rem;overflow:hidden;background:#fff;box-shadow:0 22px 44px -18px rgba(22,163,74,.55),0 0 0 1px rgba(34,197,94,.18)}
+.lbx-top{position:relative;overflow:hidden;padding:1rem .8rem 0;background:linear-gradient(180deg,#14532d 0%,#16a34a 42%,#4ade80 78%,#bbf7d0 100%);isolation:isolate}
+.lbx-top::before{content:"";position:absolute;left:50%;top:38%;width:170%;aspect-ratio:1;transform:translate(-50%,-50%);z-index:-1;background:repeating-conic-gradient(from 0deg,rgba(255,255,255,.16) 0 7deg,transparent 7deg 18deg);-webkit-mask-image:radial-gradient(circle,#000 8%,transparent 62%);mask-image:radial-gradient(circle,#000 8%,transparent 62%);animation:lbxSpin 40s linear infinite}
+@keyframes lbxSpin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+.lbx-t{text-align:center;color:#fff;font-weight:800;font-size:.95rem;line-height:1.1}
+.lbx-s{text-align:center;color:rgba(255,255,255,.85);font-size:.66rem;margin-top:3px}
+.lbx-grid{display:grid;grid-template-columns:1fr 1.15fr 1fr;align-items:end;gap:6px;margin-top:.7rem}
+.lbx-c{display:flex;flex-direction:column;align-items:center;min-width:0}
+.lbx-crown{font-size:1.5rem;line-height:1;margin-bottom:-6px;z-index:2;filter:drop-shadow(0 2px 3px rgba(0,0,0,.3));animation:lbxFloat 2.2s ease-in-out infinite}
+@keyframes lbxFloat{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-4px) rotate(6deg)}}
+.lbx-a{border-radius:50%;overflow:hidden;background:#dcfce7;border:3px solid #fff;box-shadow:0 8px 18px -6px rgba(0,0,0,.45);display:grid;place-items:center;animation:lbxPop .6s cubic-bezier(.2,1.4,.3,1) var(--d,0s) both}
+@keyframes lbxPop{from{transform:scale(.2);opacity:0}to{transform:none;opacity:1}}
+.lbx-n{color:#fff;font-weight:800;font-size:.72rem;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-top:5px;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.lbx-m{color:rgba(255,255,255,.92);font-size:.62rem;font-weight:600;margin-bottom:5px;white-space:nowrap}
+.lbx-b{width:100%;display:grid;place-items:center;border-radius:14px 14px 0 0;background:linear-gradient(180deg,#f0fdf4 0%,#bbf7d0 38%,#4ade80 100%);color:#fff;font-weight:900;font-size:2.1rem;text-shadow:0 2px 0 rgba(21,128,61,.55),0 4px 10px rgba(21,128,61,.35);transform-origin:bottom;position:relative;box-shadow:inset 0 3px 0 rgba(255,255,255,.9);animation:lbxRise .7s cubic-bezier(.2,.9,.25,1) var(--d,0s) both}
+@keyframes lbxRise{from{transform:scaleY(.15);opacity:0}to{transform:none;opacity:1}}
+.lbx-sheet{position:relative;margin-top:-1px;background:#fff;border-radius:1.5rem 1.5rem 0 0;padding:.55rem .7rem .8rem}
+.lbx-hd{width:38px;height:4px;border-radius:4px;background:#d4d4d4;margin:0 auto .6rem}
+.lbx-row{display:flex;align-items:center;gap:.65rem;padding:.55rem .7rem;border-radius:1rem;background:#f6fdf8;border:1px solid #dcfce7;margin-bottom:.45rem}
+.lbx-rk{display:flex;align-items:center;gap:3px;width:2.1rem;flex:none;color:#16a34a;font-weight:800;font-size:.78rem}
+.lbx-rk svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+@media (prefers-reduced-motion:reduce){.lbx-top::before,.lbx-crown{animation:none}.lbx-a,.lbx-b{animation:none}}
 </style>
 </head>
 <body class="text-neutral-900 font-sans min-h-screen antialiased">
@@ -245,6 +283,12 @@ img{image-rendering:auto}
 <main class="max-w-[640px] mx-auto px-5 py-8" id="app"><div class="py-10 space-y-3"><div class="skel h-14"></div><div class="skel h-40"></div><div class="skel h-14"></div></div><noscript><p class="text-center py-10">Test dene ke liye JavaScript on karein.</p></noscript></main>
 
 <footer class="border-t border-green-100/80 bg-white/60 text-center text-neutral-500 text-[.78rem] px-5 pt-6 pb-10">&copy; <span id="yr"></span> <span id="ft">Created by Amrit Tiwari.</span></footer>
+
+<nav id="bnav" aria-label="Menu"><div class="in">
+  <button type="button" data-nav="test" aria-label="Test"><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="3"/><path d="M9 4.5V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v.5"/><path d="M9 13l2.2 2.2L15.5 11"/></svg><span data-l="test">Take Test</span></button><i class="dv"></i>
+  <button type="button" data-nav="toppers" aria-label="Topper"><svg viewBox="0 0 24 24"><path d="M8 4h8v6a4 4 0 0 1-8 0z"/><path d="M8 6H5.5a1 1 0 0 0-1 1c0 2 1.3 3.6 3.5 4M16 6h2.5a1 1 0 0 1 1 1c0 2-1.300 3.600-3.500 4"/><path d="M12 14v3.500M8.500 20.500h7M9.500 20.500c0-1.800 1-3 2.500-3s2.500 1.200 2.500 3"/></svg><span data-l="toppers">Toppers</span></button><i class="dv"></i>
+  <button type="button" data-nav="students" aria-label="Student"><svg viewBox="0 0 24 24"><circle cx="9" cy="8.500" r="3.500"/><path d="M2.800 20c0-3.300 2.800-5.500 6.200-5.500s6.200 2.200 6.200 5.500"/><path d="M16 5.200a3.400 3.400 0 0 1 0 6.600M18.200 14.800c1.800.8 3 2.600 3 5.200"/></svg><span data-l="students">Students</span></button>
+</div></nav>
 
 <script type="module">
 let initializeApp, getDatabase, ref, onValue, get, push, set, runTransaction, remove, onDisconnect, query, orderByKey, limitToLast;
@@ -277,7 +321,7 @@ const sl = n => (lang === "hi" && SUBHI[n]) || n || "";
 
 const T = {
   en: { title: "Amrit Tiwari Test", sub: "Choose your class and subject", namePh: "Full name with surname", cls: "Select your class", pickSub: "Choose a subject", pickClass: "Select your class first.", noSub: "No test is available for this class yet.", need: "Full name is required: first name + surname, letters only (e.g. Amrit Tiwari), and pick your class.", q: "Question", of: "of", next: "Next", submit: "Submit Test", result: "Your Result", rank: "Rank in this subject", viewLb: "View Leaderboard", retake: "Take Another Test", lb: "Leaderboard", lbSub: "Top scorers", all: "All subjects", noResults: "No one has taken this test yet. Be the first!", players: "Players", best: "Top score", avg: "Average", you: "You", loading: "Loading...", back: "Back to tests", qs: "questions",
-    photoNeed: "Photo is optional.", save: "Save", saved: "✔ Saved", saveHint: "Save your name and class to see subjects.", live: "Live leaderboard", timed: "Timed", rankW: "Rank", quitQ: "Quit this test?",
+    photoNeed: "Please add your profile photo.", save: "Save", saved: "✔ Saved", saveHint: "Save your name and class to see subjects.", live: "Live leaderboard", timed: "Timed", rankW: "Rank", quitQ: "Quit this test?",
     saveFail: "Result could not be saved. Check your internet and tap “Save again”.", retrySave: "Save again", cor: "Correct", wro: "Wrong", timeL: "Time", share: "Share", review: "Review answers", hide: "Hide answers",
     dbFail: "Leaderboard could not load. Check your internet and", retry: "try again", liveRes: n => `Live · ${n} results`,
     shareTxt: (s, a, b) => `I scored ${a}/${b} in the Amrit Tiwari Test (${s})! Try it too: https://www.amritbhai.shop/test.html`,
@@ -285,7 +329,7 @@ const T = {
     langTitle: "Choose test language", langSub: "Questions will appear in this language", notAvail: "Not available", cancel: "Cancel",
     praise: p => p >= 90 ? "Outstanding performance!" : p >= 75 ? "Great job!" : p >= 50 ? "Good effort, keep going!" : "Keep practicing, you'll improve!" },
   hi: { title: "अमृत तिवारी टेस्ट", sub: "अपनी कक्षा और विषय चुनें", namePh: "surname के साथ पूरा नाम", cls: "अपनी कक्षा चुनें", pickSub: "विषय चुनें", pickClass: "पहले अपनी कक्षा चुनें।", noSub: "इस कक्षा के लिए अभी कोई टेस्ट नहीं है।", need: "पूरा नाम ज़रूरी है: नाम + surname, सिर्फ़ अक्षर (जैसे अमृत तिवारी), और कक्षा चुनें।", q: "प्रश्न", of: "में से", next: "अगला", submit: "टेस्ट जमा करें", result: "आपका रिज़ल्ट", rank: "इस विषय में रैंक", viewLb: "लीडरबोर्ड देखें", retake: "दूसरा टेस्ट दें", lb: "लीडरबोर्ड", lbSub: "टॉप स्कोरर", all: "सभी विषय", noResults: "अभी तक किसी ने यह टेस्ट नहीं दिया। सबसे पहले आप दें!", players: "खिलाड़ी", best: "टॉप स्कोर", avg: "औसत", you: "आप", loading: "लोड हो रहा है...", back: "टेस्ट पर वापस", qs: "सवाल",
-    photoNeed: "फोटो वैकल्पिक है।", save: "सेव करें", saved: "✔ सेव हो गया", saveHint: "विषय देखने के लिए पहले नाम और कक्षा सेव करें।", live: "लाइव लीडरबोर्ड", timed: "समय सहित", rankW: "रैंक", quitQ: "टेस्ट छोड़ दें?",
+    photoNeed: "कृपया अपनी प्रोफ़ाइल फोटो लगाएँ।", save: "सेव करें", saved: "✔ सेव हो गया", saveHint: "विषय देखने के लिए पहले नाम और कक्षा सेव करें।", live: "लाइव लीडरबोर्ड", timed: "समय सहित", rankW: "रैंक", quitQ: "टेस्ट छोड़ दें?",
     saveFail: "रिज़ल्ट सेव नहीं हो पाया। इंटरनेट जाँचकर “दोबारा सेव करें” दबाएँ।", retrySave: "दोबारा सेव करें", cor: "सही", wro: "गलत", timeL: "समय", share: "शेयर करें", review: "जवाब देखें", hide: "जवाब छिपाएँ",
     dbFail: "लीडरबोर्ड अभी लोड नहीं हो पाया। इंटरनेट जाँचकर", retry: "दोबारा कोशिश करें", liveRes: n => `लाइव · ${n} रिज़ल्ट`,
     shareTxt: (s, a, b) => `मैंने अमृत तिवारी टेस्ट (${s}) में ${a}/${b} स्कोर किया! आप भी कोशिश करें: https://www.amritbhai.shop/test.html`,
@@ -381,6 +425,24 @@ function rewardCard() {
 }
 const avImg = (n, cls = "w-10 h-10") => photoOf(n) ? `<img src="${photoOf(n)}" alt="" decoding="async" class="${cls} rounded-full object-cover border border-green-200 shrink-0">` : "";
 const stuRec = (n, cls) => { const o = { name: n, cls, createdAt: saved.createdAt || Date.now(), updatedAt: Date.now() }; if (okPhoto(saved.photo)) o.photo = saved.photo; return o; };
+// ===== HD PHOTO: Telegram ko badi (HD) photo jaati hai; site/Firebase par chhoti (96px) hi rehti hai =====
+const HD_MAX = 1600, HD_Q = 0.92, hdKey = (n, c) => "amrit_hd_" + nk(n) + "|" + c;
+function hdPhoto(file) {
+  return new Promise((res, rej) => {
+    const url = URL.createObjectURL(file), im = new Image();
+    im.onload = () => { try { const w = im.naturalWidth, h = im.naturalHeight, k = Math.min(1, HD_MAX / Math.max(w, h)), c = document.createElement("canvas"); c.width = Math.max(1, Math.round(w * k)); c.height = Math.max(1, Math.round(h * k));
+      const x = c.getContext("2d"); x.imageSmoothingQuality = "high"; x.fillStyle = "#fff"; x.fillRect(0, 0, c.width, c.height); x.drawImage(im, 0, 0, c.width, c.height); URL.revokeObjectURL(url); res(c.toDataURL("image/jpeg", HD_Q)); } catch (e) { URL.revokeObjectURL(url); rej(e); } };
+    im.onerror = () => { URL.revokeObjectURL(url); rej(new Error("img")); };
+    im.src = url;
+  });
+}
+function hdSet(n, c, v) { try { localStorage.setItem(hdKey(n, c), v); } catch (e) {} }
+function hdGet(n, c) {
+  let v = ""; try { v = localStorage.getItem(hdKey(n, c)) || ""; } catch (e) {}
+  if (!v && window._hdPending && fullName(n) && c) { v = window._hdPending; hdSet(n, c, v); }
+  return /^data:image\/(jpeg|png|webp);base64,/.test(v) ? v : "";
+}
+function hdDel(n, c) { window._hdPending = ""; try { localStorage.removeItem(hdKey(n, c)); } catch (e) {} }
 function resizePhoto(file) {
   return new Promise((res, rej) => {
     const url = URL.createObjectURL(file), im = new Image();
@@ -401,11 +463,13 @@ function tgSend(t) {
   catch (e) { return Promise.resolve({ ok: false, description: String(e) }); }
 }
 function tgText(t) { return tgSend(t).then(j => !!(j && j.ok)); }
-async function tgPhoto(dataUri, caption) {
-  const m = /^data:(image\/(?:jpeg|png|webp));base64,([A-Za-z0-9+\/=]+)$/.exec(dataUri || "");
-  if (m) {
+async function tgPhoto(dataUri, caption, fallbackUri) {
+  for (const uri of [dataUri, fallbackUri]) {
+    if (!uri || typeof uri !== "string") continue;
+    const m = /^data:(image\/(?:jpeg|png|webp));base64,/.exec(uri.slice(0, 40));
+    if (!m) continue;
     try {
-      const bin = atob(m[2]), u = new Uint8Array(bin.length);
+      const bin = atob(uri.slice(m[0].length)), u = new Uint8Array(bin.length);
       for (let i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i);
       const f = new FormData();
       f.append("chat_id", TG_CHAT); f.append("caption", String(caption).slice(0, 1000)); f.append("parse_mode", "HTML");
@@ -438,7 +502,7 @@ function tgResult(p, id) {
       if (after && nk(after.name) === nk(p.name) && (!before || nk(before.name) !== nk(p.name))) m += "\n\u{1F3C6}\u{1F451} <b>NAYA " + tgE(clsLabelEn(p.cls)) + " TOPPER!</b> (4 subject \u00D7 30/30, kul time " + tgMin(after.timeMs) + ")";
       else if (after && nk(after.name) !== nk(p.name) && nd.length === SUBS.length) m += "\n\u{1F31F} Chaaron subject 30/30 \u2014 par abhi topper " + tgE(after.name) + " hai (kam time)";
     }
-    return okPhoto(saved.photo) ? tgPhoto(saved.photo, m) : tgText(m);
+    return okPhoto(saved.photo) ? tgPhoto(hdGet(p.name, p.cls) || saved.photo, m, saved.photo) : tgText(m);
   });
 }
 function tgStudent() {
@@ -448,7 +512,7 @@ function tgStudent() {
   tgOnce("s_" + sig, () => {
     try { localStorage.setItem("tg_stu_" + saved.sid, "1"); } catch (e) {}
     const m = (first ? "\u{1F465} <b>Naya student</b>" : "\u270F\uFE0F <b>Student ki detail badli</b>") + "\n\u{1F464} <b>" + tgE(state.name) + "</b> \u00B7 " + tgE(clsLabelEn(state.cls)) + (ph ? "" : "\n\u{1F4F7} Photo nahi hai") + "\n\u{1F552} " + tgNow();
-    return ph ? tgPhoto(ph, m) : tgText(m);
+    return ph ? tgPhoto(hdGet(state.name, state.cls) || ph, m, ph) : tgText(m);
   });
 }
 async function tgUpi(v) {
@@ -580,6 +644,7 @@ function toast(a) {
   box.appendChild(el); setTimeout(() => el.remove(), 7000);
 }
 async function systemNotify(title, body, tag, force) {
+  return; // notification band
   if (!annPref() || !hasNotif() || Notification.permission !== "granted") return;
   if (!force && !document.hidden) return; // page khula ho to toast kaafi hai
   const opts = { body, icon: "/apple-touch-icon.png", badge: "/favicon.ico", tag: tag || "amrit-test", renotify: true, data: { url: "/test.html" } };
@@ -587,6 +652,7 @@ async function systemNotify(title, body, tag, force) {
   try { new Notification(title, opts); } catch (e) {}
 }
 function deliver(anns) {
+  return; // notification / toast band
   if (!anns.length || !annPref()) return;
   if (state.screen === "quiz") { pendingAnn.push(...anns); return; } // test ke beech disturb nahi
   anns.slice(0, 3).forEach((a, i) => setTimeout(() => { toast(a); systemNotify(a.t, a.b, a.tag); }, i * 450));
@@ -606,6 +672,7 @@ async function enableNotifs() {
 const VAPID_KEY = "BLf9MSWC3D5akYxXtx9EZB67YSg6IZt_aMya_CArr98jczeR9tP-4GoxaI0lZNspLcTQCoWxWFPneFh72V9IM1c";
 let _pushReg = false;
 async function registerPush() {
+  return; // push notification band
   if (!VAPID_KEY || !hasNotif() || Notification.permission !== "granted" || !("serviceWorker" in navigator)) return;
   try {
     const M = await import("https://www.gstatic.com/firebasejs/10.13.0/firebase-messaging.js");
@@ -625,26 +692,7 @@ function gateCheck() {
   askNotifOnce();
 }
 // Shuru mein sirf EK baar poochta hai: notification allow karna hai ya nahi (bell icon hidden hai)
-function askNotifOnce() {
-  if ($("askNotif") || !hasNotif() || Notification.permission !== "default" || state.screen === "quiz") return;
-  let asked = false; try { asked = localStorage.getItem("amrit_test_notif_asked") === "1"; } catch (e) {}
-  if (asked) return;
-  const t = NT[lang];
-  const m = document.createElement("div"); m.id = "askNotif"; m.setAttribute("role", "dialog"); m.setAttribute("aria-modal", "true");
-  m.className = "fixed inset-0 z-[400] grid place-items-center px-6 bg-black/40";
-  m.innerHTML = `<div class="slidedown w-full max-w-[360px] rounded-3xl bg-white p-6 text-center shadow-2xl">
-    <div class="mx-auto w-16 h-16 rounded-2xl bg-gradient-to-br from-green-500 to-green-700 text-white grid place-items-center shadow-lg shadow-green-600/30"><span class="floaty text-3xl">\u{1F514}</span></div>
-    <h2 class="gtext text-xl font-extrabold mt-4">${t.askT}</h2>
-    <p class="text-sm text-neutral-600 mt-2 leading-relaxed">${t.askB}</p>
-    <div class="grid grid-cols-2 gap-3 mt-5"><button id="askNo" type="button" class="py-3 rounded-2xl ${btnLine}">${t.askNo}</button><button id="askYes" type="button" class="py-3 rounded-2xl ${btnMain}">${t.askYes}</button></div></div>`;
-  document.body.appendChild(m);
-  const done = async yes => {
-    try { localStorage.setItem("amrit_test_notif_asked", "1"); } catch (e) {}
-    m.remove();
-    if (yes) await enableNotifs(); else { try { localStorage.setItem("amrit_test_notif", "off"); } catch (e) {} }
-  };
-  $("askYes").onclick = () => done(true); $("askNo").onclick = () => done(false);
-}
+function askNotifOnce() { return; } // notification popup hata diya
 document.addEventListener("visibilitychange", () => { if (!document.hidden) { paintBell(); gateCheck(); } });
 window.addEventListener("focus", () => { paintBell(); gateCheck(); });
 
@@ -768,6 +816,7 @@ function markDirty() { state.saved = false; saveProfile(); const b = $("saveBtn"
 async function saveStudent() {
   const t = T[lang], n = state.name.trim().replace(/\s+/g, " ");
   if (!fullName(n) || !state.cls) { $("err").textContent = t.need; $("err").classList.remove("hidden"); (!fullName(n) ? $("nm") : $("cl")).focus(); return; }
+  if (!okPhoto(saved.photo)) { $("err").textContent = t.photoNeed; $("err").classList.remove("hidden"); const pb = $("photoBtn"); if (pb) pb.focus(); return; }
   $("err").classList.add("hidden"); state.name = n; state.saved = true;
   saved.createdAt = saved.createdAt || Date.now();
   try { saved.sid = saved.sid || push(ref(db, "testStudents")).key; } catch (e) {}
@@ -784,6 +833,7 @@ async function loadSubjects() {
   const t = T[lang];
   if (!state.saved) { box.innerHTML = `<p class="text-xs text-neutral-500 text-center py-2">${t.saveHint}</p>`; return; }
   if (!state.cls) { box.innerHTML = `<p class="text-sm text-neutral-500 text-center py-4">${t.pickClass}</p>`; return; }
+  if (!okPhoto(saved.photo)) { box.innerHTML = `<p class="text-sm font-semibold text-red-500 text-center py-4">${t.photoNeed}</p>`; return; }
   const cls = state.cls;
   const paint = () => {
   if (cls !== state.cls || !$("subs")) return;
@@ -815,6 +865,7 @@ async function loadSubjects() {
 
 function askLang(k) {
   const t = T[lang];
+  if (!okPhoto(saved.photo)) { const e0 = $("err"); if (e0) { e0.textContent = t.photoNeed; e0.classList.remove("hidden"); } return; }
   if (!fullName(state.name) || !state.cls) { $("err").textContent = t.need; $("err").classList.remove("hidden"); (!fullName(state.name) ? $("nm") : $("cl")).focus(); return; }
   const cnt = L => Object.values(bank[k].items || {}).filter(x => hasL(x, L)).length;
   const nHi = cnt("hi"), nEn = cnt("en");
@@ -973,7 +1024,22 @@ function toppersFx(fresh) {
   setTimeout(() => { if (!ok()) return; const m = mid(".pod-3 .pod-av"); if (m) firework(m.x, m.y, 22, mix); }, 2650);
   setTimeout(() => { if (!ok()) return; const m = mid(".pod-crown"); if (m) firework(m.x, m.y, 28, gold); }, 2900);
 }
+const NAVL = { en: { test: "Take Test", toppers: "Toppers", students: "Students" }, hi: { test: "टेस्ट दो", toppers: "टॉपर", students: "छात्र" } };
+function navSync() {
+  const nb = $("bnav"); if (!nb) return;
+  const cur = state.screen === "leaderboard" ? (state.lbTab === "toppers" ? "toppers" : "students") : (state.screen === "quiz" ? "" : "test");
+  nb.querySelectorAll("[data-nav]").forEach(b => { b.classList.toggle("on", b.dataset.nav === cur); b.setAttribute("aria-current", b.dataset.nav === cur ? "page" : "false"); });
+  nb.querySelectorAll("[data-l]").forEach(x => { x.textContent = NAVL[lang][x.dataset.l]; });
+}
+if ($("bnav")) $("bnav").onclick = e => {
+  const b = e.target.closest("[data-nav]"); if (!b || state.screen === "quiz") return;
+  const k = b.dataset.nav;
+  if (k === "test") { state.screen = "start"; }
+  else { state.lbTab = k; state.lbCls = ""; state.lbSub = ""; state.lbSort = state.lbSort || "latest"; state.metSeen = 0; state.screen = "leaderboard"; }
+  render(); window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+};
 function render() {
+  navSync();
   applyChrome();
   document.body.classList.toggle("noselect", state.screen === "quiz");
   { const bb = $("bellBtn"); if (bb) bb.classList.toggle("hidden", state.screen === "quiz"); }
@@ -984,7 +1050,7 @@ function render() {
   renderInner();
   if (fresh && state.screen !== "quiz") { const ap = $("app"); ap.classList.remove("screen-in"); void ap.offsetWidth; ap.classList.add("screen-in"); setTimeout(() => ap.classList.remove("screen-in"), 450); }
   if (fresh && state.screen === "leaderboard" && state.lbTab === "toppers") setTimeout(() => { if (state.screen === "leaderboard" && state.lbTab === "toppers" && results.length) podBurst(); }, 1900);
-  if (!fresh) $("app").querySelectorAll(".pop,.grow,.bar,.slidein,.stagger>*,.pod-ped,.pod-av,.pod-info,.pod-crown,.rk-up,.rk-trail,.rk-card,.rk-crown").forEach(el => el.style.animation = "none");
+  if (!fresh) $("app").querySelectorAll(".pop,.grow,.bar,.slidein,.stagger>*,.pod-ped,.pod-av,.pod-info,.pod-crown,.rk-up,.rk-trail,.rk-card,.rk-crown,.lbx-a,.lbx-b,.lbx-crown").forEach(el => el.style.animation = "none");
   if (state.screen === "leaderboard" && state.lbTab === "toppers") toppersFx(fresh);
   const sk = state.screen + "|" + state.qi; if (sk !== _sk) { _sk = sk; window.scrollTo({ top: 0, left: 0, behavior: "instant" }); }
   if (ai === "srch" && $("srch")) { $("srch").focus(); try { $("srch").setSelectionRange(ss, ss); } catch (e) {} }
@@ -1004,8 +1070,8 @@ function renderInner() {
         ${profiles.length ? `<div id="prof" class="flex flex-wrap gap-2 mb-3">${profiles.map((p, i) => `<button data-p="${i}" class="max-w-[60%] truncate px-3.5 py-2 rounded-full text-sm font-semibold border ${i === cur ? "bg-green-600 text-white border-green-600 shadow" : "bg-white text-green-700 border-green-200"}">${okPhoto(p.photo) ? `<img src="${p.photo}" alt="" class="inline-block w-5 h-5 rounded-full object-cover align-middle mr-1.5">` : ""}${esc(p.name)}</button>`).join("")}${profiles.length < MAXP ? `<button data-p="add" class="px-3.5 py-2 rounded-full text-sm font-semibold border ${cur >= profiles.length ? "bg-green-600 text-white border-green-600 shadow" : "border-dashed border-green-300 bg-white text-green-700"}">+ ${lang === "hi" ? "दूसरा नाम जोड़ें" : "Add another name"}</button>` : ""}</div>` : ""}
         <div class="flex items-center gap-3 mb-3">
           <div class="w-14 h-14 rounded-full overflow-hidden bg-green-100 border-2 border-green-200 grid place-items-center text-xl shrink-0">${okPhoto(saved.photo) ? `<img src="${saved.photo}" alt="" class="w-full h-full object-cover">` : "\u{1F464}"}</div>
-          <div class="flex-1 flex items-center gap-3 flex-wrap"><button id="photoBtn" type="button" class="px-4 py-2 rounded-full ${btnLine} text-sm">\u{1F4F7} ${okPhoto(saved.photo) ? (lang === "hi" ? "फोटो बदलें" : "Change photo") : (lang === "hi" ? "फोटो जोड़ें (वैकल्पिक)" : "Add photo (optional)")}</button></div>
-          <input id="photoIn" type="file" accept="image/*" class="hidden">
+          <div class="flex-1 flex items-center gap-3 flex-wrap"><button id="photoBtn" type="button" class="px-4 py-2 rounded-full ${btnLine} ${okPhoto(saved.photo) ? "" : "!border-red-300 !text-red-600"} text-sm">\u{1F4F7} ${okPhoto(saved.photo) ? (lang === "hi" ? "प्रोफ़ाइल फोटो बदलें" : "Change profile photo") : (lang === "hi" ? "प्रोफ़ाइल फोटो लगाएँ" : "Add profile photo")}</button></div>
+          <input id="photoIn" type="file" accept="image/jpeg,image/png,image/webp" class="hidden">
         </div>
         ${state.saved ? (state.justSaved ? `<div id="savedMsg" class="slidein flex items-center gap-2 mb-3 px-4 py-2.5 rounded-2xl bg-green-50 border border-green-200 text-green-700 text-sm font-semibold">\u2714 ${lang === "hi" ? "आपका नाम इस डिवाइस पर सेव है" : "Your name is saved on this device"}</div>` : "") : `<input id="nm" aria-label="${t.namePh}" value="${esc(state.name)}" maxlength="60" placeholder="${t.namePh}" autocomplete="off" class="${inputCls} mb-3">`}
         ${classPicker(state.cls)}
@@ -1013,20 +1079,19 @@ function renderInner() {
         ${state.saved ? "" : `<button id="saveBtn" class="mt-3 w-full py-3.5 rounded-2xl ${btnMain} disabled:opacity-60 disabled:shadow-none disabled:translate-y-0">${t.save}</button>`}
         <div id="subs" class="mt-5"></div>
       </div>
-      <div class="grid grid-cols-2 gap-3 mt-5"><button data-go="students" class="goTab py-3.5 rounded-2xl ${btnLine}">\u{1F465} ${LB[lang].stuTab}</button><button data-go="toppers" class="goTab py-3.5 rounded-2xl ${btnMain}">\u{1F3C6} ${LB[lang].top}</button></div>
       <div id="faq" class="sr-only"></div>`;
     renderFaq();
     const syncPhoto = () => { if (state.saved) saveProfile(); try { if (state.saved && saved.sid) set(ref(db, "testStudents/" + saved.sid), stuRec(state.name, state.cls)).catch(() => {}); } catch (e2) {} try { tgStudent(); } catch (e3) {} };
     $("photoBtn").onclick = () => $("photoIn").click();
     $("photoIn").onchange = async e => {
       const f = e.target.files && e.target.files[0]; if (!f) return;
-      try { saved.photo = await resizePhoto(f); if (fullName(state.name)) photoMap.set(nk(state.name), saved.photo); syncPhoto(); render(); }
+      try { saved.photo = await resizePhoto(f); try { const hd = await hdPhoto(f); window._hdPending = hd; if (fullName(state.name) && state.cls) hdSet(state.name, state.cls, hd); } catch (eh) {} if (fullName(state.name)) photoMap.set(nk(state.name), saved.photo); syncPhoto(); render(); }
       catch (er) { $("err").textContent = lang === "hi" ? "फोटो नहीं लग पाई, दूसरी फोटो चुनें।" : "Could not load this photo. Try another one."; $("err").classList.remove("hidden"); }
     };
-    if ($("photoDel")) $("photoDel").onclick = () => { photoMap.delete(nk(state.name)); delete saved.photo; syncPhoto(); render(); };
+    if ($("photoDel")) $("photoDel").onclick = () => { hdDel(state.name, state.cls); photoMap.delete(nk(state.name)); delete saved.photo; syncPhoto(); render(); };
     if ($("prof")) $("prof").onclick = e => {
       const b = e.target.closest("[data-p]"); if (!b) return;
-      if (b.dataset.p === "add") { if (cur < profiles.length) { cur = profiles.length; saved = {}; state.name = ""; state.cls = ""; state.saved = false; render(); } }
+      if (b.dataset.p === "add") { if (cur < profiles.length) { cur = profiles.length; saved = {}; window._hdPending = ""; state.name = ""; state.cls = ""; state.saved = false; render(); } }
       else if (Number(b.dataset.p) !== cur) switchProfile(Number(b.dataset.p));
     };
     if ($("nm")) $("nm").oninput = e => { state.name = e.target.value; markDirty(); };
@@ -1185,8 +1250,20 @@ function renderInner() {
           </div></div>`;
       };
       const chipP = "px-2 py-0.5 rounded-full bg-white border border-green-200 font-bold text-green-800";
-      const podNote = `<div class="mt-3 rounded-2xl border border-green-200 bg-green-50 px-4 py-3 text-[.72rem] leading-relaxed text-green-900"><div class="font-bold mb-1.5">\u{1F4CC} ${pHi ? "रॉकेट किस आधार पर ऊपर जाते हैं?" : "Rocket kis aadhar par upar jaate hain?"}</div><div class="flex flex-wrap gap-1.5 mb-1.5"><span class="${chipP}">\u2460 ${pHi ? "ज़्यादा %" : "Zyada % (score)"}</span><span class="${chipP}">\u2461 ${pHi ? "कम समय" : "Kam time"}</span><span class="${chipP}">\u2462 ${pHi ? "जिसने पहले दिया" : "Jisne pehle diya"}</span></div>${pHi ? "हर <b>टेस्ट-रिज़ल्ट</b> अलग गिना जाता है — एक ही छात्र के कई अच्छे टेस्ट हों तो वह कई जगह आ सकता है। क्लास/विषय फ़िल्टर लगाने पर उसी में से टॉप 3 दिखते हैं।" : "Har <b>test-result</b> alag ginta hai \u2014 ek hi student ke kai achhe test hon to wo kai jagah aa sakta hai. Class/subject filter lagane par usi mein se top 3 dikhte hain."}</div>`;
-      const podium = sec("\u{1F680} " + (pHi ? "रॉकेट रेस \u2014 टॉप 3" : "Rocket Race \u2014 Top 3"), pHi ? "सबसे तेज़ उड़ने वाले 3 रॉकेट!" : "Sabse tez udne wale 3 rocket!", "mt-6") + `<div class="pop rk-sky"><span class="rk-moon">\u{1F319}</span><span class="rk-planet">\u{1FA90}</span><div class="grid grid-cols-3 gap-2 items-end">${slot(1)}${slot(0)}${slot(2)}</div></div>` + podNote;
+      const podNote = `<div class="mt-3 rounded-2xl border border-green-200 bg-green-50 px-4 py-3 text-[.72rem] leading-relaxed text-green-900"><div class="font-bold mb-1.5">\u{1F4CC} ${pHi ? "रैंक किस आधार पर मिलती है?" : "Rank kis aadhar par milti hai?"}</div><div class="flex flex-wrap gap-1.5 mb-1.5"><span class="${chipP}">\u2460 ${pHi ? "ज़्यादा %" : "Zyada % (score)"}</span><span class="${chipP}">\u2461 ${pHi ? "कम समय" : "Kam time"}</span><span class="${chipP}">\u2462 ${pHi ? "जिसने पहले दिया" : "Jisne pehle diya"}</span></div>${pHi ? "हर <b>टेस्ट-रिज़ल्ट</b> अलग गिना जाता है — एक ही छात्र के कई अच्छे टेस्ट हों तो वह कई जगह आ सकता है। क्लास/विषय फ़िल्टर लगाने पर उसी में से टॉप 3 दिखते हैं।" : "Har <b>test-result</b> alag ginta hai \u2014 ek hi student ke kai achhe test hon to wo kai jagah aa sakta hai. Class/subject filter lagane par usi mein se top 3 dikhte hain."}</div>`;
+      // ===== LEADERBOARD (podium 2-1-3 + list) =====
+      const lbAv = (r, px) => { const ph = photoOf(r.name); return ph ? `<img src="${ph}" alt="" decoding="async" class="w-full h-full object-cover">` : `<span class="font-extrabold text-green-800" style="font-size:${Math.round(px * .42)}px">${esc(ini(r.name))}</span>`; };
+      const PSZ = [66, 52, 52], PBH = [88, 64, 50], PDL = [".55s", ".3s", ".05s"];
+      const lbCol = i => {
+        const r = list[i], px = PSZ[i];
+        if (!r) return `<div class="lbx-c"><div class="lbx-a" style="width:${px}px;height:${px}px;opacity:.55;--d:${PDL[i]}"><span class="text-white/80 font-bold">-</span></div><div class="lbx-n" style="opacity:.7">-</div><div class="lbx-m">&nbsp;</div><div class="lbx-b" style="height:${PBH[i]}px;--d:${PDL[i]}">${i + 1}</div></div>`;
+        return `<div class="lbx-c">${i === 0 ? '<span class="lbx-crown">\u{1F451}</span>' : ""}<div class="lbx-a ${isMe(r) ? "ring-4 ring-yellow-300" : ""}" style="width:${px}px;height:${px}px;--d:${PDL[i]}">${lbAv(r, px)}</div><div class="lbx-n">${esc(r.name)}${isMe(r) ? " \u00B7 " + l.you : ""}</div><div class="lbx-m">${r.score}/${r.total} \u00B7 ${pc(r)}%</div><div class="lbx-b" style="height:${PBH[i]}px;--d:${PDL[i]}">${i + 1}</div></div>`;
+      };
+      const trophyI = '<svg viewBox="0 0 24 24"><path d="M8 4h8v6a4 4 0 0 1-8 0z"/><path d="M8 6H5.500a1 1 0 0 0-1 1c0 2 1.300 3.600 3.500 4M16 6h2.500a1 1 0 0 1 1 1c0 2-1.300 3.600-3.500 4"/><path d="M12 14v3M8.500 20h7M10 20v-3h4v3"/></svg>';
+      const lbRest = list.slice(3, 10);
+      const lbSheet = lbRest.length ? `<div class="lbx-sheet"><div class="lbx-hd"></div>` + lbRest.map((r, j) => `<div class="rv lbx-row ${isMe(r) ? "ring-2 ring-green-500" : ""}"><div class="lbx-rk">${trophyI}<span>${j + 4}</span></div><div class="w-10 h-10 rounded-full overflow-hidden bg-green-100 border border-green-200 grid place-items-center shrink-0">${lbAv(r, 40)}</div><div class="flex-1 min-w-0"><div class="font-bold text-sm truncate text-neutral-800">${esc(r.name)} ${meTag(r)}</div><div class="text-[.7rem] text-neutral-400 truncate">${esc(clsLabel(r.cls))} &middot; ${esc(sl(r.subject))}</div></div>${scoreBox(r)}</div>`).join("") + `</div>` : `<div style="height:.6rem;background:#fff"></div>`;
+      const lbSubT = (state.lbCls ? clsLabel(state.lbCls) : (pHi ? "सभी क्लास" : "All classes")) + " \u00B7 " + (state.lbSub && subs[state.lbSub] ? sl(subs[state.lbSub]) : (pHi ? "सभी विषय" : "All subjects"));
+      const podium = sec("\u{1F3C6} " + (pHi ? "लीडरबोर्ड \u2014 टॉप 3" : "Leaderboard \u2014 Top 3"), pHi ? "सबसे आगे चलने वाले 3 छात्र!" : "Sabse aage chalne wale 3 students!", "mt-6") + `<div class="pop lbx"><div class="lbx-top"><div class="lbx-t">${pHi ? "लीडरबोर्ड" : "Leaderboard"}</div><div class="lbx-s">${esc(lbSubT)}</div><div class="lbx-grid">${lbCol(1)}${lbCol(0)}${lbCol(2)}</div></div>${lbSheet}</div>` + podNote;
 
       // Rank 4 to 10
       const rest = list.slice(3, 10);
@@ -1331,42 +1408,7 @@ window.addEventListener("beforeunload", e => { if (state.screen === "quiz") { e.
 
 render();
 
-// ===== FIRST VISIT: rules (sirf ek baar) =====
-function showRulesOnce() {
-  try { if (localStorage.getItem("amrit_rules_seen_v1")) return; localStorage.setItem("amrit_rules_seen_v1", "1"); } catch (e) { return; }
-  let L = lang === "hi" ? "hi" : "en";
-  const RULES = {
-    en: { h: "Test Rules", s: "Please read once \u2014 shown only the first time", ok: "Samajh gaya \u2714", sw: "\u0939\u093F\u0902\u0926\u0940", items: [
-      ["\u{1F4DD}", "Full name is required (first name + surname). Photo is optional."],
-      ["\u23F1", "Each test has 30 questions with a timer. Do not leave the tab/app \u2014 after " + MAXLEAVE + " times the test submits automatically."],
-      ["\u{1F3C5}", "Rank: higher % first, then less time."],
-      ["\u{1F3C6}", "Class Topper = 30/30 in all 4 subjects: Maths, Science, English and Hindi."],
-      ["\u{1F381}", "Every class's topper gets a reward."],
-      ["\u23F3", "The reward is given only when the topper is NOT beaten by anyone for one full week (7 days). Only then the UPI box appears for the topper."]] },
-    hi: { h: "टेस्ट के नियम", s: "एक बार पढ़ लीजिए \u2014 ये सिर्फ़ पहली बार दिखेगा", ok: "समझ गया \u2714", sw: "English", items: [
-      ["\u{1F4DD}", "पूरा नाम ज़रूरी है (नाम + surname)। फोटो वैकल्पिक है।"],
-      ["\u23F1", "हर टेस्ट में 30 सवाल और टाइमर है। टैब/ऐप न छोड़ें \u2014 " + MAXLEAVE + " बार छोड़ने पर टेस्ट अपने आप जमा हो जाएगा।"],
-      ["\u{1F3C5}", "रैंक: पहले ज़्यादा %, फिर कम समय।"],
-      ["\u{1F3C6}", "क्लास टॉपर = चारों विषयों (Maths, Science, English, Hindi) में 30/30।"],
-      ["\u{1F381}", "हर क्लास के टॉपर को इनाम मिलता है।"],
-      ["\u23F3", "इनाम तभी मिलेगा जब टॉपर को पूरे एक हफ़्ते (7 दिन) तक कोई हरा न पाए। तभी टॉपर को UPI डालने का बॉक्स दिखेगा।"]] }
-  };
-  const o = document.createElement("div");
-  o.id = "rulesM"; o.setAttribute("role", "dialog"); o.setAttribute("aria-modal", "true");
-  o.style.cssText = "position:fixed;inset:0;z-index:600;display:grid;place-items:center;padding:16px;background:rgba(5,46,22,.62);opacity:0;transition:opacity .32s ease";
-  const paint = () => { const R = RULES[L];
-    o.innerHTML = `<div id="rulesBox" style="max-width:420px;width:100%;max-height:90vh;overflow:auto;background:#fff;border-radius:26px;padding:20px 18px 18px;box-shadow:0 30px 70px -20px rgba(0,0,0,.55);transform:translateY(16px) scale(.95);transition:transform .38s cubic-bezier(.2,.9,.3,1.25)">
-      <div style="display:flex;justify-content:flex-end"><button id="rulesLg" type="button" style="font-size:.7rem;font-weight:700;color:#15803d;border:1px solid #bbf7d0;border-radius:99px;padding:.2rem .7rem;background:#fff">${R.sw}</button></div>
-      <div style="text-align:center;margin-top:-4px"><div style="font-size:2.4rem;line-height:1">\u{1F3C6}</div><div style="font-weight:800;font-size:1.15rem;color:#14532d;margin-top:4px">${R.h}</div><div style="font-size:.7rem;color:#737373;margin-top:2px">${R.s}</div></div>
-      <div style="margin-top:14px;display:flex;flex-direction:column;gap:8px">${R.items.map((x, i) => `<div style="display:flex;gap:10px;align-items:flex-start;background:${i >= 3 ? "#fffbeb" : "#f0fdf4"};border:1px solid ${i >= 3 ? "#fde68a" : "#bbf7d0"};border-radius:16px;padding:10px 12px;font-size:.8rem;line-height:1.45;color:#1f2937"><span style="font-size:1.2rem;line-height:1.2">${x[0]}</span><span>${x[1]}</span></div>`).join("")}</div>
-      <button id="rulesOk" type="button" style="margin-top:16px;width:100%;padding:.8rem;border-radius:999px;background:linear-gradient(135deg,#22c55e,#15803d);color:#fff;font-weight:800;font-size:.95rem;box-shadow:0 10px 22px -10px rgba(22,163,74,.8)">${R.ok}</button></div>`;
-    o.querySelector("#rulesLg").onclick = () => { L = L === "hi" ? "en" : "hi"; paint(); const b = o.querySelector("#rulesBox"); if (b) b.style.transform = "none"; };
-    o.querySelector("#rulesOk").onclick = () => { o.style.opacity = "0"; setTimeout(() => o.remove(), 340); };
-  };
-  paint(); document.body.appendChild(o);
-  requestAnimationFrame(() => requestAnimationFrame(() => { o.style.opacity = "1"; const b = o.querySelector("#rulesBox"); if (b) b.style.transform = "none"; }));
-}
-setTimeout(showRulesOnce, 700);
+
 </script>
 <script>
 (function(){
