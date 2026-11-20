@@ -406,7 +406,7 @@ footer{background:transparent!important;border:none!important}
 .cgh{display:flex;align-items:center;gap:5px;font-size:.7rem;font-weight:600;color:#8e8e93;margin:0 2px 5px}
 .cgr{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
 .ct{height:38px;border-radius:12px;border:none!important;background:#f2f2f7!important;color:#1c1c1e!important;font-weight:700;font-size:.95rem;display:grid;place-items:center;position:relative;box-shadow:none!important;transition:transform .25s cubic-bezier(.3,1.6,.5,1),background .2s,color .2s,box-shadow .2s}
-.ct[data-c=LKG],.ct[data-c=UKG]{font-size:.8rem}
+
 .ct:active{transform:scale(.9)!important}
 .ct[aria-checked=true]{background:linear-gradient(160deg,var(--ac),var(--ac2))!important;color:#fff!important;transform:scale(1.05);box-shadow:0 8px 14px -6px var(--ac)!important}
 .ct[aria-checked=true]::after{content:"\2713";position:absolute;top:-5px;right:-5px;width:16px;height:16px;border-radius:50%;background:#fff;color:var(--ac);font-size:.55rem;font-weight:800;display:grid;place-items:center;box-shadow:0 2px 6px rgba(0,0,0,.22);animation:chipPop .3s ease}
@@ -428,7 +428,7 @@ footer{background:transparent!important;border:none!important}
 .cgh{font-size:.66rem;margin:0 2px 3px}
 .cgr{gap:5px}
 .ct{height:30px;border-radius:10px;font-size:.82rem}
-.ct[data-c=LKG],.ct[data-c=UKG]{font-size:.72rem}
+
 .ct[aria-checked=true]{transform:scale(1.04);box-shadow:0 6px 12px -5px var(--ac)!important}
 .ct[aria-checked=true]::after{width:13px;height:13px;top:-4px;right:-4px;font-size:.46rem}
 .sec-h{font-size:1rem}.sec-s{font-size:.72rem;margin-bottom:8px}
@@ -448,7 +448,7 @@ footer{background:transparent!important;border:none!important}
 .sg button.on{background:#fff!important;color:#1c1c1e;box-shadow:0 2px 6px rgba(0,0,0,.15),0 0 0 .5px rgba(0,0,0,.05)!important}
 .cgr2{display:flex;gap:7px}.cgr2.hid{display:none}
 .cgr2 .ct{flex:1;height:40px;border-radius:13px;font-size:1rem}
-.cgr2 .ct[data-c=LKG],.cgr2 .ct[data-c=UKG]{font-size:.9rem}
+
 .cgn{font-size:.68rem;color:#8e8e93;margin:6px 2px 0}
 .ap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(68px,1fr));gap:12px 6px;padding-top:4px}
 .ap{display:flex;flex-direction:column;align-items:center;gap:5px;min-width:0;background:none!important;border:none!important;box-shadow:none!important;padding:2px 0}
@@ -1027,6 +1027,292 @@ body.on-play .ft-wrap{margin-top:auto}
 /* ===== v21: Dost ko link bhejo button alag rang (blue-indigo) ===== */
 .gm-share{background:linear-gradient(135deg,#3b82f6,#6366f1)!important;box-shadow:0 12px 22px -12px rgba(79,70,229,.9)!important;color:#fff!important}
 </style>
+<style id="gm14">
+.gm-on{display:flex;align-items:center;gap:12px;margin-top:14px;padding:12px 14px;border-radius:20px;background:linear-gradient(135deg,#ecfdf5,#eff6ff);box-shadow:inset 0 0 0 1.5px #bbf7d0}
+.gm-on b{display:block;font-size:.95rem;color:#047857}.gm-on em{display:block;font-style:normal;font-size:.72rem;color:#6b7280}
+.gm-ondot{flex:none;width:12px;height:12px;border-radius:50%;background:#22c55e;animation:gmPing 1.6s infinite}
+.gm-spin{width:34px;height:34px;margin:2px auto 10px;border-radius:50%;border:4px solid #d1fae5;border-top-color:#16a34a;animation:gm14s .9s linear infinite}
+@keyframes gm14s{to{transform:rotate(360deg)}}
+.gm-note{margin:12px auto 0;max-width:320px;text-align:center;font-size:.75rem;font-weight:600;color:#6b7280}
+.gm-note.ok{color:#047857;background:#ecfdf5;border-radius:12px;padding:8px 10px}
+.gm-e small{display:block;margin-top:4px;font-size:.68rem;font-weight:600;opacity:.85}
+.gm-e.gm-bad{border-color:#fecaca;background:#fef2f2;color:#b91c1c;padding:12px}
+.gm-act button:disabled{opacity:.5}
+</style>
+<style id="lb-group">
+.lbn-c{grid-template-areas:"av nm sc" "av cs ch" "sb sb sb"!important}
+.lbn-sub{grid-area:sb;display:flex;flex-wrap:wrap;gap:4px;margin-top:7px;justify-content:flex-start}
+.lbn-row .lbn-sub{grid-area:auto;margin-top:4px}
+.lbn-sub i{font-style:normal;font-size:.62rem;font-weight:600;padding:2px 8px;border-radius:99px;white-space:nowrap}
+.lbn-sub i b{font-weight:800}
+.lbn-note{font-size:.68rem;color:#8e8e93;font-weight:600;margin:0 2px 8px}
+</style>
+<style id="topper-fix">
+/* ===== TOPPER FIX v2: inaam card + class topper cards ===== */
+@keyframes tfShine{0%{transform:translateX(-120%)}60%,100%{transform:translateX(120%)}}
+@keyframes tfGlow{0%,100%{box-shadow:0 0 0 0 rgba(251,191,36,.55)}50%{box-shadow:0 0 0 6px rgba(251,191,36,0)}}
+
+/* --- Inaam card: 3 equal boxes in ONE line --- */
+html body .rl{padding:12px!important;border-radius:22px!important;margin-bottom:14px!important;background:linear-gradient(135deg,#f97316,#ef4444 60%,#db2777)!important;box-shadow:0 14px 26px -14px rgba(239,68,68,.9),inset 0 1px 0 rgba(255,255,255,.35)!important}
+html body .rl::after{background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.28) 50%,transparent 70%)!important;animation:tfShine 3.6s ease-in-out infinite}
+html body .rl-h{font-size:.86rem!important;font-weight:800!important;margin-bottom:10px!important;line-height:1.2;text-shadow:0 1px 2px rgba(0,0,0,.2)}
+html body .rl-steps{display:grid!important;grid-template-columns:minmax(0,1fr) 14px minmax(0,1fr) 14px minmax(0,1fr)!important;gap:0!important;align-items:stretch!important}
+html body .rl-steps>div{min-width:0!important;height:70px!important;padding:5px 3px!important;border-radius:16px!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:2px;overflow:hidden;background:#fff!important;box-shadow:0 6px 12px -6px rgba(0,0,0,.35)!important}
+html body .rl-steps>i{display:grid!important;place-items:center;font-size:1.2rem!important;line-height:1;color:#fff;opacity:1!important}
+html body .rl-steps span{font-size:1.15rem!important;line-height:1!important}
+html body .rl-steps b{font-size:.8rem!important;margin:0!important;line-height:1.15;white-space:nowrap;max-width:100%;color:#c2410c!important}
+html body .rl-steps em{font-size:.57rem!important;line-height:1.1;white-space:nowrap;max-width:100%;color:#6b7280!important;opacity:1!important}
+html body .rl-steps>div:last-of-type b{color:#15803d!important}
+html body .rl-ft{margin-top:9px!important;padding:6px 10px!important;font-size:.64rem!important;line-height:1.35;border-radius:12px!important;background:rgba(0,0,0,.22)!important}
+
+/* --- Class topper card: premium dark + gold --- */
+html body .rv.mb-4:has(>.tpx){margin-bottom:12px!important}
+html body .tpx{width:100%!important;margin:0!important;padding:14px!important;border-radius:24px!important;color:#fff!important;border:1px solid rgba(251,191,36,.45)!important;background:radial-gradient(120% 90% at 100% 0,rgba(251,191,36,.32),transparent 55%),linear-gradient(160deg,#1e1b4b,#312e81 60%,#4c1d95)!important;box-shadow:0 18px 30px -16px rgba(79,70,229,.8),inset 0 1px 0 rgba(255,255,255,.18)!important}
+html body .tpx-glow{display:block!important;opacity:.7}
+html body .tpx-wm{display:block!important;right:8px!important;bottom:-22px!important;font-size:6.5rem!important;color:rgba(251,191,36,.08)!important}
+html body .tpx-hd{margin:0!important;position:relative}
+html body .tpx-hd .tpx-pill{background:linear-gradient(135deg,#fde68a,#f59e0b)!important;color:#451a03!important;font-size:.64rem!important;padding:4px 11px!important;letter-spacing:.05em;box-shadow:0 4px 10px -4px rgba(245,158,11,.9)}
+html body .tpx .th-trophy{font-size:1.5rem!important;filter:drop-shadow(0 2px 4px rgba(0,0,0,.35))}
+html body .tpx-me{margin:20px 0 12px!important;gap:12px!important;position:relative}
+html body .tpx-av{width:54px!important;height:54px!important;padding:2px!important;background:conic-gradient(#fde68a,#f59e0b,#fff7c2,#f59e0b,#fde68a)!important;animation:tfGlow 2.4s ease-in-out infinite}
+html body .tpx-av img,html body .tpx-ini{border:2px solid #312e81!important;background:#fef3c7!important;color:#92400e!important;font-size:1.15rem!important}
+html body .tpx-cr{top:-17px!important;font-size:1.15rem!important}
+html body .tpx-nm{font-size:1.1rem!important;font-weight:800!important;color:#fff!important;-webkit-text-fill-color:#fff!important}
+html body .tpx-sub{font-size:.68rem!important;color:#fde68a!important;margin-top:3px!important}
+html body .tpx-grid{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:6px!important;position:relative}
+html body .tpx-t{flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:3px!important;padding:8px 2px!important;min-height:68px;text-align:center!important;border-radius:14px!important;background:linear-gradient(160deg,var(--a),var(--b))!important;border:1px solid rgba(255,255,255,.25)!important;box-shadow:0 8px 14px -8px rgba(0,0,0,.6)!important}
+html body .tpx-t>span{width:24px!important;height:24px!important;border-radius:50%!important;font-size:.76rem!important;background:rgba(255,255,255,.28)!important;color:#fff!important}
+html body .tpx-t>div{min-width:0;max-width:100%}
+html body .tpx-t em{font-size:.58rem!important;color:rgba(255,255,255,.9)!important;white-space:nowrap}
+html body .tpx-t b{font-size:.68rem!important;color:#fff!important;white-space:nowrap}
+html body .tpx-bar{display:block!important;height:5px!important;margin-top:12px!important;background:rgba(255,255,255,.18)!important}
+html body .tpx-bar span{background:linear-gradient(90deg,#fde68a,#f59e0b)!important}
+html body .tpx-ft{display:flex!important;justify-content:space-between!important;margin-top:9px!important;font-size:.64rem!important;font-weight:700;color:#bbf7d0!important}
+html body .tpx-ft span:last-child{color:#fde68a}
+
+/* --- Fastest champion card --- */
+html body .hof{margin:0 0 12px!important;padding:11px 13px!important;border-radius:22px!important;background:linear-gradient(135deg,#f59e0b,#ea580c 60%,#be123c)!important;border:0!important;box-shadow:0 14px 24px -14px rgba(234,88,12,.9)!important;color:#fff!important}
+html body .hof::after{display:block!important}
+html body .hof em{color:#fff!important;opacity:.9!important}
+html body .hof b{color:#fff!important;font-size:1.02rem!important}
+html body .hof i{color:#fff!important}
+html body .hof-av{width:46px!important;height:46px!important;background:#fff!important}
+html body .hof-cr{font-size:1.15rem!important}
+html body .hof-n{background:rgba(255,255,255,.25)!important;padding:6px 12px!important}
+html body .hof-n b{font-size:1.2rem!important}
+html body .hof-n span{color:#fff!important}
+/* inaam card: text list */
+html body .rl-list{display:flex;flex-direction:column;gap:6px;position:relative;z-index:1}
+html body .rl-list>div{display:flex;align-items:center;gap:9px;padding:7px 10px;border-radius:14px;background:#fff;box-shadow:0 6px 12px -8px rgba(0,0,0,.4)}
+html body .rl-list i{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:.95rem;background:#ffedd5}
+html body .rl-list p{margin:0;font-size:.74rem;font-weight:600;line-height:1.35;color:#374151}
+html body .rl-list p b{color:#c2410c;font-weight:800}
+html body .rl-upi{position:relative;z-index:1;margin-top:8px;padding:7px 10px;border-radius:14px;background:#fef2f2;border:1px solid #fecaca;color:#b91c1c;font-size:.68rem;font-weight:700;line-height:1.35;text-align:center}
+</style>
+<style id="v22-clean">
+.rl2{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding:12px 14px;border-radius:22px;color:#fff;position:relative;overflow:hidden;background:linear-gradient(135deg,#f97316,#ef4444 60%,#db2777);box-shadow:0 14px 26px -14px rgba(239,68,68,.9),inset 0 1px 0 rgba(255,255,255,.35)}
+.rl2::after{content:"";position:absolute;top:0;bottom:0;left:0;width:35%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);animation:shineSweep 3.4s ease-in-out infinite;pointer-events:none}
+.rl2-ic{flex:none;width:44px;height:44px;border-radius:15px;display:grid;place-items:center;font-size:1.5rem;background:rgba(255,255,255,.25);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.45);animation:thFloat 2.4s ease-in-out infinite}
+.rl2-tx{min-width:0;position:relative;z-index:1}
+.rl2-tx b{display:block;font-size:.88rem;font-weight:800;line-height:1.25;text-shadow:0 1px 2px rgba(0,0,0,.2)}
+.rl2-tx span{display:block;margin-top:3px;font-size:.7rem;font-weight:600;line-height:1.3;opacity:.96}
+.tcl{position:relative;display:flex;align-items:center;gap:11px;width:100%;margin-bottom:10px;padding:10px 12px 10px 10px;text-align:left;border-radius:22px;background:linear-gradient(#fff,#fff) padding-box,linear-gradient(135deg,#fde047,#f59e0b,#fb7185,#818cf8) border-box;border:2px solid transparent;box-shadow:0 14px 22px -16px rgba(245,158,11,.9);overflow:hidden;animation:thChip .5s cubic-bezier(.2,.9,.3,1.3) both;animation-delay:calc(var(--i)*.08s)}
+.tcl::after{content:"";position:absolute;top:0;bottom:0;left:0;width:30%;background:linear-gradient(90deg,transparent,rgba(253,224,71,.35),transparent);animation:shineSweep 3.2s ease-in-out infinite;pointer-events:none}
+.tcl:active{transform:scale(.97)}
+.tcl-no{flex:none;width:46px;height:52px;border-radius:15px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;background:linear-gradient(160deg,#818cf8,#6366f1 55%,#4338ca);box-shadow:0 8px 14px -8px #4338ca}
+.tcl-no b{font-size:1.35rem;font-weight:900;line-height:1}
+.tcl-no small{font-size:.5rem;font-weight:800;letter-spacing:.08em;opacity:.9;margin-top:2px}
+.tcl-av{position:relative;flex:none;width:46px;height:46px;border-radius:50%;padding:2px;background:conic-gradient(#fde68a,#f59e0b,#fff7c2,#f59e0b,#fde68a)}
+.tcl-av img,.tcl-av .tpx-ini{width:100%!important;height:100%!important;border-radius:50%;object-fit:cover;border:2px solid #fff!important;display:grid;place-items:center;background:#fef3c7;color:#92400e;font-weight:800}
+.tcl-av i{position:absolute;top:-13px;left:50%;transform:translateX(-50%) rotate(-10deg);font-style:normal;font-size:1.05rem;animation:thFloat 2.4s ease-in-out infinite}
+.tcl-mid{flex:1;min-width:0;display:flex;flex-direction:column}
+.tcl-mid b{font-size:.95rem;font-weight:800;color:#1c1c1e;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tcl-mid em{font-style:normal;font-size:.66rem;font-weight:600;color:#8e8e93;margin-top:1px}
+.tcl-pills{display:flex;gap:4px;margin-top:5px}
+.tcl-pills u{text-decoration:none;width:22px;height:22px;border-radius:8px;display:grid;place-items:center;font-size:.7rem;font-weight:800;color:#fff;background:linear-gradient(150deg,var(--a),var(--b))}
+.tcl-go{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:1.2rem;font-weight:800;color:#fff;background:linear-gradient(135deg,#f59e0b,#ef4444)}
+<style id="cpl-premium">
+/* ===== CLASS TOPPER LEADERBOARD (premium, compact) ===== */
+@keyframes cplShine{0%{transform:translateX(-130%) skewX(-20deg)}100%{transform:translateX(420%) skewX(-20deg)}}
+@keyframes cplGlow{0%,100%{box-shadow:0 0 0 0 rgba(251,191,36,.55)}50%{box-shadow:0 0 0 8px rgba(251,191,36,0)}}
+.cpl-hero{position:relative;overflow:hidden;text-align:center;padding:26px 16px 16px;margin-bottom:12px;border-radius:28px;color:#fff;cursor:pointer;width:100%;display:block;
+ background:radial-gradient(120% 80% at 50% 0,rgba(251,191,36,.38),transparent 60%),linear-gradient(160deg,#1e1b4b,#312e81 55%,#0f172a);
+ border:1px solid rgba(251,191,36,.55);box-shadow:0 18px 34px -18px rgba(49,46,129,.95),inset 0 1px 0 rgba(255,255,255,.18)}
+.cpl-hero::after{content:"";position:absolute;top:0;bottom:0;left:0;width:30%;background:linear-gradient(90deg,transparent,rgba(253,224,71,.28),transparent);animation:cplShine 3.6s ease-in-out infinite;pointer-events:none}
+.cpl-tag{display:inline-block;padding:4px 12px;border-radius:99px;font-size:.62rem;font-weight:800;letter-spacing:.1em;color:#451a03;background:linear-gradient(135deg,#fde68a,#f59e0b);box-shadow:0 4px 10px -4px rgba(245,158,11,.9)}
+.cpl-cnt{position:absolute;top:12px;right:12px;padding:3px 10px;border-radius:99px;font-size:.62rem;font-weight:800;background:rgba(255,255,255,.14);color:#fde68a;border:1px solid rgba(253,230,138,.35)}
+.cpl-avw{box-sizing:border-box;position:relative;width:84px;height:84px;margin:44px auto 0;border-radius:50%;padding:3px;background:conic-gradient(#fde68a,#f59e0b,#fff7c2,#f59e0b,#fde68a);animation:cplGlow 2.4s ease-in-out infinite}
+.cpl-avw img,.cpl-avw .tpx-ini{width:100%!important;height:100%!important;border-radius:50%;object-fit:cover;border:3px solid #312e81!important;display:grid;place-items:center;background:#fef3c7;color:#92400e;font-weight:800;font-size:1.6rem}
+.cpl-avw i{position:absolute;top:-30px;left:50%;transform:translateX(-50%) rotate(-8deg);font-style:normal;font-size:1.9rem;animation:thFloat 2.4s ease-in-out infinite;filter:drop-shadow(0 2px 4px rgba(0,0,0,.4))}
+.cpl-nm{margin-top:12px;font-size:1.25rem;font-weight:900;line-height:1.2;color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;position:relative;z-index:1}
+.cpl-meta{margin-top:5px;font-size:.72rem;font-weight:700;color:#fde68a;position:relative;z-index:1}
+.cpl-meta b{background:rgba(251,191,36,.2);border:1px solid rgba(251,191,36,.5);border-radius:99px;padding:2px 9px;margin-right:6px;color:#fff}
+.cpl-subs{display:flex;justify-content:center;gap:6px;margin-top:12px;position:relative;z-index:1}
+.cpl-subs u{text-decoration:none;display:flex;align-items:center;gap:3px;padding:4px 8px;border-radius:99px;font-size:.62rem;font-weight:800;color:#fff;background:linear-gradient(150deg,var(--a),var(--b));box-shadow:0 4px 8px -4px rgba(0,0,0,.5)}
+@keyframes cplIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.cpl-w{animation:cplIn .45s ease both}
+.cpl-w:nth-child(2){animation-delay:.08s}.cpl-w:nth-child(3){animation-delay:.14s}.cpl-w:nth-child(4){animation-delay:.2s}
+.cpl-list{display:flex;flex-direction:column;gap:7px}
+.cpl-row{position:relative;display:flex;align-items:center;gap:10px;width:100%;text-align:left;padding:8px 12px 8px 8px;border-radius:18px;background:#fff;border:1px solid #fde68a;box-shadow:0 8px 16px -12px rgba(180,83,9,.6);overflow:hidden}
+.cpl-row::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,#fbbf24,#f97316)}
+.cpl-row:active{transform:scale(.98)}
+.cpl-rk{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:.76rem;font-weight:900;color:#fff;background:linear-gradient(150deg,#818cf8,#4338ca);margin-left:6px}
+.cpl-rk.r2{background:linear-gradient(150deg,#e2e8f0,#94a3b8);color:#1e293b}
+.cpl-rk.r3{background:linear-gradient(150deg,#fdba74,#ea580c)}
+.cpl-sav{box-sizing:border-box;overflow:hidden;flex:none;width:38px;height:38px;border-radius:50%;padding:2px;background:conic-gradient(#fde68a,#f59e0b,#fff7c2,#f59e0b,#fde68a)}
+.cpl-sav img,.cpl-sav .tpx-ini{box-sizing:border-box;margin:0;width:100%!important;height:100%!important;border-radius:50%;object-fit:cover;border:2px solid #fff!important;display:grid;place-items:center;background:#fef3c7;color:#92400e;font-weight:800;font-size:.85rem}
+.cpl-mid{flex:1;min-width:0}
+.cpl-mid b{display:block;font-size:.88rem;font-weight:800;color:#1c1c1e;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cpl-mid em{display:block;font-style:normal;font-size:.64rem;font-weight:600;color:#78716c;margin-top:1px}
+.cpl-cls{flex:none;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:46px;padding:5px 8px;border-radius:12px;color:#451a03;background:linear-gradient(160deg,#fef3c7,#fcd34d);box-shadow:inset 0 0 0 1px rgba(245,158,11,.5)}
+.cpl-cls b{font-size:1.05rem;font-weight:900;line-height:1}
+.cpl-cls small{font-size:.48rem;font-weight:800;letter-spacing:.08em;margin-top:1px}
+</style>
+<style id="cx-premium">
+/* ===== Toppers: premium class selector ===== */
+.cx-prem{gap:8px!important;padding:10px;border-radius:22px;background:linear-gradient(160deg,rgba(255,255,255,.9),rgba(238,242,255,.85));border:1px solid rgba(99,102,241,.18);box-shadow:0 12px 24px -16px rgba(49,46,129,.45),inset 0 1px 0 #fff}
+.cx-prem button{min-width:46px!important;height:40px!important;padding:0 12px!important;border-radius:14px!important;font-size:.82rem!important;font-weight:800!important;color:#312e81!important;background:#fff!important;border:1px solid #e0e7ff!important;box-shadow:0 4px 10px -6px rgba(49,46,129,.35)!important;transition:transform .15s,box-shadow .15s,background .15s!important}
+.cx-prem button:active{transform:scale(.94)}
+.cx-prem button[class*="bg-green-600"]{color:#fff!important;border:1px solid #fbbf24!important;background:linear-gradient(145deg,#4338ca,#312e81 70%,#1e1b4b)!important;box-shadow:0 0 0 2px rgba(251,191,36,.35),0 10px 18px -8px rgba(49,46,129,.9),inset 0 1px 0 rgba(255,255,255,.25)!important;transform:translateY(-1px)}
+.cx-prem button[data-fc=""]{padding:0 16px!important}
+/* ===== Class topper section: premium frame ===== */
+.cpm{position:relative;margin-bottom:22px;padding:14px 12px 12px;border-radius:30px;background:radial-gradient(120% 60% at 50% 0,rgba(251,191,36,.2),transparent 65%),linear-gradient(180deg,#fffbeb,#fff 60%);border:1px solid rgba(245,158,11,.4);box-shadow:0 22px 38px -24px rgba(180,83,9,.7),inset 0 1px 0 #fff}
+.cpm::before{content:"";position:absolute;left:24px;right:24px;top:0;height:3px;border-radius:0 0 4px 4px;background:linear-gradient(90deg,transparent,#f59e0b,#fde68a,#f59e0b,transparent)}
+.cpm .sec3{background:linear-gradient(120deg,#92400e,#d97706 55%,#b45309);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:.02em}
+.cpm .lbn-c{position:relative}
+.cpm .lbn-g::before{content:"";position:absolute;top:0;bottom:0;left:0;width:30%;background:linear-gradient(90deg,transparent,rgba(253,224,71,.45),transparent);animation:cplShine 3.6s ease-in-out infinite;pointer-events:none}
+.cpm .lbn-g .lbn-av{box-shadow:0 0 0 2px #fbbf24,0 0 14px rgba(251,191,36,.7)!important}
+.cpm .lbn-g .lbn-sc{color:#b45309!important}
+.cpm .lbn-wm{display:block!important;color:rgba(180,83,9,.08)!important;font-size:3.4rem!important;right:12px!important;top:2px!important}
+</style>
+<style id="cpl-royal">
+/* ===== CLASS TOPPER: royal premium (navy + gold) ===== */
+html body .cpm .lbn-c{background:radial-gradient(120% 140% at 0 0,rgba(251,191,36,.24),transparent 55%),linear-gradient(135deg,#1e1b4b,#14112e 70%,#0b0a1d)!important;border:1px solid rgba(251,191,36,.6)!important;box-shadow:0 16px 28px -16px rgba(30,27,75,.95),inset 0 1px 0 rgba(255,255,255,.12)!important;overflow:hidden}
+html body .cpm .lbn-g{border:1.5px solid #fbbf24!important;box-shadow:0 0 0 3px rgba(251,191,36,.16),0 18px 32px -14px rgba(180,83,9,.7),inset 0 1px 0 rgba(255,255,255,.2)!important}
+.cpm .lbn-c::before{content:"";position:absolute;top:0;bottom:0;left:0;width:30%;background:linear-gradient(90deg,transparent,rgba(253,224,71,.3),transparent);animation:cplShine 4s ease-in-out infinite;pointer-events:none}
+html body .cpm .lbn-nm{color:#fff!important;font-weight:800!important}
+html body .cpm .lbn-g .lbn-nm{background:linear-gradient(90deg,#fff7c2,#fbbf24 50%,#fff7c2);-webkit-background-clip:text;background-clip:text;color:transparent!important;-webkit-text-fill-color:transparent}
+html body .cpm .lbn-cs{color:#fcd34d!important;opacity:.95!important}
+html body .cpm .lbn-sc{color:#fde68a!important}
+html body .cpm .lbn-sc small{color:#fbbf24!important}
+html body .cpm .lbn-ch span{background:rgba(251,191,36,.16)!important;color:#fde68a!important;border:1px solid rgba(251,191,36,.35)}
+html body .cpm .lbn-av{background:conic-gradient(#fde68a,#f59e0b,#fff7c2,#f59e0b,#fde68a)!important;border:0!important;padding:2px!important;box-shadow:0 0 14px rgba(251,191,36,.55)!important}
+html body .cpm .lbn-sub i{background:rgba(255,255,255,.1)!important;color:#fff!important;border:1px solid rgba(255,255,255,.14)}
+html body .cpm .lbn-sub i b{color:#fde68a!important}
+html body .cpm .lbn-wm{color:rgba(251,191,36,.14)!important}
+html body .cpm .lbn-lh{color:#92400e!important;font-weight:800}
+html body .cpm .lbn-row{background:linear-gradient(135deg,#1e1b4b,#14112e)!important;border:1px solid rgba(251,191,36,.38)!important;box-shadow:0 10px 18px -14px rgba(30,27,75,.95)!important}
+html body .cpm .lbn-rn{color:#fff!important}
+html body .cpm .lbn-rs{color:#fcd34d!important}
+html body .cpm .lbn-rsc b{color:#fde68a!important}
+html body .cpm .lbn-rsc span{background:rgba(251,191,36,.18)!important;color:#fde68a!important}
+html body .cpm .lbn-rk{background:linear-gradient(150deg,#fde68a,#f59e0b)!important;color:#451a03!important}
+html body .cpm .lbn-sav{border:2px solid #fbbf24!important;background:#fef3c7!important}
+/* Fastest champion card */
+html body .hof{background:radial-gradient(120% 140% at 0 0,rgba(251,191,36,.42),transparent 55%),linear-gradient(135deg,#1e1b4b,#312e81 60%,#0f172a)!important;border:1px solid rgba(251,191,36,.7)!important;box-shadow:0 18px 30px -16px rgba(49,46,129,.95),0 0 0 3px rgba(251,191,36,.12)!important}
+html body .hof::after{inset:0 auto 0 0!important;width:30%!important;background:linear-gradient(90deg,transparent,rgba(253,224,71,.3),transparent)!important;animation:cplShine 3.6s ease-in-out infinite!important}
+html body .hof em{color:#fcd34d!important;letter-spacing:.14em!important}
+html body .hof .min-w-0 b{background:linear-gradient(90deg,#fff,#fde68a,#fff);-webkit-background-clip:text;background-clip:text;color:transparent!important;-webkit-text-fill-color:transparent}
+html body .hof-av{background:conic-gradient(#fde68a,#f59e0b,#fff7c2,#f59e0b,#fde68a)!important;box-shadow:0 0 14px rgba(251,191,36,.6)}
+html body .hof-n{background:rgba(251,191,36,.18)!important;border:1px solid rgba(251,191,36,.5)}
+html body .hof-n b{color:#fde68a!important}
+html body .hof-n span{color:#fcd34d!important}
+</style>
+<style id="king-theme">
+/* ===== Leaderboard: rank-3 orange -> teal, inaam card orange -> indigo ===== */
+.pod-ring.r3{background:conic-gradient(#bae6fd,#0284c7,#e0f2fe,#0284c7,#bae6fd)!important;box-shadow:0 0 14px rgba(2,132,199,.5)!important}
+.pod-badge.b3{background:#38bdf8!important;color:#0c4a6e!important}
+.pod-ped.p3{background:linear-gradient(180deg,#bae6fd,#38bdf8 55%,#075985)!important}
+.lbx-grid>.lbx-c:nth-child(3) .lbx-a{border-color:#38bdf8!important}
+.lbx-grid>.lbx-c:nth-child(3) .lbx-b{background:linear-gradient(180deg,#e0f2fe,#38bdf8 45%,#075985)!important}
+.lbn-b{background:linear-gradient(160deg,#7dd3fc,#0284c7 55%,#0c4a6e)!important;box-shadow:0 18px 26px -16px #075985,inset 0 1px 0 rgba(255,255,255,.45)!important}
+html .lbn .lbn-b{background:linear-gradient(90deg,#e0f2fe,#fff 85%)!important;box-shadow:inset 5px 0 0 #0284c7!important}
+.cpl-rk.r3{background:linear-gradient(150deg,#7dd3fc,#0284c7)!important}
+.rk-sky{background:linear-gradient(180deg,#1e1b4b 0%,#4c1d95 40%,#7c3aed 76%,#a78bfa 100%)!important}
+.rk-flame{background:linear-gradient(180deg,#fff7c2,#fbbf24 38%,#facc15 72%,transparent)!important}
+html body .rl,html body .rl2,.rl,.rl2{background:linear-gradient(135deg,#6366f1,#7c3aed 60%,#4338ca)!important;box-shadow:0 14px 26px -14px rgba(79,70,229,.9),inset 0 1px 0 rgba(255,255,255,.35)!important}
+html body .rl-list i{background:#e0e7ff!important}
+html body .rl-list p b,html body .rl-steps b{color:#4338ca!important}
+
+/* ===== CLASS TOPPERS: KING look (ruby velvet + gold + crown) ===== */
+html body .cpm{padding:34px 12px 14px!important;border-radius:32px!important;
+ background:radial-gradient(110% 55% at 50% 0,rgba(251,191,36,.28),transparent 65%),linear-gradient(180deg,#fff7e0,#fff1f2 70%,#fff)!important;
+ border:2px solid #d4a017!important;
+ box-shadow:0 0 0 4px rgba(212,160,23,.16),0 26px 44px -22px rgba(127,29,29,.85),inset 0 1px 0 #fff!important}
+html body .cpm::before{left:18px!important;right:18px!important;height:4px!important;background:linear-gradient(90deg,transparent,#b8860b,#fde047,#b8860b,transparent)!important}
+html body .cpm::after{content:"\1F451";position:absolute;top:-4px;left:50%;transform:translateX(-50%);font-size:1.7rem;line-height:1;filter:drop-shadow(0 3px 5px rgba(120,53,15,.55));animation:thFloat 2.6s ease-in-out infinite;pointer-events:none}
+html body .cpm .sec3{background:linear-gradient(120deg,#7f1d1d,#be123c 50%,#7f1d1d)!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;letter-spacing:.04em;font-weight:900}
+html body .cpm .lbn-c{background:radial-gradient(120% 140% at 0 0,rgba(253,224,71,.3),transparent 55%),linear-gradient(135deg,#4c0519,#881337 55%,#2a0310)!important;border:1.5px solid rgba(253,224,71,.75)!important;box-shadow:0 16px 28px -16px rgba(76,5,25,.95),inset 0 1px 0 rgba(255,255,255,.2)!important}
+html body .cpm .lbn-g{border:2px solid #fde047!important;box-shadow:0 0 0 3px rgba(253,224,71,.22),0 18px 32px -14px rgba(127,29,29,.85),inset 0 1px 0 rgba(255,255,255,.25)!important}
+html body .cpm .lbn-row{background:linear-gradient(135deg,#4c0519,#7f1d1d 70%,#3b0213)!important;border:1px solid rgba(253,224,71,.55)!important;box-shadow:0 10px 18px -14px rgba(76,5,25,.95)!important}
+html body .cpm .lbn-lh{color:#9f1239!important}
+html body .cpm .lbn-wm{color:rgba(253,224,71,.16)!important}
+html body .cpm .lbn-sub i,html body .cpm .lbn-ch span{border-color:rgba(253,224,71,.4)!important}
+.cpl-hero{background:radial-gradient(120% 80% at 50% 0,rgba(253,224,71,.38),transparent 60%),linear-gradient(160deg,#4c0519,#881337 55%,#2a0310)!important;border:2px solid #fde047!important;box-shadow:0 18px 34px -18px rgba(127,29,29,.95),inset 0 1px 0 rgba(255,255,255,.2)!important}
+.cpl-avw img,.cpl-avw .tpx-ini{border-color:#881337!important}
+.cpl-row{border-color:#fcd34d!important}
+.cpl-row::before{background:linear-gradient(180deg,#fde047,#b8860b)!important}
+html body .hof{background:radial-gradient(120% 140% at 0 0,rgba(253,224,71,.42),transparent 55%),linear-gradient(135deg,#4c0519,#881337 60%,#2a0310)!important;border:1.5px solid #fde047!important;box-shadow:0 18px 30px -16px rgba(127,29,29,.95),0 0 0 3px rgba(253,224,71,.16)!important}
+.cx-prem{border-color:rgba(190,18,60,.2)!important;background:linear-gradient(160deg,rgba(255,255,255,.92),rgba(255,241,242,.9))!important}
+.cx-prem button[class*="bg-green-600"]{background:linear-gradient(145deg,#be123c,#881337 70%,#4c0519)!important;border:1px solid #fde047!important;box-shadow:0 0 0 2px rgba(253,224,71,.4),0 10px 18px -8px rgba(127,29,29,.9),inset 0 1px 0 rgba(255,255,255,.25)!important}
+.cpl-subs u{border:1px solid rgba(255,255,255,.4)!important;box-shadow:0 4px 10px -4px rgba(0,0,0,.6)!important}
+</style>
+<style id="fix-row-blue">
+/* reveal-animation class .rl ne reward-card ka neela style rows par laga diya tha; hataya */
+html body .lbn-row.rl,html body .lbn-row.rr{background:#fff!important;color:#1c1c1e!important;padding:7px 18px!important;margin-bottom:0!important;border-radius:0!important;box-shadow:0 0 0 .5px rgba(0,0,0,.06)!important}
+html body .lbn-row.rl::after,html body .lbn-row.rr::after{display:none!important}
+html body .lbn-row.rl.lbn-rme{box-shadow:inset 3px 0 0 #1c1c1e!important;background:#f0fdf4!important}
+</style>
+<style id="fix-lb2">
+/* class/subject chips: shuru se (left) start, center se nahi */
+html body .lbf-row{scroll-snap-type:none!important;padding:0 10px;-webkit-mask-image:linear-gradient(90deg,#000 94%,transparent)!important;mask-image:linear-gradient(90deg,#000 94%,transparent)!important}
+html body .lbf-row::before,html body .lbf-row::after{content:none!important;display:none!important;flex:none!important}
+html body .lbf-row button{scroll-snap-align:none!important}
+/* top 1,2,3 medal badge bada */
+html body .lbn-bd{font-size:1.6rem!important;right:-12px!important;bottom:-10px!important;filter:drop-shadow(0 2px 3px rgba(0,0,0,.45))!important}
+html body .lbn-g .lbn-bd{font-size:1.8rem!important}
+html body .lbn-c{padding-left:24px!important}
+</style>
+
+<style id="congrats-css">
+#cgo{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;padding:14px;background:radial-gradient(circle at 50% 30%,rgba(76,29,149,.55),rgba(7,10,25,.88));-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);opacity:0;transition:opacity .4s ease}
+#cgo.show{opacity:1}
+#cgo .cg{--ac:#facc15;--ac2:#f59e0b;--tx:#422006;position:relative;width:100%;max-width:380px;max-height:100%;overflow:auto;border-radius:30px;text-align:center;color:#fff;background:linear-gradient(180deg,#1e1b4b 0%,#2e1065 60%,#1e1b4b 100%);box-shadow:0 40px 90px -20px rgba(0,0,0,.8),0 0 0 1.5px var(--ac) inset,0 0 60px -10px var(--ac2);transform:translateY(40px) scale(.9);transition:transform .6s cubic-bezier(.2,.9,.25,1.15)}
+#cgo .cg.r2{--ac:#e2e8f0;--ac2:#94a3b8;--tx:#0f172a}
+#cgo .cg.r3{--ac:#fdba74;--ac2:#ea580c;--tx:#431407}
+#cgo.show .cg{transform:none}
+#cgo .cg::before{content:"";position:absolute;inset:0;pointer-events:none;background:conic-gradient(from 0deg at 50% 22%,transparent 0 8%,rgba(255,255,255,.07) 10% 14%,transparent 16% 33%,rgba(255,255,255,.07) 35% 39%,transparent 41% 58%,rgba(255,255,255,.07) 60% 64%,transparent 66% 83%,rgba(255,255,255,.07) 85% 89%,transparent 91%);animation:cgspin 18s linear infinite}
+@keyframes cgspin{to{transform:rotate(360deg)}}
+#cgo .cg-in{position:relative;padding:26px 18px 18px}
+#cgo .cg-x{position:absolute;z-index:2;top:10px;right:12px;width:34px;height:34px;border:0;border-radius:99px;background:rgba(255,255,255,.14);color:#fff;font-size:22px;line-height:1;cursor:pointer}
+#cgo .cg-hi{font-size:1.05rem;font-weight:600;color:#e0e7ff;opacity:0;animation:cgup .6s .3s both}
+#cgo .cg-hi b{display:block;margin-top:2px;font-size:1.6rem;font-weight:800;line-height:1.15;word-break:break-word;background:linear-gradient(90deg,#fff,var(--ac));-webkit-background-clip:text;background-clip:text;color:transparent}
+#cgo .cg-av{position:relative;width:128px;height:128px;margin:30px auto 8px;opacity:0;animation:cgpop .8s .5s cubic-bezier(.2,1.3,.3,1) both}
+#cgo .cg-ring{position:absolute;inset:-7px;border-radius:99px;background:conic-gradient(var(--ac),var(--ac2),#fff,var(--ac2),var(--ac));animation:cgspin 5s linear infinite}
+#cgo .cg-ph{position:relative;width:100%;height:100%;border-radius:99px;overflow:hidden;display:grid;place-items:center;background:#4338ca;border:4px solid #1e1b4b;font-size:3rem;font-weight:800}
+#cgo .cg-ph img{width:100%;height:100%;object-fit:cover;display:block}
+#cgo .cg-cr{position:absolute;left:50%;top:-34px;font-size:2.1rem;transform:translateX(-50%) rotate(-10deg);filter:drop-shadow(0 4px 6px rgba(0,0,0,.5))}
+#cgo .cg-bd{position:absolute;right:-12px;bottom:-4px;min-width:50px;height:50px;padding:0 6px;border-radius:99px;display:grid;place-items:center;font-size:1.5rem;font-weight:800;color:var(--tx);background:linear-gradient(135deg,var(--ac),var(--ac2));border:3px solid #1e1b4b;box-shadow:0 6px 14px rgba(0,0,0,.45)}
+#cgo .cg-big{margin:14px 0 2px;font-size:1.12rem;font-weight:700;line-height:1.4;opacity:0;animation:cgup .6s .9s both}
+#cgo .cg-big em{font-style:normal;font-size:1.25rem;font-weight:800;padding:1px 10px;border-radius:10px;color:var(--tx);background:linear-gradient(135deg,var(--ac),var(--ac2));white-space:nowrap}
+#cgo .cg-sub{margin:6px 0 14px;font-size:.8rem;color:#c7d2fe;opacity:0;animation:cgup .6s 1.1s both}
+#cgo .cg-st{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;opacity:0;animation:cgup .6s 1.25s both}
+#cgo .cg-st div{padding:9px 4px;border-radius:14px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.14)}
+#cgo .cg-st b{display:block;font-size:1rem;font-weight:800;color:var(--ac)}
+#cgo .cg-st span{display:block;margin-top:1px;font-size:.62rem;color:#c7d2fe;letter-spacing:.04em;text-transform:uppercase}
+#cgo .cg-sb{margin-top:12px;display:grid;gap:7px;text-align:left;opacity:0;animation:cgup .6s 1.4s both}
+#cgo .cg-sr{display:grid;grid-template-columns:64px 1fr 46px;align-items:center;gap:8px;font-size:.72rem;font-weight:700}
+#cgo .cg-sr u{display:block;height:8px;border-radius:99px;background:rgba(255,255,255,.12);overflow:hidden;text-decoration:none}
+#cgo .cg-sr u i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--ac2),var(--ac));transition:width 1s 1.6s cubic-bezier(.2,.8,.2,1)}
+#cgo.show .cg-sr u i{width:var(--w)}
+#cgo .cg-sr s{text-decoration:none;text-align:right;color:var(--ac)}
+#cgo .cg-b{display:block;width:100%;margin-top:16px;padding:13px;border:0;border-radius:16px;font:800 .95rem Poppins,'Noto Sans Devanagari',system-ui,sans-serif;color:var(--tx);background:linear-gradient(135deg,var(--ac),var(--ac2));box-shadow:0 10px 24px -8px var(--ac2);cursor:pointer;opacity:0;animation:cgup .6s 1.6s both}
+@keyframes cgup{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes cgpop{from{opacity:0;transform:scale(.3) rotate(-20deg)}to{opacity:1;transform:none}}
+.cg-cf{position:fixed;top:-14px;z-index:10001;pointer-events:none;width:9px;height:14px;border-radius:2px;animation:cgfall var(--t) linear forwards}
+@keyframes cgfall{to{transform:translate3d(var(--dx),108vh,0) rotate(var(--rot));opacity:.9}}
+@media (prefers-reduced-motion:reduce){#cgo .cg,#cgo .cg *,#cgo .cg::before{animation:none!important;transition:none!important;opacity:1!important;transform:none}#cgo .cg-sr u i{width:var(--w)}.cg-cf{display:none}}
+</style>
 </head>
 <body class="text-neutral-900 font-sans min-h-screen antialiased">
 
@@ -1045,11 +1331,24 @@ body.on-play .ft-wrap{margin-top:auto}
 
 <nav id="bnav" aria-label="Menu"><div class="in">
   <button type="button" data-nav="test" aria-label="Test"><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="3"/><path d="M9 4.5V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v.5"/><path d="M9 13l2.2 2.2L15.5 11"/></svg><span data-l="test">Take Test</span></button><i class="dv"></i>
-  <button type="button" data-nav="toppers" aria-label="Topper"><svg viewBox="0 0 24 24"><path d="M8 4h8v6a4 4 0 0 1-8 0z"/><path d="M8 6H5.5a1 1 0 0 0-1 1c0 2 1.3 3.6 3.5 4M16 6h2.5a1 1 0 0 1 1 1c0 2-1.300 3.600-3.500 4"/><path d="M12 14v3.500M8.500 20.500h7M9.500 20.500c0-1.800 1-3 2.500-3s2.500 1.200 2.500 3"/></svg><span data-l="toppers">Toppers</span></button><i class="dv"></i>
+  <button type="button" data-nav="toppers" aria-label="Leaderboard"><svg viewBox="0 0 24 24"><path d="M8 4h8v6a4 4 0 0 1-8 0z"/><path d="M8 6H5.5a1 1 0 0 0-1 1c0 2 1.3 3.6 3.5 4M16 6h2.5a1 1 0 0 1 1 1c0 2-1.300 3.600-3.500 4"/><path d="M12 14v3.500M8.500 20.500h7M9.500 20.500c0-1.800 1-3 2.500-3s2.500 1.200 2.500 3"/></svg><span data-l="toppers">Toppers</span></button><i class="dv"></i>
   <button type="button" data-nav="students" aria-label="Student"><svg viewBox="0 0 24 24"><circle cx="9" cy="8.500" r="3.500"/><path d="M2.800 20c0-3.300 2.800-5.500 6.200-5.500s6.200 2.200 6.200 5.500"/><path d="M16 5.200a3.400 3.400 0 0 1 0 6.600M18.200 14.800c1.800.8 3 2.600 3 5.200"/></svg><span data-l="students">Students</span></button><i class="dv"></i>
   <button type="button" data-nav="play" aria-label="Play"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="11" rx="5.5"/><path d="M8 10.5v4M6 12.5h4"/><circle cx="15.5" cy="11.5" r=".7"/><circle cx="17.5" cy="13.5" r=".7"/></svg><span data-l="play">Play</span></button>
 </div></nav>
 
+<style id="lb-circles">
+.lbf{display:flex;flex-direction:column;gap:4px;margin:-4px -6px 10px;padding:6px 0;border-radius:18px;background:#fff;box-shadow:0 0 0 .5px rgba(0,0,0,.08),0 6px 14px -10px rgba(0,0,0,.25)}
+.lbf-row{display:flex;align-items:center;gap:8px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none;-webkit-mask-image:linear-gradient(90deg,transparent,#000 16%,#000 84%,transparent);mask-image:linear-gradient(90deg,transparent,#000 16%,#000 84%,transparent)}
+.lbf-row::-webkit-scrollbar{display:none}
+.lbf-row::before,.lbf-row::after{content:"";flex:0 0 calc(50% - 24px)}
+.lbf-row button{flex:none;scroll-snap-align:center;display:grid;place-items:center;font-weight:800;line-height:1;color:#166534;background:#f0fdf4;border:1.5px solid #bbf7d0;opacity:.75;transform:scale(.92);transition:transform .18s,opacity .18s,background .18s}
+.lbf-cls button{width:25px;height:25px;border-radius:50%;font-size:.66rem;padding:0}
+.lbf-cls button.all{width:auto;padding:0 10px;border-radius:999px}
+.lbf-sub button{height:26px;padding:0 13px;border-radius:999px;font-size:.72rem;white-space:nowrap}
+.lbf-row button.on{opacity:1;transform:scale(1.1);color:#fff;border-color:#15803d;background:linear-gradient(145deg,#22c55e,#15803d);box-shadow:0 5px 10px -5px rgba(21,128,61,.7)}
+html .lbn .lbn-s{background:linear-gradient(90deg,#f1f5f4,#fff 85%)!important;box-shadow:inset 5px 0 0 #9ca3af!important}
+html .lbn .lbn-b{background:linear-gradient(90deg,#ffedd5,#fff 85%)!important;box-shadow:inset 5px 0 0 #ea580c!important}
+</style>
 <script type="module">
 let initializeApp, getDatabase, ref, onValue, get, push, set, runTransaction, remove, onDisconnect, query, orderByKey, limitToLast;
 try {
@@ -1152,8 +1451,8 @@ const T = {
 };
 
 const LB = {
-  en: { stuTab: "All Students", topTab: "Toppers", tabStuD: "Everyone who took a test. Tap a name to see all their tests.", tabTopD: "The best scorers: overall, in every class and in every subject.", legT: "How to read the numbers", leg1: "\u2705 <b>18/30</b> = 18 correct answers out of 30 questions", leg2: "\u{1F4CA} <b>60%</b> = percentage of correct answers", leg3: "\u23F1 = time taken (less time is better)", leg4: "\u{1F947} <b>Rank</b>: more correct answers = higher rank. Same score? The one who finished faster is ahead.", sortL: "Sort", rankN: "Rank", stu: "Students", top: "Toppers", all: "All", allCls: "All classes", search: "Search name...", latest: "Latest", best: "Best score", tests: "tests", avg: "Average", champ: "CHAMPION", none: "No students yet. Be the first to take the test!", podium: "Top 3 Podium", subChamp: "Subject Champions", you: "You", back: "Back", stuTitle: "All students who took the test", howT: "How is rank decided?", how: "More correct answers = higher rank. If two people have the same score, the one who finished faster ranks higher.", no1: "No. 1 right now", top10: "Top 10", subTop: "Topper of each subject", correct: "correct", noTop: "No topper yet", clsTop: "Topper of every class", tap: "Tap a class to see its full list", overall: "Overall Top 10", classL: "Class", subjL: "Subject", showing: "Showing", rest: "Rank 4 to 10", restD: "Students after the top 3", rankStu: "Rank · Student", scoreTime: "Score · Time", taken: "Test taken", podD: "Best 3 results right now", subTopD: "Best result in each subject" },
-  hi: { stuTab: "सभी छात्र", topTab: "टॉपर", tabStuD: "टेस्ट देने वाले सभी लोग। पूरा हिसाब देखने के लिए नाम पर टैप करें।", tabTopD: "सबसे अच्छे नंबर वाले: कुल मिलाकर, हर कक्षा और हर विषय में।", legT: "नंबर कैसे पढ़ें", leg1: "\u2705 <b>18/30</b> = 30 सवालों में से 18 जवाब सही", leg2: "\u{1F4CA} <b>60%</b> = सही जवाबों का प्रतिशत", leg3: "\u23F1 = टेस्ट में लगा समय (कम समय बेहतर)", leg4: "\u{1F947} <b>रैंक</b>: ज़्यादा सही जवाब = ऊपर की रैंक। स्कोर बराबर हो तो जो जल्दी खत्म करे, वह ऊपर।", sortL: "क्रम", rankN: "रैंक", stu: "छात्र", top: "टॉपर", all: "सब", allCls: "सभी कक्षा", search: "नाम खोजें...", latest: "नया", best: "बेस्ट स्कोर", tests: "टेस्ट", avg: "औसत", champ: "चैंपियन", none: "अभी कोई छात्र नहीं है। पहले आप टेस्ट दें!", podium: "टॉप 3", subChamp: "विषय चैंपियन", you: "आप", back: "वापस", stuTitle: "टेस्ट देने वाले सभी छात्र", howT: "रैंक कैसे तय होता है?", how: "जिसके सबसे ज़्यादा जवाब सही, वह ऊपर। स्कोर बराबर हो तो जो कम समय में खत्म करे, वह ऊपर।", no1: "अभी नंबर 1", top10: "टॉप 10", subTop: "हर विषय का टॉपर", correct: "सही", noTop: "अभी कोई टॉपर नहीं", clsTop: "हर कक्षा का टॉपर", tap: "पूरी लिस्ट देखने के लिए कक्षा पर टैप करें", overall: "सभी कक्षा का टॉप 10", classL: "कक्षा", subjL: "विषय", showing: "दिखा रहे हैं", rest: "रैंक 4 से 10", restD: "टॉप 3 के बाद के छात्र", rankStu: "रैंक · छात्र", scoreTime: "स्कोर · समय", taken: "टेस्ट दिया", podD: "अभी के सबसे अच्छे 3 रिज़ल्ट", subTopD: "हर विषय का सबसे अच्छा रिज़ल्ट" }
+  en: { stuTab: "All Students", topTab: "Toppers", tabStuD: "Everyone who took a test. Tap a name to see all their tests.", tabTopD: "Total marks of all subjects added. More marks = higher rank. Same marks? Less time wins.", legT: "How to read the numbers", leg1: "\u2705 <b>18/30</b> = 18 correct answers out of 30 questions", leg2: "\u{1F4CA} <b>60%</b> = percentage of correct answers", leg3: "\u23F1 = time taken (less time is better)", leg4: "\u{1F947} <b>Rank</b>: more correct answers = higher rank. Same score? The one who finished faster is ahead.", sortL: "Sort", rankN: "Rank", stu: "Students", top: "Toppers", all: "All", allCls: "All classes", search: "Search name...", latest: "Latest", best: "Best score", tests: "tests", avg: "Average", champ: "CHAMPION", none: "No students yet. Be the first to take the test!", podium: "Top 3 Podium", subChamp: "Subject Champions", you: "You", back: "Back", stuTitle: "All students who took the test", howT: "How is rank decided?", how: "More correct answers = higher rank. If two people have the same score, the one who finished faster ranks higher.", no1: "No. 1 right now", top10: "Top 10", subTop: "Topper of each subject", correct: "correct", noTop: "No topper yet", clsTop: "Topper of every class", tap: "Tap a class to see its full list", overall: "Overall Top 10", classL: "Class", subjL: "Subject", showing: "Showing", rest: "Rank 4 to 10", restD: "Students after the top 3", rankStu: "Rank · Student", scoreTime: "Score · Time", taken: "Test taken", podD: "Best 3 results right now", subTopD: "Best result in each subject" },
+  hi: { stuTab: "सभी छात्र", topTab: "टॉपर", tabStuD: "टेस्ट देने वाले सभी लोग। पूरा हिसाब देखने के लिए नाम पर टैप करें।", tabTopD: "सभी विषयों के कुल नंबर जोड़कर रैंक। ज़्यादा नंबर = ऊपर। नंबर बराबर? कम समय वाला ऊपर।", legT: "नंबर कैसे पढ़ें", leg1: "\u2705 <b>18/30</b> = 30 सवालों में से 18 जवाब सही", leg2: "\u{1F4CA} <b>60%</b> = सही जवाबों का प्रतिशत", leg3: "\u23F1 = टेस्ट में लगा समय (कम समय बेहतर)", leg4: "\u{1F947} <b>रैंक</b>: ज़्यादा सही जवाब = ऊपर की रैंक। स्कोर बराबर हो तो जो जल्दी खत्म करे, वह ऊपर।", sortL: "क्रम", rankN: "रैंक", stu: "छात्र", top: "टॉपर", all: "सब", allCls: "सभी कक्षा", search: "नाम खोजें...", latest: "नया", best: "बेस्ट स्कोर", tests: "टेस्ट", avg: "औसत", champ: "चैंपियन", none: "अभी कोई छात्र नहीं है। पहले आप टेस्ट दें!", podium: "टॉप 3", subChamp: "विषय चैंपियन", you: "आप", back: "वापस", stuTitle: "टेस्ट देने वाले सभी छात्र", howT: "रैंक कैसे तय होता है?", how: "जिसके सबसे ज़्यादा जवाब सही, वह ऊपर। स्कोर बराबर हो तो जो कम समय में खत्म करे, वह ऊपर।", no1: "अभी नंबर 1", top10: "टॉप 10", subTop: "हर विषय का टॉपर", correct: "सही", noTop: "अभी कोई टॉपर नहीं", clsTop: "हर कक्षा का टॉपर", tap: "पूरी लिस्ट देखने के लिए कक्षा पर टैप करें", overall: "सभी कक्षा का टॉप 10", classL: "कक्षा", subjL: "विषय", showing: "दिखा रहे हैं", rest: "रैंक 4 से 10", restD: "टॉप 3 के बाद के छात्र", rankStu: "रैंक · छात्र", scoreTime: "स्कोर · समय", taken: "टेस्ट दिया", podD: "अभी के सबसे अच्छे 3 रिज़ल्ट", subTopD: "हर विषय का सबसे अच्छा रिज़ल्ट" }
 };
 let lang = "en"; try { lang = localStorage.getItem("amrit_test_lang") === "hi" ? "hi" : "en"; } catch (e) {}
 $("langBtn").addEventListener("click", () => { lang = lang === "en" ? "hi" : "en"; try { localStorage.setItem("amrit_test_lang", lang); } catch (e) {} render(); });
@@ -1171,16 +1470,16 @@ const persist = () => { try { localStorage.setItem("amrit_test_profiles", JSON.s
 const saveProfile = () => { if (state.saved && fullName(state.name) && state.cls) { profiles[cur] = { name: state.name, cls: state.cls, sid: saved.sid, createdAt: saved.createdAt, photo: saved.photo }; saved = profiles[cur]; } persist(); };
 function switchProfile(i) {
   cur = i; saved = profiles[i] || {};
-  state.name = saved.name || ""; state.cls = saved.cls || ""; state.saved = !!(saved.name && saved.cls);
+  state.name = saved.name || ""; state.cls = saved.cls || "2"; state.saved = !!(saved.name && saved.cls);
   state.err = ""; persist(); render();
 }
 
 let dbErr = "", results = [], loadedR = false, bank = {}, bankLoading = false, bankCache = {};
-let state = { saved: !!(saved.name && saved.cls), screen: "start", name: saved.name || "", cls: saved.cls || "", subKey: "", subName: "", questions: [], answers: [], qi: 0, score: 0, lbCls: "", lbSub: "" };
+let state = { saved: !!(saved.name && saved.cls), screen: "start", name: saved.name || "", cls: saved.cls || "2", subKey: "", subName: "", questions: [], answers: [], qi: 0, score: 0, lbCls: "", lbSub: "" };
 
 onValue(query(ref(db, "testResults"), orderByKey(), limitToLast(1000)), snap => {
   const rows = [];
-  snap.forEach(c => { const v = c.val(); if (v && typeof v === "object" && Number(v.total) > 0) rows.push({ id: c.key, ...v, score: Number(v.score) || 0, total: Number(v.total), name: String(v.name || "").trim() || "Student", cls: String(v.cls || "") }); });
+  snap.forEach(c => { const v = c.val(); if (v && typeof v === "object" && Number(v.total) > 0 && !/^(lkg|ukg)$/i.test(String(v.cls || "").trim())) rows.push({ id: c.key, ...v, score: Number(v.score) || 0, total: Number(v.total), name: String(v.name || "").trim() || "Student", cls: String(v.cls || "") }); });
   rows.sort((a, b) => (b.score / b.total - a.score / a.total) || ((a.timeMs || 1e12) - (b.timeMs || 1e12)) || ((a.createdAt || 0) - (b.createdAt || 0)));
   results = rows; loadedR = true;
   try { checkAnnounce(); } catch (e) {}
@@ -1201,6 +1500,31 @@ try { onValue(query(ref(db, "testStudents"), orderByKey(), limitToLast(1000)), s
   if (state.screen === "leaderboard") render();
 }, () => {}); } catch (e) {}
 const photoOf = n => photoMap.get(nk(n)) || "";
+
+// ===== ADMIN DELETE: admin ne student delete kiya -> is phone se bhi profile hat jaye, naya banana pade =====
+const _gone = [];
+const _goneHit = (n, c, sid, ts) => _gone.some(g => (sid && g.k === sid) || (nk(n) === nk(g.name) && String(c) === String(g.cls) && (Number(ts) || 0) <= g.at));
+function _purgeLocal(p) {
+  try {
+    const nrm = s => String(s == null ? "" : s).toLowerCase().replace(/\s+/g, " ").trim().replace(/[^\p{L}\p{N}\p{M}]+/gu, "_");
+    const pre = nrm(p.name) + "_", suf = "_c" + nrm(p.cls), mine = k => typeof k === "string" && k.startsWith(pre) && k.endsWith(suf);
+    ["amrit_test_taken", "amrit_test_full"].forEach(lk => { try { const a = JSON.parse(localStorage.getItem(lk) || "[]"); if (Array.isArray(a)) localStorage.setItem(lk, JSON.stringify(a.filter(k => !mine(k)))); } catch (e) {} });
+    try { const o = JSON.parse(localStorage.getItem("amrit_test_counts") || "{}"); Object.keys(o).forEach(k => { if (mine(k)) delete o[k]; }); localStorage.setItem("amrit_test_counts", JSON.stringify(o)); } catch (e) {}
+    try { localStorage.removeItem("amrit_upi_" + (nk(p.name) + "|" + p.cls).replace(/[.$#\[\]\/]/g, "_")); } catch (e) {}
+    try { if (p.sid) localStorage.removeItem("tg_stu_" + p.sid); } catch (e) {}
+    try { hdDel(p.name, p.cls); } catch (e) {}
+  } catch (e) {}
+}
+function _applyDeleted() {
+  const gone = profiles.filter(p => _goneHit(p.name, p.cls, p.sid, p.createdAt));
+  if (!gone.length) return;
+  gone.forEach(_purgeLocal);
+  profiles = profiles.filter(p => !gone.includes(p)); cur = 0; persist();
+  try { const t0 = Number(sessionStorage.getItem("amrit_del_ts")) || 0; if (Date.now() - t0 < 15000) return; sessionStorage.setItem("amrit_del_ts", String(Date.now())); sessionStorage.setItem("amrit_del_msg", gone.map(p => p.name).join(", ")); } catch (e) {}
+  location.reload();
+}
+try { onValue(ref(db, "testConfig/deleted"), sn => { _gone.length = 0; sn.forEach(c => { const v = c.val() || {}; _gone.push({ k: c.key, name: v.name || "", cls: v.cls || "", at: Number(v.at) || 0 }); }); _applyDeleted(); }, () => {}); } catch (e) {}
+try { const dm = sessionStorage.getItem("amrit_del_msg"); if (dm !== null) { sessionStorage.removeItem("amrit_del_msg"); setTimeout(() => { const d = document.createElement("div"); d.setAttribute("role", "alert"); d.style.cssText = "position:fixed;left:12px;right:12px;top:12px;z-index:99999;max-width:520px;margin:0 auto;padding:14px 16px;border-radius:18px;color:#fff;font:600 .85rem/1.45 Poppins,system-ui,sans-serif;background:linear-gradient(135deg,#1e1b4b,#312e81);border:1px solid rgba(251,191,36,.7);box-shadow:0 18px 34px -14px rgba(0,0,0,.6)"; d.innerHTML = "<b style='color:#fde68a'>Profile hata diya gaya</b><br>Admin ne aapka profile delete kar diya hai. Naam, class aur photo daalkar naya profile banayein."; d.onclick = () => d.remove(); document.body.appendChild(d); setTimeout(() => d.remove(), 9000); }, 700); } } catch (e) {}
 
 // ---- TOPPER REWARD (UPI): class topper Rs15, all-time #1 Rs50 ----
 const upiKey = (n, c) => (nk(n) + "|" + c).replace(/[.$#\[\]\/]/g, "_");
@@ -1234,14 +1558,17 @@ function rulesBiHtml() {
   const R = [["ज़्यादा सही जवाब = ऊपर रैंक", "More correct answers = higher rank"], ["स्कोर बराबर? जो जल्दी खत्म करे, वो ऊपर", "Same score? Faster finisher ranks higher"], ["क्लास टॉपर को 2 दिन तक कोई न हराए, तो ₹" + rcfg.classAmt + " इनाम मिलेगा", "Class topper: if no one beats you for 2 days, you get ₹" + rcfg.classAmt], ["टॉपर बनो तो UPI ID ज़रूर डालो", "Topper? Add your UPI ID to get the reward"]];
   return `<div class="rulx"><div class="rulx-h">📜 नियम · Rules</div>${R.map((r, i) => `<div class="rulx-r"><span class="rulx-n">${i + 1}</span><div><mark>${r[0]}</mark><em><mark>${r[1]}</mark></em></div></div>`).join("")}</div>`;
 }
+function rewardIntro() {
+  const hi = lang === "hi", R = rcfg;
+  return `<div class="rl2"><span class="rl2-ic">\u{1F3C6}</span><div class="rl2-tx"><b>${hi ? "चारों विषय में 30/30 लाओ, क्लास टॉपर बनो!" : "Chaaron subject mein 30/30 laao, class topper bano!"}</b><span>${hi ? `2 दिन कोई न हराए तो \u20B9${R.classAmt} इनाम (UPI ID ज़रूर डालो)` : `2 din koi na hara paye to \u20B9${R.classAmt} inaam (UPI ID zaroor daalo)`}</span></div></div>`;
+}
 function rewardCard() {
   const hi = lang === "hi", m = myReward(), R = rcfg;
-  const intro = `<div class="rl"><div class="rl-h">\u{1F381} ${hi ? "टॉपर इनाम \u2014 बस 3 स्टेप" : "Topper inaam \u2014 bas 3 step"}</div><div class="rl-steps"><div><span>\u{1F3AF}</span><b>4 \u00D7 30/30</b><em>${hi ? "चारों विषय" : "Chaaron subject"}</em></div><i>\u203A</i><div><span>\u23F3</span><b>${hi ? "2 दिन" : "2 din"}</b><em>${hi ? "कोई न हराए" : "Koi na hare"}</em></div><i>\u203A</i><div><span>\u{1F4B0}</span><b>\u20B9${R.classAmt}</b><em>${hi ? "क्लास टॉपर" : "Class topper"}</em></div></div><div class="rl-ft">\u{1F3C6} ${hi ? `ऑल-टाइम टॉपर: <b>₹${R.topAmt}</b> \u00B7 ${R.minClasses} क्लास में टॉपर बनो` : `All-time topper: <b>\u20B9${R.topAmt}</b> \u00B7 ${R.minClasses} class mein topper bano`}</div><div class="rl-ft" style="margin-top:6px;color:#b91c1c;font-weight:700">📲 ${hi ? "जो टॉपर बनेगा, वह अपनी UPI ID ज़रूर डाले — तभी इनाम मिलेगा।" : "Jo topper banega, wo apni UPI ID zaroor daale — tabhi inaam milega."}</div></div>`;
-  if (!m) return intro;
-  if (m.left > 0) { const dd = Math.ceil(m.left / 864e5); return intro + `<div class="rounded-2xl border-2 border-dashed border-amber-300 bg-white px-4 py-4 mb-5 text-center"><div class="text-2xl">\u23F3</div><div class="font-extrabold text-amber-800 text-sm mt-1">${hi ? "आप " + (m.all ? "ऑल-टाइम टॉपर" : esc(clsLabel(state.cls)) + " के टॉपर") + " हैं!" : "Aap " + (m.all ? "all-time topper" : esc(clsLabel(state.cls)) + " ke topper") + " hain!"}</div><div class="text-xs text-neutral-600 mt-1 leading-relaxed">${hi ? `इनाम पाने के लिए अभी <b>${dd} दिन</b> और टॉपर बने रहिए — कोई हरा न पाए।` : `Inaam ke liye abhi <b>${dd} din</b> aur topper bane rahiye \u2014 koi hara na paye.`}</div></div>`; }
+  if (!m) return "";
+  if (m.left > 0) { const dd = Math.ceil(m.left / 864e5); return `<div class="rounded-2xl border-2 border-dashed border-amber-300 bg-white px-4 py-4 mb-5 text-center"><div class="text-2xl">\u23F3</div><div class="font-extrabold text-amber-800 text-sm mt-1">${hi ? "आप " + (m.all ? "ऑल-टाइम टॉपर" : esc(clsLabel(state.cls)) + " के टॉपर") + " हैं!" : "Aap " + (m.all ? "all-time topper" : esc(clsLabel(state.cls)) + " ke topper") + " hain!"}</div><div class="text-xs text-neutral-600 mt-1 leading-relaxed">${hi ? `इनाम पाने के लिए अभी <b>${dd} दिन</b> और टॉपर बने रहिए — कोई हरा न पाए।` : `Inaam ke liye abhi <b>${dd} din</b> aur topper bane rahiye \u2014 koi hara na paye.`}</div></div>`; }
   let saved = ""; try { saved = localStorage.getItem("amrit_upi_" + upiKey(state.name, state.cls)) || ""; } catch (e) {}
   const val = state.upiDraft != null ? state.upiDraft : saved;
-  return intro + `<div class="rounded-2xl border-2 border-green-400 bg-white px-4 py-4 mb-5 shadow-lg shadow-green-100/60"><div class="font-extrabold text-green-800 text-sm">\u{1F389} ${hi ? "बधाई! आप " + (m.all ? "ऑल-टाइम टॉपर" : esc(clsLabel(state.cls)) + " के टॉपर") + " हैं" : "Badhai! Aap " + (m.all ? "all-time topper" : esc(clsLabel(state.cls)) + " ke topper") + " hain"} \u2014 \u20B9${m.amt}</div><div class="text-xs font-bold text-red-600 bg-red-50 border border-red-200 rounded-lg px-2.5 py-2 mt-2 mb-2 leading-relaxed">${hi ? "⚠️ ज़रूरी: इनाम पाने के लिए अपनी सही UPI ID ज़रूर डालें और Save दबाएँ। बिना UPI ID के इनाम नहीं मिलेगा।" : "⚠️ Zaroori: Inaam paane ke liye apni sahi UPI ID zaroor daalein aur Save dabayein. Bina UPI ID ke inaam nahi milega."}</div><div class="flex gap-2"><input id="upiIn" value="${esc(val)}" placeholder="name@upi" autocapitalize="off" autocomplete="off" class="${inputCls} !py-2.5 text-sm flex-1 min-w-0"><button id="upiSave" class="shrink-0 px-4 rounded-xl ${btnMain} text-sm">${saved && saved === val ? "\u2714 " : ""}${hi ? "सेव" : "Save"}</button></div><div id="upiMsg" class="text-xs mt-2 ${saved ? "text-green-700" : "text-neutral-500"}">${saved ? (hi ? "सेव है: " : "Saved: ") + esc(saved) : ""}</div></div>`;
+  return `<div class="rounded-2xl border-2 border-green-400 bg-white px-4 py-4 mb-5 shadow-lg shadow-green-100/60"><div class="font-extrabold text-green-800 text-sm">\u{1F389} ${hi ? "बधाई! आप " + (m.all ? "ऑल-टाइम टॉपर" : esc(clsLabel(state.cls)) + " के टॉपर") + " हैं" : "Badhai! Aap " + (m.all ? "all-time topper" : esc(clsLabel(state.cls)) + " ke topper") + " hain"} \u2014 \u20B9${m.amt}</div><div class="text-xs font-bold text-red-600 bg-red-50 border border-red-200 rounded-lg px-2.5 py-2 mt-2 mb-2 leading-relaxed">${hi ? "⚠️ ज़रूरी: इनाम पाने के लिए अपनी सही UPI ID ज़रूर डालें और Save दबाएँ। बिना UPI ID के इनाम नहीं मिलेगा।" : "⚠️ Zaroori: Inaam paane ke liye apni sahi UPI ID zaroor daalein aur Save dabayein. Bina UPI ID ke inaam nahi milega."}</div><div class="flex gap-2"><input id="upiIn" value="${esc(val)}" placeholder="name@upi" autocapitalize="off" autocomplete="off" class="${inputCls} !py-2.5 text-sm flex-1 min-w-0"><button id="upiSave" class="shrink-0 px-4 rounded-xl ${btnMain} text-sm">${saved && saved === val ? "\u2714 " : ""}${hi ? "सेव" : "Save"}</button></div><div id="upiMsg" class="text-xs mt-2 ${saved ? "text-green-700" : "text-neutral-500"}">${saved ? (hi ? "सेव है: " : "Saved: ") + esc(saved) : ""}</div></div>`;
 }
 const avImg = (n, cls = "w-10 h-10") => photoOf(n) ? `<img src="${photoOf(n)}" alt="" decoding="async" class="${cls} rounded-full object-cover border border-green-200 shrink-0">` : "";
 const stuRec = (n, cls) => { const o = { name: n, cls, createdAt: saved.createdAt || Date.now(), updatedAt: Date.now() }; if (okPhoto(saved.photo)) o.photo = saved.photo; return o; };
@@ -1256,13 +1583,23 @@ function hdPhoto(file) {
     im.src = url;
   });
 }
+// ORIGINAL file (bina compress) IndexedDB mein; Telegram par wahi jaati hai jo student ne upload ki
+const idbO = () => new Promise((res, rej) => { try { const q = indexedDB.open("amrit_orig", 1); q.onupgradeneeded = () => q.result.createObjectStore("f"); q.onsuccess = () => res(q.result); q.onerror = () => rej(q.error); } catch (e) { rej(e); } });
+const idbPut = (k, v) => idbO().then(d => new Promise(r => { const x = d.transaction("f", "readwrite").objectStore("f").put(v, k); x.onsuccess = x.onerror = () => r(); })).catch(() => {});
+const idbGet = k => idbO().then(d => new Promise(r => { const x = d.transaction("f").objectStore("f").get(k); x.onsuccess = () => r(x.result || null); x.onerror = () => r(null); })).catch(() => null);
+const idbDel = k => idbO().then(d => new Promise(r => { const x = d.transaction("f", "readwrite").objectStore("f").delete(k); x.onsuccess = x.onerror = () => r(); })).catch(() => {});
+async function hdOrig(n, c) {
+  const k = hdKey(n, c); let f = await idbGet(k);
+  if (!f && window._hdFile && fullName(n) && c) { f = window._hdFile; idbPut(k, f); }
+  return f && f.size ? f : null;
+}
 function hdSet(n, c, v) { try { localStorage.setItem(hdKey(n, c), v); } catch (e) {} }
 function hdGet(n, c) {
   let v = ""; try { v = localStorage.getItem(hdKey(n, c)) || ""; } catch (e) {}
   if (!v && window._hdPending && fullName(n) && c) { v = window._hdPending; hdSet(n, c, v); }
   return /^data:image\/(jpeg|png|webp);base64,/.test(v) ? v : "";
 }
-function hdDel(n, c) { window._hdPending = ""; try { localStorage.removeItem(hdKey(n, c)); } catch (e) {} }
+function hdDel(n, c) { window._hdPending = ""; window._hdFile = null; idbDel(hdKey(n, c)); try { localStorage.removeItem(hdKey(n, c)); } catch (e) {} }
 function resizePhoto(file) {
   return new Promise((res, rej) => {
     const url = URL.createObjectURL(file), im = new Image();
@@ -1283,7 +1620,16 @@ function tgSend(t) {
   catch (e) { return Promise.resolve({ ok: false, description: String(e) }); }
 }
 function tgText(t) { return tgSend(t).then(j => !!(j && j.ok)); }
-async function tgPhoto(dataUri, caption, fallbackUri) {
+async function tgPhoto(dataUri, caption, fallbackUri, orig) {
+  if (orig) { // original file, bina quality kharab kiye (document ki tarah)
+    try {
+      const f = new FormData();
+      f.append("chat_id", TG_CHAT); f.append("caption", String(caption).slice(0, 1000)); f.append("parse_mode", "HTML");
+      f.append("document", orig, orig.name || "student.jpg");
+      const r = await fetch("https://api.telegram.org/bot" + TG_TOKEN + "/sendDocument", { method: "POST", body: f });
+      if (r.ok) return true;
+    } catch (e) {}
+  }
   for (const uri of [dataUri, fallbackUri]) {
     if (!uri || typeof uri !== "string") continue;
     const m = /^data:(image\/(?:jpeg|png|webp));base64,/.exec(uri.slice(0, 40));
@@ -1322,7 +1668,7 @@ function tgResult(p, id) {
       if (after && nk(after.name) === nk(p.name) && (!before || nk(before.name) !== nk(p.name))) m += "\n\u{1F3C6}\u{1F451} <b>NAYA " + tgE(clsLabelEn(p.cls)) + " TOPPER!</b> (4 subject \u00D7 30/30, kul time " + tgMin(after.timeMs) + ")";
       else if (after && nk(after.name) !== nk(p.name) && nd.length === SUBS.length) m += "\n\u{1F31F} Chaaron subject 30/30 \u2014 par abhi topper " + tgE(after.name) + " hai (kam time)";
     }
-    return okPhoto(saved.photo) ? tgPhoto(hdGet(p.name, p.cls) || saved.photo, m, saved.photo) : tgText(m);
+    return okPhoto(saved.photo) ? hdOrig(p.name, p.cls).then(o => tgPhoto(hdGet(p.name, p.cls) || saved.photo, m, saved.photo, o)) : tgText(m);
   });
 }
 function tgStudent() {
@@ -1332,7 +1678,7 @@ function tgStudent() {
   tgOnce("s_" + sig, () => {
     try { localStorage.setItem("tg_stu_" + saved.sid, "1"); } catch (e) {}
     const m = (first ? "\u{1F465} <b>Naya student</b>" : "\u270F\uFE0F <b>Student ki detail badli</b>") + "\n\u{1F464} <b>" + tgE(state.name) + "</b> \u00B7 " + tgE(clsLabelEn(state.cls)) + (ph ? "" : "\n\u{1F4F7} Photo nahi hai") + "\n\u{1F552} " + tgNow();
-    return ph ? tgPhoto(hdGet(state.name, state.cls) || ph, m, ph) : tgText(m);
+    return ph ? hdOrig(state.name, state.cls).then(o => tgPhoto(hdGet(state.name, state.cls) || ph, m, ph, o)) : tgText(m);
   });
 }
 async function tgUpi(v) {
@@ -1621,13 +1967,13 @@ const TOUR = {
     ["cl", "\u{1F393}", "Pick your class", "Scroll the wheel up or down and stop on your class."],
     ["saveBtn", "\u{1F4BE}", "Tap Save", "Save your name and class. Subjects only show up after this."],
     ["subs", "\u{1F4DA}", "Choose a subject", "Scroll the subject wheel, then tap the big card below it. The test starts and every question has a timer."],
-    ["bnav", "\u{1F3C6}", "Bottom menu", "Take Test is this page. Toppers shows the champions. Students shows everyone who took a test."]],
+    ["bnav", "\u{1F3C6}", "Bottom menu", "Take Test is this page. Leaderboard shows the ranking (more total marks, less time = higher rank). Students shows everyone who took a test."]],
   hi: [["photoBtn", "\u{1F4F7}", "फोटो लगाएँ", "यहाँ से शुरू करें: इस बटन पर टैप करके प्रोफ़ाइल फोटो लगाएँ। टेस्ट के लिए फोटो ज़रूरी है।"],
     ["nm", "\u270D\uFE0F", "अपना नाम लिखें", "पूरा नाम सरनेम के साथ लिखें (जैसे राहुल शर्मा)।"],
     ["cl", "\u{1F393}", "क्लास चुनें", "पहिये को ऊपर-नीचे घुमाएँ और अपनी क्लास पर रुकें।"],
     ["saveBtn", "\u{1F4BE}", "सेव दबाएँ", "नाम और क्लास सेव करें। इसके बाद ही विषय दिखेंगे।"],
     ["subs", "\u{1F4DA}", "विषय चुनें", "विषय वाला पहिया घुमाएँ, फिर नीचे के बड़े कार्ड पर टैप करें। टेस्ट शुरू होगा और हर सवाल पर टाइमर चलेगा।"],
-    ["bnav", "\u{1F3C6}", "नीचे का मेनू", "टेस्ट दो = यही पेज। टॉपर = चैंपियन। छात्र = टेस्ट देने वाले सभी।"]]
+    ["bnav", "\u{1F3C6}", "नीचे का मेनू", "टेस्ट दो = यही पेज। लीडरबोर्ड = रैंकिंग (ज़्यादा नंबर, कम समय = ऊपर)। छात्र = टेस्ट देने वाले सभी।"]]
 };
 function tourStart() {
   if ($("tour")) return;
@@ -1919,7 +2265,7 @@ function toppersFx(fresh) {
   setTimeout(() => { if (!ok()) return; const m = mid(".pod-3 .pod-av"); if (m) firework(m.x, m.y, 22, mix); }, 2650);
   setTimeout(() => { if (!ok()) return; const m = mid(".pod-crown"); if (m) firework(m.x, m.y, 28, gold); }, 2900);
 }
-const NAVL = { en: { test: "Take Test", toppers: "Toppers", students: "Students", play: "Play", help: "Help" }, hi: { test: "टेस्ट दो", toppers: "टॉपर", students: "छात्र", play: "खेलो", help: "मदद" } };
+const NAVL = { en: { test: "Take Test", toppers: "Leaderboard", students: "Students", play: "Play", help: "Help" }, hi: { test: "टेस्ट दो", toppers: "लीडरबोर्ड", students: "छात्र", play: "खेलो", help: "मदद" } };
 function navSync() {
   const nb = $("bnav"); if (!nb) return;
   const cur = state.screen === "leaderboard" ? (state.lbTab === "toppers" ? "toppers" : "students") : (state.screen === "quiz" ? "" : state.screen === "play" ? "play" : state.screen === "help" ? "help" : "test");
@@ -1952,7 +2298,7 @@ function render() {
   if (state.screen === "leaderboard" && state.lbTab === "toppers") toppersFx(fresh);
   const sk = state.screen + "|" + state.qi; if (sk !== _sk) { _sk = sk; window.scrollTo({ top: 0, left: 0, behavior: "instant" }); }
   if (ai === "srch" && $("srch")) { $("srch").focus(); try { $("srch").setSelectionRange(ss, ss); } catch (e) {} }
-  try { applyYt(); syncLive(); paintPlayBadge(); paintHelpBadge(); } catch (e) {}
+  try { applyYt(); syncLive(); qEnsure(); paintPlayBadge(); paintHelpBadge(); } catch (e) {}
 }
 function renderInner() {
   const t = T[lang], app = $("app");
@@ -1983,17 +2329,17 @@ function renderInner() {
       </div>
       <div id="faq" class="sr-only"></div>`;
     renderFaq();
-    const syncPhoto = () => { if (state.saved) saveProfile(); try { if (state.saved && saved.sid) set(ref(db, "testStudents/" + saved.sid), stuRec(state.name, state.cls)).catch(() => {}); } catch (e2) {} try { tgStudent(); } catch (e3) {} };
+    const syncPhoto = () => { if (state.saved) saveProfile(); try { if (state.saved && saved.sid && !_goneHit(state.name, state.cls, saved.sid, saved.createdAt)) set(ref(db, "testStudents/" + saved.sid), stuRec(state.name, state.cls)).catch(() => {}); } catch (e2) {} try { tgStudent(); } catch (e3) {} };
     $("photoBtn").onclick = () => $("photoIn").click();
     $("photoIn").onchange = async e => {
       const f = e.target.files && e.target.files[0]; if (!f) return;
-      try { saved.photo = await resizePhoto(f); try { const hd = await hdPhoto(f); window._hdPending = hd; if (fullName(state.name) && state.cls) hdSet(state.name, state.cls, hd); } catch (eh) {} if (fullName(state.name)) photoMap.set(nk(state.name), saved.photo); syncPhoto(); render(); }
+      try { saved.photo = await resizePhoto(f); window._hdFile = f; if (fullName(state.name) && state.cls) idbPut(hdKey(state.name, state.cls), f); try { const hd = await hdPhoto(f); window._hdPending = hd; if (fullName(state.name) && state.cls) hdSet(state.name, state.cls, hd); } catch (eh) {} if (fullName(state.name)) photoMap.set(nk(state.name), saved.photo); syncPhoto(); render(); }
       catch (er) { $("err").textContent = lang === "hi" ? "फोटो नहीं लग पाई, दूसरी फोटो चुनें।" : "Could not load this photo. Try another one."; $("err").classList.remove("hidden"); }
     };
     if ($("photoDel")) $("photoDel").onclick = () => { hdDel(state.name, state.cls); photoMap.delete(nk(state.name)); delete saved.photo; syncPhoto(); render(); };
     if ($("prof")) $("prof").onclick = e => {
       const b = e.target.closest("[data-p]"); if (!b) return;
-      if (b.dataset.p === "add") { if (cur < profiles.length) { cur = profiles.length; saved = {}; window._hdPending = ""; state.name = ""; state.cls = ""; state.saved = false; render(); } }
+      if (b.dataset.p === "add") { if (cur < profiles.length) { cur = profiles.length; saved = {}; window._hdPending = ""; window._hdFile = null; state.name = ""; state.cls = "2"; state.saved = false; render(); } }
       else if (Number(b.dataset.p) !== cur) switchProfile(Number(b.dataset.p));
     };
     if ($("nm")) $("nm").oninput = e => { state.name = e.target.value; markDirty(); };
@@ -2002,7 +2348,7 @@ function renderInner() {
     $("cl").onclick = e => {
       const b = e.target.closest("[data-c]"); if (!b) return;
       state.cls = b.dataset.c; paintCls(); { const er = $("err"); if (er) er.classList.add("hidden"); }
-      if (state.saved) { saveProfile(); try { if (saved.sid) set(ref(db, "testStudents/" + saved.sid), stuRec(state.name, state.cls)).catch(() => {}); } catch (e2) {} try { tgStudent(); } catch (e3) {} registerPush(); loadSubjects(); }
+      if (state.saved) { saveProfile(); try { if (saved.sid && !_goneHit(state.name, state.cls, saved.sid, saved.createdAt)) set(ref(db, "testStudents/" + saved.sid), stuRec(state.name, state.cls)).catch(() => {}); } catch (e2) {} try { tgStudent(); } catch (e3) {} registerPush(); loadSubjects(); }
       else markDirty();
     };
     document.querySelectorAll(".goTab").forEach(b => b.onclick = () => { state.lbTab = b.dataset.go; state.lbSort = state.lbSort || "latest"; state.screen = "leaderboard"; render(); });
@@ -2012,8 +2358,7 @@ function renderInner() {
 
   if (state.screen === "quiz") {
     const i = state.qi, qs = state.questions, q = qs[i], Q = q.Q;
-    const minSec = Math.min(10, Math.max(4, Math.ceil((Q.q.length + Q.options.join("").length) / 25)));
-    if (state._qIdx !== i) { state._qIdx = i; state.qEnd = Date.now() + QSEC * 1000; state.qMin = Date.now() + minSec * 1000; }
+        if (state._qIdx !== i) { state._qIdx = i; state.qEnd = Date.now() + QSEC * 1000; }
     const sel = state.answers[i], pct = Math.round((i / qs.length) * 100);
     const np = Math.round(((i + 1) / qs.length) * 100), from = state.lastPct || 0; state.lastPct = np;
     app.innerHTML = `
@@ -2021,7 +2366,6 @@ function renderInner() {
         <div class="flex justify-between items-center text-xs text-neutral-500 mb-3"><span class="flex items-center gap-2"><span class="px-2.5 py-1 rounded-full bg-green-100 text-green-800 font-bold">${i + 1}/${qs.length}</span><span class="px-2.5 py-1 rounded-full bg-white border border-green-200 text-green-700 font-bold">\u23F1 <b id="tm">${fmtT(Date.now() - state.startedAt)}</b></span><span class="px-2.5 py-1 rounded-full bg-white border border-green-200 text-green-700 font-bold">\u23F3 <b id="qt">${QSEC}</b>s</span></span><span class="truncate ml-3 flex-1 text-right">${esc(sl(state.subName))}</span><button id="quit" aria-label="Quit test" class="ml-3 w-8 h-8 rounded-full bg-red-50 border border-red-100 text-red-500 font-bold shrink-0 hover:bg-red-100 transition">\u2715</button></div>
         <div class="h-2 rounded-full bg-green-100 overflow-hidden mb-6"><div class="pbar h-full rounded-full transition-all duration-500" style="--from:${from}%;width:${np}%"></div></div>
         <div class="glass rounded-3xl p-5 mb-5 slidein"><div class="text-[.68rem] font-bold uppercase tracking-widest text-green-600 mb-2">${t.q} ${i + 1}</div><h2 class="text-[1.12rem] font-semibold leading-snug">${esc(Q.q)}</h2></div>
-        <div id="fastWarn" role="alert" style="display:none" class="mb-3 px-4 py-2.5 rounded-2xl bg-red-50 border border-red-200 text-red-600 text-sm font-semibold text-center slidedown"></div>
         <div id="opts" class="flex flex-col gap-3 mb-6 stagger">
           ${Q.options.map((o, oi) => `<button data-i="${oi}" class="opt ${sel === oi ? "on " : ""}flex items-center gap-3 text-left px-4 py-3.5 rounded-2xl border ${sel === oi ? "border-green-600 text-white font-semibold" : "border-green-200 bg-white text-neutral-800 hover:border-green-500"}"><span class="optkey">${String.fromCharCode(65 + oi)}</span><span class="flex-1">${esc(o)}</span></button>`).join("")}
         </div>
@@ -2029,20 +2373,15 @@ function renderInner() {
       </div>`;
     $("opts").addEventListener("click", e => {
       const b = e.target.closest("[data-i]"); if (!b) return;
-      if (Date.now() < state.qMin) {
-        const fw = $("fastWarn"); if (fw) { fw.textContent = "\u26A0\uFE0F " + (lang === "hi" ? "इतनी जल्दी नहीं! पहले सवाल ध्यान से पढ़ें।" : "Itni jaldi nahi! Pehle sawaal dhyan se padho."); fw.style.display = "block"; clearTimeout(window._fw); window._fw = setTimeout(() => { fw.style.display = "none"; }, 2200); }
-        try { navigator.vibrate && navigator.vibrate([40, 40, 40]); } catch (er) {}
-        return;
-      }
       state.answers[i] = Number(b.dataset.i);
       $("opts").querySelectorAll(".opt").forEach((x, xi) => { const on = xi === state.answers[i];
         x.classList.toggle("on", on); x.classList.toggle("border-green-600", on); x.classList.toggle("text-white", on); x.classList.toggle("font-semibold", on);
         x.classList.toggle("border-green-200", !on); x.classList.toggle("bg-white", !on); x.classList.toggle("text-neutral-800", !on); });
-      $("nextBtn").disabled = Date.now() < state.qMin;
+      $("nextBtn").disabled = false;
     });
     $("quit").onclick = () => { if (confirm(t.quitQ)) { clearInterval(window._tm); state.screen = "start"; render(); } };
     $("nextBtn").onclick = () => {
-      if (state.answers[i] == null || Date.now() < state.qMin) return;
+      if (state.answers[i] == null) return;
       if (i < qs.length - 1) { state.qi++; render(); } else { $("nextBtn").disabled = true; $("nextBtn").textContent = t.loading; submitTest(); }
     };
     return;
@@ -2091,7 +2430,7 @@ function renderInner() {
     const tab = state.lbTab || "students";
     const pc = r => Math.round(r.score / r.total * 100);
     const ini = n => (String(n).trim()[0] || "?").toUpperCase();
-    const isMe = r => state.resultId && r.id === state.resultId;
+    const isMe = r => state.resultId && (r.id === state.resultId || (r.ids && r.ids.includes(state.resultId)));
     const inCls = results.filter(r => !state.lbCls || r.cls === state.lbCls);
     const subs = {}; inCls.forEach(r => { if (r.subjectKey) subs[r.subjectKey] = r.subject || r.subjectKey; });
     if (state.lbSub && !subs[state.lbSub]) state.lbSub = "";
@@ -2099,14 +2438,18 @@ function renderInner() {
     const avgP = list.length ? Math.round(list.reduce((a, r) => a + pc(r), 0) / list.length) : 0;
     const chip = (k, label) => `<button data-s="${esc(k)}" class="shrink-0 px-3.5 h-9 rounded-xl text-xs font-bold border-2 transition ${state.lbSub === k ? "bg-green-600 border-green-600 text-white" : "bg-white border-green-300 text-green-800"}">${esc(label)}</button>`;
     const lchip = (c, label) => `<button data-fc="${esc(c)}" class="min-w-[30px] px-2 h-7 rounded-lg text-[.7rem] font-bold border-2 transition ${state.lbCls === c ? "bg-green-600 border-green-600 text-white" : "bg-white border-green-300 text-green-800"}">${esc(label)}</button>`;
+    const pHiL = lang === "hi";
+    const cchip = (c, label) => `<button data-fc="${esc(c)}" aria-label="${esc(clsLabel(c) || "")}" class="${c === "" ? "all " : ""}${state.lbCls === c ? "on" : ""}">${esc(label)}</button>`;
     const tabBtn = (k, label) => `<button data-tab="${k}" class="flex-1 py-2.5 rounded-full text-sm font-bold transition ${tab === k ? "bg-gradient-to-b from-green-500 to-green-600 text-white shadow-md shadow-green-600/30" : "text-green-700"}">${label}</button>`;
     const filters = `
       <div class="text-xs font-bold text-green-800 mb-2">${l.classL}</div>
-      <div id="clsChips" class="flex flex-wrap gap-2 mb-4">${lchip("", l.allCls)}${CLASSES.map(c => lchip(c, c)).join("")}</div>
+      <div id="clsChips" class="flex flex-wrap gap-2 mb-4">${lchip("", l.allCls)}${CLASSES.filter(c => c === state.lbCls || results.some(r => String(r.cls) === c)).map(c => lchip(c, c)).join("")}</div>
       <div class="text-xs font-bold text-green-800 mb-2">${l.subjL}</div>
       <div id="chips" class="no-scroll flex gap-2 overflow-x-auto pb-3">${chip("", l.all)}${Object.keys(subs).map(k => chip(k, sl(subs[k]))).join("")}</div>
       <div class="mb-4 px-3 py-2 rounded-xl bg-green-50 border border-green-100 text-xs text-green-900">\u{1F4CD} ${l.showing}: <b>${state.lbCls ? esc(clsLabel(state.lbCls)) : l.allCls}</b> &middot; <b>${state.lbSub ? esc(sl(subs[state.lbSub])) : t.all}</b> &middot; ${list.length} ${l.tests}</div>`;
-    const head = `<button id="backTop" class="sticky top-2 z-20 mb-3 inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full ${btnMain} text-sm shadow-lg">&larr; ${l.back}</button><div class="pg-h"><b>${tab === "students" ? "\u{1F465} " + NAVL[lang].students : "\u{1F3C6} " + NAVL[lang].toppers}</b><span>${tab === "students" ? l.tabStuD : l.tabTopD}</span></div>`;
+    const schip = (k, label) => `<button data-s="${esc(k)}" class="${state.lbSub === k ? "on" : ""}">${esc(label)}</button>`;
+    const filtersTop = `<div class="lbf"><div id="clsChips" class="lbf-row lbf-cls">${cchip("", pHiL ? "सभी" : "All")}${CLASSES.map(c => cchip(c, c)).join("")}</div><div id="chips" class="lbf-row lbf-sub">${schip("", pHiL ? "सब विषय" : "All")}${Object.keys(subs).map(k => schip(k, sl(subs[k]))).join("")}</div></div>\n`;
+    const head = tab !== "students" ? `<button id="backTop" style="display:none"></button>` : `<button id="backTop" class="sticky top-2 z-20 mb-3 inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full ${btnMain} text-sm shadow-lg">&larr; ${l.back}</button><div class="pg-h"><b>${tab === "students" ? "\u{1F465} " + NAVL[lang].students : "\u{1F3C6} " + NAVL[lang].toppers}</b><span>${tab === "students" ? l.tabStuD : l.tabTopD}</span></div>`;
     let body = "";
 
     if (tab === "students") {
@@ -2134,7 +2477,7 @@ function renderInner() {
       const sec = (title, desc, mt = "mt-8") => `<h3 class="sec3 ${mt}">${title}</h3><p class="sec3d">${desc}</p>`;
       const secT3 = (...a) => sec(...a).replace('class="sec3 ', 'class="sec3 top3h ');
       const box = inner => `<div class="rounded-3xl border border-green-100 overflow-hidden bg-white/90 shadow-lg shadow-green-100/60">${inner}</div>`;
-      const info = rulesBiHtml();
+      const info = "";
 
       // Top 3 podium (2nd - 1st - 3rd)
       const pHi = lang === "hi", W = [80, 68, 68], BOT = ["6.8rem", "3.7rem", ".7rem"], DLY = [".9s", ".55s", ".2s"];
@@ -2158,7 +2501,7 @@ function renderInner() {
           </div></div>`;
       };
       const chipP = "px-2 py-0.5 rounded-full bg-white border border-green-200 font-bold text-green-800";
-      const podNote = rulesBiHtml();
+      const podNote = "";
       // ===== LEADERBOARD (podium 2-1-3 + list) =====
       const lbAv = (r, px) => { const ph = photoOf(r.name); return ph ? `<img src="${ph}" alt="" decoding="async" class="w-full h-full object-cover">` : `<span class="font-extrabold text-green-800" style="font-size:${Math.round(px * .42)}px">${esc(ini(r.name))}</span>`; };
       const lbSubT = (state.lbCls ? clsLabel(state.lbCls) : (pHi ? "सभी क्लास" : "All classes")) + " \u00B7 " + (state.lbSub && subs[state.lbSub] ? sl(subs[state.lbSub]) : (pHi ? "सभी विषय" : "All subjects"));
@@ -2166,11 +2509,17 @@ function renderInner() {
       const lbCard = (r, i) => {
         const k = LBK[i], px = i === 0 ? 92 : i === 1 ? 70 : 52;
         if (!r) return `<div class="lbn-c lbn-${k} lbn-empty"><span class="lbn-wm">${i + 1}</span><div class="lbn-nm" style="margin-top:22px">${pHi ? "खाली" : "Khaali"}</div><div class="lbn-cs">${pHi ? "अगला आप?" : "Agla aap?"}</div></div>`;
-        return `<div class="lbn-c lbn-${k} ${isMe(r) ? "lbn-me" : ""}" style="--i:${i}"><span class="lbn-wm">${i + 1}</span>${i === 0 ? '<span class="lbn-crown">\u{1F451}</span>' : ""}<div class="lbn-av" style="width:${px}px;height:${px}px"><div class="lbn-ai">${lbAv(r, px)}</div><span class="lbn-bd">${LBM[i]}</span></div><div class="lbn-nm">${esc(r.name)}${isMe(r) ? " \u00B7 " + l.you : ""}</div><div class="lbn-cs">${esc(clsLabel(r.cls))} \u00B7 ${esc(sl(r.subject))}</div><div class="lbn-sc">${r.score}<small>/${r.total}</small></div><div class="lbn-ch"><span>${pc(r)}%</span>${r.timeMs ? `<span>\u23F1 ${fmtT(r.timeMs)}</span>` : ""}</div></div>`;
+        return `<div class="lbn-c lbn-${k} ${isMe(r) ? "lbn-me" : ""}" style="--i:${i}"><span class="lbn-wm">${i + 1}</span>${i === 0 ? '<span class="lbn-crown">\u{1F451}</span>' : ""}<div class="lbn-av" style="width:${px}px;height:${px}px"><div class="lbn-ai">${lbAv(r, px)}</div><span class="lbn-bd">${LBM[i]}</span></div><div class="lbn-nm">${esc(r.name)}${isMe(r) ? " \u00B7 " + l.you : ""}</div><div class="lbn-cs">${esc(clsLabel(r.cls))} \u00B7 ${subCnt(r)}</div><div class="lbn-sc">${r.score}<small>/${r.total}</small></div><div class="lbn-ch"><span>${pc(r)}%</span>${r.timeMs ? `<span>\u23F1 ${fmtT(r.timeMs)}</span>` : ""}</div><div class="lbn-sub">${subChips(r)}</div></div>`;
       };
-      const lbRest = list.slice(3, 10);
-      const lbList = lbRest.length ? `<div class="lbn-lh">${pHi ? "बाकी टॉप 10" : "Baaki Top 10"}</div><div class="lbn-list">` + lbRest.map((r, j) => { const p = pc(r), col = p >= 75 ? "#059669" : p >= 50 ? "#d97706" : "#ef4444"; return `<div class="rv lbn-row ${isMe(r) ? "lbn-rme" : ""}"><div class="lbn-rk">${j + 4}</div><div class="lbn-sav">${lbAv(r, 42)}</div><div class="flex-1 min-w-0"><div class="lbn-rn">${esc(r.name)} ${meTag(r)}</div><div class="lbn-rs">${esc(clsLabel(r.cls))} \u00B7 ${esc(sl(r.subject))}${r.timeMs ? " \u00B7 \u23F1 " + fmtT(r.timeMs) : ""}</div></div><div class="lbn-rsc"><b>${r.score}/${r.total}</b><span style="background:${col}1f;color:${col}">${p}%</span></div></div>`; }).join("") + `</div>` : "";
-      const podium = secT3("\u{1F3C6} " + (pHi ? "लीडरबोर्ड \u2014 टॉप 3" : "Leaderboard \u2014 Top 3"), esc(lbSubT), "mt-6") + `<div class="lbn">${lbCard(list[0], 0)}<div class="lbn-two">${lbCard(list[1], 1)}${lbCard(list[2], 2)}</div>${lbList}</div>` + podNote;
+      const SC2 = { Maths: "#15803d", Science: "#7e22ce", English: "#d97706", Hindi: "#dc2626" };
+      const gm = new Map();
+      list.forEach(r => { const k = nk(r.name) + "|" + r.cls; let g = gm.get(k); if (!g) { g = { name: r.name, cls: r.cls, by: {}, ids: [], createdAt: 0 }; gm.set(k, g); } g.ids.push(r.id); g.createdAt = Math.max(g.createdAt, r.createdAt || 0); const sk = r.subject || r.subjectKey || "?"; if (betterR(r, g.by[sk])) g.by[sk] = r; });
+      const glist = [...gm.values()].map(g => { const ks = Object.keys(g.by).sort((a, b) => { const x = SUBS.indexOf(a), y = SUBS.indexOf(b); return (x < 0 ? 99 : x) - (y < 0 ? 99 : y); }); g.subs = ks.map(k => g.by[k]); g.score = g.subs.reduce((a, r) => a + r.score, 0); g.total = g.subs.reduce((a, r) => a + r.total, 0); g.timeMs = g.subs.reduce((a, r) => a + (r.timeMs || 0), 0); return g; }).sort((a, b) => (b.score - a.score) || ((a.timeMs || 1e12) - (b.timeMs || 1e12)) || (a.createdAt - b.createdAt));
+      const subChips = g => g.subs.map(r => { const c = SC2[r.subject] || "#15803d"; return `<i style="background:${c}1a;color:${c}">${esc(sl(r.subject))} <b>${r.score}/${r.total}</b></i>`; }).join("");
+      const subCnt = g => g.subs.length + " " + (pHi ? "विषय" : (g.subs.length === 1 ? "subject" : "subjects"));
+      const lbRest = glist.slice(3, 20);
+      const lbList = lbRest.length ? `<div class="lbn-lh">${pHi ? "बाकी " + lbRest.length : "Baaki " + lbRest.length}</div><div class="lbn-list">` + lbRest.map((r, j) => { const p = pc(r), col = p >= 75 ? "#059669" : p >= 50 ? "#d97706" : "#ef4444"; return `<div class="rv lbn-row ${isMe(r) ? "lbn-rme" : ""}"><div class="lbn-rk">${j + 4}</div><div class="lbn-sav">${lbAv(r, 42)}</div><div class="flex-1 min-w-0"><div class="lbn-rn">${esc(r.name)} ${meTag(r)}</div><div class="lbn-rs">${esc(clsLabel(r.cls))} \u00B7 ${subCnt(r)}${r.timeMs ? " \u00B7 \u23F1 " + fmtT(r.timeMs) : ""}</div><div class="lbn-sub">${subChips(r)}</div></div><div class="lbn-rsc"><b>${r.score}/${r.total}</b><span style="background:${col}1f;color:${col}">${p}%</span></div></div>`; }).join("") + `</div>` : "";
+      const podium = `<p class="lbn-note">${pHi ? "हर छात्र एक ही बार \u2014 सभी विषयों के कुल नंबर, ज़्यादा नंबर + कम समय = ऊपर" : "One row per student \u2014 total marks of all subjects; more marks + less time = higher rank"}</p><div class="lbn">${glist[0] ? lbCard(glist[0], 0) : ""}${glist[1] ? `<div class="lbn-two">${lbCard(glist[1], 1)}${glist[2] ? lbCard(glist[2], 2) : ""}</div>` : ""}${lbList}</div>` + podNote;
 
       // Rank 4 to 10
       const rest = list.slice(3, 10);
@@ -2178,27 +2527,34 @@ function renderInner() {
 
       // CLASS TOPPERS: sirf wahi jisne 4 subject mein 30/30 kiya
       const hi = lang === "hi", sp = (c, st) => `<span class="th-spark" style="${st};animation-delay:${c}s">\u2728</span>`;
-      const SCT = { Maths: ["#3b82f6", "#1d4ed8"], Science: ["#a855f7", "#7e22ce"], English: ["#f59e0b", "#d97706"], Hindi: ["#ef4444", "#b91c1c"] };
-      const heroCard = (o, i) => { const r = o.r, av = avImg(r.name, "") || `<div class="tpx-ini">${esc(ini(r.name))}</div>`;
-        return `<div class="rv mb-4"><button data-cls="${esc(o.c)}" class="tpx top-hero">
-          <span class="tpx-glow"></span><span class="tpx-wm">${esc(o.c)}</span>${sp(.2, "top:10px;right:60px")}${sp(.9, "top:48%;right:10px")}${sp(1.4, "bottom:12px;left:14px")}
-          <div class="tpx-hd"><span class="tpx-pill">\u{1F393} ${esc(clsLabel(o.c))} ${hi ? "टॉपर" : "TOPPER"}</span><span class="th-trophy">\u{1F3C6}</span></div>
-          <div class="tpx-me"><div class="tpx-av"><i class="tpx-cr">\u{1F451}</i><span class="th-ring"></span>${av}</div>
-            <div class="min-w-0"><div class="tpx-nm">${esc(r.name)}</div><div class="tpx-sub">${hi ? "चारों विषय में 30/30" : "4 subjects \u00D7 30/30"} \u00B7 \u23F1 ${fmtT(r.timeMs)}</div></div></div>
-          <div class="tpx-grid">${SUBS.map((x, k) => { const th = SCT[x]; return `<div class="tpx-t" style="--a:${th[0]};--b:${th[1]};--i:${k}"><span>${icon[x]}</span><div><em>${esc(sl(x))}</em><b>${r.subs[x].score}/${r.subs[x].total} \u2714</b></div></div>`; }).join("")}</div>
-          <div class="tpx-bar"><span style="width:100%"></span></div><div class="tpx-ft"><span>\u2705 4/4 ${hi ? "विषय पूरे" : "subjects cleared"}</span><span>${hi ? "सारे रिज़ल्ट देखें" : "View results"} \u2192</span></div>
-          ${when(r)}</button></div>`; };
-      const lockCard = `<div class="rv mb-4 rounded-3xl border-2 border-dashed border-amber-300 bg-amber-50/70 px-5 py-6 text-center"><div class="th-lock">\u{1F512}</div><div class="font-extrabold text-amber-800 mt-2">${hi ? "अभी कोई क्लास टॉपर नहीं" : "Abhi koi class topper nahi"}</div><div class="text-xs text-amber-900 mt-1 leading-relaxed">${hi ? "चारों विषय में <b>30/30</b> लाओ \u2192 टॉपर बनो!" : "Chaaron subject mein <b>30/30</b> laao \u2192 topper bano!"}</div><div class="lk-grid">${SUBS.map(x => `<span class="lk-t" style="--a:${SCT[x][0]};--b:${SCT[x][1]}">${icon[x]} ${esc(sl(x))} <b>30/30</b></span>`).join("")}</div></div>`;
+      const SCT = { Maths: ["#3b82f6", "#1d4ed8"], Science: ["#10b981", "#047857"], English: ["#8b5cf6", "#5b21b6"], Hindi: ["#06b6d4", "#0e7490"] };
+      const cplAv = (r, cls) => avImg(r.name, "") || `<div class="tpx-ini">${esc(ini(r.name))}</div>`;
+      const cplSubs = `<span class="cpl-subs">${SUBS.map(x => `<u style="--a:${SCT[x][0]};--b:${SCT[x][1]}">${icon[x]} 30/30</u>`).join("")}</span>`;
+      const cplHero = (o, nT) => { const r = o.r; return `<div class="cpl-w"><button data-cls="${esc(o.c)}" class="cpl-hero"><span class="cpl-tag">\u{1F451} ${hi ? "टॉपर नं. 1" : "TOPPER No. 1"}</span><span class="cpl-cnt">${nT} ${hi ? "टॉपर" : (nT === 1 ? "Topper" : "Toppers")}</span>
+          <div class="cpl-avw">${cplAv(r)}<i>\u{1F451}</i></div>
+          <div class="cpl-nm">${esc(r.name)}</div>
+          <div class="cpl-meta"><b>${hi ? "कक्षा" : "Class"} ${esc(o.c)}</b>\u23F1 ${fmtT(r.timeMs)}</div>${cplSubs}</button></div>`; };
+      const cplRow = (o, i) => { const r = o.r; return `<div class="cpl-w"><button data-cls="${esc(o.c)}" class="cpl-row"><span class="cpl-rk ${i === 1 ? "r2" : i === 2 ? "r3" : ""}">${i + 1}</span><span class="cpl-sav">${cplAv(r)}</span>
+          <span class="cpl-mid"><b>${esc(r.name)}</b><em>\u23F1 ${fmtT(r.timeMs)} \u00B7 ${hi ? "चारों 30/30" : "4\u00D730/30"}</em></span>
+          <span class="cpl-cls"><b>${esc(o.c)}</b><small>${hi ? "कक्षा" : "CLASS"}</small></span></button></div>`; };
+      const cpTot = r => SUBS.length * (r.total || 30);
+      const cpChips = r => SUBS.map(x => { const c = (SCT[x] || [])[1] || "#15803d"; return `<i style="background:${c}1a;color:${c}">${esc(sl(x))} <b>${r.total || 30}/${r.total || 30}</b></i>`; }).join("");
+      const cpCard = (o, i) => { const r = o.r, px = i === 0 ? 92 : i === 1 ? 70 : 52; return `<div data-cls="${esc(o.c)}" style="cursor:pointer;--i:${i}" class="lbn-c lbn-${LBK[i]}"><span class="lbn-wm">${i + 1}</span>${i === 0 ? '<span class="lbn-crown">\u{1F451}</span>' : ""}<div class="lbn-av" style="width:${px}px;height:${px}px"><div class="lbn-ai">${cplAv(r)}</div><span class="lbn-bd">${LBM[i]}</span></div><div class="lbn-nm">${esc(r.name)}</div><div class="lbn-cs">${esc(clsLabel(o.c))} \u00B7 ${SUBS.length} ${hi ? "विषय" : "subjects"}</div><div class="lbn-sc">${cpTot(r)}<small>/${cpTot(r)}</small></div><div class="lbn-ch"><span>100%</span>${r.timeMs ? `<span>\u23F1 ${fmtT(r.timeMs)}</span>` : ""}</div><div class="lbn-sub">${cpChips(r)}</div></div>`; };
+      const cpRow = (o, j) => { const r = o.r; return `<div data-cls="${esc(o.c)}" style="cursor:pointer" class="rv lbn-row"><div class="lbn-rk">${j + 4}</div><div class="lbn-sav">${cplAv(r)}</div><div class="flex-1 min-w-0"><div class="lbn-rn">${esc(r.name)}</div><div class="lbn-rs">${esc(clsLabel(o.c))} \u00B7 ${SUBS.length} ${hi ? "विषय" : "subjects"}${r.timeMs ? " \u00B7 \u23F1 " + fmtT(r.timeMs) : ""}</div><div class="lbn-sub">${cpChips(r)}</div></div><div class="lbn-rsc"><b>${cpTot(r)}/${cpTot(r)}</b><span style="background:#0596691f;color:#059669">100%</span></div></div>`; };
+      const cplBoard = L => `<div class="lbn">${cpCard(L[0], 0)}${L.length > 1 ? `<div class="lbn-two">${L.slice(1, 3).map((o, i) => cpCard(o, i + 1)).join("")}</div>` : ""}${L.length > 3 ? `<div class="lbn-lh">${hi ? "बाकी " + (L.length - 3) : "Baaki " + (L.length - 3)}</div><div class="lbn-list">${L.slice(3).map((o, j) => cpRow(o, j)).join("")}</div>` : ""}</div>`;
+      const lkSlot = i => { const px = i === 0 ? 92 : i === 1 ? 70 : 52; return `<div class="lbn-c lbn-${LBK[i]}" style="--i:${i}"><span class="lbn-wm">${i + 1}</span>${i === 0 ? '<span class="lbn-crown">\u{1F451}</span>' : ""}<div class="lbn-av" style="width:${px}px;height:${px}px"><div class="lbn-ai"><span class="th-lock" style="font-size:${Math.round(px * .5)}px">\u{1F512}</span></div><span class="lbn-bd">${LBM[i]}</span></div><div class="lbn-nm">${hi ? "खाली" : "Khaali"}</div><div class="lbn-cs">${hi ? "अगला आप?" : "Agla aap?"}</div><div class="lbn-sc">?<small></small></div><div class="lbn-sub">${cpChips({ total: 30 })}</div></div>`; };
+      const lockCard = sec("\u{1F512} " + (hi ? "अभी कोई क्लास टॉपर नहीं" : "Abhi koi class topper nahi"), hi ? "चारों विषय में <b>30/30</b> लाओ \u2192 टॉपर बनो!" : "Chaaron subject mein <b>30/30</b> laao \u2192 topper bano!", "mt-0") + `<div class="lbn">${lkSlot(0)}<div class="lbn-two">${lkSlot(1)}${lkSlot(2)}</div></div><div style="height:18px"></div>`;
       const anyTop = classToppers().some(o => o.r);
       const ch0 = champion(), nTop = classToppers().filter(o => o.r).length;
       const hallCard = ch0 ? `<div class="rv hof"><div class="hof-l"><i class="hof-cr">\u{1F451}</i><div class="hof-av">${avImg(ch0.name, "") || `<div class="tpx-ini">${esc(ini(ch0.name))}</div>`}</div></div><div class="min-w-0 flex-1"><em>${hi ? "सबसे तेज़ चैंपियन" : "FASTEST CHAMPION"}</em><b>${esc(ch0.name)}</b><i>${esc(clsLabel(ch0.cls))} \u00B7 \u23F1 ${fmtT(ch0.timeMs)}</i></div><div class="hof-n"><b>${nTop}</b><span>${hi ? "टॉपर" : "Toppers"}</span></div></div>` : "";
-      const clsHtml = hallCard + sec("\u{1F393} " + (hi ? "क्लास टॉपर" : "Class Toppers"), hi ? "4 विषय \u00D7 30/30 वाले असली टॉपर (क्लास पर टैप करें)।" : "Asli toppers \u2014 4 subject \u00D7 30/30 (class par tap karein).", "mt-0") + (clsTop.length ? clsTop.map(heroCard).join("") : (anyTop ? "" : lockCard));
+      const cplSorted = clsTop.slice().sort((x, y) => (x.r.timeMs || 1e12) - (y.r.timeMs || 1e12));
+      const clsHtml = !anyTop ? "" : '<div class="cpm">' + sec("\u{1F393} " + (hi ? "क्लास टॉपर लीडरबोर्ड" : "Class Topper Leaderboard"), hi ? "सबसे तेज़ टॉपर ऊपर \u2014 सिर्फ़ वही क्लास जिनमें टॉपर है (क्लास पर टैप करें)।" : "Fastest topper on top \u2014 only classes that have a topper (tap a class).", "mt-0") + (cplSorted.length ? cplBoard(cplSorted) : "") + '</div>';
 
       // Reward Winners (class topper jinhe UPI pe inaam mil chuka hai)
       const dShort = t => { try { return new Date(t).toLocaleDateString("en-IN", { day: "numeric", month: "short" }); } catch (e) { return ""; } };
       const subHtml = sec("🏅 " + (hi ? "इनाम जीतने वाले" : "Reward Winners"), hi ? "क्लास टॉपर जिन्हें UPI पर इनाम मिल चुका है" : "Class toppers who got their reward on UPI") + (paidList.length ? `<div class="pdw">${paidList.slice(0, 30).map(r => `<div class="pdw-c rv"><div class="pdw-av">${avImg(r.name, "") || `<span>${esc(ini(r.name))}</span>`}<i>✔</i></div><div class="min-w-0 flex-1"><b>${esc(r.name)}</b><em>${r.cls ? "🎓 " + esc(clsLabel(String(r.cls))) : ""}${r.at ? " · " + dShort(r.at) : ""}</em></div><div class="pdw-a"><strong>₹${Number(r.amt) || 0}</strong><span>${hi ? "UPI पर मिला" : "Mila UPI pe"}</span></div></div>`).join("")}</div>` : `<div class="pdw-e">🎁 ${hi ? "अभी तक किसी को इनाम नहीं मिला — सबसे पहले क्लास टॉपर बनो!" : "Abhi tak kisi ko inaam nahi mila — sabse pehle class topper bano!"}</div>`);
 
-      body = rewardCard() + `${filters}` + (!list.length ? `<p class="text-center text-neutral-500 py-12 border border-dashed border-green-200 rounded-2xl">${l.none}</p>` : clsHtml + podium + subHtml);
+      body = rewardCard() + filtersTop + (!list.length ? `<p class="text-center text-neutral-500 py-12 border border-dashed border-green-200 rounded-2xl">${l.none}</p>` : podium);
     }
     app.innerHTML = head + body + `<button id="backStart" class="block w-full text-center py-3.5 rounded-2xl ${btnMain} text-base mt-7">&larr; ${l.back}</button>`;
 
@@ -2215,7 +2571,7 @@ function renderInner() {
       const shown = rows.slice(0, state.lbLimit || 60);
       if (!rows.length) { box.innerHTML = liveHtml + `<p class="text-center text-neutral-500 py-12 border border-dashed border-green-200 rounded-2xl">${l.none}</p>`; return; }
       box.innerHTML = liveHtml + `<div class="sx-list stagger">` + shown.map((r, i) => {
-        const p = pc(r), rk = rankOf.get(r.id), dt = fmtDT(r.createdAt), SC = { Maths: "#2563eb", Science: "#7e22ce", English: "#d97706", Hindi: "#dc2626" };
+        const p = pc(r), rk = rankOf.get(r.id), dt = fmtDT(r.createdAt), SC = { Maths: "#15803d", Science: "#7e22ce", English: "#d97706", Hindi: "#dc2626" };
         const col = p >= 75 ? "#059669" : p >= 50 ? "#d97706" : "#ef4444", sc = SC[r.subject] || "#15803d";
         return `<div data-nm="${esc(String(r.name).trim().toLowerCase())}" data-cl="${esc(String(r.cls))}" class="sx ${isMe(r) ? "me" : ""}">
           <div class="sx-ring" style="--p:${p};--c:${col}">${avImg(r.name, "") || `<div>${esc(ini(r.name))}</div>`}<span class="sx-rk">${rk <= 3 ? medal(rk - 1) : "#" + rk}</span></div>
@@ -2239,6 +2595,7 @@ function renderInner() {
         state.upiDraft = null; msg.className = "text-xs mt-2 text-green-700"; msg.textContent = (hi ? "\u2714 सेव हो गई: " : "\u2714 Saved: ") + v;
       } catch (e3) { msg.className = "text-xs mt-2 text-red-600"; msg.textContent = (hi ? "सेव नहीं हुआ: " : "Save nahi hua: ") + ((e3 && (e3.code || e3.message)) || "error"); }
       sb.disabled = false; }; }
+    if (tab !== "students") app.querySelectorAll(".lbf-row").forEach(w => { const a = w.querySelector(".on"); if (a) w.scrollLeft = Math.max(0, a.offsetLeft - 24); });
     const cc = $("clsChips"); if (cc) cc.onclick = e => { const b = e.target.closest("[data-fc]"); if (!b) return; state.lbCls = b.dataset.fc; state.lbSub = ""; render(); };
     app.querySelectorAll("[data-cls]").forEach(b => b.onclick = () => { state.lbCls = b.dataset.cls; state.lbSub = ""; render(); window.scrollTo({ top: 0, left: 0, behavior: "instant" }); });
     const chips = $("chips"); if (chips) chips.onclick = e => { const b = e.target.closest("[data-s]"); if (!b) return; state.lbSub = b.dataset.s; render(); };
@@ -2259,7 +2616,7 @@ function renderInner() {
 }
 
 async function saveResult() {
-  const p = state.pending; if (!p) return; state.saveErr = "";
+  const p = state.pending; if (!p) return; state.saveErr = ""; if (_goneHit(p.name, p.cls, "", p.createdAt)) return;
   try {
     const id = state.pendingId || push(ref(db, "testResults")).key; state.pendingId = id;
     await set(ref(db, "testResults/" + id), p); state.resultId = id;
@@ -2312,17 +2669,24 @@ document.addEventListener("keydown", e => {
 });
 window.addEventListener("beforeunload", e => { if (state.screen === "quiz") { e.preventDefault(); e.returnValue = ""; } });
 
-// ===== v13: LIVE bacche + Tic Tac Toe (jodi mein, bina atke) =====
+// ===== v14: LIVE bacche + Tic Tac Toe (auto random match, rematch, leave) =====
 let srvOff = 0;
 try { onValue(ref(db, ".info/serverTimeOffset"), sn => { srvOff = Number(sn.val()) || 0; }, () => {}); } catch (e) {}
 const sNow = () => Date.now() + srvOff; // sabke phone ka time alag ho sakta hai, isliye server time
-const PID = (() => { try { let p = localStorage.getItem("amrit_pid"); if (!p) { p = "u" + Date.now().toString(36) + Math.random().toString(36).slice(2, 8); localStorage.setItem("amrit_pid", p); } return p; } catch (e) { return "u" + Math.random().toString(36).slice(2, 10); } })();
-let games = {}, liveRaw = [], _liveSig = "", _liveAt = 0, _psig = "", _pt = 0;
-const SESSION0 = Date.now(), LIVE_FRESH = 75e3, BEAT = 20e3, WL = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
-const gTtl = g => g.status === "invite" ? 120e3 : g.status === "done" ? 600e3 : 30 * 60e3;
+// PID: phone ki pehchaan + tab ki pehchaan (taaki ek hi phone ke 2 tab bhi alag player ginein)
+const PID = (() => {
+  let base = "", tab = "";
+  try { base = localStorage.getItem("amrit_pid") || ""; if (!base) { base = "u" + Date.now().toString(36) + Math.random().toString(36).slice(2, 8); localStorage.setItem("amrit_pid", base); } } catch (e) { base = "u" + Math.random().toString(36).slice(2, 10); }
+  try { tab = sessionStorage.getItem("amrit_tab") || ""; if (!tab) { tab = Math.random().toString(36).slice(2, 5); sessionStorage.setItem("amrit_tab", tab); } } catch (e) { tab = Math.random().toString(36).slice(2, 5); }
+  return base + "_" + tab;
+})();
+let games = {}, liveRaw = [], qData = {}, _liveSig = "", _liveAt = 0, _psig = "", _pt = 0, qWant = true, _lastOpp = "", _mk = {}, _qj = 0, _qpt = 0, netErr = "";
+const SESSION0 = Date.now(), LIVE_FRESH = 75e3, BEAT = 20e3, Q_FRESH = 40e3, WL = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+const gTtl = g => g.left ? 120e3 : g.status === "invite" ? 120e3 : g.status === "done" ? 600e3 : 30 * 60e3;
 const okMe = () => !!(fullName(state.name) && state.cls);
 const myNm = () => String(state.name || "").trim().replace(/\s+/g, " ").slice(0, 60);
 const recalcLive = () => { live = liveRaw.filter(x => sNow() - (x.ts || x.startedAt || 0) < LIVE_FRESH); };
+const gErr = e => { netErr = String((e && (e.code || e.message)) || "error").slice(0, 60); refreshPlay(); };
 // Heartbeat: har 20 sec "main live hoon" likhta hai. Site band/background ho to 75 sec mein list se hat jata hai.
 function syncLive(force) {
   if (!okMe() || (document.hidden && !force)) return;
@@ -2330,35 +2694,94 @@ function syncLive(force) {
   if (!force && sig === _liveSig && sNow() - _liveAt < BEAT) return;
   _liveSig = sig; _liveAt = sNow();
   const r = ref(db, "testLive/" + PID);
-  set(r, { name: myNm(), cls: String(state.cls), subject: st, startedAt: SESSION0, ts: sNow() }).then(() => onDisconnect(r).remove()).catch(() => { _liveSig = ""; });
+  set(r, { name: myNm(), cls: String(state.cls), subject: st, startedAt: SESSION0, ts: sNow() }).then(() => onDisconnect(r).remove()).catch(e => { _liveSig = ""; gErr(e); });
 }
 const gOk = g => !!(g && typeof g.board === "string" && sNow() - (g.updatedAt || g.createdAt || 0) < gTtl(g));
 const isMine = g => g && (g.xId === PID || g.oId === PID);
-function myGames() { const a = []; Object.entries(games).forEach(([id, g]) => { if (gOk(g) && isMine(g)) a.push({ id, g }); }); return a.sort((p, q) => (q.g.updatedAt || 0) - (p.g.updatedAt || 0)); }
-// jo bacche abhi kisi game mein khel rahe hain (doosre unhe invite na kar sakein)
-function busyIds() { const s = new Set(); Object.values(games).forEach(g => { if (gOk(g) && (g.status === "playing" || (g.status === "done" && sNow() - (g.updatedAt || 0) < 180e3))) { s.add(g.xId); s.add(g.oId); } }); return s; }
+function myGames() { const a = []; Object.entries(games).forEach(([id, g]) => { if (gOk(g) && isMine(g) && (g.status === "playing" || g.status === "done") && g.left !== PID) a.push({ id, g }); }); return a.sort((p, q) => (q.g.updatedAt || 0) - (p.g.updatedAt || 0)); }
+// jo bacche abhi kisi game mein khel rahe hain
+function busyIds() { const s = new Set(); Object.values(games).forEach(g => { if (gOk(g) && !g.left && (g.status === "playing" || (g.status === "done" && sNow() - (g.updatedAt || 0) < 180e3))) { s.add(g.xId); s.add(g.oId); } }); return s; }
+const qFresh = e => !!(e && typeof e === "object" && !e.m && e.name && sNow() - (e.ts || 0) < Q_FRESH);
+const searchingIds = () => new Set(Object.keys(qData).filter(id => qFresh(qData[id])));
 function paintPlayBadge() {
   const b = document.querySelector('#bnav [data-nav="play"]'); if (!b) return;
-  b.classList.toggle("has", myGames().some(m => (m.g.status === "invite" && m.g.oId === PID) || (m.g.status === "playing" && (m.g.turn === "x" ? m.g.xId : m.g.oId) === PID)));
+  b.classList.toggle("has", myGames().some(m => m.g.status === "playing" && !m.g.left && (m.g.turn === "x" ? m.g.xId : m.g.oId) === PID));
 }
 const ttWin = b => { for (const l of WL) if (b[l[0]] !== "_" && b[l[0]] === b[l[1]] && b[l[0]] === b[l[2]]) return { w: b[l[0]], l }; return null; };
 const gTx = (id, fn) => runTransaction(ref(db, "testGames/" + id), g => { if (!g) return g; return fn({ ...g }) || g; }).catch(() => {});
-function gInvite(oid) {
-  const o = live.find(x => x.id === oid); if (!o || !okMe() || o.id === PID || o.subject === "In test") return;
-  if (myGames().some(m => m.g.status !== "invite" || m.g.xId === PID)) return; // pehle se khel raha / invite bhej chuka
-  if (busyIds().has(oid)) return;
-  const now = sNow();
-  set(ref(db, "testGames/" + push(ref(db, "testGames")).key), { xId: PID, xName: myNm(), oId: o.id, oName: String(o.name).slice(0, 60), board: "_________", turn: "x", status: "invite", createdAt: now, updatedAt: now }).catch(() => {});
+
+// ---------- Auto matchmaking (queue: testQ) ----------
+const qRef = () => ref(db, "testQ/" + PID);
+const inGame = () => myGames().length > 0;
+function qJoin() {
+  if (!okMe() || Date.now() - _qj < 2500) return; _qj = Date.now();
+  const nm = myNm(), cls = String(state.cls), prev = _lastOpp || "";
+  runTransaction(qRef(), e => (e && e.m) ? e : { name: nm, cls, ts: sNow(), r: Math.random(), prev })
+    .then(() => { try { onDisconnect(qRef()).remove(); } catch (e) {} }).catch(e => { _qj = 0; gErr(e); });
 }
+function qBeat() {
+  const e = qData[PID]; if (!e || e.m || document.hidden) return;
+  runTransaction(qRef(), x => { if (!x || x.m) return x; x.ts = sNow(); return x; }).catch(() => {});
+}
+function qLeave() {
+  const e = qData[PID]; if (!e || e.m) return;
+  runTransaction(qRef(), x => (x && !x.m) ? null : x).catch(() => {});
+}
+// Ek hi atomic transaction mein 2 random khiladi jodte hain (do log ek hi ko nahi pakad sakte)
+function qPair() {
+  if (!qWant || state.screen !== "play" || !okMe()) return;
+  const gid = push(ref(db, "testGames")).key;
+  runTransaction(ref(db, "testQ"), q => {
+    if (!q) return q;
+    const me = q[PID]; if (!me || me.m) return;
+    const c = Object.keys(q).filter(id => id !== PID && qFresh(q[id])); if (!c.length) return;
+    const pref = c.filter(id => id !== me.prev && q[id].prev !== PID), pool = pref.length ? pref : c;
+    const o = pool[Math.floor(Math.random() * pool.length)], now = sNow();
+    me.m = { g: gid, o, on: String(q[o].name).slice(0, 60), x: 1, t: now };
+    q[o].m = { g: gid, o: PID, on: String(me.name).slice(0, 60), x: 0, t: now };
+    return q;
+  }).catch(e => gErr(e));
+}
+// Match ho gaya -> game bana do (dono mein se koi bhi bana sakta hai, transaction se ek hi banta hai)
+function qMatched(m) {
+  if (games[m.g]) { _lastOpp = m.o; remove(qRef()).catch(() => {}); return; }
+  if (sNow() - (m.t || 0) > 30e3) { remove(qRef()).catch(() => {}); return; }
+  if (Date.now() - (_mk[m.g] || 0) < 2500) return; _mk[m.g] = Date.now();
+  setTimeout(() => {
+    if (games[m.g]) return;
+    const x = !!m.x, now = sNow(), me = myNm();
+    const g = { xId: x ? PID : m.o, xName: x ? me : m.on, oId: x ? m.o : PID, oName: x ? m.on : me, board: "_________", turn: "x", status: "playing", createdAt: now, updatedAt: now, rx: 0, ro: 0 };
+    runTransaction(ref(db, "testGames/" + m.g), c => c || g).catch(e => gErr(e));
+  }, m.x ? 0 : 2500);
+}
+function qEnsure() {
+  const e = qData[PID];
+  if (e && e.m) { qMatched(e.m); return; }
+  const onPlay = state.screen === "play" && okMe() && !document.hidden;
+  if (!onPlay || !qWant || inGame()) { if (e) qLeave(); return; }
+  if (!e) { qJoin(); return; }
+  if (!qFresh(e)) { qBeat(); return; }
+  if (Object.keys(qData).some(id => id !== PID && qFresh(qData[id])) && !_qpt) _qpt = setTimeout(() => { _qpt = 0; qPair(); }, 150 + Math.random() * 700);
+}
+
+// ---------- Game actions ----------
 const gClose = id => remove(ref(db, "testGames/" + id)).catch(() => {});
-function gAccept(id) {
-  gTx(id, g => { if (g.status === "invite" && g.oId === PID) { g.status = "playing"; g.updatedAt = sNow(); return g; } });
-  myGames().forEach(m => { if (m.id !== id && m.g.status === "invite") gClose(m.id); }); // baaki invite hata do
+// Rematch: dono dabayein tabhi naya round shuru hota hai
+const gRematch = id => gTx(id, g => {
+  if (g.status !== "done" || g.left) return;
+  if (g.xId === PID) g.rx = 1; else g.ro = 1;
+  if (g.rx && g.ro) { g.turn = g.winner === "x" ? "o" : "x"; g.board = "_________"; g.status = "playing"; delete g.winner; g.rx = 0; g.ro = 0; }
+  g.updatedAt = sNow(); return g;
+});
+// Chhodo: jo chhodta hai wo is game se hat jata hai aur naya opponent dhundhta hai; dusra bhi button dabate hi hat jata hai
+function gLeave(id) {
+  _lastOpp = (() => { const g = games[id]; return g ? (g.xId === PID ? g.oId : g.xId) : _lastOpp; })();
+  runTransaction(ref(db, "testGames/" + id), g => { if (!g) return g; if (g.left && g.left !== PID) return null; g.left = PID; g.updatedAt = sNow(); return g; }).catch(() => {});
+  _qj = 0;
 }
-const gAgain = id => gTx(id, g => { if (g.status !== "done") return; g.turn = g.winner === "x" ? "o" : "x"; g.board = "_________"; g.status = "playing"; delete g.winner; g.updatedAt = sNow(); return g; });
 function gMove(id, i) {
   gTx(id, g => {
-    if (g.status !== "playing" || g.board[i] !== "_") return; const x = g.turn === "x"; if ((x ? g.xId : g.oId) !== PID) return;
+    if (g.status !== "playing" || g.left || g.board[i] !== "_") return; const x = g.turn === "x"; if ((x ? g.xId : g.oId) !== PID) return;
     const b = g.board.split(""); b[i] = x ? "X" : "O"; g.board = b.join("");
     if (ttWin(g.board)) { g.status = "done"; g.winner = x ? "x" : "o"; } else if (!g.board.includes("_")) { g.status = "done"; g.winner = "draw"; } else g.turn = x ? "o" : "x";
     g.updatedAt = sNow(); return g;
@@ -2366,7 +2789,7 @@ function gMove(id, i) {
 }
 // Sirf tab dobara draw karta hai jab kuch sach mein badla ho (isi se atkna band)
 function playSig() {
-  return JSON.stringify([lang, okMe(), myNm(), state.cls, live.map(x => [x.id, x.name, x.cls, x.subject]), myGames().map(m => [m.id, m.g.status, m.g.turn, m.g.board, m.g.winner, m.g.xId, m.g.oId]), [...busyIds()].sort()]);
+  return JSON.stringify([lang, okMe(), myNm(), state.cls, qWant, netErr, qData[PID] ? (qData[PID].m ? 2 : 1) : 0, [...searchingIds()].sort(), live.map(x => [x.id, x.name, x.cls, x.subject]), myGames().map(m => [m.id, m.g.status, m.g.turn, m.g.board, m.g.winner, m.g.xId, m.g.oId, m.g.rx, m.g.ro, m.g.left]), [...busyIds()].sort()]);
 }
 function refreshPlay() {
   paintPlayBadge(); if (state.screen !== "play") return;
@@ -2480,43 +2903,139 @@ function gmI(k) {
 function renderPlay() {
   _psig = playSig();
   const hi = lang === "hi", app = $("app"), ini = n => (String(n).trim()[0] || "?").toUpperCase();
-  const mine = myGames(), pg = mine.find(m => m.g.status !== "invite"), out = mine.find(m => m.g.status === "invite" && m.g.xId === PID), inc = mine.filter(m => m.g.status === "invite" && m.g.oId === PID);
-  const busy = busyIds(), others = live.filter(x => x.id !== PID).sort((a, b) => String(a.name).localeCompare(String(b.name)));
-  const me = okMe(), cnt = Math.max(live.length, me ? 1 : 0);
-  let h = `<div class="pop gm-hero"><span class="gm-fx a">${gmI("x")}</span><span class="gm-fx b">${gmI("o")}</span><div class="gm-ic">${gmI("pad")}</div><h1 class="text-2xl font-extrabold tracking-tight">${hi ? "लाइव खेलो" : "Live Play"}</h1><p class="text-sm mt-1">${hi ? "दोस्त लाइव हो, तभी Tic Tac Toe खेलो" : "Dost live ho tabhi Tic Tac Toe khelo"}</p><span class="gm-pill${others.length ? "" : " calm"}"><i class="dot"></i><b class="${_lc !== null && _lc !== cnt ? "bump" : ""}">${cnt}</b>${hi ? "लाइव" : "live"}</span></div>`;
-  const alone = me && !pg && !out && !others.length;
-  if (alone) h += `<div class="gm-inv"><span class="gm-iv">${gmI("users")}</span>${hi ? "दोस्त को बुलाओ, तभी खेल पाओगे!" : "Dost ko bulao, tabhi khel paoge!"}<small>${hi ? "जैसे ही कोई दोस्त लाइव होगा, यहाँ दिखेगा" : "Jaise hi koi dost live hoga, yahan dikhega"}</small></div><button id="gmShare" class="gm-share btnm">${gmI("share")}${hi ? "दोस्त को लिंक भेजो" : "Dost ko link bhejo"}</button>`;
-  if (!me) { h += `<div class="gm-e">${hi ? "पहले \"टेस्ट दो\" में अपना पूरा नाम और क्लास सेव करो, फिर यहाँ खेल पाओगे।" : "Pehle \"Take Test\" mein apna poora naam aur class save karo, phir yahan khel paoge."}</div>`; }
-  else if (pg) {
-    const g = pg.g, meX = g.xId === PID, opp = esc(meX ? g.oName : g.xName), id = pg.id;
-    const w = ttWin(g.board), myTurn = g.status === "playing" && ((g.turn === "x") === meX), done = g.status === "done", won = (g.winner === "x") === meX;
-    const st = done ? (g.winner === "draw" ? "\u{1F91D} " + (hi ? "बराबरी!" : "Draw!") : won ? "\u{1F389} " + (hi ? "आप जीते!" : "Aap jeete!") : "\u{1F605} " + opp + (hi ? " जीता" : " jeeta")) : myTurn ? "\u{1F449} " + (hi ? "आपकी बारी" : "Aapki baari") : opp + (hi ? " की बारी..." : " ki baari...");
-    h += `<div class="gm-card"><div class="gm-vs"><span class="me ${meX ? "x" : "o"}">${gmI(meX ? "x" : "o")}${hi ? "आप" : "You"}</span><span class="${meX ? "o" : "x"}">${gmI(meX ? "o" : "x")}${opp}</span></div><div class="gm-st">${st}</div><div class="gm-bd">${[...g.board].map((c, i) => `<button class="gm-c ${c === "X" ? "x" : c === "O" ? "o" : ""} ${w && w.l.includes(i) ? "win" : ""}" data-gm="${i}" ${c !== "_" || !myTurn ? "disabled" : ""}>${c === "X" ? gmI("x") : c === "O" ? gmI("o") : ""}</button>`).join("")}</div><div class="gm-act">${done ? `<button class="btnm" data-gag="${id}">${hi ? "फिर खेलो" : "Rematch"}</button>` : ""}<button class="gm-gh" data-gx="${id}">${done ? (hi ? "बंद करो" : "Close") : (hi ? "छोड़ो" : "Quit")}</button></div></div>`;
-  } else if (out) {
-    h += `<div class="gm-card text-center"><div class="font-extrabold">${hi ? "इंतज़ार... " : "Wait karo... "}${esc(out.g.oName)}</div><p class="text-xs text-neutral-500 mt-1">${hi ? "जवाब आते ही खेल शुरू होगा" : "Jawab aate hi game shuru hoga"}</p><div class="gm-act"><button class="gm-gh" data-gx="${out.id}">${hi ? "रद्द करो" : "Cancel"}</button></div></div>`;
+  const pg = myGames()[0], me = okMe(), srch = searchingIds(), busy = busyIds();
+  const others = live.filter(x => x.id !== PID).sort((a, b) => String(a.name).localeCompare(String(b.name)));
+  const cnt = Math.max(live.length, me ? 1 : 0), mq = qData[PID], matching = !!(mq && mq.m);
+  const waitingOthers = [...srch].filter(id => id !== PID).length;
+  let h = `<div class="pop gm-hero"><span class="gm-fx a">${gmI("x")}</span><span class="gm-fx b">${gmI("o")}</span><div class="gm-ic">${gmI("pad")}</div><h1 class="text-2xl font-extrabold tracking-tight">${hi ? "लाइव खेलो" : "Live Play"}</h1><p class="text-sm mt-1">${hi ? "ऑनलाइन दोस्त से अपने-आप मैच होगा" : "Online dost se apne-aap match hoga"}</p><span class="gm-pill${others.length ? "" : " calm"}"><i class="dot"></i><b class="${_lc !== null && _lc !== cnt ? "bump" : ""}">${cnt}</b>${hi ? "लाइव" : "live"}</span></div>`;
+  if (netErr) h += `<div class="gm-e gm-bad">\u26A0 ${hi ? "गेम सर्वर से कनेक्ट नहीं हो पा रहा" : "Game server se connect nahi ho pa raha"} (${esc(netErr)})<small>${hi ? "Firebase Rules में testLive, testQ, testGames की permission चाहिए।" : "Firebase Rules mein testLive, testQ, testGames ki permission chahiye."}</small></div>`;
+  if (!me) {
+    h += `<div class="gm-e">${hi ? "पहले \"टेस्ट दो\" में अपना पूरा नाम और क्लास सेव करो, फिर यहाँ खेल पाओगे।" : "Pehle \"Take Test\" mein apna poora naam aur class save karo, phir yahan khel paoge."}</div><div class="gm-act"><button id="gmTest" class="btnm">${hi ? "टेस्ट पेज पर जाओ" : "Take Test par jao"}</button></div>`;
   } else {
-    h += inc.map(m => `<div class="gm-card text-center"><div class="font-extrabold">${esc(m.g.xName)} ${hi ? "आपके साथ Tic Tac Toe खेलना चाहता है" : "aapke saath Tic Tac Toe khelna chahta hai"} \u{1F3AF}</div><div class="gm-act"><button class="btnm" data-gacc="${m.id}">${hi ? "खेलो" : "Khelo"}</button><button class="gm-gh" data-gx="${m.id}">${hi ? "मना करो" : "Decline"}</button></div></div>`).join("");
+    if (pg) {
+      const g = pg.g, meX = g.xId === PID, oppId = meX ? g.oId : g.xId, opp = esc(meX ? g.oName : g.xName), id = pg.id;
+      const w = ttWin(g.board), done = g.status === "done", left = !!(g.left && g.left !== PID);
+      const myTurn = g.status === "playing" && !left && ((g.turn === "x") === meX), won = (g.winner === "x") === meX;
+      const myRm = meX ? g.rx : g.ro, opRm = meX ? g.ro : g.rx;
+      const offline = !left && !live.some(x => x.id === oppId) && sNow() - (g.updatedAt || 0) > 30e3;
+      const st = left ? (done ? "\u{1F44B} " + opp + (hi ? " चला गया" : " chala gaya") : "\u{1F389} " + opp + (hi ? " ने गेम छोड़ दिया — आप जीते!" : " ne game chhod diya — aap jeete!"))
+        : done ? (g.winner === "draw" ? "\u{1F91D} " + (hi ? "बराबरी!" : "Draw!") : won ? "\u{1F389} " + (hi ? "आप जीते!" : "Aap jeete!") : "\u{1F605} " + opp + (hi ? " जीता" : " jeeta"))
+        : myTurn ? "\u{1F449} " + (hi ? "आपकी बारी" : "Aapki baari") : opp + (hi ? " की बारी..." : " ki baari...");
+      let acts;
+      if (left) acts = `<button class="btnm" data-gx="${id}">${hi ? "नया खिलाड़ी ढूँढो" : "Naya opponent dhundo"}</button>`;
+      else if (done) acts = (myRm ? `<button class="btnm" disabled>\u23F3 ${hi ? "इंतज़ार..." : "Wait karo..."}</button>` : `<button class="btnm" data-gag="${id}">\u{1F501} ${hi ? "रीमैच" : "Rematch"}</button>`) + `<button class="gm-gh" data-gx="${id}">${hi ? "छोड़ो / नया खिलाड़ी" : "Chhodo / Naya dost"}</button>`;
+      else acts = `<button class="gm-gh" data-gx="${id}">${hi ? "छोड़ो" : "Chhodo"}</button>`;
+      const note = left ? "" : done ? (opRm && !myRm ? `<div class="gm-note ok">${opp} ${hi ? "दोबारा खेलना चाहता है — Rematch दबाओ!" : "dobara khelna chahta hai — Rematch dabao!"}</div>` : myRm ? `<div class="gm-note">${opp} ${hi ? "का जवाब आने तक रुको। नहीं खेलना तो छोड़ दो।" : "ka jawab aane tak ruko. Nahi khelna to chhod do."}</div>` : `<div class="gm-note">${hi ? "दोनों Rematch दबाओगे तो नया राउंड शुरू होगा।" : "Dono Rematch dabaoge to naya round shuru hoga."}</div>`) : offline ? `<div class="gm-note">\u26A0 ${opp} ${hi ? "ऑफलाइन लग रहा है" : "offline lag raha hai"}</div>` : "";
+      h += `<div class="gm-card"><div class="gm-vs"><span class="me ${meX ? "x" : "o"}">${gmI(meX ? "x" : "o")}${hi ? "आप" : "You"}</span><span class="${meX ? "o" : "x"}">${gmI(meX ? "o" : "x")}${opp}</span></div><div class="gm-st">${st}</div><div class="gm-bd">${[...g.board].map((c, i) => `<button class="gm-c ${c === "X" ? "x" : c === "O" ? "o" : ""} ${w && w.l.includes(i) ? "win" : ""}" data-gm="${i}" ${c !== "_" || !myTurn ? "disabled" : ""}>${c === "X" ? gmI("x") : c === "O" ? gmI("o") : ""}</button>`).join("")}</div>${note}<div class="gm-act">${acts}</div></div>`;
+    } else if (matching) {
+      h += `<div class="gm-card text-center"><div class="gm-spin"></div><div class="font-extrabold">\u{1F3AF} ${hi ? "खिलाड़ी मिल गया!" : "Opponent mil gaya!"}</div><p class="text-xs text-neutral-500 mt-1">${esc(mq.m.on)} ${hi ? "के साथ गेम शुरू हो रहा है..." : "ke saath game shuru ho raha hai..."}</p></div>`;
+    } else if (qWant) {
+      h += `<div class="gm-card text-center"><div class="gm-spin"></div><div class="font-extrabold">${waitingOthers ? (hi ? "खिलाड़ी जोड़ा जा रहा है..." : "Opponent jod rahe hain...") : (hi ? "दूसरे स्टूडेंट का इंतज़ार..." : "Dusre student ka intezaar...")}</div><p class="text-xs text-neutral-500 mt-1">${hi ? "कोई और ऑनलाइन आते ही अपने-आप कनेक्ट हो जाओगे।" : "Koi aur online aate hi apne-aap connect ho jaoge."}</p></div>`;
+      if (!waitingOthers && !others.length) h += `<button id="gmShare" class="gm-share btnm">${gmI("share")}${hi ? "दोस्त को लिंक भेजो" : "Dost ko link bhejo"}</button>`;
+    } else {
+      h += `<div class="gm-card text-center"><div class="font-extrabold">${hi ? "ढूँढना बंद है" : "Search band hai"}</div><div class="gm-act"><button class="btnm" id="gmQ">${gmI("play")}${hi ? "खिलाड़ी ढूँढो" : "Opponent dhundo"}</button></div></div>`;
+    }
     h += `<div class="gm-sec"><i class="od"></i>${hi ? "अभी लाइव" : "Abhi live"}</div>`;
-    h += `<div class="gm-row"><div class="gm-av">${esc(ini(myNm()))}</div><div class="min-w-0"><b class="truncate"><i class="od"></i>${esc(myNm())} · ${hi ? "आप" : "Aap"}</b><em>${esc(clsLabel(String(state.cls)))} · ${hi ? "ऑनलाइन" : "Online"}</em></div></div>`;
-    if (others.length) h += others.map(x => { const inT = x.subject === "In test", bz = busy.has(x.id), dis = inT || bz;
-      const stt = inT ? (hi ? "टेस्ट दे रहा है" : "Test de raha hai") : bz ? (hi ? "खेल रहा है" : "Khel raha hai") : (hi ? "ऑनलाइन" : "Online");
-      return `<div class="gm-row"><div class="gm-av">${esc(ini(x.name))}</div><div class="min-w-0"><b class="truncate"><i class="od${bz && !inT ? " b" : ""}"></i>${esc(x.name)}</b><em>${esc(clsLabel(String(x.cls)))} · ${stt}</em></div><button class="btnm gm-btn" data-inv="${esc(x.id)}" ${dis ? "disabled" : ""}>${gmI("play")}${hi ? "खेलो" : "Play"}</button></div>`; }).join("");
+    h += others.map(x => { const inT = x.subject === "In test", bz = busy.has(x.id), sr = srch.has(x.id);
+      const stt = inT ? (hi ? "टेस्ट दे रहा है" : "Test de raha hai") : bz ? (hi ? "खेल रहा है" : "Khel raha hai") : sr ? (hi ? "मैच ढूँढ रहा है" : "Match dhundh raha hai") : (hi ? "ऑनलाइन" : "Online");
+      return `<div class="gm-row"><div class="gm-av">${esc(ini(x.name))}</div><div class="min-w-0"><b class="truncate"><i class="od${bz && !inT ? " b" : ""}"></i>${esc(x.name)}</b><em>${esc(clsLabel(String(x.cls)))} · ${stt}</em></div></div>`; }).join("");
   }
   _lc = cnt;
   app.innerHTML = h;
-  app.querySelectorAll("[data-inv]").forEach(b => b.onclick = () => gInvite(b.dataset.inv));
-  app.querySelectorAll("[data-gacc]").forEach(b => b.onclick = () => gAccept(b.dataset.gacc));
-  app.querySelectorAll("[data-gx]").forEach(b => b.onclick = () => gClose(b.dataset.gx));
-  app.querySelectorAll("[data-gag]").forEach(b => b.onclick = () => gAgain(b.dataset.gag));
-  app.querySelectorAll("[data-gm]").forEach(b => b.onclick = () => { const mm = myGames().find(m => m.g.status !== "invite"); if (mm) gMove(mm.id, +b.dataset.gm); });
-  const sh = $("gmShare"); if (sh) sh.onclick = () => { const x = (lang === "hi" ? "आओ Amrit Tiwari Test पर साथ में Tic Tac Toe खेलें! " : "Aao Amrit Tiwari Test par saath mein Tic Tac Toe khelein! ") + location.origin + location.pathname; if (navigator.share) navigator.share({ text: x }).catch(() => {}); else window.open("https://wa.me/?text=" + encodeURIComponent(x), "_blank"); };
+  app.querySelectorAll("[data-gag]").forEach(b => b.onclick = () => gRematch(b.dataset.gag));
+  app.querySelectorAll("[data-gx]").forEach(b => b.onclick = () => gLeave(b.dataset.gx));
+  app.querySelectorAll("[data-gm]").forEach(b => b.onclick = () => { const mm = myGames()[0]; if (mm) gMove(mm.id, +b.dataset.gm); });
+  const tq = $("gmQ"); if (tq) tq.onclick = () => { qWant = true; _qj = 0; qEnsure(); render(); };
+  const gt = $("gmTest"); if (gt) gt.onclick = () => { state.screen = "start"; render(); window.scrollTo({ top: 0, left: 0, behavior: "instant" }); };
+  const sh = $("gmShare"); if (sh) sh.onclick = () => { const x = "Aao Amrit Tiwari Test par saath mein Tic Tac Toe khelein! https://www.amritbhai.shop/test.html"; if (navigator.share) navigator.share({ text: x }).catch(() => {}); else window.open("https://wa.me/?text=" + encodeURIComponent(x), "_blank"); };
 }
-try { onValue(ref(db, "testLive"), sn => { const v = sn.val() || {}; liveRaw = Object.entries(v).map(([id, x]) => ({ ...x, id })).filter(x => x && x.name); recalcLive(); refreshPlay(); }, () => {}); } catch (e) {}
-try { onValue(ref(db, "testGames"), sn => { games = sn.val() || {}; refreshPlay(); }, () => {}); } catch (e) {}
+try { onValue(ref(db, "testLive"), sn => { netErr = ""; const v = sn.val() || {}; liveRaw = Object.entries(v).map(([id, x]) => ({ ...x, id })).filter(x => x && x.name); recalcLive(); refreshPlay(); }, e => gErr(e)); } catch (e) {}
+try { onValue(ref(db, "testGames"), sn => { games = sn.val() || {}; qEnsure(); refreshPlay(); }, e => gErr(e)); } catch (e) {}
+try { onValue(ref(db, "testQ"), sn => { const v = sn.val(); qData = v && typeof v === "object" ? v : {}; qEnsure(); refreshPlay(); }, e => gErr(e)); } catch (e) {}
 setInterval(syncLive, 5000); syncLive();
-setInterval(() => { recalcLive(); Object.entries(games).forEach(([id, g]) => { if (g && isMine(g) && !gOk(g)) gClose(id); }); refreshPlay(); }, 8000);
-document.addEventListener("visibilitychange", () => { if (!document.hidden) syncLive(true); });
-window.addEventListener("pagehide", () => { try { remove(ref(db, "testLive/" + PID)); _liveSig = ""; } catch (e) {} }); // site band = list se turant hato
+setInterval(qBeat, 10000);
+setInterval(() => { recalcLive(); Object.entries(games).forEach(([id, g]) => { if (g && isMine(g) && !gOk(g)) gClose(id); }); qEnsure(); refreshPlay(); }, 8000);
+document.addEventListener("visibilitychange", () => { if (!document.hidden) { syncLive(true); _qj = 0; } qEnsure(); });
+window.addEventListener("pagehide", () => { try { remove(ref(db, "testLive/" + PID)); _liveSig = ""; qLeave(); } catch (e) {} }); // site band = list se turant hato
+
+
+// ===== CONGRATS POPUP (sirf Top 1/2/3 ke liye): site khulne ke 2 sec baad, unka naam leke badhai =====
+(function () {
+  const SCOL = {};
+  function groups() {
+    const gm = new Map();
+    results.forEach(r => {
+      const k = nk(r.name) + "|" + r.cls; let g = gm.get(k);
+      if (!g) { g = { name: r.name, cls: r.cls, by: {}, createdAt: 0 }; gm.set(k, g); }
+      g.createdAt = Math.max(g.createdAt, r.createdAt || 0);
+      const sk = r.subject || r.subjectKey || "?";
+      if (betterR(r, g.by[sk])) g.by[sk] = r;
+    });
+    return [...gm.values()].map(g => {
+      g.subs = Object.keys(g.by).sort((a, b) => { const x = SUBS.indexOf(a), y = SUBS.indexOf(b); return (x < 0 ? 99 : x) - (y < 0 ? 99 : y); }).map(k => g.by[k]);
+      g.score = g.subs.reduce((a, r) => a + r.score, 0);
+      g.total = g.subs.reduce((a, r) => a + r.total, 0);
+      g.timeMs = g.subs.reduce((a, r) => a + (r.timeMs || 0), 0);
+      return g;
+    }).sort((a, b) => (b.score - a.score) || ((a.timeMs || 1e12) - (b.timeMs || 1e12)) || (a.createdAt - b.createdAt));
+  }
+  // is phone par jo bhi profile saved hai, unme se jo top 3 me ho (sabse upar wala rank)
+  function me(all) {
+    const ids = [];
+    try { profiles.forEach(p => p && p.name && ids.push(nk(p.name) + "|" + p.cls)); } catch (e) {}
+    if (state.saved && state.name) ids.push(nk(state.name) + "|" + state.cls);
+    for (let i = 0; i < Math.min(3, all.length); i++) if (ids.includes(nk(all[i].name) + "|" + all[i].cls)) return i;
+    return -1;
+  }
+  function confetti() {
+    const CF = ["#facc15", "#fb923c", "#f472b6", "#60a5fa", "#4ade80", "#ffffff"];
+    for (let n = 0; n < 70; n++) {
+      const el = document.createElement("i"); el.className = "cg-cf";
+      el.style.left = Math.random() * 100 + "vw"; el.style.background = CF[n % CF.length];
+      el.style.setProperty("--dx", (Math.random() * 160 - 80) + "px");
+      el.style.setProperty("--rot", (Math.random() * 900 - 450) + "deg");
+      el.style.setProperty("--t", (2.4 + Math.random() * 2) + "s");
+      el.style.animationDelay = (Math.random() * 1.2) + "s";
+      document.body.appendChild(el); setTimeout(() => el.remove(), 6200);
+    }
+  }
+  function html(g, i, N) {
+    const hi = lang === "hi", rk = i + 1, ph = photoOf(g.name), MED = ["\u{1F947}", "\u{1F948}", "\u{1F949}"];
+    const first = String(g.name).trim().split(/\s+/)[0];
+    const greet = hi ? "नमस्ते" : "Hi";
+    const big = hi ? `आप इतने सारे <b>${N}</b> बच्चों में <em>#${rk} नंबर</em> पर हो!` : `Aap itne saare <b>${N}</b> bachchon me <em>#${rk} number</em> par ho!`;
+    const sub = [
+      hi ? "पूरी साइट में सबसे आगे \u2014 आप पर बहुत गर्व है! \u{1F31F}" : "Poori site me sabse aage \u2014 hum sabko aap par bahut garv hai! \u{1F31F}",
+      hi ? "शानदार! बस थोड़ा और, और नंबर 1 आपका! \u{1F4AA}" : "Shaandaar! Bas thoda aur, aur number 1 aapka! \u{1F4AA}",
+      hi ? "बहुत बढ़िया! टॉप 3 में आना कमाल है! \u{1F525}" : "Bahut badhiya! Top 3 me aana kamaal hai! \u{1F525}"][i];
+    const SC = { Maths: "#4ade80", Science: "#c084fc", English: "#fbbf24", Hindi: "#fb7185" };
+    return `<div class="cg r${rk}" role="dialog" aria-modal="true" aria-label="Congratulations"><button class="cg-x" aria-label="Close">&times;</button><div class="cg-in">
+      <div class="cg-hi">\u{1F389} ${hi ? "बधाई हो!" : "Congratulations!"}<br>${greet}<b>${esc(first)} \u{1F44B}</b></div>
+      <div class="cg-av">${rk === 1 ? '<span class="cg-cr">\u{1F451}</span>' : ""}<div class="cg-ring"></div><div class="cg-ph">${ph ? `<img src="${ph}" alt="">` : esc((first[0] || "?").toUpperCase())}</div><span class="cg-bd">${MED[i]}</span></div>
+      <p class="cg-big">${big}</p><p class="cg-sub">${sub}</p>
+      <div class="cg-st"><div><b>${g.score}/${g.total}</b><span>${hi ? "नंबर" : "Marks"}</span></div><div><b>${g.timeMs ? fmtT(g.timeMs) : "-"}</b><span>${hi ? "समय" : "Time"}</span></div><div><b>${esc(clsLabel(g.cls))}</b><span>${hi ? "क्लास" : "Class"}</span></div></div>
+      <div class="cg-sb">${g.subs.map(r => `<div class="cg-sr"><span>${esc(sl(r.subject))}</span><u><i style="--w:${Math.round(r.score / r.total * 100)}%;${SC[r.subject] ? "background:" + SC[r.subject] : ""}"></i></u><s>${r.score}/${r.total}</s></div>`).join("")}</div>
+      <button class="cg-b">${hi ? "शुक्रिया \u{1F64F}" : "Shukriya \u{1F64F}"}</button></div></div>`;
+  }
+  function show() {
+    const all = groups(), i = me(all);
+    if (i < 0 || $("cgo")) return;                       // top 3 me nahi -> kisi ko kuch nahi dikhana
+    const g = all[i], key = "amrit_congrats_" + nk(g.name) + "_" + g.cls + "_" + (i + 1);
+    try { if (sessionStorage.getItem(key)) return; sessionStorage.setItem(key, "1"); } catch (e) {}
+    const o = document.createElement("div"); o.id = "cgo"; o.innerHTML = html(g, i, all.length); document.body.appendChild(o);
+    void o.offsetWidth; o.classList.add("show"); confetti();
+    const close = () => { o.classList.remove("show"); clearInterval(iv); setTimeout(() => o.remove(), 400); };
+    o.onclick = e => { if (e.target === o || e.target.closest(".cg-x") || e.target.closest(".cg-b")) close(); };
+    let n = 0;
+    const iv = setInterval(() => { const ph = photoOf(g.name), box = o.querySelector(".cg-ph"); if (ph && box && !box.querySelector("img")) box.innerHTML = `<img src="${ph}" alt="">`; if (++n > 12) clearInterval(iv); }, 600);
+  }
+  setTimeout(function wait(tries) {
+    tries = tries || 0;
+    if (state.screen === "quiz") return;
+    if (loadedR && results.length) { if (!photoMap.size && tries < 6) return setTimeout(() => wait(tries + 1), 500); return show(); }
+    if (tries < 30) setTimeout(() => wait(tries + 1), 500);
+  }, 2000);
+})();
 
 render();
 
