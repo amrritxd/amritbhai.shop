@@ -1388,6 +1388,94 @@ html body .lbt3 .lbn-sub{justify-content:center;margin-top:8px}
 }
 @media (prefers-reduced-motion:reduce){html body .lbt3 .lbn-c::after{display:none!important}}
 </style>
+<style id="lx-style">
+/* ===== LEADERBOARD v2 (lx): dark emerald header + gold/silver/bronze podium + report-card rows ===== */
+.lx-f{margin:0 0 14px}
+.lx-cap{font-size:.64rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#6b7c72;margin:0 2px 5px}
+.lx-chips{display:flex;gap:6px;overflow-x:auto;padding:2px 2px 10px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.lx-chips::-webkit-scrollbar{display:none}
+.lx-chips button{flex:0 0 auto;min-width:38px;height:32px;padding:0 14px;border-radius:99px;border:1px solid #d3e4d9;background:#fff;color:#2f4d3b;font-size:.76rem;font-weight:600;transition:background-color .15s,color .15s,border-color .15s}
+.lx-chips button.on{background:#0b3d2a;border-color:#0b3d2a;color:#fff;box-shadow:0 6px 14px -6px rgba(6,61,42,.7)}
+
+.lx{border-radius:28px;overflow:hidden;background:#fff;box-shadow:0 26px 50px -26px rgba(4,47,33,.6),0 0 0 1px rgba(6,78,59,.1);isolation:isolate}
+.lx *{box-sizing:border-box}
+.lx-hd{position:relative;padding:20px 16px 0;color:#fff;background:radial-gradient(110% 60% at 50% -8%,rgba(250,204,21,.30),transparent 62%),radial-gradient(70% 50% at 100% 30%,rgba(52,211,153,.16),transparent 70%),linear-gradient(170deg,#065f46 0%,#04301f 62%,#021c12 100%)}
+.lx-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.lx-brand{font-size:.66rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#d1fae5;opacity:.9}
+.lx-live{display:inline-flex;align-items:center;gap:6px;font-size:.62rem;font-weight:800;letter-spacing:.08em;color:#a7f3d0;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);padding:3px 9px;border-radius:99px}
+.lx-live i{width:7px;height:7px;border-radius:50%;background:#34d399;box-shadow:0 0 0 3px rgba(52,211,153,.28)}
+.lx-ttl{margin:12px 0 2px;font-size:1.7rem;font-weight:800;line-height:1.1;letter-spacing:-.01em;color:#fff}
+.lx-ctx{font-size:.78rem;font-weight:500;color:#a7f3d0}
+.lx-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+.lx-stats>div{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.13);border-radius:14px;padding:9px 4px 8px;text-align:center;min-width:0}
+.lx-stats b{display:block;font-size:1.02rem;font-weight:800;line-height:1.2;color:#fff}
+.lx-stats span{display:block;font-size:.58rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:#a7f3d0;margin-top:1px}
+
+.lx-pod{display:grid;grid-template-columns:1fr 1.14fr 1fr;gap:8px;align-items:end;padding:46px 0 0}
+.lx-p{position:relative;display:flex;flex-direction:column;align-items:center;min-width:0}
+.lx-crown{position:absolute;top:-27px;left:50%;transform:translateX(-50%);font-size:1.6rem;line-height:1;filter:drop-shadow(0 4px 6px rgba(0,0,0,.35));z-index:2}
+.lx-pav{width:var(--s);height:var(--s);border-radius:50%;padding:3px;background:var(--rg);box-shadow:0 10px 22px -8px var(--rs)}
+.lx-pav>div{width:100%;height:100%;border-radius:50%;overflow:hidden;background:#ecfdf5;display:grid;place-items:center;border:2px solid #fff}
+.lx-pav img,.lx-av img{width:100%;height:100%;object-fit:cover;display:block}
+.lx-pav span,.lx-av span{color:#0f5132!important;font-weight:800}
+.lx-pn{margin-top:9px;max-width:100%;padding:0 2px;font-size:.8rem;font-weight:700;line-height:1.25;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lx-pm{max-width:100%;font-size:.62rem;font-weight:500;color:#a7f3d0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:9px}
+.lx-ped{width:100%;height:var(--h);overflow:hidden;border-radius:14px 14px 0 0;display:flex;flex-direction:column;align-items:center;gap:1px;padding-top:9px;color:#2a1a00;background:var(--pg);box-shadow:inset 0 2px 0 rgba(255,255,255,.55);animation:lxGrow .55s cubic-bezier(.2,.8,.2,1) var(--dl,0s) both}
+.lx-ped i{font-style:normal;font-weight:800;font-size:1.3rem;line-height:1;opacity:.45}
+.lx-ped b{font-size:1.12rem;font-weight:800;line-height:1.15}
+.lx-ped b small{font-size:.62rem;font-weight:700;opacity:.65}
+.lx-ped span{font-size:.62rem;font-weight:700;line-height:1.3;text-align:center;opacity:.8}
+.lx-p.g{--rg:linear-gradient(135deg,#fde68a,#f59e0b);--rs:rgba(245,158,11,.75);--pg:linear-gradient(#fcd34d,#f59e0b);--h:182px;--dl:.2s}
+.lx-p.s{--rg:linear-gradient(135deg,#f8fafc,#94a3b8);--rs:rgba(148,163,184,.6);--pg:linear-gradient(#e5e9f0,#9aa8bb);--h:160px;--dl:.1s}
+.lx-p.b{--rg:linear-gradient(135deg,#fed7aa,#c2410c);--rs:rgba(234,138,60,.6);--pg:linear-gradient(#fdba74,#e0833a);--h:142px;--dl:0s}
+.lx-p.me .lx-pav{outline:3px solid #34d399;outline-offset:3px}
+.lx-p.empty .lx-pav{background:rgba(255,255,255,.16);box-shadow:none}
+.lx-p.empty .lx-pav>div{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.18)}
+.lx-p.empty .lx-pav span{color:rgba(255,255,255,.65)!important;font-size:1.5rem}
+.lx-p.empty .lx-pn,.lx-p.empty .lx-pm{opacity:.65}
+.lx-p.empty .lx-ped{background:rgba(255,255,255,.09);color:rgba(255,255,255,.65);box-shadow:none}
+.lx-mini{display:grid;grid-template-columns:1fr 1fr;gap:3px;width:calc(100% - 12px);margin-top:6px}
+.lx-mini.c1{grid-template-columns:1fr}
+.lx-mini u{text-decoration:none;min-width:0;padding:3px 0 3px;border-radius:7px;background:rgba(255,255,255,.42);text-align:center}
+.lx-mini s{display:block;text-decoration:none;font-size:.5rem;font-weight:700;line-height:1.2;opacity:.8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lx-mini em{display:block;font-style:normal;font-size:.76rem;font-weight:800;line-height:1.15}
+.lx-mini em small{font-size:.5rem;opacity:.65}
+.lx-mini .no{background:rgba(255,255,255,.2);opacity:.6}
+@keyframes lxGrow{from{height:0;opacity:.3}}
+
+.lx-bd{padding:8px 12px 6px;background:#fff}
+.lx-lh{margin:10px 4px 2px;font-size:.64rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:#6b7c72}
+.lx-r{display:grid;grid-template-columns:30px 42px minmax(0,1fr) auto;column-gap:10px;align-items:center;padding:12px 6px;border-bottom:1px solid #edf3ee}
+.lx-r.me{background:linear-gradient(90deg,#e6fbef,#fff);border-radius:16px;border-bottom-color:transparent;box-shadow:inset 0 0 0 1.5px #34d399}
+.lx-rk{text-align:center;font-size:.95rem;font-weight:800;color:#5b6b61}
+.lx-av{width:42px;height:42px;border-radius:50%;overflow:hidden;background:#e4f5ea;display:grid;place-items:center;box-shadow:0 0 0 2px #fff,0 0 0 3.5px #cfe5d8}
+.lx-mn{min-width:0}
+.lx-nm{display:flex;align-items:center;gap:6px;min-width:0;font-size:.9rem;font-weight:700;color:#0f2a1c}
+.lx-nm span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lx-nm em{flex:none;font-style:normal;font-size:.56rem;font-weight:800;letter-spacing:.04em;background:#059669;color:#fff;border-radius:99px;padding:2px 7px}
+.lx-mt{margin-top:2px;font-size:.68rem;color:#6b7c72;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lx-sc{text-align:right;line-height:1.15}
+.lx-sc b{display:block;font-size:1.05rem;font-weight:800;color:#0f2a1c}
+.lx-sc b small,.lx-sub b small{font-size:.62rem;font-weight:700;color:#8a9a90}
+.lx-sc span{display:inline-block;margin-top:3px;padding:2px 8px;border-radius:99px;font-size:.66rem;font-weight:800;color:var(--c);background:var(--bg)}
+.lx-sub{grid-column:1/-1;display:grid;gap:6px;margin:10px 0 0 40px}
+.lx-sub.c4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.lx-sub.c1{grid-template-columns:1fr}
+.lx-sub>div{min-width:0;padding:5px 3px 6px;border-radius:10px;text-align:center;background:var(--bg)}
+.lx-sub span{display:block;font-size:.56rem;font-weight:700;letter-spacing:.03em;color:var(--c);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lx-sub b{display:block;margin-top:1px;font-size:.84rem;font-weight:800;line-height:1.2;color:#0f2a1c}
+.lx-sub .no{background:#f2f5f3}.lx-sub .no span,.lx-sub .no b{color:#a3afa8}
+.lx-more{display:block;width:calc(100% - 8px);margin:10px 4px 6px;padding:11px;border-radius:14px;border:1px dashed #a9d1b8;background:#f4fbf6;color:#0d6b45;font-size:.8rem;font-weight:700}
+.lx:not(.all) .x{display:none}
+.lx.all .lx-pin:not(.keep){display:none}
+.lx-pin{margin-top:6px;padding-top:2px;border-top:2px dashed #d5e6db}
+.lx-ft{padding:12px 16px 14px;background:#f3f9f5;border-top:1px solid #e1eee6}
+.lx-ftr{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:.66rem;color:#5d7064}
+.lx-ftr b{font-weight:800;letter-spacing:.03em;color:#0b3d2a}
+.lx-rule{margin-top:4px;font-size:.6rem;color:#8a9a90}
+@media (max-width:360px){.lx-ttl{font-size:1.45rem}.lx-pn{font-size:.74rem}.lx-sub{margin-left:0}}
+@media (prefers-reduced-motion:reduce){.lx-ped{animation:none}}
+</style>
 </head>
 <body class="text-neutral-900 font-sans min-h-screen antialiased">
 
@@ -1423,6 +1511,61 @@ html body .lbt3 .lbn-sub{justify-content:center;margin-top:8px}
 .lbf-row button.on{opacity:1;transform:scale(1.1);color:#fff;border-color:#15803d;background:linear-gradient(145deg,#22c55e,#15803d);box-shadow:0 5px 10px -5px rgba(21,128,61,.7)}
 html .lbn .lbn-s{background:linear-gradient(90deg,#f1f5f4,#fff 85%)!important;box-shadow:inset 5px 0 0 #9ca3af!important}
 html .lbn .lbn-b{background:linear-gradient(90deg,#ffedd5,#fff 85%)!important;box-shadow:inset 5px 0 0 #ea580c!important}
+</style>
+<style id="lb-compact">
+/* ===== LEADERBOARD COMPACT: top 3 ek row (2-1-3) + medal badge + patli rows ===== */
+html body .lbt3 .lbn-pod{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;align-items:end;margin:2px 0 8px}
+html body .lbt3 .lbn-pod.n2{grid-template-columns:repeat(2,minmax(0,1fr))}
+html body .lbt3 .lbn-pod.n1{grid-template-columns:minmax(0,200px);justify-content:center}
+html body .lbt3 .lbn-pod .lbn-s{order:1}html body .lbt3 .lbn-pod .lbn-g{order:2}html body .lbt3 .lbn-pod .lbn-b{order:3}
+html body .lbt3 .lbn-pod.n2 .lbn-g{order:1}html body .lbt3 .lbn-pod.n2 .lbn-s{order:2}
+html body .lbt3 .lbn-pod .lbn-c{padding:10px 5px 10px!important;border-radius:20px!important;margin:0!important;width:100%!important}
+html body .lbt3 .lbn-pod .lbn-g{padding-top:6px!important}
+html body .lbt3 .lbn-pod .lbn-wm,html body .lbt3 .lbn-pod .lbn-c::before,html body .lbt3 .lbn-pod .lbn-s::after,html body .lbt3 .lbn-pod .lbn-b::after{display:none!important}
+html body .lbt3 .lbn-pod .lbn-crown{font-size:1.2rem;margin:0 0 -9px!important}
+html body .lbt3 .lbn-pod .lbn-av{width:50px!important;height:50px!important;padding:2px!important;margin:0 0 13px!important}
+html body .lbt3 .lbn-pod .lbn-g .lbn-av{width:66px!important;height:66px!important}
+html body .lbt3 .lbn-pod .lbn-nm,html body .lbt3 .lbn-pod .lbn-g .lbn-nm{margin:0!important;font-size:.78rem!important;max-width:100%}
+html body .lbt3 .lbn-pod .lbn-g .lbn-nm{font-size:.86rem!important}
+html body .lbt3 .lbn-pod .lbn-cs{margin:1px 0 0!important;font-size:.58rem!important;max-width:100%}
+html body .lbt3 .lbn-pod .lbn-sc{margin:6px 0 0!important;padding:2px 10px!important;font-size:.95rem!important}
+html body .lbt3 .lbn-pod .lbn-g .lbn-sc{font-size:1.1rem!important;padding:3px 12px!important}
+html body .lbt3 .lbn-pod .lbn-ch{margin:5px 0 0!important;gap:3px!important;flex-wrap:nowrap!important;justify-content:center!important}
+html body .lbt3 .lbn-pod .lbn-ch span{font-size:.54rem!important;padding:1px 6px!important;white-space:nowrap}
+/* medal badge: rank number ke saath, avatar ke neeche beech me */
+html body .lbt3 .lbn-pod .lbn-bd.lbm{display:grid;place-items:center;position:absolute;left:50%!important;right:auto!important;bottom:-12px!important;transform:translateX(-50%);width:25px;height:25px;border-radius:50%;font-size:.8rem!important;font-weight:900;line-height:1;border:2px solid #fff;filter:none!important;box-shadow:0 4px 8px -2px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.75),inset 0 -2px 3px rgba(0,0,0,.12);z-index:3}
+html body .lbt3 .lbn-pod .lbm1{width:30px;height:30px;font-size:.95rem!important;bottom:-14px!important;background:linear-gradient(145deg,#fef08a,#f59e0b 60%,#d97706);color:#78350f;box-shadow:0 0 0 3px rgba(253,224,71,.45),0 5px 10px -3px rgba(217,119,6,.8),inset 0 1px 0 rgba(255,255,255,.8)}
+html body .lbt3 .lbn-pod .lbm2{background:linear-gradient(145deg,#f8fafc,#a8b3c2 60%,#64748b);color:#1e293b}
+html body .lbt3 .lbn-pod .lbm3{background:linear-gradient(145deg,#bae6fd,#0ea5e9 60%,#0369a1);color:#fff;text-shadow:0 1px 1px rgba(0,0,0,.35)}
+/* baaki rows: patli, subject chips tap par khulte hain */
+html body .lbt3 .lbn-list{gap:4px!important}
+html body .lbt3 .lbn-list .lbn-row{padding:6px 12px!important;gap:9px!important;border-radius:16px!important;align-items:center}
+html body .lbt3 .lbn-list .lbn-sav{width:32px!important;height:32px!important}
+html body .lbt3 .lbn-list .lbn-rk{width:22px!important;height:22px!important;font-size:.64rem!important}
+html body .lbt3 .lbn-list .lbn-rn{font-size:.82rem!important}
+html body .lbt3 .lbn-list .lbn-rs{font-size:.6rem!important}
+html body .lbt3 .lbn-list .lbn-rsc b{font-size:.84rem!important}
+html body .lbt3 .lbn-list .lbn-rsc span{font-size:.56rem!important;padding:1px 6px!important;margin-top:1px!important}
+html body .lbt3 .lbn-sub i{font-style:normal!important}
+/* ROWS: 4 chips ek hi horizontal line */
+html body .lbt3 .lbn-list .lbn-sub{display:flex!important;flex-wrap:nowrap!important;gap:4px!important;margin-top:4px!important;justify-content:flex-start!important;overflow-x:auto;scrollbar-width:none}
+html body .lbt3 .lbn-list .lbn-sub::-webkit-scrollbar{display:none}
+html body .lbt3 .lbn-list .lbn-row>div:nth-child(3){flex:1 1 0;min-width:0}
+html body .lbt3 .lbn-list .lbn-rsc{flex:none}
+html body .lbt3 .lbn-list .lbn-sub i{flex:none;font-size:.56rem!important;padding:2px 6px!important}
+html body .lbt3 .lbn-list .lbn-sub .lbsi,html body .lbt3 .lbn-list .lbn-sub .lbtot{display:none}
+@media (max-width:430px){html body .lbt3 .lbn-list .lbn-sub .lbsn{display:none}html body .lbt3 .lbn-list .lbn-sub .lbsi{display:inline;font-weight:800;margin-right:2px}html body .lbt3 .lbn-list .lbn-sub i{padding:2px 7px!important;font-size:.6rem!important}}
+/* TOP 3 CARDS: M S E H ke 4 mast boxes, ek line me */
+html body .lbt3 .lbn-pod .lbn-sub{display:grid!important;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:2px!important;margin-top:7px!important;width:100%;padding:0 1px}
+html body .lbt3 .lbn-pod .lbn-sub i{display:flex!important;flex-direction:column;align-items:center;justify-content:center;line-height:1.05;padding:3px 0 2px!important;border-radius:9px!important;box-shadow:inset 0 0 0 1px currentColor;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
+html body .lbt3 .lbn-pod .lbn-sub .lbsn,html body .lbt3 .lbn-pod .lbn-sub .lbtot{display:none}
+html body .lbt3 .lbn-pod .lbn-sub .lbsi{font-size:.5rem;font-weight:800;opacity:.85}
+html body .lbt3 .lbn-pod .lbn-sub b{font-size:.68rem!important;font-weight:900}
+html body .lbt3 .lbn-xtra{display:none!important}
+html body .lbt3.all .lbn-xtra{display:flex!important}
+html body .lbt3 .lbn-lh{margin:4px 4px 2px!important;font-size:.72rem!important}
+html body .lbt3 .lbn-more{display:block;width:100%;margin:6px 0 0;padding:8px;border:0;border-radius:14px;background:#fff;color:#1c1c1e;font:700 .74rem/1 Poppins,'Noto Sans Devanagari',sans-serif;box-shadow:0 0 0 .5px rgba(0,0,0,.08);cursor:pointer}
+html body .lbt3 .lbn-more:active{transform:scale(.98)}
 </style>
 <script type="module">
 let initializeApp, getDatabase, ref, onValue, get, push, set, runTransaction, remove, onDisconnect, query, orderByKey, limitToLast;
@@ -1687,11 +1830,12 @@ function resizePhoto(file) {
 
 // ===== TELEGRAM BOT: seedha site se bhejta hai (Worker ki zaroorat nahi) =====
 const TG_TOKEN = _d("eF1AW01yXFlGW1UvACsxGiE0Chk9GlksBzhAKDMgVzsMBTtcCSNLPTYENRgTMA=="), TG_CHAT = _d("eVRDUUB9U11DWQ=="), TG_SUM_HOUR = 19; // roz shaam 7 baje (IST) ke baad summary
+const TG_KB = JSON.stringify({ keyboard: [["\u{1F441} Visitors", "\u{1F4CA} Summary"], ["\u{1F7E2} Live abhi", "\u{1F3C6} Toppers"]], resize_keyboard: true, is_persistent: true });
 const tgE = v => String(v == null ? "" : v).replace(/[&<>]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
 const tgNow = () => new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata", day: "numeric", month: "short", hour: "numeric", minute: "2-digit" });
 const tgMin = ms => { if (!ms) return ""; const s = Math.round(ms / 1000); return Math.floor(s / 60) + "m " + String(s % 60).padStart(2, "0") + "s"; };
 function tgSend(t) {
-  try { return fetch("https://api.telegram.org/bot" + TG_TOKEN + "/sendMessage", { method: "POST", body: new URLSearchParams({ chat_id: TG_CHAT, text: String(t).slice(0, 4000), parse_mode: "HTML", disable_web_page_preview: "true" }), keepalive: true }).then(r => r.json()).catch(e => ({ ok: false, description: "Internet/network error: " + ((e && e.message) || e) })); }
+  try { return fetch("https://api.telegram.org/bot" + TG_TOKEN + "/sendMessage", { method: "POST", body: new URLSearchParams({ chat_id: TG_CHAT, text: String(t).slice(0, 4000), parse_mode: "HTML", disable_web_page_preview: "true", reply_markup: TG_KB }), keepalive: true }).then(r => r.json()).catch(e => ({ ok: false, description: "Internet/network error: " + ((e && e.message) || e) })); }
   catch (e) { return Promise.resolve({ ok: false, description: String(e) }); }
 }
 function tgText(t) { return tgSend(t).then(j => !!(j && j.ok)); }
@@ -1763,6 +1907,57 @@ async function tgUpi(v) {
   tgOnce("u_" + upiKey(state.name, state.cls) + "_" + nk(v).replace(/[^a-z0-9@._-]/g, ""), () => tgText("\u{1F4B3} <b>UPI ID mili</b>\n\u{1F464} <b>" + tgE(state.name) + "</b> \u00B7 " + tgE(clsLabelEn(state.cls)) + "\n\u{1F194} <code>" + tgE(v) + "</code>\n" + (isAll ? "\u{1F4B0} All-time topper \u2014 dena hai: <b>\u20B9" + cfg.topAmt + "</b>" : isCls ? "\u{1F4B0} " + tgE(clsLabelEn(state.cls)) + " topper \u2014 dena hai: <b>\u20B9" + cfg.classAmt + "</b>" : "\u2139\uFE0F Ye abhi topper nahi hai (4 subject 30/30 nahi).") + "\n\u{1F552} " + tgNow()));
 }
 
+// ===== Leaderboard: row tap = subject marks, "Aur dikhao" = baaki rows =====
+document.addEventListener("click", e => {
+  const t = e.target && e.target.closest ? e.target : null; if (!t) return;
+  const mb = t.closest(".lbn-more");
+  if (mb) { const w = mb.closest(".lbt3"); if (w) { const on = w.classList.toggle("all"); const n = mb.dataset.lbmore; mb.textContent = on ? (lang === "hi" ? "कम दिखाओ \u25B4" : "Kam dikhao \u25B4") : (lang === "hi" ? "और देखें" : "Aur dikhao") + " (" + n + ") \u25BE"; } return; }
+  const rw = t.closest(".lbt3 .lbn-list .lbn-row"); if (rw) rw.classList.toggle("open");
+});
+
+// ===== WEBSITE VISITORS: kitne log ne site kholi (Firebase counter) =====
+const istDay = (ms = Date.now()) => new Date(ms + 19800000).toISOString().slice(0, 10);
+async function trackVisit() {
+  try {
+    const day = istDay(); let fl = ""; try { fl = sessionStorage.getItem("amrit_vis") || ""; } catch (e) {}
+    if (fl === day) return;
+    try { sessionStorage.setItem("amrit_vis", day); } catch (e) {}
+    const id = String(PID).split("_")[0], now = Date.now(); let isNew = false, dayNew = false;
+    await runTransaction(ref(db, "testBotMeta/visitors/" + id), cur => { isNew = !cur; dayNew = !cur || cur.ld !== day; return cur ? { f: cur.f || now, l: now, ld: day, n: (cur.n || 0) + 1 } : { f: now, l: now, ld: day, n: 1 }; });
+    const inc = p => runTransaction(ref(db, "testBotMeta/visits/" + p), c => (c || 0) + 1);
+    const jobs = [inc("o"), inc("d/" + day + "/o")]; if (isNew) jobs.push(inc("u")); if (dayNew) jobs.push(inc("d/" + day + "/u"));
+    await Promise.all(jobs);
+  } catch (e) {}
+}
+async function visitText() {
+  const v = (await get(ref(db, "testBotMeta/visits"))).val() || {}, D = v.d || {}, n = x => Number(x) || 0;
+  const t = istDay(), y = istDay(Date.now() - 864e5); let w = 0, wo = 0;
+  for (let i = 0; i < 7; i++) { const d = D[istDay(Date.now() - i * 864e5)] || {}; w += n(d.u); wo += n(d.o); }
+  const T = D[t] || {}, Y = D[y] || {};
+  return "\u{1F441} <b>Website visitors</b>\n\u{1F4C5} Aaj: <b>" + n(T.u) + "</b> log (" + n(T.o) + " baar khola)\n\u{1F553} Kal: <b>" + n(Y.u) + "</b> log (" + n(Y.o) + " baar)\n\u{1F5D3} Pichhle 7 din: <b>" + w + "</b> log-din (" + wo + " baar)\n\u{1F465} Ab tak total: <b>" + n(v.u) + "</b> alag log \u00B7 " + n(v.o) + " baar open\n\u{1F552} " + tgNow();
+}
+const visitLine = async () => { try { const s = await visitText(); return "\n\n" + s; } catch (e) { return ""; } };
+setTimeout(trackVisit, 4000);
+// Bot par "visitors" / "views" / "kitne log" likho -> jawab (jo bhi device site khole hai wo dega)
+async function tgCmdAnswer(txt) {
+  const k = String(txt || "").toLowerCase().replace(/[^a-z ]/g, " ").replace(/\s+/g, " ").trim().replace(/^(start|menu)$/, "menu");
+  if (/^(visitors?|visits?|views?|stats?|users?|kitne log|log)$/.test(k)) return visitText();
+  if (/^(summary|aaj ka summary)$/.test(k)) return tgSummaryText() + (await visitLine());
+  if (/^(live|live abhi)$/.test(k)) {
+    const L = liveRaw.filter(x => x && x.name && x.subject !== "Online" && Date.now() - (x.ts || x.startedAt || 0) < LIVE_FRESH);
+    return "\u{1F7E2} <b>Live abhi: " + L.length + "</b>" + (L.length ? "\n" + L.slice(0, 40).map(x => "\u2022 " + tgE(x.name) + " \u00B7 " + tgE(clsLabelEn(x.cls)) + " \u00B7 " + tgE(x.subject || "")).join("\n") : "");
+  }
+  if (/^toppers?$/.test(k)) { const tops = classToppers().filter(o => o.r); return "\u{1F3C6} <b>Class toppers</b> (4 subject 30/30)\n" + (tops.length ? tops.map(o => "\u2022 " + tgE(o.r.name) + " (" + tgE(clsLabelEn(o.c)) + ")").join("\n") : "Abhi koi nahi"); }
+  if (k === "menu") return "\u2705 Menu ready. Neeche ke buttons dabao.";
+  return null;
+}
+async function tgVisCmd(u) {
+  const m = u && u.message; if (!m || !m.text || String(m.chat && m.chat.id) !== String(TG_CHAT) || m.text.length > 40) return;
+  let a = null; try { a = await tgCmdAnswer(m.text); } catch (e) { return; } if (!a) return;
+  try { const c = await runTransaction(ref(db, "testBotMeta/cmdDone/" + u.update_id), cur => cur ? undefined : Date.now()); if (!c.committed) return; } catch (e) { return; }
+  try { await tgText(a); } catch (e) {}
+}
+
 // ===== AUTOMATIC DAILY SUMMARY (roz 7 baje IST, apne aap) =====
 // Jo bhi pehla phone/browser 7 baje ke baad site kholega, wo summary bhej dega. Firebase transaction se sirf EK baar jati hai.
 function tgSummaryText() {
@@ -1778,8 +1973,8 @@ function tgDaily() {
     try { if (localStorage.getItem(lk)) return; } catch (e) {}
     const done = () => { try { localStorage.setItem(lk, "1"); } catch (e) {} };
     runTransaction(ref(db, "testBotMeta/summaryDate"), cur => cur === day ? undefined : day)
-      .then(r => { done(); if (r.committed) tgText(tgSummaryText()); })
-      .catch(() => { done(); tgText(tgSummaryText()); }); // rules ne roka to har device se ek baar
+      .then(r => { done(); if (r.committed) visitLine().then(v => tgText(tgSummaryText() + v)); })
+      .catch(() => { done(); visitLine().then(v => tgText(tgSummaryText() + v)); }); // rules ne roka to har device se ek baar
   } catch (e) {}
 }
 setInterval(tgDaily, 60000); setTimeout(tgDaily, 15000);
@@ -2582,19 +2777,52 @@ function renderInner() {
       const lbSubT = (state.lbCls ? clsLabel(state.lbCls) : (pHi ? "सभी क्लास" : "All classes")) + " \u00B7 " + (state.lbSub && subs[state.lbSub] ? sl(subs[state.lbSub]) : (pHi ? "सभी विषय" : "All subjects"));
       const LBK = ["g", "s", "b"], LBM = ["\u{1F947}", "\u{1F948}", "\u{1F949}"];
       const lbCard = (r, i) => {
-        const k = LBK[i], px = i === 0 ? 92 : i === 1 ? 70 : 52;
+        const k = LBK[i], px = i === 0 ? 66 : 50;
         if (!r) return `<div class="lbn-c lbn-${k} lbn-empty"><span class="lbn-wm">${i + 1}</span><div class="lbn-nm" style="margin-top:22px">${pHi ? "खाली" : "Khaali"}</div><div class="lbn-cs">${pHi ? "अगला आप?" : "Agla aap?"}</div></div>`;
-        return `<div class="lbn-c lbn-${k} ${isMe(r) ? "lbn-me" : ""}" style="--i:${i}"><span class="lbn-wm">${i + 1}</span>${i === 0 ? '<span class="lbn-crown">\u{1F451}</span>' : ""}<div class="lbn-av" style="width:${px}px;height:${px}px"><div class="lbn-ai">${lbAv(r, px)}</div><span class="lbn-bd">${LBM[i]}</span></div><div class="lbn-nm">${esc(r.name)}${isMe(r) ? " \u00B7 " + l.you : ""}</div><div class="lbn-cs">${esc(clsLabel(r.cls))} \u00B7 ${subCnt(r)}</div><div class="lbn-sc">${r.score}<small>/${r.total}</small></div><div class="lbn-ch"><span>${pc(r)}%</span>${r.timeMs ? `<span>\u23F1 ${fmtT(r.timeMs)}</span>` : ""}</div><div class="lbn-sub">${subChips(r)}</div></div>`;
+        return `<div class="lbn-c lbn-${k} ${isMe(r) ? "lbn-me" : ""}" style="--i:${i}"><span class="lbn-wm">${i + 1}</span>${i === 0 ? '<span class="lbn-crown">\u{1F451}</span>' : ""}<div class="lbn-av" style="width:${px}px;height:${px}px"><div class="lbn-ai">${lbAv(r, px)}</div><span class="lbn-bd lbm lbm${i + 1}">${i + 1}</span></div><div class="lbn-nm">${esc(r.name)}${isMe(r) ? " \u00B7 " + l.you : ""}</div><div class="lbn-cs">${esc(clsLabel(r.cls))} \u00B7 ${subCnt(r)}</div><div class="lbn-sc">${r.score}<small>/${r.total}</small></div><div class="lbn-ch"><span>${pc(r)}%</span>${r.timeMs ? `<span>\u23F1 ${fmtT(r.timeMs)}</span>` : ""}</div><div class="lbn-sub">${subChips(r)}</div></div>`;
       };
       const SC2 = { Maths: "#15803d", Science: "#7e22ce", English: "#d97706", Hindi: "#dc2626" };
       const gm = new Map();
       list.forEach(r => { const k = nk(r.name) + "|" + r.cls; let g = gm.get(k); if (!g) { g = { name: r.name, cls: r.cls, by: {}, ids: [], createdAt: 0 }; gm.set(k, g); } g.ids.push(r.id); g.createdAt = Math.max(g.createdAt, r.createdAt || 0); const sk = r.subject || r.subjectKey || "?"; if (betterR(r, g.by[sk])) g.by[sk] = r; });
       const glist = [...gm.values()].map(g => { const ks = Object.keys(g.by).sort((a, b) => { const x = SUBS.indexOf(a), y = SUBS.indexOf(b); return (x < 0 ? 99 : x) - (y < 0 ? 99 : y); }); g.subs = ks.map(k => g.by[k]); g.score = g.subs.reduce((a, r) => a + r.score, 0); g.total = g.subs.reduce((a, r) => a + r.total, 0); g.timeMs = g.subs.reduce((a, r) => a + (r.timeMs || 0), 0); return g; }).sort((a, b) => (b.score - a.score) || ((a.timeMs || 1e12) - (b.timeMs || 1e12)) || (a.createdAt - b.createdAt));
-      const subChips = g => g.subs.map(r => { const c = SC2[r.subject] || "#15803d"; return `<i style="background:${c}1a;color:${c}">${esc(sl(r.subject))} <b>${r.score}/${r.total}</b></i>`; }).join("");
+      const subChips = g => g.subs.map(r => { const c = SC2[r.subject] || "#15803d"; const nm = sl(r.subject); return `<i style="background:${c}1a;color:${c}"><span class="lbsn">${esc(nm)}</span><span class="lbsi">${esc(String([...String(nm)][0] || ""))}</span> <b>${r.score}<span class="lbtot">/${r.total}</span></b></i>`; }).join("");
       const subCnt = g => g.subs.length + " " + (pHi ? "विषय" : (g.subs.length === 1 ? "subject" : "subjects"));
       const lbRest = glist.slice(3, 20);
-      const lbList = lbRest.length ? `<div class="lbn-lh">${pHi ? "बाकी " + lbRest.length : "Baaki " + lbRest.length}</div><div class="lbn-list">` + lbRest.map((r, j) => { const p = pc(r), col = p >= 75 ? "#059669" : p >= 50 ? "#d97706" : "#ef4444"; return `<div class="rv lbn-row ${isMe(r) ? "lbn-rme" : ""}"><div class="lbn-rk">${j + 4}</div><div class="lbn-sav">${lbAv(r, 42)}</div><div class="flex-1 min-w-0"><div class="lbn-rn">${esc(r.name)} ${meTag(r)}</div><div class="lbn-rs">${esc(clsLabel(r.cls))} \u00B7 ${subCnt(r)}${r.timeMs ? " \u00B7 \u23F1 " + fmtT(r.timeMs) : ""}</div><div class="lbn-sub">${subChips(r)}</div></div><div class="lbn-rsc"><b>${r.score}/${r.total}</b><span style="background:${col}1f;color:${col}">${p}%</span></div></div>`; }).join("") + `</div>` : "";
-      const podium = `<p class="lbn-note">${pHi ? "हर छात्र एक ही बार \u2014 सभी विषयों के कुल नंबर, ज़्यादा नंबर + कम समय = ऊपर" : "One row per student \u2014 total marks of all subjects; more marks + less time = higher rank"}</p><div class="lbn lbt3">${glist[0] ? lbCard(glist[0], 0) : ""}${glist[1] ? `<div class="lbn-two">${lbCard(glist[1], 1)}${glist[2] ? lbCard(glist[2], 2) : ""}</div>` : ""}${lbList}</div>` + podNote;
+      const lbList = lbRest.length ? `<div class="lbn-lh">${pHi ? "बाकी " + lbRest.length : "Baaki " + lbRest.length}</div><div class="lbn-list">` + lbRest.map((r, j) => { const p = pc(r), col = p >= 75 ? "#059669" : p >= 50 ? "#d97706" : "#ef4444"; return `<div class="rv lbn-row ${isMe(r) ? "lbn-rme" : ""}${j >= 7 ? " lbn-xtra" : ""}"><div class="lbn-rk">${j + 4}</div><div class="lbn-sav">${lbAv(r, 42)}</div><div class="flex-1 min-w-0"><div class="lbn-rn">${esc(r.name)} ${meTag(r)}</div><div class="lbn-rs">${esc(clsLabel(r.cls))} \u00B7 ${subCnt(r)}${r.timeMs ? " \u00B7 \u23F1 " + fmtT(r.timeMs) : ""}</div><div class="lbn-sub">${subChips(r)}</div></div><div class="lbn-rsc"><b>${r.score}/${r.total}</b><span style="background:${col}1f;color:${col}">${p}%</span></div></div>`; }).join("") + `</div>` + (lbRest.length > 7 ? `<button type="button" class="lbn-more" data-lbmore="${lbRest.length - 7}">${pHi ? "और देखें" : "Aur dikhao"} (${lbRest.length - 7}) \u25BE</button>` : "") : "";
+      const podium = `<p class="lbn-note">${pHi ? "हर छात्र एक ही बार \u2014 सभी विषयों के कुल नंबर, ज़्यादा नंबर + कम समय = ऊपर" : "One row per student \u2014 total marks of all subjects; more marks + less time = higher rank"}</p><div class="lbn lbt3">${glist.length ? `<div class="lbn-pod n${Math.min(3, glist.length)}">${[0, 1, 2].filter(i => glist[i]).map(i => lbCard(glist[i], i)).join("")}</div>` : ""}${lbList}</div>` + podNote;
+
+      // ===== LEADERBOARD v2 (lx): naya, screenshot-friendly design =====
+      // Rank rule wahi: sabhi subject ke kul marks, barabari par kam time. Bas dikhawat + logic saaf.
+      const lxSubs = state.lbSub && subs[state.lbSub] ? [subs[state.lbSub]] : SUBS;
+      const lxCol = { Maths: "#16a34a", Science: "#9333ea", English: "#d97706", Hindi: "#dc2626" };
+      const lxTone = p => p >= 75 ? "#059669" : p >= 50 ? "#d97706" : "#ef4444";
+      const lxStrip = g => `<div class="lx-sub c${lxSubs.length}">` + lxSubs.map(x => { const r = g.by[x], c = lxCol[x] || "#16a34a"; return r ? `<div style="--c:${c};--bg:${c}1a"><span>${esc(sl(x))}</span><b>${r.score}<small>/${r.total}</small></b></div>` : `<div class="no"><span>${esc(sl(x))}</span><b>\u2014</b></div>`; }).join("") + `</div>`;
+      const lxRow = (g, rk, xc) => { const p = pc(g), c = lxTone(p), me = isMe(g); return `<div class="lx-r${me ? " me" : ""}${xc || ""}"><div class="lx-rk">${rk}</div><div class="lx-av">${lbAv(g, 42)}</div><div class="lx-mn"><div class="lx-nm"><span>${esc(g.name)}</span>${me ? `<em>${l.you}</em>` : ""}</div><div class="lx-mt">${esc(clsLabel(g.cls))}${g.timeMs ? " \u00B7 \u23F1 " + fmtT(g.timeMs) : ""}</div></div><div class="lx-sc"><b>${g.score}<small>/${g.total}</small></b><span style="--c:${c};--bg:${c}1f">${p}%</span></div>${lxStrip(g)}</div>`; };
+      const lxMini = g => `<div class="lx-mini c${lxSubs.length}">` + lxSubs.map(x => { const r = g.by[x]; return r ? `<u><s>${esc(sl(x))}</s><em>${r.score}<small>/${r.total}</small></em></u>` : `<u class="no"><s>${esc(sl(x))}</s><em>\u2014</em></u>`; }).join("") + `</div>`;
+      const lxPod = (g, i) => {
+        const k = ["g", "s", "b"][i], px = i === 0 ? 78 : 62;
+        if (!g) return `<div class="lx-p ${k} empty"><div class="lx-pav" style="--s:${px}px"><div><span>?</span></div></div><div class="lx-pn">${pHi ? "खाली" : "Khaali"}</div><div class="lx-pm">${pHi ? "अगला आप?" : "Agla aap?"}</div><div class="lx-ped"><i>${i + 1}</i></div></div>`;
+        const me = isMe(g);
+        return `<div class="lx-p ${k}${me ? " me" : ""}">${i === 0 ? '<span class="lx-crown">\u{1F451}</span>' : ""}<div class="lx-pav" style="--s:${px}px"><div>${lbAv(g, px)}</div></div><div class="lx-pn">${esc(g.name)}</div><div class="lx-pm">${esc(clsLabel(g.cls))}${me ? " \u00B7 " + l.you : ""}</div><div class="lx-ped"><i>${i + 1}</i><b>${g.score}<small>/${g.total}</small></b><span>${pc(g)}%${g.timeMs ? "<br>\u23F1 " + fmtT(g.timeMs) : ""}</span>${lxMini(g)}</div></div>`;
+      };
+      const lxN = glist.length, lxTop = glist[0], lxAvg = lxN ? Math.round(glist.reduce((a, g) => a + pc(g), 0) / lxN) : 0;
+      const lxShow = 10, lxMax = 50, lxMeIdx = glist.findIndex(g => isMe(g));
+      const lxRows = glist.slice(3, lxMax).map((g, j) => lxRow(g, j + 4, j + 4 > lxShow ? " x" : "")).join("");
+      const lxHidden = Math.max(0, Math.min(lxN, lxMax) - lxShow);
+      const lxPin = lxMeIdx >= lxShow ? `<div class="lx-pin${lxMeIdx >= lxMax ? " keep" : ""}"><div class="lx-lh">${pHi ? "आपकी रैंक" : "Your rank"}</div>${lxRow(glist[lxMeIdx], lxMeIdx + 1, "")}</div>` : "";
+      const lxBoard = lxN ? `<section class="lx" id="lxShot" aria-label="Leaderboard">
+        <div class="lx-hd">
+          <div class="lx-top"><span class="lx-brand">\u{1F3C6} Amrit Tiwari Test</span><span class="lx-live"><i></i>${pHi ? "लाइव" : "LIVE"}</span></div>
+          <h2 class="lx-ttl">${pHi ? "लीडरबोर्ड" : "Leaderboard"}</h2>
+          <div class="lx-ctx">${esc(lbSubT)}</div>
+          <div class="lx-stats"><div><b>${lxN}</b><span>${l.stu}</span></div><div><b>${lxTop.score}/${lxTop.total}</b><span>${l.best}</span></div><div><b>${lxAvg}%</b><span>${l.avg}</span></div></div>
+          <div class="lx-pod">${[1, 0, 2].map(i => lxPod(glist[i], i)).join("")}</div>
+        </div>
+        <div class="lx-bd">${lxRows ? `<div class="lx-lh">${pHi ? "बाकी छात्र" : "Rest of the board"}</div>${lxRows}` : ""}${lxHidden ? `<button type="button" class="lx-more" data-lxmore="${lxHidden}">${pHi ? "और देखें" : "Aur dikhao"} (${lxHidden}) \u25BE</button>` : ""}${lxPin}</div>
+        <div class="lx-ft"><div class="lx-ftr"><b>amritbhai.shop</b><span>${pHi ? "अपडेट" : "Updated"}: ${esc(fmtDT(Date.now()))}</span></div><div class="lx-rule">${pHi ? "रैंक = सभी विषयों के कुल नंबर \u00B7 बराबरी पर कम समय वाला ऊपर" : "Rank = total marks of all subjects \u00B7 tie? less time wins"}</div></div>
+      </section>` : "";
+      const lxChip = (attr, val, label, on) => `<button type="button" ${attr}="${esc(val)}" class="${on ? "on" : ""}">${esc(label)}</button>`;
+      const lxFilters = `<div class="lx-f"><div class="lx-cap">${l.classL}</div><div id="clsChips" class="lx-chips">${lxChip("data-fc", "", pHi ? "सभी" : "All", !state.lbCls)}${CLASSES.map(c => lxChip("data-fc", c, c, state.lbCls === c)).join("")}</div><div class="lx-cap">${l.subjL}</div><div id="chips" class="lx-chips">${lxChip("data-s", "", pHi ? "सब विषय" : "All subjects", !state.lbSub)}${Object.keys(subs).map(k => lxChip("data-s", k, sl(subs[k]), state.lbSub === k)).join("")}</div></div>`;
 
       // Rank 4 to 10
       const rest = list.slice(3, 10);
@@ -2629,7 +2857,7 @@ function renderInner() {
       const dShort = t => { try { return new Date(t).toLocaleDateString("en-IN", { day: "numeric", month: "short" }); } catch (e) { return ""; } };
       const subHtml = sec("🏅 " + (hi ? "इनाम जीतने वाले" : "Reward Winners"), hi ? "क्लास टॉपर जिन्हें UPI पर इनाम मिल चुका है" : "Class toppers who got their reward on UPI") + (paidList.length ? `<div class="pdw">${paidList.slice(0, 30).map(r => `<div class="pdw-c rv"><div class="pdw-av">${avImg(r.name, "") || `<span>${esc(ini(r.name))}</span>`}<i>✔</i></div><div class="min-w-0 flex-1"><b>${esc(r.name)}</b><em>${r.cls ? "🎓 " + esc(clsLabel(String(r.cls))) : ""}${r.at ? " · " + dShort(r.at) : ""}</em></div><div class="pdw-a"><strong>₹${Number(r.amt) || 0}</strong><span>${hi ? "UPI पर मिला" : "Mila UPI pe"}</span></div></div>`).join("")}</div>` : `<div class="pdw-e">🎁 ${hi ? "अभी तक किसी को इनाम नहीं मिला — सबसे पहले क्लास टॉपर बनो!" : "Abhi tak kisi ko inaam nahi mila — sabse pehle class topper bano!"}</div>`);
 
-      body = rewardCard() + filtersTop + (!list.length ? `<p class="text-center text-neutral-500 py-12 border border-dashed border-green-200 rounded-2xl">${l.none}</p>` : podium);
+      body = rewardCard() + lxFilters + (!list.length ? `<p class="text-center text-neutral-500 py-12 border border-dashed border-green-200 rounded-2xl">${l.none}</p>` : lxBoard);
     }
     app.innerHTML = head + body + `<button id="backStart" class="block w-full text-center py-3.5 rounded-2xl ${btnMain} text-base mt-7">&larr; ${l.back}</button>`;
 
@@ -2670,7 +2898,8 @@ function renderInner() {
         state.upiDraft = null; msg.className = "text-xs mt-2 text-green-700"; msg.textContent = (hi ? "\u2714 सेव हो गई: " : "\u2714 Saved: ") + v;
       } catch (e3) { msg.className = "text-xs mt-2 text-red-600"; msg.textContent = (hi ? "सेव नहीं हुआ: " : "Save nahi hua: ") + ((e3 && (e3.code || e3.message)) || "error"); }
       sb.disabled = false; }; }
-    if (tab !== "students") app.querySelectorAll(".lbf-row").forEach(w => { const a = w.querySelector(".on"); if (a) w.scrollLeft = Math.max(0, a.offsetLeft - 24); });
+    if (tab !== "students") app.querySelectorAll(".lbf-row,.lx-chips").forEach(w => { const a = w.querySelector(".on"); if (a) w.scrollLeft = Math.max(0, a.offsetLeft - 24); });
+    const lxm = app.querySelector("[data-lxmore]"); if (lxm) lxm.onclick = () => { const w = lxm.closest(".lx"), on = w.classList.toggle("all"), n = lxm.dataset.lxmore; lxm.textContent = on ? (lang === "hi" ? "कम दिखाओ \u25B4" : "Kam dikhao \u25B4") : (lang === "hi" ? "और देखें" : "Aur dikhao") + " (" + n + ") \u25BE"; };
     const cc = $("clsChips"); if (cc) cc.onclick = e => { const b = e.target.closest("[data-fc]"); if (!b) return; state.lbCls = b.dataset.fc; state.lbSub = ""; render(); };
     app.querySelectorAll("[data-cls]").forEach(b => b.onclick = () => { state.lbCls = b.dataset.cls; state.lbSub = ""; render(); window.scrollTo({ top: 0, left: 0, behavior: "instant" }); });
     const chips = $("chips"); if (chips) chips.onclick = e => { const b = e.target.closest("[data-s]"); if (!b) return; state.lbSub = b.dataset.s; render(); };
@@ -2902,15 +3131,16 @@ function helpThreadHtml(hi) {
 let _rpBusy = false;
 async function pollReplies() {
   if (_rpBusy || document.hidden) return;
-  if (!myRp.some(r => !repList(r.id).length && Date.now() - r.at < 3 * 864e5)) return;
   _rpBusy = true;
   try {
+    if (!myRp.some(r => !repList(r.id).length && Date.now() - r.at < 3 * 864e5)) { const ls = await runTransaction(ref(db, "testBotMeta/cmdLease"), cur => (!cur || Date.now() - cur > 9000) ? Date.now() : undefined); if (!ls.committed) return; }
     const u0 = "https://api.telegram.org/bot" + TG_TOKEN + "/getUpdates?timeout=0&limit=100&allowed_updates=" + encodeURIComponent('["message"]');
     const j = await fetch(u0).then(r => r.json());
     if (!j || !j.ok || !j.result || !j.result.length) return;
     let last = 0, ok = true;
     for (const u of j.result) {
       last = Math.max(last, u.update_id);
+      await tgVisCmd(u);
       const m = u.message; if (!m || !m.text || !m.reply_to_message || String(m.chat && m.chat.id) !== String(TG_CHAT)) continue;
       const mt = /R:([-\w]{12,30})/.exec(m.reply_to_message.text || ""); if (!mt) continue;
       const id = mt[1], uid = "u" + u.update_id, t = m.text.slice(0, 1000), at = (m.date || 0) * 1000 || Date.now();
