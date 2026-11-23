@@ -1476,6 +1476,158 @@ html body .lbt3 .lbn-sub{justify-content:center;margin-top:8px}
 @media (max-width:360px){.lx-ttl{font-size:1.45rem}.lx-pn{font-size:.74rem}.lx-sub{margin-left:0}}
 @media (prefers-reduced-motion:reduce){.lx-ped{animation:none}}
 </style>
+<style id="lx-glow">
+/* ===== LEADERBOARD GLOW-UP: aurora header, glowing podium, glass rows ===== */
+@keyframes lxAur{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-6%,5%) scale(1.15)}}
+@keyframes lxSheen{0%{transform:translateX(-140%) skewX(-18deg)}60%,100%{transform:translateX(420%) skewX(-18deg)}}
+@keyframes lxPulse{0%,100%{box-shadow:0 0 0 0 rgba(52,211,153,.55)}50%{box-shadow:0 0 0 7px rgba(52,211,153,0)}}
+@keyframes lxRowIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes lxCrown{0%,100%{transform:translateX(-50%) rotate(-8deg) translateY(0)}50%{transform:translateX(-50%) rotate(8deg) translateY(-5px)}}
+.lx{border-radius:32px;box-shadow:0 30px 60px -28px rgba(4,47,33,.75),0 0 0 1px rgba(6,95,70,.14)}
+.lx-hd{background:radial-gradient(90% 55% at 15% -10%,rgba(250,204,21,.34),transparent 60%),radial-gradient(70% 55% at 100% 20%,rgba(45,212,191,.28),transparent 65%),radial-gradient(60% 50% at 0% 100%,rgba(16,185,129,.25),transparent 70%),linear-gradient(165deg,#047857 0%,#04301f 58%,#01130c 100%);overflow:hidden}
+.lx-hd::before{content:"";position:absolute;width:260px;height:260px;right:-90px;top:-100px;border-radius:50%;background:radial-gradient(circle,rgba(253,224,71,.28),transparent 68%);animation:lxAur 9s ease-in-out infinite;pointer-events:none}
+.lx-hd::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.14) 1px,transparent 1.3px);background-size:20px 20px;-webkit-mask-image:linear-gradient(#000,transparent 70%);mask-image:linear-gradient(#000,transparent 70%);pointer-events:none}
+.lx-hd>*{position:relative;z-index:1}
+.lx-brand{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);padding:4px 11px;border-radius:99px;color:#fef9c3;opacity:1}
+.lx-live i{animation:lxPulse 1.8s infinite}
+.lx-ttl{font-size:1.95rem;font-weight:900;letter-spacing:-.02em;background:linear-gradient(90deg,#fff,#fde68a 60%,#fff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lx-ctx{display:inline-block;margin-top:4px;padding:3px 11px;border-radius:99px;background:rgba(0,0,0,.22);font-size:.7rem;font-weight:600;color:#bbf7d0}
+.lx-stats>div{background:linear-gradient(160deg,rgba(255,255,255,.16),rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.2);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);box-shadow:inset 0 1px 0 rgba(255,255,255,.25)}
+.lx-stats b{font-size:1.12rem;font-weight:900}
+/* podium */
+.lx-pod{padding-top:54px;gap:9px}
+.lx-pav{box-shadow:0 12px 26px -8px var(--rs),0 0 0 4px rgba(255,255,255,.08)}
+.lx-p.g .lx-pav{animation:lxPulse 2.6s infinite;box-shadow:0 0 0 0 rgba(253,224,71,.6),0 14px 30px -8px rgba(245,158,11,.9)}
+.lx-pn{font-weight:800;text-shadow:0 1px 3px rgba(0,0,0,.4)}
+.lx-crown{top:-33px;font-size:1.9rem;left:50%;animation:lxCrown 2.4s ease-in-out infinite}
+.lx-ped{position:relative;border-radius:18px 18px 0 0;box-shadow:inset 0 3px 0 rgba(255,255,255,.7),inset 0 -14px 20px rgba(0,0,0,.1),0 -10px 30px -12px var(--rs)}
+.lx-ped::after{content:"";position:absolute;top:0;bottom:0;left:0;width:35%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);animation:lxSheen 3.8s ease-in-out infinite;pointer-events:none}
+.lx-p.s .lx-ped::after{animation-delay:.5s}.lx-p.b .lx-ped::after{animation-delay:1s}
+.lx-ped i{font-size:1.9rem;opacity:.5;font-weight:900}
+.lx-ped b{font-size:1.2rem;font-weight:900}
+.lx-mini u{background:rgba(255,255,255,.55);box-shadow:inset 0 0 0 1px rgba(255,255,255,.5)}
+/* rows */
+.lx-bd{background:linear-gradient(#f3faf6,#fff 140px);padding:10px 12px 8px}
+.lx-lh{display:flex;align-items:center;gap:8px;color:#0b6b46;margin:12px 4px 6px}
+.lx-lh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,#bfe5cf,transparent)}
+.lx-r{background:#fff;border:1px solid #e4f1e9;border-radius:20px;margin-bottom:8px;padding:11px 10px;box-shadow:0 10px 18px -16px rgba(4,47,33,.55);animation:lxRowIn .45s cubic-bezier(.2,.8,.2,1) both}
+.lx-r:nth-child(2){animation-delay:.04s}.lx-r:nth-child(3){animation-delay:.08s}.lx-r:nth-child(4){animation-delay:.12s}.lx-r:nth-child(5){animation-delay:.16s}.lx-r:nth-child(6){animation-delay:.2s}
+.lx-r.me{background:linear-gradient(90deg,#dcfce7,#fff 80%);box-shadow:inset 0 0 0 2px #34d399,0 12px 22px -14px rgba(16,185,129,.8)}
+.lx-rk{width:28px;height:28px;display:grid;place-items:center;border-radius:50%;background:linear-gradient(160deg,#ecfdf5,#d1fae5);color:#065f46;font-size:.78rem;font-weight:900;box-shadow:inset 0 0 0 1px #a7f3d0}
+.lx-av{width:44px;height:44px;box-shadow:0 0 0 2px #fff,0 0 0 4px #a7f3d0,0 6px 12px -6px rgba(5,150,105,.7)}
+.lx-nm{font-weight:800}
+.lx-sc b{font-size:1.15rem;font-weight:900}
+.lx-sc span{box-shadow:inset 0 0 0 1px currentColor;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
+.lx-sub>div{border-radius:12px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.04)}
+.lx-more{border-radius:16px;border:1.5px dashed #6ee7b7;background:linear-gradient(135deg,#ecfdf5,#f0fdfa);font-weight:800}
+.lx-ft{background:linear-gradient(135deg,#ecfdf5,#f0fdfa)}
+/* filter chips */
+.lx-chips button{height:34px;font-weight:700;border-color:#cfe8da;box-shadow:0 4px 10px -8px rgba(4,47,33,.5)}
+.lx-chips button.on{background:linear-gradient(135deg,#059669,#065f46);border-color:#064e3b;box-shadow:0 8px 16px -8px rgba(6,78,59,.9);transform:translateY(-1px)}
+@media (prefers-reduced-motion:reduce){.lx *,.lx::before,.lx-hd::before{animation:none!important}}
+</style>
+<style id="sx-glow">
+/* ===== STUDENTS TAB: naya clean look ===== */
+@keyframes sxIn{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+.pg-h{padding:14px 16px;border-radius:24px;margin:2px 0 14px;background:linear-gradient(135deg,#4f46e5,#7c3aed 60%,#a855f7);box-shadow:0 16px 30px -18px rgba(79,70,229,.9);position:relative;overflow:hidden}
+.pg-h::after{content:"";position:absolute;width:120px;height:120px;right:-30px;top:-50px;border-radius:50%;background:rgba(255,255,255,.14)}
+.pg-h b{color:#fff;font-size:1.35rem}
+.pg-h span{color:rgba(255,255,255,.85);font-size:.72rem;position:relative;z-index:1}
+.sx-hd{gap:10px;margin-bottom:12px}
+.sx-st{position:relative;overflow:hidden;border-radius:22px;padding:14px 6px 12px;box-shadow:0 16px 22px -14px var(--b),inset 0 1px 0 rgba(255,255,255,.45)}
+.sx-st::after{content:"";position:absolute;width:56px;height:56px;right:-16px;top:-20px;border-radius:50%;background:rgba(255,255,255,.2)}
+.sx-st b{font-size:1.65rem;font-weight:900;position:relative;z-index:1}
+.sx-st span{position:relative;z-index:1;font-size:.66rem;letter-spacing:.04em}
+.sx-list{gap:10px}
+.sx{position:relative;overflow:hidden;gap:12px;padding:12px 14px 12px 12px;border-radius:26px;background:#fff;box-shadow:0 0 0 1px rgba(99,102,241,.08),0 14px 24px -18px rgba(30,27,75,.5);animation:sxIn .45s cubic-bezier(.2,.8,.2,1) both}
+.sx::before{content:"";position:absolute;left:0;top:14px;bottom:14px;width:4px;border-radius:0 6px 6px 0;background:linear-gradient(#818cf8,#a855f7)}
+.sx:nth-child(-n+3)::before{background:linear-gradient(#fde047,#f59e0b)}
+.sx.me{background:linear-gradient(90deg,#ecfdf5,#fff 75%);box-shadow:0 0 0 2px #34d399,0 14px 24px -16px rgba(16,185,129,.8)}
+.sx.me::before{background:linear-gradient(#34d399,#059669)}
+.sx-ring{width:58px;height:58px;padding:0}
+.sx-ring>img,.sx-ring>div{width:50px!important;height:50px!important;border-width:2px!important;box-shadow:0 6px 12px -6px rgba(0,0,0,.4)}
+.sx-rk{min-width:24px;height:24px;font-size:.66rem;font-weight:800;bottom:-5px;right:-6px;background:linear-gradient(145deg,#312e81,#1e1b4b);box-shadow:0 0 0 2px #fff,0 4px 8px -2px rgba(0,0,0,.4)}
+.sx-nm{font-size:1rem;font-weight:800;letter-spacing:-.01em}
+.sx-you{background:linear-gradient(135deg,#34d399,#059669);box-shadow:0 4px 8px -4px #059669}
+.sx-tags{gap:5px;margin-top:5px}
+.sx-tags span{font-size:.64rem;padding:3px 9px;font-weight:700}
+.sx-dt{font-size:.64rem;margin-top:5px}
+.sx-sc{display:flex;flex-direction:column;align-items:flex-end;gap:2px;min-width:64px;padding:8px 10px;border-radius:18px;background:#f7f7fb}
+.sx-big{font-size:1.4rem;font-weight:900}
+.sx-pc{margin-top:2px;font-size:.66rem}
+.sx-tm{font-size:.62rem;font-weight:600}
+.hist{margin:-4px 8px 4px;border-radius:0 0 20px 20px;background:#f5f3ff!important;border:0!important}
+/* search + sort + filters */
+#srch{border-radius:18px!important;background:#fff!important;box-shadow:0 0 0 1.5px #e0e7ff,0 8px 16px -12px rgba(79,70,229,.5)!important;padding:12px 16px!important}
+#srt{border-radius:18px;background:linear-gradient(135deg,#eef2ff,#f5f3ff);border:0;color:#4338ca;box-shadow:0 0 0 1.5px #e0e7ff}
+#clsChips button[data-fc],#chips button[data-s]{border-radius:99px;box-shadow:0 4px 8px -6px rgba(0,0,0,.35)}
+#moreBtn{border-radius:20px;background:linear-gradient(135deg,#eef2ff,#f5f3ff);color:#4338ca;border:1.5px dashed #a5b4fc;font-weight:800}
+@media (prefers-reduced-motion:reduce){.sx{animation:none}}
+</style>
+<style id="chl-css">
+@keyframes chlBob{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-4px) rotate(4deg)}}
+.chl{margin-top:16px;padding:14px;border-radius:26px;text-align:center;color:#fff;position:relative;overflow:hidden;background:radial-gradient(90% 120% at 0 0,rgba(253,224,71,.35),transparent 55%),linear-gradient(135deg,#4f46e5,#7c3aed 60%,#c026d3);box-shadow:0 18px 30px -18px rgba(79,70,229,.9)}
+.chl::after{content:"";position:absolute;top:0;bottom:0;left:0;width:30%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent);animation:lxSheen 3.6s ease-in-out infinite;pointer-events:none}
+.chl-ic{width:46px;height:46px;margin:0 auto 6px;border-radius:16px;display:grid;place-items:center;font-size:1.5rem;background:rgba(255,255,255,.2);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.4);animation:chlBob 2.4s ease-in-out infinite}
+.chl-tx b{display:block;font-size:1.02rem;font-weight:800}
+.chl-tx span{display:block;margin-top:4px;font-size:.74rem;line-height:1.45;opacity:.95}
+.chl-bt{display:flex;flex-direction:column;gap:8px;margin-top:12px;position:relative;z-index:1}
+.chl-bt button{padding:12px;border-radius:16px;font-weight:800;font-size:.85rem}
+#chBtn{background:linear-gradient(135deg,#fde047,#f59e0b)!important;color:#451a03!important;box-shadow:0 10px 18px -10px rgba(245,158,11,.9)!important}
+#chLb{background:rgba(255,255,255,.18);color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
+@media (prefers-reduced-motion:reduce){.chl-ic,.chl::after{animation:none}}
+</style>
+<style id="hp-tip">
+@keyframes hptIn{from{opacity:0;transform:translateY(-10px) scale(.94)}to{opacity:1;transform:none}}
+@keyframes hptRing{0%{box-shadow:0 0 0 0 rgba(99,102,241,.7)}100%{box-shadow:0 0 0 12px rgba(99,102,241,0)}}
+@keyframes hptWob{0%,100%{transform:rotate(0)}20%{transform:rotate(-10deg)}40%{transform:rotate(9deg)}60%{transform:rotate(-5deg)}}
+#hpTip{position:fixed;z-index:9000;padding:12px 30px 12px 14px;border-radius:20px;color:#fff;background:linear-gradient(135deg,#4f46e5,#7c3aed);box-shadow:0 20px 40px -14px rgba(79,70,229,.8),0 0 0 1px rgba(255,255,255,.18) inset;animation:hptIn .45s cubic-bezier(.2,.9,.3,1.2) both;cursor:pointer;transition:opacity .3s,transform .3s}
+#hpTip.out{opacity:0;transform:translateY(-8px)}
+#hpTip::before{content:"";position:absolute;top:-7px;left:calc(var(--ar) - 8px);width:16px;height:16px;background:#4f46e5;transform:rotate(45deg);border-radius:4px 0 0 0}
+.hpt-t{font-size:.86rem;font-weight:800;line-height:1.25}
+.hpt-p{margin-top:4px;font-size:.72rem;font-weight:500;line-height:1.4;opacity:.95}
+.hpt-x{position:absolute;top:6px;right:8px;width:24px;height:24px;border:0;border-radius:50%;background:rgba(255,255,255,.2);color:#fff;font-size:16px;line-height:1}
+#guideBtn.hpt-ring{animation:hptRing 1.3s ease-out infinite,hptWob 2s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){#hpTip,#guideBtn.hpt-ring{animation:none}}
+</style>
+<style id="me-hero">
+/* ===== photo quality + tap to zoom ===== */
+#app img[src^="data:image"]{image-rendering:auto;cursor:zoom-in;-webkit-user-drag:none}
+#pv .ph{image-rendering:auto;background:#fff}
+#pv .cap b:empty{display:none}
+.lx-p.g .lx-pav{--s:98px!important}
+.lx-p.s .lx-pav,.lx-p.b .lx-pav{--s:76px!important}
+.lx-av{width:50px;height:50px}
+.lx-r{grid-template-columns:30px 50px minmax(0,1fr) auto}
+.sx-ring{width:64px;height:64px}
+.sx-ring>img,.sx-ring>div{width:56px!important;height:56px!important}
+.lx-pod{padding-top:60px}
+.lx-crown{top:-38px}
+/* ===== AAPKI RANK hero card ===== */
+@keyframes meGlow{0%,100%{box-shadow:0 0 0 0 rgba(251,191,36,.55),0 22px 40px -20px rgba(79,70,229,.9)}50%{box-shadow:0 0 0 9px rgba(251,191,36,0),0 22px 40px -16px rgba(124,58,237,1)}}
+@keyframes meSpin{to{transform:rotate(360deg)}}
+@keyframes mePop{0%{opacity:0;transform:translateY(16px) scale(.94)}60%{transform:scale(1.02)}100%{opacity:1;transform:none}}
+.lxme{position:relative;display:flex;align-items:center;gap:14px;margin:0 0 14px;padding:16px 14px;border-radius:30px;color:#fff;overflow:hidden;background:radial-gradient(90% 120% at 0 0,rgba(244,114,182,.4),transparent 55%),radial-gradient(80% 120% at 100% 100%,rgba(56,189,248,.35),transparent 60%),linear-gradient(135deg,#4338ca,#6d28d9 55%,#a21caf);animation:mePop .6s cubic-bezier(.2,.9,.3,1.2) both,meGlow 3s ease-in-out 1s infinite}
+.lxme.top{background:radial-gradient(90% 120% at 0 0,rgba(253,224,71,.5),transparent 55%),radial-gradient(80% 120% at 100% 100%,rgba(251,146,60,.35),transparent 60%),linear-gradient(135deg,#78350f,#b45309 50%,#7c2d12)}
+.lxme::after{content:"";position:absolute;top:0;bottom:0;left:0;width:30%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.28),transparent);animation:lxSheen 3.6s ease-in-out infinite;pointer-events:none}
+.lxme-av{position:relative;flex:none;width:92px;height:92px;border-radius:50%;padding:4px;background:conic-gradient(#fde047,#f472b6,#60a5fa,#4ade80,#fde047)}
+.lxme-av::before{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px dashed rgba(255,255,255,.55);animation:meSpin 14s linear infinite}
+.lxme-av>div{width:100%;height:100%;border-radius:50%;overflow:hidden;background:#ede9fe;display:grid;place-items:center;border:3px solid #fff}
+.lxme-av img{width:100%;height:100%;object-fit:cover;display:block}
+.lxme-av span{color:#4c1d95;font-weight:800;font-size:2rem}
+.lxme-av>i{position:absolute;top:-24px;left:50%;transform:translateX(-50%) rotate(-8deg);font-style:normal;font-size:1.7rem;filter:drop-shadow(0 3px 5px rgba(0,0,0,.4))}
+.lxme-tx{min-width:0;flex:1;position:relative;z-index:1}
+.lxme-tx em{display:block;font-style:normal;font-size:.58rem;font-weight:800;letter-spacing:.1em;opacity:.9;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lxme-rk{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap;margin-top:2px}
+.lxme-rk b{font-size:2.5rem;font-weight:900;line-height:1;text-shadow:0 3px 0 rgba(0,0,0,.22)}
+.lxme-rk small{font-size:.8rem;font-weight:700;opacity:.8}
+.lxme-rk span{margin-left:auto;padding:3px 10px;border-radius:99px;background:rgba(255,255,255,.22);font-size:.68rem;font-weight:800}
+.lxme-nm{margin-top:2px;font-size:1rem;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lxme-ch{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+.lxme-ch span{padding:2px 9px;border-radius:99px;background:rgba(0,0,0,.25);font-size:.66rem;font-weight:700}
+.lxme-tx p{margin:8px 0 0;padding:6px 10px;border-radius:14px;background:rgba(255,255,255,.18);font-size:.72rem;font-weight:600;line-height:1.35}
+@media (prefers-reduced-motion:reduce){.lxme,.lxme::after,.lxme-av::before{animation:none!important}}
+</style>
 </head>
 <body class="text-neutral-900 font-sans min-h-screen antialiased">
 
@@ -1710,7 +1862,7 @@ let live = [];
 
 // ---- student photo ----
 const nk = n => String(n || "").trim().toLowerCase().replace(/\s+/g, " ");
-const okPhoto = p => typeof p === "string" && p.length < 20000 && /^data:image\/(jpeg|png|webp);base64,[A-Za-z0-9+\/=]+$/.test(p);
+const okPhoto = p => typeof p === "string" && p.length < 45000 && /^data:image\/(jpeg|png|webp);base64,[A-Za-z0-9+\/=]+$/.test(p);
 const photoMap = new Map();
 profiles.forEach(p => { if (okPhoto(p.photo)) photoMap.set(nk(p.name), p.photo); });
 try { onValue(query(ref(db, "testStudents"), orderByKey(), limitToLast(1000)), snap => {
@@ -1791,7 +1943,7 @@ function rewardCard() {
 const avImg = (n, cls = "w-10 h-10") => photoOf(n) ? `<img src="${photoOf(n)}" alt="" decoding="async" class="${cls} rounded-full object-cover border border-green-200 shrink-0">` : "";
 const stuRec = (n, cls) => { const o = { name: n, cls, createdAt: saved.createdAt || Date.now(), updatedAt: Date.now() }; if (okPhoto(saved.photo)) o.photo = saved.photo; return o; };
 // ===== HD PHOTO: Telegram ko badi (HD) photo jaati hai; site/Firebase par chhoti (96px) hi rehti hai =====
-const HD_MAX = 1600, HD_Q = 0.92, hdKey = (n, c) => "amrit_hd_" + nk(n) + "|" + c;
+const HD_MAX = 1920, HD_Q = 0.93, hdKey = (n, c) => "amrit_hd_" + nk(n) + "|" + c;
 function hdPhoto(file) {
   return new Promise((res, rej) => {
     const url = URL.createObjectURL(file), im = new Image();
@@ -1820,10 +1972,12 @@ function hdGet(n, c) {
 function hdDel(n, c) { window._hdPending = ""; window._hdFile = null; idbDel(hdKey(n, c)); try { localStorage.removeItem(hdKey(n, c)); } catch (e) {} }
 function resizePhoto(file) {
   return new Promise((res, rej) => {
-    const url = URL.createObjectURL(file), im = new Image();
-    im.onload = () => { const S = 96, c = document.createElement("canvas"); c.width = c.height = S; const w = im.naturalWidth, h = im.naturalHeight, m = Math.min(w, h);
-      c.getContext("2d").drawImage(im, (w - m) / 2, (h - m) / 2, m, m, 0, 0, S, S); URL.revokeObjectURL(url); res(c.toDataURL("image/jpeg", 0.7)); };
-    im.onerror = () => { URL.revokeObjectURL(url); rej(new Error("img")); };
+    const isUri = typeof file === "string", url = isUri ? file : URL.createObjectURL(file), im = new Image();
+    im.onload = () => { const S = 240, c = document.createElement("canvas"); c.width = c.height = S; const w = im.naturalWidth, h = im.naturalHeight, m = Math.min(w, h), x = c.getContext("2d");
+      x.imageSmoothingEnabled = true; x.imageSmoothingQuality = "high"; x.fillStyle = "#fff"; x.fillRect(0, 0, S, S);
+      x.drawImage(im, (w - m) / 2, (h - m) / 2, m, m, 0, 0, S, S); if (!isUri) URL.revokeObjectURL(url);
+      let out = ""; for (const q of [0.84, 0.74, 0.64, 0.54]) { out = c.toDataURL("image/jpeg", q); if (out.length < 40000) break; } res(out); };
+    im.onerror = () => { if (!isUri) URL.revokeObjectURL(url); rej(new Error("img")); };
     im.src = url;
   });
 }
@@ -1849,7 +2003,8 @@ async function tgPhoto(dataUri, caption, fallbackUri, orig) {
       if (r.ok) return true;
     } catch (e) {}
   }
-  for (const uri of [dataUri, fallbackUri]) {
+  // HD jpeg (1600px, 92%) bhi DOCUMENT ki tarah bhejte hain taaki Telegram compress na kare; chhoti 96px photo sirf aakhri fallback
+  for (const [uri, asDoc] of [[dataUri, true], [fallbackUri, false]]) {
     if (!uri || typeof uri !== "string") continue;
     const m = /^data:(image\/(?:jpeg|png|webp));base64,/.exec(uri.slice(0, 40));
     if (!m) continue;
@@ -1858,8 +2013,8 @@ async function tgPhoto(dataUri, caption, fallbackUri, orig) {
       for (let i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i);
       const f = new FormData();
       f.append("chat_id", TG_CHAT); f.append("caption", String(caption).slice(0, 1000)); f.append("parse_mode", "HTML");
-      f.append("photo", new Blob([u], { type: m[1] }), "student.jpg");
-      const r = await fetch("https://api.telegram.org/bot" + TG_TOKEN + "/sendPhoto", { method: "POST", body: f });
+      f.append(asDoc ? "document" : "photo", new Blob([u], { type: m[1] }), asDoc ? "student_HD.jpg" : "student.jpg");
+      const r = await fetch("https://api.telegram.org/bot" + TG_TOKEN + (asDoc ? "/sendDocument" : "/sendPhoto"), { method: "POST", body: f });
       if (r.ok) return true;
     } catch (e) {}
   }
@@ -2677,6 +2832,7 @@ function renderInner() {
           <div class="glass rounded-2xl py-3"><div class="text-lg font-extrabold text-green-700">${state.timeMs ? fmtT(state.timeMs) : "-"}</div><div class="text-[.65rem] text-neutral-500">${t.timeL}</div></div>
         </div>
         ${topProgressHtml()}
+        ${challengeHtml(pct)}
         ${rank > 0 ? `<div class="inline-flex items-center gap-2 mt-4 px-4 py-2 rounded-full bg-green-600 text-white text-sm font-semibold shadow-lg shadow-green-600/25">\u{1F3C5} ${t.rank}: #${rank}</div>` : ""}
         ${state.saveErr ? `<button id="retrySave" class="mt-4 px-5 py-2.5 rounded-full ${btnMain} text-sm">${t.retrySave}</button>` : ""}
         <div class="flex gap-2 mt-6 justify-center"><button id="shareBtn" class="px-4 py-2 rounded-full ${btnLine} text-sm">${t.share}</button><button id="revBtn" class="px-4 py-2 rounded-full ${btnLine} text-sm">${state.review ? t.hide : t.review}</button></div>
@@ -2690,6 +2846,8 @@ function renderInner() {
     $("retake").onclick = () => { state.screen = "start"; render(); };
     $("revBtn").onclick = () => { state.review = !state.review; render(); };
     $("shareBtn").onclick = shareResult;
+    if ($("chBtn")) $("chBtn").onclick = shareChallenge;
+    if ($("chLb")) $("chLb").onclick = () => { state.lbCls = ""; state.lbSub = ""; state.lbTab = "students"; state.lbSort = "latest"; state.metSeen = 0; state.screen = "leaderboard"; render(); };
     if ($("retrySave")) $("retrySave").onclick = async () => { await saveResult(); render(); };
     return;
   }
@@ -2700,7 +2858,7 @@ function renderInner() {
     const tab = state.lbTab || "students";
     const pc = r => Math.round(r.score / r.total * 100);
     const ini = n => (String(n).trim()[0] || "?").toUpperCase();
-    const isMe = r => state.resultId && (r.id === state.resultId || (r.ids && r.ids.includes(state.resultId)));
+    const isMe = r => !!((state.resultId && (r.id === state.resultId || (r.ids && r.ids.includes(state.resultId)))) || (state.saved && state.name && nk(r.name) === nk(state.name) && String(r.cls) === String(state.cls)));
     const inCls = results.filter(r => !state.lbCls || r.cls === state.lbCls);
     const subs = {}; inCls.forEach(r => { if (r.subjectKey) subs[r.subjectKey] = r.subject || r.subjectKey; });
     if (state.lbSub && !subs[state.lbSub]) state.lbSub = "";
@@ -2857,7 +3015,17 @@ function renderInner() {
       const dShort = t => { try { return new Date(t).toLocaleDateString("en-IN", { day: "numeric", month: "short" }); } catch (e) { return ""; } };
       const subHtml = sec("🏅 " + (hi ? "इनाम जीतने वाले" : "Reward Winners"), hi ? "क्लास टॉपर जिन्हें UPI पर इनाम मिल चुका है" : "Class toppers who got their reward on UPI") + (paidList.length ? `<div class="pdw">${paidList.slice(0, 30).map(r => `<div class="pdw-c rv"><div class="pdw-av">${avImg(r.name, "") || `<span>${esc(ini(r.name))}</span>`}<i>✔</i></div><div class="min-w-0 flex-1"><b>${esc(r.name)}</b><em>${r.cls ? "🎓 " + esc(clsLabel(String(r.cls))) : ""}${r.at ? " · " + dShort(r.at) : ""}</em></div><div class="pdw-a"><strong>₹${Number(r.amt) || 0}</strong><span>${hi ? "UPI पर मिला" : "Mila UPI pe"}</span></div></div>`).join("")}</div>` : `<div class="pdw-e">🎁 ${hi ? "अभी तक किसी को इनाम नहीं मिला — सबसे पहले क्लास टॉपर बनो!" : "Abhi tak kisi ko inaam nahi mila — sabse pehle class topper bano!"}</div>`);
 
-      body = rewardCard() + lxFilters + (!list.length ? `<p class="text-center text-neutral-500 py-12 border border-dashed border-green-200 rounded-2xl">${l.none}</p>` : lxBoard);
+      const meI = state.saved ? glist.findIndex(g => nk(g.name) === nk(state.name) && String(g.cls) === String(state.cls)) : -1;
+      let lxMe = "";
+      if (meI >= 0) {
+        const g = glist[meI], rk = meI + 1, pv = glist[meI - 1], gap = pv ? pv.score - g.score : 0, tp = Math.max(1, Math.round(rk / lxN * 100));
+        const msg = rk === 1 ? (pHi ? "\u{1F451} आप सबसे ऊपर हो! पूरे लीडरबोर्ड में नंबर 1!" : "\u{1F451} Aap sabse upar ho! Leaderboard mein No. 1!")
+          : rk <= 3 ? (pHi ? "\u{1F525} शानदार! आप टॉप 3 में हो!" : "\u{1F525} Shaandaar! Aap Top 3 mein ho!")
+          : gap > 0 ? (pHi ? `\u{1F4AA} #${rk - 1} से सिर्फ <b>${gap}</b> नंबर पीछे — एक और टेस्ट दो!` : `\u{1F4AA} #${rk - 1} se sirf <b>${gap}</b> marks peeche — ek aur test do!`)
+          : (pHi ? `⚡ नंबर बराबर हैं — कम समय में टेस्ट करो, #${rk - 1} आपका!` : `⚡ Marks barabar hain — kam time mein test karo, #${rk - 1} aapka!`);
+        lxMe = `<div class="lxme${rk <= 3 ? " top" : ""}"><div class="lxme-av">${rk === 1 ? "<i>\u{1F451}</i>" : ""}<div>${lbAv(g, 84)}</div></div><div class="lxme-tx"><em>${pHi ? "आपकी रैंक" : "AAPKI RANK"} · ${esc(lbSubT)}</em><div class="lxme-rk"><b>#${rk}</b><small>/ ${lxN}</small><span>Top ${tp}%</span></div><div class="lxme-nm">${esc(g.name)}</div><div class="lxme-ch"><span>${g.score}/${g.total}</span><span>${pc(g)}%</span>${g.timeMs ? `<span>⏱ ${fmtT(g.timeMs)}</span>` : ""}</div><p>${msg}</p></div></div>`;
+      }
+      body = rewardCard() + lxMe + lxFilters + (!list.length ? `<p class="text-center text-neutral-500 py-12 border border-dashed border-green-200 rounded-2xl">${l.none}</p>` : lxBoard);
     }
     app.innerHTML = head + body + `<button id="backStart" class="block w-full text-center py-3.5 rounded-2xl ${btnMain} text-base mt-7">&larr; ${l.back}</button>`;
 
@@ -2960,6 +3128,21 @@ function topProgressHtml() {
 function reviewHtml() {
   return `<div class="text-left mt-6 space-y-3">` + state.questions.map((q, i) => { const Q = q.Q, a = state.answers[i], c = Number(Q.correct), ok = a === c;
     return `<div class="rounded-2xl border ${ok ? "rv-ok" : "border-red-200 bg-red-50/60"} p-3.5 text-sm"><div class="font-semibold">${i + 1}. ${esc(Q.q)}</div><div class="mt-1 ${ok ? "rv-oktxt" : "text-red-600"}">${ok ? "\u2714" : "\u2718"} ${esc(Q.options[a] ?? "-")}</div>${ok ? "" : `<div class="rv-oktxt">\u2714 ${esc(Q.options[c] ?? "")}</div>`}</div>`; }).join("") + `</div>`;
+}
+// Test ke baad: dost ko bulao aur dekho dono mein kaun tez hai
+function challengeText() {
+  const hi = lang === "hi", tot = state.questions.length, tm = state.timeMs ? fmtT(state.timeMs) : "";
+  return hi
+    ? `मैंने अमृत तिवारी टेस्ट (${sl(state.subName)}) में ${state.score}/${tot} स्कोर किया${tm ? " सिर्फ़ " + tm + " में" : ""}! \u{1F4AA}\nचलो देखते हैं हम दोनों में कौन तेज़ है — मुझे हराकर दिखाओ! \u{1F3C6}\nhttps://www.amritbhai.shop/test.html`
+    : `Maine Amrit Tiwari Test (${sl(state.subName)}) mein ${state.score}/${tot} score kiya${tm ? " sirf " + tm + " mein" : ""}! \u{1F4AA}\nChalo dekhte hain hum dono mein kaun tez hai — mujhe hara ke dikhao! \u{1F3C6}\nhttps://www.amritbhai.shop/test.html`;
+}
+function shareChallenge() {
+  const txt = challengeText();
+  if (navigator.share) navigator.share({ text: txt }).catch(() => {}); else window.open("https://wa.me/?text=" + encodeURIComponent(txt), "_blank");
+}
+function challengeHtml(pct) {
+  const hi = lang === "hi";
+  return `<div class="chl"><div class="chl-ic">\u{1F91D}</div><div class="chl-tx"><b>${hi ? "अपने दोस्त को भी बताइए!" : "Apne dost ko bhi bataiye!"}</b><span>${hi ? "उसे भी यह टेस्ट दिलवाइए और देखिए आप दोनों में कौन तेज़ है — किसके ज़्यादा नंबर और किसका कम समय!" : "Usse bhi ye test dilwaiye aur dekhiye aap dono mein kaun tez hai — kiske zyada marks aur kiska kam time!"}</span></div><div class="chl-bt"><button type="button" id="chBtn" class="btnm">\u{1F4E4} ${hi ? "दोस्त को चैलेंज भेजो" : "Dost ko challenge bhejo"}</button><button type="button" id="chLb">\u{1F50D} ${hi ? "लीडरबोर्ड में दोनों की तुलना करें" : "Leaderboard mein dono ko compare karein"}</button></div></div>`;
 }
 function shareResult() {
   const txt = T[lang].shareTxt(sl(state.subName), state.score, state.questions.length);
@@ -3205,6 +3388,22 @@ function gmI(k) {
     : k === "users" ? `<svg ${a}><circle cx="9" cy="8.500" r="3.500"/><path d="M2.800 20c0-3.300 2.800-5.500 6.200-5.500s6.200 2.200 6.200 5.500M17 5.500a3 3 0 0 1 0 6M18.200 14.800c2 .6 3.300 2.400 3.300 5.200"/></svg>`
     : `<svg ${a}><path d="M8 5v14l11-7z"/></svg>`;
 }
+// Naam (aur surname) se ladka/ladki ka andaza: sahi 100% nahi ho sakta, isliye shak par ladka maana jaata hai
+const _FW = new Set("kumari kumri devi kaur rani khatun khatoon begum bano bibi parveen praveen shree shri sri बेगम देवी कुमारी कौर रानी खातून बानो".split(" "));
+const _MW = new Set("kumar singh lal bhai prasad nath chand chandra das ram shankar mohan yadav ali khan ahmad ahmed कुमार सिंह लाल भाई प्रसाद नाथ चंद चन्द्र".split(" "));
+const _FN = new Set("priya pooja puja neha riya ria anjali anita sunita kavita savita sangita geeta gita sita rita nisha asha usha sapna shweta sneha khushi muskan nikita ankita sakshi shivani divya kajal komal pinky pinki simran sonam sonal soni sonu mansi tanu tanvi tannu shruti shreya aarti arti ayesha aisha fatima zoya sana saba nazia nazma rubi ruby poonam payal palak naina nancy mona monika madhu manisha meena meera radha rekha renu rani reena sarita sarika seema shilpa shobha suman sushma swati vandana vinita yashika yogita bhavna bhumi chhavi chanchal deepika deepa diksha garima gungun harshita isha jyoti kiran lakshmi laxmi pallavi pratibha preeti prachi roshni sabina tamanna trisha vaishnavi aditi अंजलि प्रिया पूजा नेहा रिया सपना खुशी मुस्कान सोनी साक्षी शिवानी दिव्या काजल कोमल सिमरन सोनम".split(" "));
+const _MN = new Set("surya lakshya rudra atharva shaurya harsha dhruva kartikeya dev yuvraj vikram aditya krishna krishn arya ravi rishi hari kavi mani jai vishnu shiva shiv rama ramesh dinesh mahesh suresh rakesh mukesh lokesh yogesh rajesh ganesh umesh naresh hitesh ritesh jitesh amit sumit rohit mohit ankit anuj ajay vijay sanjay abhay aman arjun karan varun tarun arun pawan sachin sahil rahul sunil anil nikhil kapil gopal mohan sohan om hariom shubham gaurav saurabh anand vivek deepak ashok pankaj manoj vinod prem raja rajaa कृष्णा कृष्ण रवि हरि ऋषि आदित्य विष्णु शिव राम सचिन राहुल".split(" "));
+function isFem(name) {
+  const w = String(name || "").toLowerCase().replace(/[^a-zऀ-ॿ\s]/g, " ").split(/\s+/).filter(Boolean);
+  if (!w.length) return false;
+  if (w.some(x => _FW.has(x))) return true;
+  const f = w[0];
+  if (_FN.has(f)) return true; if (_MN.has(f)) return false;
+  if (/(a|i|ee)$/.test(f) && f.length > 2) return true;
+  if (/[ाीि]$/.test(f) && f.length > 2) return true;
+  return false;
+}
+const gv = (name, m, f) => isFem(name) ? f : m;
 function renderPlay() {
   _psig = playSig();
   const hi = lang === "hi", app = $("app"), ini = n => (String(n).trim()[0] || "?").toUpperCase();
@@ -3218,19 +3417,19 @@ function renderPlay() {
     h += `<div class="gm-e">${hi ? "पहले \"टेस्ट दो\" में अपना पूरा नाम और क्लास सेव करो, फिर यहाँ खेल पाओगे।" : "Pehle \"Take Test\" mein apna poora naam aur class save karo, phir yahan khel paoge."}</div><div class="gm-act"><button id="gmTest" class="btnm">${hi ? "टेस्ट पेज पर जाओ" : "Take Test par jao"}</button></div>`;
   } else {
     if (pg) {
-      const g = pg.g, meX = g.xId === PID, oppId = meX ? g.oId : g.xId, opp = esc(meX ? g.oName : g.xName), id = pg.id;
+      const g = pg.g, meX = g.xId === PID, oppId = meX ? g.oId : g.xId, opn = meX ? g.oName : g.xName, opp = esc(opn), id = pg.id;
       const w = ttWin(g.board), done = g.status === "done", left = !!(g.left && g.left !== PID);
       const myTurn = g.status === "playing" && !left && ((g.turn === "x") === meX), won = (g.winner === "x") === meX;
       const myRm = meX ? g.rx : g.ro, opRm = meX ? g.ro : g.rx;
       const offline = !left && !live.some(x => x.id === oppId) && sNow() - (g.updatedAt || 0) > 30e3;
-      const st = left ? (done ? "\u{1F44B} " + opp + (hi ? " चला गया" : " chala gaya") : "\u{1F389} " + opp + (hi ? " ने गेम छोड़ दिया — आप जीते!" : " ne game chhod diya — aap jeete!"))
-        : done ? (g.winner === "draw" ? "\u{1F91D} " + (hi ? "बराबरी!" : "Draw!") : won ? "\u{1F389} " + (hi ? "आप जीते!" : "Aap jeete!") : "\u{1F605} " + opp + (hi ? " जीता" : " jeeta"))
+      const st = left ? (done ? "\u{1F44B} " + opp + (hi ? gv(opn, " चला गया", " चली गई") : gv(opn, " chala gaya", " chali gayi")) : "\u{1F389} " + opp + (hi ? " ने गेम छोड़ दिया — आप जीते!" : " ne game chhod diya — aap jeete!"))
+        : done ? (g.winner === "draw" ? "\u{1F91D} " + (hi ? "बराबरी!" : "Draw!") : won ? "\u{1F389} " + (hi ? "आप जीते!" : "Aap jeete!") : "\u{1F605} " + opp + (hi ? gv(opn, " जीता", " जीती") : gv(opn, " jeeta", " jeeti")))
         : myTurn ? "\u{1F449} " + (hi ? "आपकी बारी" : "Aapki baari") : opp + (hi ? " की बारी..." : " ki baari...");
       let acts;
       if (left) acts = `<button class="btnm" data-gx="${id}">${hi ? "नया खिलाड़ी ढूँढो" : "Naya opponent dhundo"}</button>`;
       else if (done) acts = (myRm ? `<button class="btnm" disabled>\u23F3 ${hi ? "इंतज़ार..." : "Wait karo..."}</button>` : `<button class="btnm" data-gag="${id}">\u{1F501} ${hi ? "रीमैच" : "Rematch"}</button>`) + `<button class="gm-gh" data-gx="${id}">${hi ? "छोड़ो / नया खिलाड़ी" : "Chhodo / Naya dost"}</button>`;
       else acts = `<button class="gm-gh" data-gx="${id}">${hi ? "छोड़ो" : "Chhodo"}</button>`;
-      const note = left ? "" : done ? (opRm && !myRm ? `<div class="gm-note ok">${opp} ${hi ? "दोबारा खेलना चाहता है — Rematch दबाओ!" : "dobara khelna chahta hai — Rematch dabao!"}</div>` : myRm ? `<div class="gm-note">${opp} ${hi ? "का जवाब आने तक रुको। नहीं खेलना तो छोड़ दो।" : "ka jawab aane tak ruko. Nahi khelna to chhod do."}</div>` : `<div class="gm-note">${hi ? "दोनों Rematch दबाओगे तो नया राउंड शुरू होगा।" : "Dono Rematch dabaoge to naya round shuru hoga."}</div>`) : offline ? `<div class="gm-note">\u26A0 ${opp} ${hi ? "ऑफलाइन लग रहा है" : "offline lag raha hai"}</div>` : "";
+      const note = left ? "" : done ? (opRm && !myRm ? `<div class="gm-note ok">${opp} ${hi ? gv(opn, "दोबारा खेलना चाहता है", "दोबारा खेलना चाहती है") + " — Rematch दबाओ!" : gv(opn, "dobara khelna chahta hai", "dobara khelna chahti hai") + " — Rematch dabao!"}</div>` : myRm ? `<div class="gm-note">${opp} ${hi ? "का जवाब आने तक रुको। नहीं खेलना तो छोड़ दो।" : "ka jawab aane tak ruko. Nahi khelna to chhod do."}</div>` : `<div class="gm-note">${hi ? "दोनों Rematch दबाओगे तो नया राउंड शुरू होगा।" : "Dono Rematch dabaoge to naya round shuru hoga."}</div>`) : offline ? `<div class="gm-note">\u26A0 ${opp} ${hi ? gv(opn, "ऑफलाइन लग रहा है", "ऑफलाइन लग रही है") : gv(opn, "offline lag raha hai", "offline lag rahi hai")}</div>` : "";
       h += `<div class="gm-card"><div class="gm-vs"><span class="me ${meX ? "x" : "o"}">${gmI(meX ? "x" : "o")}${hi ? "आप" : "You"}</span><span class="${meX ? "o" : "x"}">${gmI(meX ? "o" : "x")}${opp}</span></div><div class="gm-st">${st}</div><div class="gm-bd">${[...g.board].map((c, i) => `<button class="gm-c ${c === "X" ? "x" : c === "O" ? "o" : ""} ${w && w.l.includes(i) ? "win" : ""}" data-gm="${i}" ${c !== "_" || !myTurn ? "disabled" : ""}>${c === "X" ? gmI("x") : c === "O" ? gmI("o") : ""}</button>`).join("")}</div>${note}<div class="gm-act">${acts}</div></div>`;
     } else if (matching) {
       h += `<div class="gm-card text-center"><div class="gm-spin"></div><div class="font-extrabold">\u{1F3AF} ${hi ? "खिलाड़ी मिल गया!" : "Opponent mil gaya!"}</div><p class="text-xs text-neutral-500 mt-1">${esc(mq.m.on)} ${hi ? "के साथ गेम शुरू हो रहा है..." : "ke saath game shuru ho raha hai..."}</p></div>`;
@@ -3242,7 +3441,8 @@ function renderPlay() {
     }
     h += `<div class="gm-sec"><i class="od"></i>${hi ? "अभी लाइव" : "Abhi live"}</div>`;
     h += others.map(x => { const inT = x.subject === "In test", bz = busy.has(x.id), sr = srch.has(x.id);
-      const stt = inT ? (hi ? "टेस्ट दे रहा है" : "Test de raha hai") : bz ? (hi ? "खेल रहा है" : "Khel raha hai") : sr ? (hi ? "मैच ढूँढ रहा है" : "Match dhundh raha hai") : (hi ? "ऑनलाइन" : "Online");
+      const fm = isFem(x.name);
+      const stt = inT ? (hi ? (fm ? "टेस्ट दे रही है" : "टेस्ट दे रहा है") : (fm ? "Test de rahi hai" : "Test de raha hai")) : bz ? (hi ? (fm ? "खेल रही है" : "खेल रहा है") : (fm ? "Khel rahi hai" : "Khel raha hai")) : sr ? (hi ? (fm ? "मैच ढूँढ रही है" : "मैच ढूँढ रहा है") : (fm ? "Match dhundh rahi hai" : "Match dhundh raha hai")) : (hi ? "ऑनलाइन" : "Online");
       return `<div class="gm-row"><div class="gm-av">${esc(ini(x.name))}</div><div class="min-w-0"><b class="truncate"><i class="od${bz && !inT ? " b" : ""}"></i>${esc(x.name)}</b><em>${esc(clsLabel(String(x.cls)))} · ${stt}</em></div></div>`; }).join("");
   }
   _lc = cnt;
@@ -3342,6 +3542,49 @@ window.addEventListener("pagehide", () => { try { remove(ref(db, "testLive/" + P
   }, 2000);
 })();
 
+// ===== PHOTO VIEWER: kisi bhi student ki photo par tap = bada, saaf dekho =====
+document.addEventListener("click", e => {
+  const im = e.target && e.target.tagName === "IMG" ? e.target : null;
+  if (!im || state.screen === "quiz" || im.id === "logoImg" || !im.closest("#app") || !/^data:image\//.test(im.src || "")) return;
+  const v = document.getElementById("pv"); if (!v) return;
+  e.stopPropagation(); e.preventDefault();
+  let src = im.src, nm = "";
+  const row = im.closest("[data-nm],.lx-r,.lx-p,.lxme,.lbn-c,.lbn-row,.cpl-row");
+  if (row) { const n = row.querySelector(".lx-nm span,.lx-pn,.lxme-nm,.lbn-nm,.lbn-rn,.sx-nm,.cpl-mid b"); if (n) nm = n.textContent.trim(); }
+  if (saved && saved.photo && im.src === saved.photo && state.name) { const hd = hdGet(state.name, state.cls); if (hd) src = hd; nm = nm || state.name; }
+  const big = v.querySelector(".ph"), cap = v.querySelector(".cap b");
+  big.src = src; big.style.imageRendering = "auto"; if (cap) cap.textContent = nm || "";
+  v.classList.add("on"); void v.offsetWidth; v.classList.add("show"); document.documentElement.style.overflow = "hidden";
+}, true);
+{ const lg = document.getElementById("logoImg"); if (lg) lg.addEventListener("click", () => { const c = document.querySelector("#pv .cap b"); if (c) c.textContent = "Amrit Tiwari"; }, true); }
+// ===== HELP BUBBLE: site khulte hi chat icon ke neeche batata hai "koi problem ho to yahan message karo" =====
+setTimeout(() => {
+  try {
+    try { if (localStorage.getItem("amrit_hptip_seen")) return; } catch (e) {} // sirf pehli baar
+    const b = document.getElementById("guideBtn"); if (!b || state.screen === "quiz" || state.screen === "help" || document.getElementById("hpTip")) return;
+    try { localStorage.setItem("amrit_hptip_seen", "1"); } catch (e) {}
+    const hi = lang === "hi", r = b.getBoundingClientRect(), W = Math.min(270, innerWidth - 24);
+    const left = Math.max(12, Math.min(innerWidth - W - 12, r.left + r.width / 2 - W / 2)), arrow = Math.max(16, Math.min(W - 16, r.left + r.width / 2 - left));
+    const t = document.createElement("div"); t.id = "hpTip"; t.setAttribute("role", "status");
+    t.style.cssText = `left:${left}px;top:${r.bottom + 12}px;width:${W}px;--ar:${arrow}px`;
+    t.innerHTML = `<button type="button" class="hpt-x" aria-label="Close">&times;</button><div class="hpt-t">\u{1F4AC} ${hi ? "कोई समस्या है? सीधे मैसेज करें" : "Koi problem hai? Seedha message karein"}</div><div class="hpt-p">${hi ? "टेस्ट, रिज़ल्ट, गेम या कुछ भी — इस चैट आइकन पर टैप करके Amrit को लिखें। जवाब यहीं मिलेगा।" : "Test, result, game ya kuch bhi — is chat icon par tap karke Amrit ko likhein. Jawab yahin milega."}</div>`;
+    document.body.appendChild(t); b.classList.add("hpt-ring");
+    const done = () => { t.classList.add("out"); b.classList.remove("hpt-ring"); setTimeout(() => t.remove(), 300); };
+    t.onclick = e => { const x = e.target.closest(".hpt-x"); done(); if (!x && state.screen !== "quiz") { state.screen = "help"; render(); window.scrollTo({ top: 0, left: 0, behavior: "instant" }); } };
+    setTimeout(done, 12000);
+  } catch (e) {}
+}, 1800);
+// Purani chhoti (96px) photo ko is phone ki HD copy se saaf 240px mein badal do (ek baar, apne aap)
+setTimeout(async () => {
+  try {
+    if (!state.saved || !okPhoto(saved.photo) || saved.photo.length > 14000) return;
+    const hd = hdGet(state.name, state.cls); if (!hd) return;
+    const np = await resizePhoto(hd); if (!okPhoto(np) || np.length <= saved.photo.length) return;
+    saved.photo = np; photoMap.set(nk(state.name), np); saveProfile();
+    if (saved.sid && !_goneHit(state.name, state.cls, saved.sid, saved.createdAt)) await set(ref(db, "testStudents/" + saved.sid), stuRec(state.name, state.cls));
+    if (state.screen !== "quiz") render();
+  } catch (e) {}
+}, 3500);
 render();
 
 
