@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-IN">
+<html lang="hi-IN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -31,8 +31,12 @@
 <link rel="modulepreload" href="https://www.gstatic.com/firebasejs/10.13.0/firebase-database.js">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com/3.4.17"></script>
-<script>tailwind.config = { theme: { extend: { keyframes: { ttDraw: { from: { strokeDashoffset: '1' }, to: { strokeDashoffset: '0' } }, gwSheen: { '0%': { transform: 'translateX(-130%) skewX(-20deg)' }, '60%,100%': { transform: 'translateX(420%) skewX(-20deg)' } }, gwSpin: { to: { transform: 'rotate(360deg)' } }, gwSpinRev: { to: { transform: 'rotate(-360deg)' } }, gwBob: { '0%,100%': { transform: 'translateX(-50%) translateY(0) rotate(-8deg)' }, '50%': { transform: 'translateX(-50%) translateY(-6px) rotate(8deg)' } }, gwFire: { '0%,100%': { transform: 'translateY(0) scale(1)', opacity: '.95' }, '50%': { transform: 'translateY(-5px) scale(1.18)', opacity: '1' } }, gwGlow: { '0%,100%': { boxShadow: '0 0 0 1px #fbbf24,0 0 18px rgba(251,146,60,.55),0 18px 36px -16px rgba(220,38,38,.9)' }, '50%': { boxShadow: '0 0 0 1px #fde047,0 0 34px rgba(251,146,60,.95),0 18px 40px -14px rgba(220,38,38,1)' } } }, animation: { ttDraw: 'ttDraw .55s ease-out both', gwSheen: 'gwSheen 3.4s ease-in-out infinite', gwSpin: 'gwSpin 6s linear infinite', gwSpinRev: 'gwSpinRev 6s linear infinite', gwBob: 'gwBob 2.2s ease-in-out infinite', gwFire: 'gwFire 1.1s ease-in-out infinite', gwGlow: 'gwGlow 2.4s ease-in-out infinite' }, fontFamily: { sans: ['Poppins', 'Noto Sans Devanagari', 'system-ui', 'sans-serif'] }, colors: { green: { 50:'#fef2f2',100:'#fee2e2',200:'#fecaca',300:'#fca5a5',400:'#f87171',500:'#ef4444',600:'#dc2626',700:'#b91c1c',800:'#991b1b',900:'#7f1d1d',950:'#450a0a' } } } } };</script>
+<script>tailwind.config = { theme: { extend: { keyframes: { ttDraw: { from: { strokeDashoffset: '1' }, to: { strokeDashoffset: '0' } }, gwSheen: { '0%': { transform: 'translateX(-130%) skewX(-20deg)' }, '60%,100%': { transform: 'translateX(420%) skewX(-20deg)' } }, gwSpin: { to: { transform: 'rotate(360deg)' } }, gwSpinRev: { to: { transform: 'rotate(-360deg)' } }, gwBob: { '0%,100%': { transform: 'translateY(0) rotate(-5deg)' }, '50%': { transform: 'translateY(-3px) rotate(5deg)' } }, gwFire: { '0%,100%': { transform: 'translateY(0) scale(1)', opacity: '.95' }, '50%': { transform: 'translateY(-5px) scale(1.18)', opacity: '1' } }, gwGlow: { '0%,100%': { boxShadow: '0 0 0 1px #fbbf24,0 0 18px rgba(251,146,60,.55),0 18px 36px -16px rgba(220,38,38,.9)' }, '50%': { boxShadow: '0 0 0 1px #fde047,0 0 34px rgba(251,146,60,.95),0 18px 40px -14px rgba(220,38,38,1)' } } }, animation: { ttDraw: 'ttDraw .55s ease-out both', gwSheen: 'gwSheen 3.4s ease-in-out infinite', gwSpin: 'gwSpin 6s linear infinite', gwSpinRev: 'gwSpinRev 6s linear infinite', gwBob: 'gwBob 2.2s ease-in-out infinite', gwFire: 'gwFire 1.1s ease-in-out infinite', gwGlow: 'gwGlow 2.4s ease-in-out infinite' }, fontFamily: { sans: ['Poppins', 'Noto Sans Devanagari', 'system-ui', 'sans-serif'] }, colors: { green: { 50:'#fef2f2',100:'#fee2e2',200:'#fecaca',300:'#fca5a5',400:'#f87171',500:'#ef4444',600:'#dc2626',700:'#b91c1c',800:'#991b1b',900:'#7f1d1d',950:'#450a0a' } } } } };</script>
 <style>
+.crw{display:inline-block;width:1.3em;height:.975em;vertical-align:-.12em;overflow:visible;filter:drop-shadow(0 1px 1.5px rgba(120,53,15,.55)) drop-shadow(0 0 6px rgba(251,191,36,.45))}
+@keyframes crwShine{0%,100%{filter:drop-shadow(0 1px 1.5px rgba(120,53,15,.55)) drop-shadow(0 0 5px rgba(251,191,36,.35))}50%{filter:drop-shadow(0 1px 1.5px rgba(120,53,15,.55)) drop-shadow(0 0 11px rgba(251,191,36,.85))}}
+.lbn-crown .crw,.lx-crown .crw,.rk-crown .crw,.cg-cr .crw,.hof-cr .crw,.cpl-avw i .crw{animation:crwShine 2.4s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.crw{animation:none!important}}
 html{background:#f6fbf7}
 body{background:
  radial-gradient(700px 320px at 12% -60px,rgba(34,197,94,.20),transparent 70%),
@@ -95,6 +99,27 @@ html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}butto
 ::-webkit-scrollbar{display:none}
 @keyframes slidedown{from{opacity:0;transform:translateY(-18px) scale(.97)}to{opacity:1;transform:none}}
 .slidedown{animation:slidedown .35s cubic-bezier(.2,.9,.25,1) both}
+
+/* ---- Announcement card (owner ki manual announcement) ---- */
+.annc{position:relative;overflow:hidden;width:100%;max-width:440px;text-align:left;border:0;border-radius:22px;padding:14px 14px 18px;color:#fff;background:radial-gradient(120% 140% at 0% 0%,#22c55e 0%,#15803d 48%,#052e16 100%);box-shadow:0 20px 44px -14px rgba(5,46,22,.65),0 0 0 1px rgba(255,255,255,.16) inset;animation:anncIn .55s cubic-bezier(.2,1.1,.3,1) both}
+.annc.out{animation:anncOut .28s ease-in both}
+.annc::before{content:"";position:absolute;top:0;bottom:0;left:0;width:34%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.22),transparent);transform:translateX(-130%) skewX(-20deg);animation:anncSheen 1.6s .5s ease-out 1 both;pointer-events:none}
+.annc::after{content:"";position:absolute;right:-34px;top:-34px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.2),transparent 70%);pointer-events:none}
+.annc .ai{flex:none;width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:rgba(255,255,255,.18);box-shadow:0 0 0 1px rgba(255,255,255,.28) inset,0 6px 14px -6px rgba(0,0,0,.4);backdrop-filter:blur(4px)}
+.annc .ai svg{width:24px;height:24px;transform-origin:30% 70%;animation:anncWob 1.3s .35s ease-in-out 2}
+.annc .at{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;padding:2px 8px;border-radius:999px;background:rgba(255,255,255,.2);color:#ecfccb}
+.annc .at i{width:6px;height:6px;border-radius:50%;background:#bef264;display:inline-block;animation:pulsedot 1.4s infinite}
+.annc .ah{font-size:16px;line-height:1.25;font-weight:800;margin-top:5px;overflow-wrap:anywhere}
+.annc .ab{font-size:13px;line-height:1.45;opacity:.92;margin-top:3px;overflow-wrap:anywhere;white-space:pre-line}
+.annc .ax{position:absolute;top:8px;right:8px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.16);font-size:15px;line-height:1;font-weight:700}
+.annc .ap{position:absolute;left:0;bottom:0;height:4px;width:100%;background:rgba(255,255,255,.14)}
+.annc .ap b{display:block;height:100%;width:100%;transform-origin:left;background:linear-gradient(90deg,#bef264,#fef08a);animation:anncBar var(--d,12s) linear both}
+@keyframes anncIn{0%{opacity:0;transform:translateY(-34px) scale(.92)}60%{opacity:1;transform:translateY(5px) scale(1.01)}100%{transform:none}}
+@keyframes anncOut{to{opacity:0;transform:translateY(-22px) scale(.95)}}
+@keyframes anncSheen{to{transform:translateX(420%) skewX(-20deg)}}
+@keyframes anncWob{0%,100%{transform:rotate(0)}20%{transform:rotate(-16deg)}40%{transform:rotate(12deg)}60%{transform:rotate(-8deg)}80%{transform:rotate(5deg)}}
+@keyframes anncBar{to{transform:scaleX(0)}}
+@media (prefers-reduced-motion:reduce){.annc,.annc::before,.annc .ai svg,.annc .at i{animation:none!important}}
 @keyframes chipPop{0%{transform:scale(.82)}60%{transform:scale(1.18)}100%{transform:scale(1.05)}}
 .cchip[aria-checked="true"]{animation:chipPop .28s ease}
 .noselect,.noselect *{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
@@ -194,7 +219,7 @@ img{image-rendering:auto}
 .rk-win img{width:100%;height:100%;object-fit:cover;border:0;border-radius:0}
 .rk-flame{width:calc(var(--w) * .3);height:calc(var(--w) * .55);margin:-5px auto 0;border-radius:50% 50% 60% 60% / 30% 30% 70% 70%;background:linear-gradient(180deg,#fff7c2,#fbbf24 38%,#f97316 72%,transparent);transform-origin:top center;animation:rkFlame .17s ease-in-out infinite alternate}
 .rk-trail{position:absolute;left:50%;bottom:0;width:8px;margin-left:-4px;height:var(--b);border-radius:8px;background:linear-gradient(0deg,transparent,rgba(253,224,71,.0) 5%,rgba(253,224,71,.5));transform-origin:bottom;animation:rkTrail .7s ease-out calc(var(--d) + .5s) both;z-index:1}
-.rk-crown{position:absolute;left:50%;top:-1.55rem;margin-left:-.8rem;font-size:1.6rem;line-height:1;animation:rkPop .6s cubic-bezier(.2,.9,.3,1.3) calc(var(--d) + 1.3s) both}
+.rk-crown{position:absolute;left:50%;top:-1.55rem;margin-left:-1.04rem;font-size:1.6rem;line-height:1;animation:rkPop .6s cubic-bezier(.2,.9,.3,1.3) calc(var(--d) + 1.3s) both}
 .rk-card{position:relative;border-radius:1rem;padding:.45rem .3rem .5rem;background:rgba(255,255,255,.94);text-align:center;box-shadow:0 10px 20px -10px rgba(0,0,0,.45);animation:rkPop .55s cubic-bezier(.2,.9,.3,1.2) calc(var(--d) + 1.1s) both}
 .rk-tag{display:inline-block;padding:.08rem .5rem;border-radius:999px;font-size:.56rem;font-weight:800;color:#fff;margin-bottom:.2rem}
 .rk-stars{font-size:.8rem;letter-spacing:1px;color:#f59e0b;line-height:1}.rk-stars i{font-style:normal;color:#d6d3d1}
@@ -772,6 +797,15 @@ html .lbn .lbn-g .lbn-nm,html .lbn .lbn-s .lbn-nm,html .lbn .lbn-b .lbn-nm{font-
 .pdw-a strong{display:block;font-size:1.15rem;font-weight:900;color:#15803d;line-height:1.1}
 .pdw-a span{display:inline-block;margin-top:3px;font-size:.6rem;font-weight:700;color:#fff;background:#16a34a;padding:2px 8px;border-radius:99px}
 .pdw-e{padding:18px 14px;border-radius:22px;border:2px dashed #fcd34d;background:#fffbeb;color:#92400e;font-size:.82rem;font-weight:700;text-align:center;line-height:1.5}
+/* ===== v8: Created by text dikhna band (DOM mein hidden rehta hai) ===== */
+html body .ft-wrap,html body .ft-wrap #ft,html body .ft-wrap #yr{font-size:0!important;line-height:0!important;color:transparent!important;-webkit-user-select:none;user-select:none;pointer-events:none}
+/* ===== v9: jeet par TOP 1 trophy ===== */
+@keyframes gwTroPop{0%{transform:scale(.2) rotate(-12deg);opacity:0}60%{transform:scale(1.18) rotate(4deg);opacity:1}100%{transform:scale(1) rotate(0)}}
+@keyframes gwTroShine{0%,100%{filter:drop-shadow(0 0 4px rgba(251,191,36,.5))}50%{filter:drop-shadow(0 0 12px rgba(251,191,36,.95))}}
+.gw-tro{animation:gwTroPop .7s cubic-bezier(.2,.9,.3,1.2) both,gwTroShine 1.8s ease-in-out .7s infinite}
+/* ===== v10: Test start CTA ===== */
+@keyframes gwCta{0%,100%{transform:scale(1)}50%{transform:scale(1.025)}}
+.cta-go{animation:gwCta 1.6s ease-in-out infinite;transition:transform .15s}.cta-go:active{transform:scale(.97);animation:none}
 </style>
 <style id="v12">
 /* class picker: green -> indigo */
@@ -1099,7 +1133,7 @@ html body .cpm{padding:34px 12px 14px!important;border-radius:32px!important;
  border:2px solid #d4a017!important;
  box-shadow:0 0 0 4px rgba(212,160,23,.16),0 26px 44px -22px rgba(127,29,29,.85),inset 0 1px 0 #fff!important}
 html body .cpm::before{left:18px!important;right:18px!important;height:4px!important;background:linear-gradient(90deg,transparent,#b8860b,#fde047,#b8860b,transparent)!important}
-html body .cpm::after{content:"\1F451";position:absolute;top:-4px;left:50%;transform:translateX(-50%);font-size:1.7rem;line-height:1;filter:drop-shadow(0 3px 5px rgba(120,53,15,.55));animation:thFloat 2.6s ease-in-out infinite;pointer-events:none}
+html body .cpm::after{content:"";width:2.5rem;height:1.9rem;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 48'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23fffbe0'/%3E%3Cstop offset='.3' stop-color='%23fde047'/%3E%3Cstop offset='.7' stop-color='%23f59e0b'/%3E%3Cstop offset='1' stop-color='%23b45309'/%3E%3C/linearGradient%3E%3CradialGradient id='r' cx='.35' cy='.3' r='.85'%3E%3Cstop offset='0' stop-color='%23ffe4e6'/%3E%3Cstop offset='.45' stop-color='%23f43f5e'/%3E%3Cstop offset='1' stop-color='%237f1d1d'/%3E%3C/radialGradient%3E%3CradialGradient id='p' cx='.35' cy='.3' r='.85'%3E%3Cstop offset='0' stop-color='%23fff'/%3E%3Cstop offset='1' stop-color='%237dd3fc'/%3E%3C/radialGradient%3E%3C/defs%3E%3Cpath d='M7 40 3.5 13l15 12L32 5l13.5 20 15-12L57 40Z' fill='url(%23g)' stroke='%2392400e' stroke-width='1.8' stroke-linejoin='round'/%3E%3Cpath d='M9 21.5 12 35' stroke='%23fff' stroke-opacity='.8' stroke-width='1.8' stroke-linecap='round'/%3E%3Crect x='5.5' y='37.5' width='53' height='9' rx='3.2' fill='url(%23g)' stroke='%2392400e' stroke-width='1.8'/%3E%3Ccircle cx='3.6' cy='12' r='3' fill='url(%23p)' stroke='%23b45309' stroke-width='.9'/%3E%3Ccircle cx='32' cy='4.6' r='3.6' fill='url(%23p)' stroke='%23b45309' stroke-width='.9'/%3E%3Ccircle cx='60.4' cy='12' r='3' fill='url(%23p)' stroke='%23b45309' stroke-width='.9'/%3E%3Cpath d='M32 21.5l5 6.2-5 7.3-5-7.3Z' fill='url(%23r)' stroke='%23fff' stroke-width='1'/%3E%3Ccircle cx='32' cy='42' r='2.6' fill='url(%23r)' stroke='%23fff' stroke-width='.8'/%3E%3C/svg%3E") center/contain no-repeat;position:absolute;top:-10px;left:50%;transform:translateX(-50%);filter:drop-shadow(0 3px 5px rgba(120,53,15,.55)) drop-shadow(0 0 8px rgba(251,191,36,.5));animation:thFloat 2.6s ease-in-out infinite;pointer-events:none}
 html body .cpm .sec3{background:linear-gradient(120deg,#7f1d1d,#be123c 50%,#7f1d1d)!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;letter-spacing:.04em;font-weight:900}
 html body .cpm .lbn-c{background:radial-gradient(120% 140% at 0 0,rgba(253,224,71,.3),transparent 55%),linear-gradient(135deg,#4c0519,#881337 55%,#2a0310)!important;border:1.5px solid rgba(253,224,71,.75)!important;box-shadow:0 16px 28px -16px rgba(76,5,25,.95),inset 0 1px 0 rgba(255,255,255,.2)!important}
 html body .cpm .lbn-g{border:2px solid #fde047!important;box-shadow:0 0 0 3px rgba(253,224,71,.22),0 18px 32px -14px rgba(127,29,29,.85),inset 0 1px 0 rgba(255,255,255,.25)!important}
@@ -1555,6 +1589,75 @@ html body .lbt3 .lbn-lh{margin:4px 4px 2px!important;font-size:.72rem!important}
 html body .lbt3 .lbn-more{display:block;width:100%;margin:6px 0 0;padding:8px;border:0;border-radius:14px;background:#fff;color:#1c1c1e;font:700 .74rem/1 Poppins,'Noto Sans Devanagari',sans-serif;box-shadow:0 0 0 .5px rgba(0,0,0,.08);cursor:pointer}
 html body .lbt3 .lbn-more:active{transform:scale(.98)}
 </style>
+<style id="sheetv17">
+/* ===== v17: dropdown button + bottom-sheet pickers ===== */
+.dd-btn{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:10px 14px 10px 10px;border-radius:20px;
+ background:#fff!important;border:1.5px solid color-mix(in srgb,var(--a,#6366f1) 35%,#fff)!important;
+ box-shadow:0 10px 20px -14px var(--b,#4338ca)!important;color:#1c1c1e!important;transition:transform .2s,box-shadow .2s,border-color .2s!important}
+.dd-btn:active{transform:scale(.98)!important}
+.dd-ic{flex:none;width:46px;height:46px;border-radius:15px;display:grid;place-items:center;font-size:1.4rem;font-weight:800;color:#fff;
+ background:linear-gradient(150deg,var(--a,#6366f1),var(--b,#4338ca));box-shadow:0 8px 12px -6px var(--b,#4338ca)}
+.dd-tx{flex:1;min-width:0;display:flex;flex-direction:column}
+.dd-tx small{font-size:.66rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#8e8e93}
+.dd-tx b{font-size:1.12rem;font-weight:800;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dd-btn.empty .dd-tx b{color:#9ca3af;font-weight:700}
+.dd-ar{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:rgba(118,118,128,.14);color:#3c3c43;font-size:1rem;font-weight:800;transition:transform .25s}
+.dd-btn[aria-expanded=true] .dd-ar{transform:rotate(180deg)}
+.shx-lock,.shx-lock body{overflow:hidden!important}
+.shx-ov{position:fixed;inset:0;z-index:99999;display:flex;align-items:flex-end;justify-content:center;background:rgba(15,23,42,.45);
+ -webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);animation:shxFade .22s ease both}
+.shx-ov.out{animation:shxFadeOut .22s ease both}
+.shx-sheet{width:100%;max-width:520px;max-height:78vh;display:flex;flex-direction:column;background:#fff;border-radius:28px 28px 0 0;
+ box-shadow:0 -20px 50px -20px rgba(0,0,0,.5);padding-bottom:env(safe-area-inset-bottom,0px);animation:shxUp .3s cubic-bezier(.2,.9,.3,1.05) both;
+ font-family:Poppins,'Noto Sans Devanagari',system-ui,sans-serif}
+.shx-ov.out .shx-sheet{animation:shxDown .22s ease both}
+.shx-hd{touch-action:none;padding:8px 16px 6px;flex:none;cursor:grab}
+.shx-grab{width:42px;height:5px;border-radius:9px;background:rgba(60,60,67,.25);margin:0 auto 10px}
+.shx-tt{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.shx-tt b{font-size:1.08rem;font-weight:800;color:#1c1c1e}
+.shx-x{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:rgba(118,118,128,.14)!important;color:#3c3c43!important;font-size:.95rem;font-weight:800;border:none!important}
+.shx-bd{overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding:4px 16px 18px}
+.shx-gt{font-size:.72rem;font-weight:700;color:#6b7280;margin:12px 2px 7px}
+.shx-gt:first-child{margin-top:4px}
+.shx-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.shx-pill{position:relative;height:60px;border-radius:17px;display:grid;place-items:center;align-content:center;gap:2px;
+ background:#fff!important;color:var(--b)!important;border:1.5px solid color-mix(in srgb,var(--a) 30%,#fff)!important;box-shadow:none!important}
+.shx-pill b{font-size:1.3rem;font-weight:800;line-height:1}
+.shx-pill small{font-size:.58rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;opacity:.65}
+.shx-pill.on{background:linear-gradient(150deg,var(--a),var(--b))!important;color:#fff!important;border-color:transparent!important;box-shadow:0 12px 18px -10px var(--b)!important}
+.shx-pill.on small{opacity:.9}
+.shx-pill.on::after{content:"\2713";position:absolute;top:-6px;right:-5px;width:18px;height:18px;border-radius:50%;background:#fff;color:var(--b);font-size:.62rem;font-weight:900;display:grid;place-items:center;box-shadow:0 2px 6px rgba(0,0,0,.25)}
+.shx-it{display:flex;align-items:center;gap:13px;width:100%;text-align:left;padding:10px 12px;margin-bottom:8px;border-radius:20px;
+ background:#fff!important;color:#1c1c1e!important;border:1.5px solid color-mix(in srgb,var(--a) 28%,#fff)!important;box-shadow:none!important}
+.shx-it .shx-ic{flex:none;width:46px;height:46px;border-radius:15px;display:grid;place-items:center;font-size:1.35rem;font-weight:800;color:#fff;background:linear-gradient(150deg,var(--a),var(--b))}
+.shx-it .shx-tx{flex:1;min-width:0;display:flex;flex-direction:column}
+.shx-it .shx-tx b{font-size:1.05rem;font-weight:800}
+.shx-it .shx-tx small{font-size:.72rem;font-weight:600;color:#8e8e93}
+.shx-it .shx-ck{flex:none;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:.75rem;font-weight:900;color:transparent;background:rgba(118,118,128,.14)}
+.shx-it.on{background:linear-gradient(150deg,var(--a),var(--b))!important;color:#fff!important;border-color:transparent!important;box-shadow:0 14px 22px -14px var(--b)!important}
+.shx-it.on .shx-ic{background:rgba(255,255,255,.25)}
+.shx-it.on .shx-tx small{color:rgba(255,255,255,.85)}
+.shx-it.on .shx-ck{background:#fff;color:var(--b)}
+.shx-it:active,.shx-pill:active{transform:scale(.97)}
+@keyframes shxFade{from{opacity:0}to{opacity:1}}@keyframes shxFadeOut{to{opacity:0}}
+@keyframes shxUp{from{transform:translateY(100%)}to{transform:none}}@keyframes shxDown{to{transform:translateY(100%)}}
+@keyframes ctaIn{from{opacity:0;transform:translateY(8px) scale(.97)}to{opacity:1;transform:none}}
+#sbCard .cta-go{animation:ctaIn .3s cubic-bezier(.2,.9,.3,1.2) both}
+@media (prefers-reduced-motion:reduce){.shx-ov,.shx-sheet,#sbCard .cta-go{animation:none!important}}
+/* compact student cards */
+#stList .sx-list{gap:6px}
+#stList .sx{padding:7px 10px;gap:9px;border-radius:18px}
+#stList .sx-ring{width:42px;height:42px}
+#stList .sx-ring>img,#stList .sx-ring>div{width:37px!important;height:37px!important;font-size:.85rem}
+#stList .sx-rk{min-width:16px;height:16px;font-size:.5rem;bottom:-3px;right:-3px}
+#stList .sx-nm{font-size:.85rem}
+#stList .sx-tags{gap:3px;margin-top:2px;align-items:center}
+#stList .sx-tags span{font-size:.56rem;padding:1px 6px}
+#stList .sx-dt2{font-size:.56rem;font-weight:600;color:#8e8e93;font-style:normal}
+#stList .sx-big{font-size:1.1rem}
+#stList .sx-pc{margin-top:2px;font-size:.58rem;padding:1px 6px}
+#stList .sx-tm{margin-top:0;font-size:.56rem}
+</style>
 <script type="module">
 let initializeApp, getDatabase, ref, onValue, get, push, set, runTransaction, remove, onDisconnect, query, orderByKey, limitToLast;
 try {
@@ -1574,8 +1677,9 @@ const $ = id => document.getElementById(id);
 const esc = v => String(v == null ? "" : v).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 $("yr").textContent = new Date().getFullYear();
 const uiErr = m => { const el = $("err"), msg = "\u26A0 " + m; if (el) { el.textContent = msg; el.classList.remove("hidden"); try { el.scrollIntoView({ block: "center" }); } catch (e) {} } else alert(msg); };
-window.addEventListener("error", ev => { if (state && state.screen === "start") uiErr(ev.message || "error"); });
-window.addEventListener("unhandledrejection", ev => { if (state && state.screen === "start") uiErr(String((ev.reason && ev.reason.message) || ev.reason || "error")); });
+const _quietErr = m => /firebase|permission|denied|database|network|failed to fetch|load failed|offline|script error|resizeobserver|unavailable/i.test(String(m));
+window.addEventListener("error", ev => { if (state && state.screen === "start" && !_quietErr(ev.message)) uiErr(ev.message || "error"); });
+window.addEventListener("unhandledrejection", ev => { const m = String((ev.reason && (ev.reason.code || ev.reason.message)) || ev.reason || "error"); if (state && state.screen === "start" && !_quietErr(m)) uiErr(m); });
 
 // YouTube link: Firebase testConfig/ytUrl se aata hai (admin se badlo, sab jagah badal jayega)
 const ytNameOf = (u, n) => n || ((/youtube\.com\/(@[^\/?#]+)/i.exec(u) || [])[1]) || "YouTube";
@@ -1616,20 +1720,31 @@ function ytGate(next) {
     <div class="w-11 h-1.5 rounded-full bg-red-100 mx-auto mb-4"></div>
     <div class="text-center"><div class="yti mx-auto" style="width:56px;height:56px;border-radius:18px"><svg style="width:26px;height:26px" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       <h3 class="text-xl font-extrabold mt-3">${hi ? "टेस्ट से पहले चैनल सब्सक्राइब करें" : "Test se pehle channel subscribe karein"}</h3>
-      <p class="text-sm text-neutral-500 mt-1">${hi ? "सब्सक्राइब दबाएँ, फिर वापस आकर टेस्ट शुरू करें।" : "Subscribe dabayein, phir wapas aakar test shuru karein."}</p></div>
+      <p class="text-sm text-neutral-500 mt-1">${hi ? "सब्सक्राइब दबाएँ, YouTube से वापस आते ही टेस्ट अपने-आप शुरू हो जाएगा।" : "Subscribe dabayein, YouTube se wapas aate hi test apne-aap shuru ho jayega."}</p></div>
     <a data-yt href="${YT_URL}" target="_blank" rel="noopener noreferrer" class="block text-center mt-5 py-3.5 rounded-2xl bg-red-600 text-white font-bold shadow-lg shadow-red-600/25 active:scale-[.97] transition">${hi ? "YouTube पर सब्सक्राइब करें" : "YouTube par subscribe karein"}</a>
-    <button id="ytGo" disabled class="block w-full mt-3 py-3.5 rounded-2xl ${btnMain} disabled:opacity-40 disabled:cursor-not-allowed">${hi ? "मैंने सब्सक्राइब कर लिया, टेस्ट शुरू करें" : "Maine subscribe kar liya, test shuru karein"}</button>
+    <div id="ytMsg" class="hidden mt-3 py-3.5 rounded-2xl bg-green-50 text-center font-extrabold text-green-700"></div>
     <button id="ytX" class="block w-full mt-2 py-2 text-sm font-semibold text-neutral-500">${hi ? "रद्द करें" : "Cancel"}</button></div>`;
   document.body.appendChild(ov); applyYt();
-  const go = ov.querySelector("#ytGo"), tick = setInterval(() => {
-    let tp = 0; try { tp = Number(localStorage.getItem("amrit_yt_tap")) || 0; } catch (e) {}
-    go.disabled = !(tp && Date.now() - tp >= 5000);
-  }, 500);
-  const close = () => { clearInterval(tick); ov.classList.add("out"); setTimeout(() => ov.remove(), 220); };
-  ov.querySelector("#ytX").onclick = close;
-  ov.onclick = e => { if (e.target === ov) close(); };
-  go.onclick = () => { if (go.disabled) return; try { localStorage.setItem("amrit_yt_ok", "1"); } catch (e) {} const c = $("ytCard"); if (c) c.remove(); close(); next(); };
+  const close = () => { ov.classList.add("out"); setTimeout(() => ov.remove(), 220); };
+  ov.querySelector("#ytX").onclick = () => { window._ytGate = null; close(); };
+  ov.onclick = e => { if (e.target === ov) { window._ytGate = null; close(); } };
+  window._ytGate = { ov, close, next };
 }
+
+// YouTube se wapas aate hi: card hat jata hai aur "Maine kar diya" likha aata hai (verify nahi ho sakta, bharose par)
+function ytReturn() {
+  if (ytDone()) return;
+  let tp = 0; try { tp = Number(localStorage.getItem("amrit_yt_tap")) || 0; } catch (e) {}
+  if (!tp || Date.now() - tp < 4000) return;
+  try { localStorage.setItem("amrit_yt_ok", "1"); } catch (e) {}
+  const txt = "\u2714 " + (lang === "hi" ? "मैंने कर दिया" : "Maine kar diya");
+  const c = $("ytCard");
+  if (c) { c.innerHTML = `<div class="flex-1 text-center font-bold text-sm text-green-700">${txt}</div>`; setTimeout(() => { c.style.transition = "opacity .4s"; c.style.opacity = "0"; setTimeout(() => c.remove(), 420); }, 2200); }
+  const g = window._ytGate;
+  if (g) { window._ytGate = null; const m = g.ov.querySelector("#ytMsg"); if (m) { m.textContent = txt; m.classList.remove("hidden"); } setTimeout(() => { g.close(); g.next(); }, 900); }
+}
+document.addEventListener("visibilitychange", () => { if (!document.hidden) ytReturn(); });
+window.addEventListener("focus", ytReturn);
 const QCOUNT = 30;
 const CLASSES = Array.from({ length: 12 }, (_, i) => String(i + 1));
 const clsLabelEn = c => /^\d+$/.test(c) ? "Class " + c : c;
@@ -1657,11 +1772,14 @@ const T = {
 };
 
 const LB = {
-  en: { stuTab: "All Students", topTab: "Toppers", tabStuD: "Everyone who took a test. Tap a name to see all their tests.", tabTopD: "Total marks of all subjects added. More marks = higher rank. Same marks? Less time wins.", legT: "How to read the numbers", leg1: "\u2705 <b>18/30</b> = 18 correct answers out of 30 questions", leg2: "\u{1F4CA} <b>60%</b> = percentage of correct answers", leg3: "\u23F1 = time taken (less time is better)", leg4: "\u{1F947} <b>Rank</b>: more correct answers = higher rank. Same score? The one who finished faster is ahead.", sortL: "Sort", rankN: "Rank", stu: "Students", top: "Toppers", all: "All", allCls: "All classes", search: "Search name...", latest: "Latest", best: "Best score", tests: "tests", avg: "Average", champ: "CHAMPION", none: "No students yet. Be the first to take the test!", podium: "Top 3 Podium", subChamp: "Subject Champions", you: "You", back: "Back", stuTitle: "All students who took the test", howT: "How is rank decided?", how: "More correct answers = higher rank. If two people have the same score, the one who finished faster ranks higher.", no1: "No. 1 right now", top10: "Top 10", subTop: "Topper of each subject", correct: "correct", noTop: "No topper yet", clsTop: "Topper of every class", tap: "Tap a class to see its full list", overall: "Overall Top 10", classL: "Class", subjL: "Subject", showing: "Showing", rest: "Rank 4 to 10", restD: "Students after the top 3", rankStu: "Rank · Student", scoreTime: "Score · Time", taken: "Test taken", podD: "Best 3 results right now", subTopD: "Best result in each subject" },
-  hi: { stuTab: "सभी छात्र", topTab: "टॉपर", tabStuD: "टेस्ट देने वाले सभी लोग। पूरा हिसाब देखने के लिए नाम पर टैप करें।", tabTopD: "सभी विषयों के कुल नंबर जोड़कर रैंक। ज़्यादा नंबर = ऊपर। नंबर बराबर? कम समय वाला ऊपर।", legT: "नंबर कैसे पढ़ें", leg1: "\u2705 <b>18/30</b> = 30 सवालों में से 18 जवाब सही", leg2: "\u{1F4CA} <b>60%</b> = सही जवाबों का प्रतिशत", leg3: "\u23F1 = टेस्ट में लगा समय (कम समय बेहतर)", leg4: "\u{1F947} <b>रैंक</b>: ज़्यादा सही जवाब = ऊपर की रैंक। स्कोर बराबर हो तो जो जल्दी खत्म करे, वह ऊपर।", sortL: "क्रम", rankN: "रैंक", stu: "छात्र", top: "टॉपर", all: "सब", allCls: "सभी कक्षा", search: "नाम खोजें...", latest: "नया", best: "बेस्ट स्कोर", tests: "टेस्ट", avg: "औसत", champ: "चैंपियन", none: "अभी कोई छात्र नहीं है। पहले आप टेस्ट दें!", podium: "टॉप 3", subChamp: "विषय चैंपियन", you: "आप", back: "वापस", stuTitle: "टेस्ट देने वाले सभी छात्र", howT: "रैंक कैसे तय होता है?", how: "जिसके सबसे ज़्यादा जवाब सही, वह ऊपर। स्कोर बराबर हो तो जो कम समय में खत्म करे, वह ऊपर।", no1: "अभी नंबर 1", top10: "टॉप 10", subTop: "हर विषय का टॉपर", correct: "सही", noTop: "अभी कोई टॉपर नहीं", clsTop: "हर कक्षा का टॉपर", tap: "पूरी लिस्ट देखने के लिए कक्षा पर टैप करें", overall: "सभी कक्षा का टॉप 10", classL: "कक्षा", subjL: "विषय", showing: "दिखा रहे हैं", rest: "रैंक 4 से 10", restD: "टॉप 3 के बाद के छात्र", rankStu: "रैंक · छात्र", scoreTime: "स्कोर · समय", taken: "टेस्ट दिया", podD: "अभी के सबसे अच्छे 3 रिज़ल्ट", subTopD: "हर विषय का सबसे अच्छा रिज़ल्ट" }
+  en: { stuTab: "All Students", topTab: "Toppers", tabStuD: "Everyone who took a test. Tap a name to see all their tests.", tabTopD: "Total marks of all subjects added. More marks = higher rank. Same marks? Less time wins.", legT: "How to read the numbers", leg1: "\u2705 <b>18/30</b> = 18 correct answers out of 30 questions", leg2: "\u{1F4CA} <b>60%</b> = percentage of correct answers", leg3: "\u23F1 = time taken (less time is better)", leg4: "\u{1F947} <b>Rank</b>: more correct answers = higher rank. Same score? The one who finished faster is ahead.", sortL: "Sort", rankN: "Rank", stu: "Students", top: "Toppers", all: "All", allCls: "All classes", search: "Search name...", latest: "Latest", best: "Best score", most: "Most tests", tests: "tests", avg: "Average", champ: "CHAMPION", none: "No students yet. Be the first to take the test!", podium: "Top 3 Podium", subChamp: "Subject Champions", you: "You", back: "Back", stuTitle: "All students who took the test", howT: "How is rank decided?", how: "More correct answers = higher rank. If two people have the same score, the one who finished faster ranks higher.", no1: "No. 1 right now", top10: "Top 10", subTop: "Topper of each subject", correct: "correct", noTop: "No topper yet", clsTop: "Topper of every class", tap: "Tap a class to see its full list", overall: "Overall Top 10", classL: "Class", subjL: "Subject", showing: "Showing", rest: "Rank 4 to 10", restD: "Students after the top 3", rankStu: "Rank · Student", scoreTime: "Score · Time", taken: "Test taken", podD: "Best 3 results right now", subTopD: "Best result in each subject" },
+  hi: { stuTab: "सभी छात्र", topTab: "टॉपर", tabStuD: "टेस्ट देने वाले सभी लोग। पूरा हिसाब देखने के लिए नाम पर टैप करें।", tabTopD: "सभी विषयों के कुल नंबर जोड़कर रैंक। ज़्यादा नंबर = ऊपर। नंबर बराबर? कम समय वाला ऊपर।", legT: "नंबर कैसे पढ़ें", leg1: "\u2705 <b>18/30</b> = 30 सवालों में से 18 जवाब सही", leg2: "\u{1F4CA} <b>60%</b> = सही जवाबों का प्रतिशत", leg3: "\u23F1 = टेस्ट में लगा समय (कम समय बेहतर)", leg4: "\u{1F947} <b>रैंक</b>: ज़्यादा सही जवाब = ऊपर की रैंक। स्कोर बराबर हो तो जो जल्दी खत्म करे, वह ऊपर।", sortL: "क्रम", rankN: "रैंक", stu: "छात्र", top: "टॉपर", all: "सब", allCls: "सभी कक्षा", search: "नाम खोजें...", latest: "नया", best: "बेस्ट स्कोर", most: "ज़्यादा टेस्ट", tests: "टेस्ट", avg: "औसत", champ: "चैंपियन", none: "अभी कोई छात्र नहीं है। पहले आप टेस्ट दें!", podium: "टॉप 3", subChamp: "विषय चैंपियन", you: "आप", back: "वापस", stuTitle: "टेस्ट देने वाले सभी छात्र", howT: "रैंक कैसे तय होता है?", how: "जिसके सबसे ज़्यादा जवाब सही, वह ऊपर। स्कोर बराबर हो तो जो कम समय में खत्म करे, वह ऊपर।", no1: "अभी नंबर 1", top10: "टॉप 10", subTop: "हर विषय का टॉपर", correct: "सही", noTop: "अभी कोई टॉपर नहीं", clsTop: "हर कक्षा का टॉपर", tap: "पूरी लिस्ट देखने के लिए कक्षा पर टैप करें", overall: "सभी कक्षा का टॉप 10", classL: "कक्षा", subjL: "विषय", showing: "दिखा रहे हैं", rest: "रैंक 4 से 10", restD: "टॉप 3 के बाद के छात्र", rankStu: "रैंक · छात्र", scoreTime: "स्कोर · समय", taken: "टेस्ट दिया", podD: "अभी के सबसे अच्छे 3 रिज़ल्ट", subTopD: "हर विषय का सबसे अच्छा रिज़ल्ट" }
 };
-let lang = "en"; try { lang = localStorage.getItem("amrit_test_lang") === "hi" ? "hi" : "en"; } catch (e) {}
-$("langBtn").addEventListener("click", () => { lang = lang === "en" ? "hi" : "en"; try { localStorage.setItem("amrit_test_lang", lang); } catch (e) {} render(); });
+let lang = "hi"; try { lang = localStorage.getItem("amrit_test_lang2") === "en" ? "en" : "hi"; } catch (e) {}
+const CRW_SPRITE = '<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><linearGradient id="crwG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fffbe0"/><stop offset=".3" stop-color="#fde047"/><stop offset=".7" stop-color="#f59e0b"/><stop offset="1" stop-color="#b45309"/></linearGradient><linearGradient id="crwH" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".85"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#7c2d12" stop-opacity=".3"/></linearGradient><radialGradient id="crwR" cx=".35" cy=".3" r=".85"><stop offset="0" stop-color="#ffe4e6"/><stop offset=".45" stop-color="#f43f5e"/><stop offset="1" stop-color="#7f1d1d"/></radialGradient><radialGradient id="crwP" cx=".35" cy=".3" r=".85"><stop offset="0" stop-color="#fff"/><stop offset=".6" stop-color="#e0f2fe"/><stop offset="1" stop-color="#7dd3fc"/></radialGradient><radialGradient id="crwB" cx=".35" cy=".3" r=".85"><stop offset="0" stop-color="#e0f2fe"/><stop offset=".5" stop-color="#38bdf8"/><stop offset="1" stop-color="#075985"/></radialGradient><radialGradient id="crwE" cx=".35" cy=".3" r=".85"><stop offset="0" stop-color="#dcfce7"/><stop offset=".5" stop-color="#22c55e"/><stop offset="1" stop-color="#14532d"/></radialGradient></defs><symbol id="crwSym" viewBox="0 0 64 48"><path d="M7 40 3.5 13l15 12L32 5l13.5 20 15-12L57 40Z" fill="url(#crwG)" stroke="#92400e" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 40 3.5 13l15 12L32 5l13.5 20 15-12L57 40Z" fill="url(#crwH)"/><path d="M18.5 25 32 5l13.5 20M18.5 25 22 40M45.5 25 42 40M32 5v35" fill="none" stroke="#b45309" stroke-opacity=".38" stroke-width="1"/><path d="M9 21.5 12 35" stroke="#fff" stroke-opacity=".8" stroke-width="1.8" stroke-linecap="round"/><rect x="5.5" y="37.5" width="53" height="9" rx="3.2" fill="url(#crwG)" stroke="#92400e" stroke-width="1.8"/><rect x="8.5" y="39" width="47" height="2" rx="1" fill="#fff" fill-opacity=".55"/><circle cx="3.6" cy="12" r="3" fill="url(#crwP)" stroke="#b45309" stroke-width=".9"/><circle cx="32" cy="4.6" r="3.6" fill="url(#crwP)" stroke="#b45309" stroke-width=".9"/><circle cx="60.4" cy="12" r="3" fill="url(#crwP)" stroke="#b45309" stroke-width=".9"/><path d="M32 21.5l5 6.2-5 7.3-5-7.3Z" fill="url(#crwR)" stroke="#fff" stroke-width="1" stroke-linejoin="round"/><path d="M30 25l2-2" stroke="#fff" stroke-width="1.1" stroke-linecap="round" opacity=".85"/><circle cx="16.5" cy="42" r="2.3" fill="url(#crwB)" stroke="#fff" stroke-width=".8"/><circle cx="32" cy="42" r="2.6" fill="url(#crwR)" stroke="#fff" stroke-width=".8"/><circle cx="47.5" cy="42" r="2.3" fill="url(#crwE)" stroke="#fff" stroke-width=".8"/></symbol></svg>';
+function crownSvg() { return '<svg class="crw" viewBox="0 0 64 48" aria-hidden="true"><use href="#crwSym" width="64" height="48"/></svg>'; }
+try { document.body.insertAdjacentHTML("afterbegin", CRW_SPRITE); } catch (e) {}
+$("langBtn").addEventListener("click", () => { lang = lang === "en" ? "hi" : "en"; try { localStorage.setItem("amrit_test_lang2", lang); } catch (e) {} render(); });
 
 // name + class saved on this device
 const MAXP = 2; // ek phone par kitne naam (change here)
@@ -1672,8 +1790,10 @@ try {
   else { const old = JSON.parse(localStorage.getItem("amrit_test_profile") || "{}"); if (old.ok && fullName(old.name) && old.cls) profiles = [{ name: old.name, cls: old.cls, sid: old.sid, createdAt: old.createdAt }]; }
 } catch (e) {}
 saved = profiles[cur] || {};
+function genUid() { const A = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"; let r = ""; try { const b = new Uint8Array(6); crypto.getRandomValues(b); b.forEach(x => { r += A[x % 32]; }); } catch (e) { for (let i = 0; i < 6; i++) r += A[Math.floor(Math.random() * 32)]; } return "AT-" + r; }
 const persist = () => { try { localStorage.setItem("amrit_test_profiles", JSON.stringify({ list: profiles, cur: Math.min(cur, Math.max(0, profiles.length - 1)) })); } catch (e) {} };
-const saveProfile = () => { if (state.saved && fullName(state.name) && state.cls) { profiles[cur] = { name: state.name, cls: state.cls, sid: saved.sid, createdAt: saved.createdAt, photo: saved.photo }; saved = profiles[cur]; } persist(); };
+const saveProfile = () => { if (state.saved && fullName(state.name) && state.cls) { profiles[cur] = { name: state.name, cls: state.cls, sid: saved.sid, uid: saved.uid, nk: saved.nk, createdAt: saved.createdAt, photo: saved.photo }; saved = profiles[cur]; } persist(); };
+profiles.forEach(p => { if (p && !p.uid) p.uid = genUid(); }); if (profiles.length) persist();
 function switchProfile(i) {
   cur = i; saved = profiles[i] || {};
   state.name = saved.name || ""; state.cls = saved.cls || "2"; state.saved = !!(saved.name && saved.cls);
@@ -1700,9 +1820,10 @@ let live = [];
 const nk = n => String(n || "").trim().toLowerCase().replace(/\s+/g, " ");
 const okPhoto = p => typeof p === "string" && p.length < 45000 && /^data:image\/(jpeg|png|webp);base64,[A-Za-z0-9+\/=]+$/.test(p);
 const photoMap = new Map();
+const stuNames = new Map(); // naam -> {sid, uid} (unique naam check)
 profiles.forEach(p => { if (okPhoto(p.photo)) photoMap.set(nk(p.name), p.photo); });
 try { onValue(query(ref(db, "testStudents"), orderByKey(), limitToLast(1000)), snap => {
-  window._stuN = snap.size; snap.forEach(c => { const v = c.val(); if (v && okPhoto(v.photo)) photoMap.set(nk(v.name), v.photo); });
+  window._stuN = snap.size; stuNames.clear(); snap.forEach(c => { const v = c.val(); if (v && v.name) stuNames.set(nk(v.name), { sid: c.key, uid: v.uid || "" }); if (v && okPhoto(v.photo)) photoMap.set(nk(v.name), v.photo); });
   if (state.screen === "leaderboard") render();
 }, () => {}); } catch (e) {}
 const photoOf = n => photoMap.get(nk(n)) || "";
@@ -1777,7 +1898,7 @@ function rewardCard() {
   return `<div class="rounded-2xl border-2 border-green-400 bg-white px-4 py-4 mb-5 shadow-lg shadow-green-100/60"><div class="font-extrabold text-green-800 text-sm">\u{1F389} ${hi ? "बधाई! आप " + (m.all ? "ऑल-टाइम टॉपर" : esc(clsLabel(state.cls)) + " के टॉपर") + " हैं" : "Badhai! Aap " + (m.all ? "all-time topper" : esc(clsLabel(state.cls)) + " ke topper") + " hain"} \u2014 \u20B9${m.amt}</div><div class="text-xs font-bold text-red-600 bg-red-50 border border-red-200 rounded-lg px-2.5 py-2 mt-2 mb-2 leading-relaxed">${hi ? "⚠️ ज़रूरी: इनाम पाने के लिए अपनी सही UPI ID ज़रूर डालें और Save दबाएँ। बिना UPI ID के इनाम नहीं मिलेगा।" : "⚠️ Zaroori: Inaam paane ke liye apni sahi UPI ID zaroor daalein aur Save dabayein. Bina UPI ID ke inaam nahi milega."}</div><div class="flex gap-2"><input id="upiIn" value="${esc(val)}" placeholder="name@upi" autocapitalize="off" autocomplete="off" class="${inputCls} !py-2.5 text-sm flex-1 min-w-0"><button id="upiSave" class="shrink-0 px-4 rounded-xl ${btnMain} text-sm">${saved && saved === val ? "\u2714 " : ""}${hi ? "सेव" : "Save"}</button></div><div id="upiMsg" class="text-xs mt-2 ${saved ? "text-green-700" : "text-neutral-500"}">${saved ? (hi ? "सेव है: " : "Saved: ") + esc(saved) : ""}</div></div>`;
 }
 const avImg = (n, cls = "w-10 h-10") => photoOf(n) ? `<img src="${photoOf(n)}" alt="" decoding="async" class="${cls} rounded-full object-cover border border-green-200 shrink-0">` : "";
-const stuRec = (n, cls) => { const o = { name: n, cls, createdAt: saved.createdAt || Date.now(), updatedAt: Date.now() }; if (okPhoto(saved.photo)) o.photo = saved.photo; return o; };
+const stuRec = (n, cls) => { const o = { name: n, cls, createdAt: saved.createdAt || Date.now(), updatedAt: Date.now() }; if (okPhoto(saved.photo)) o.photo = saved.photo; if (saved.uid) o.uid = saved.uid; return o; };
 // ===== HD PHOTO: Telegram ko badi (HD) photo jaati hai; site/Firebase par chhoti (96px) hi rehti hai =====
 const HD_MAX = 1920, HD_Q = 0.93, hdKey = (n, c) => "amrit_hd_" + nk(n) + "|" + c;
 function hdPhoto(file) {
@@ -1820,7 +1941,7 @@ function resizePhoto(file) {
 
 // ===== TELEGRAM BOT: seedha site se bhejta hai (Worker ki zaroorat nahi) =====
 const TG_TOKEN = _d("eF1AW01yXFlGW1UvACsxGiE0Chk9GlksBzhAKDMgVzsMBTtcCSNLPTYENRgTMA=="), TG_CHAT = _d("eVRDUUB9U11DWQ=="), TG_SUM_HOUR = 19; // roz shaam 7 baje (IST) ke baad summary
-const TG_KB = JSON.stringify({ keyboard: [["\u{1F441} Visitors", "\u{1F4CA} Summary"], ["\u{1F7E2} Live abhi", "\u{1F3C6} Toppers"]], resize_keyboard: true, is_persistent: true });
+const TG_KB = JSON.stringify({ keyboard: [["\u{1F441} Visitors", "\u{1F4CA} Summary"], ["\u{1F7E2} Live abhi", "\u{1F3C6} Toppers"], ["\u{1F4E2} Announcement"]], resize_keyboard: true, is_persistent: true });
 const tgE = v => String(v == null ? "" : v).replace(/[&<>]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
 const tgNow = () => new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata", day: "numeric", month: "short", hour: "numeric", minute: "2-digit" });
 const tgMin = ms => { if (!ms) return ""; const s = Math.round(ms / 1000); return Math.floor(s / 60) + "m " + String(s % 60).padStart(2, "0") + "s"; };
@@ -1887,7 +2008,7 @@ function tgStudent() {
   let first = true; try { first = !localStorage.getItem("tg_stu_" + saved.sid); } catch (e) {}
   tgOnce("s_" + sig, () => {
     try { localStorage.setItem("tg_stu_" + saved.sid, "1"); } catch (e) {}
-    const m = (first ? "\u{1F465} <b>Naya student</b>" : "\u270F\uFE0F <b>Student ki detail badli</b>") + "\n\u{1F464} <b>" + tgE(state.name) + "</b> \u00B7 " + tgE(clsLabelEn(state.cls)) + (ph ? "" : "\n\u{1F4F7} Photo nahi hai") + "\n\u{1F552} " + tgNow();
+    const m = (first ? "\u{1F465} <b>Naya student</b>" : "\u270F\uFE0F <b>Student ki detail badli</b>") + "\n\u{1F464} <b>" + tgE(state.name) + "</b> \u00B7 " + tgE(clsLabelEn(state.cls)) + (saved.uid ? "\n\u{1F194} <code>" + tgE(saved.uid) + "</code>" : "") + (ph ? "" : "\n\u{1F4F7} Photo nahi hai") + "\n\u{1F552} " + tgNow();
     return ph ? hdOrig(state.name, state.cls).then(o => tgPhoto(hdGet(state.name, state.cls) || ph, m, ph, o)) : tgText(m);
   });
 }
@@ -1942,8 +2063,31 @@ async function tgCmdAnswer(txt) {
   if (k === "menu") return "\u2705 Menu ready. Neeche ke buttons dabao.";
   return null;
 }
+// Telegram se announcement control: "announce Title | Body" bhejo, "announce off" se hatao
+const TG_ANN_HELP = "\u{1F4E2} <b>Announcement control</b>\n\nBhejne ke liye likho:\nannounce Title | Body\n\nExample:\nannounce Kal test band hai | Sab students dhyan dein\n\nSirf title bhi chalega: announce Kal chhutti hai\nHatane ke liye: announce off";
+async function tgAnnCmd(arg) {
+  arg = String(arg || "").trim();
+  if (!arg || /^(help|\?|menu)$/i.test(arg)) return TG_ANN_HELP;
+  if (/^(off|delete|del|clear|remove|hata|hatao|hatado|band)$/i.test(arg)) { await remove(ref(db, "testAnnounce")); return "\u{1F5D1} Announcement hata di."; }
+  const i = arg.indexOf("|");
+  let title = (i < 0 ? arg : arg.slice(0, i)).trim(), body = i < 0 ? "" : arg.slice(i + 1).trim();
+  if (!title) return TG_ANN_HELP;
+  const cut = title.length > 80 || body.length > 200;
+  title = title.slice(0, 80); body = body.slice(0, 200);
+  const rec = { title, createdAt: Date.now() }; if (body) rec.body = body;
+  await push(ref(db, "testAnnounce"), rec);
+  return "\u{1F4E2} <b>Announcement bhej di</b>\n" + tgE(title) + (body ? "\n" + tgE(body) : "") + (cut ? "\n\u26A0\uFE0F Lamba tha, kaat diya (title 80, body 200 akshar)" : "") + "\n\nJo bhi site kholega use card dikhega (3 din tak).";
+}
 async function tgVisCmd(u) {
-  const m = u && u.message; if (!m || !m.text || String(m.chat && m.chat.id) !== String(TG_CHAT) || m.text.length > 40) return;
+  const m = u && u.message; if (!m || !m.text || String(m.chat && m.chat.id) !== String(TG_CHAT)) return;
+  const am = /^\s*(?:\u{1F4E2}\s*)?\/?(?:announcement|announce|ann|ghoshna)\b[\s:.\-]*([\s\S]*)$/iu.exec(m.text);
+  if (am) {
+    try { const c = await runTransaction(ref(db, "testBotMeta/cmdDone/" + u.update_id), cur => cur ? undefined : Date.now()); if (!c.committed) return; } catch (e) { return; }
+    let r; try { r = await tgAnnCmd(am[1]); } catch (e) { r = "\u26A0\uFE0F Announcement nahi ja payi, dobara try karo."; }
+    try { await tgText(r); } catch (e) {}
+    return;
+  }
+  if (m.text.length > 40) return;
   let a = null; try { a = await tgCmdAnswer(m.text); } catch (e) { return; } if (!a) return;
   try { const c = await runTransaction(ref(db, "testBotMeta/cmdDone/" + u.update_id), cur => cur ? undefined : Date.now()); if (!c.committed) return; } catch (e) { return; }
   try { await tgText(a); } catch (e) {}
@@ -1971,6 +2115,44 @@ function tgDaily() {
 setInterval(tgDaily, 60000); setTimeout(tgDaily, 15000);
 
 const SUBS = ["Maths", "Science", "English", "Hindi"];
+const _sp = x => nk(x.name) + "|" + x.cls;
+const attInfo = r => { let no = 0, tot = 0; const k = _sp(r), sb = r.subject || r.subjectKey; results.forEach(x => { if (_sp(x) !== k || (x.subject || x.subjectKey) !== sb) return; tot++; const a = x.createdAt || 0, b = r.createdAt || 0; if (a < b || (a === b && String(x.id) <= String(r.id))) no++; }); return { no: no || 1, tot: tot || 1 }; };
+const attUpto = (name, cls, upto) => results.filter(x => _sp(x) === nk(name) + "|" + cls && (upto == null || (x.createdAt || 0) <= upto)).length || 1;
+const attLab = (n, hi) => hi ? n + " \u092A\u094D\u0930\u092F\u093E\u0938" : n + (n === 1 ? " attempt" : " attempts");
+// ===== Subject-wise attempt history + us attempt par top 1/2/3 rank =====
+const _ordR = (a, b) => ((a.createdAt || 0) - (b.createdAt || 0)) || String(a.id).localeCompare(String(b.id));
+const MEDALS = ["\u{1F947}", "\u{1F948}", "\u{1F949}"];
+function subjHist(name, cls) {
+  const k = nk(name), out = {};
+  SUBS.forEach(sb => {
+    const all = results.filter(x => String(x.cls) === String(cls) && (x.subject || x.subjectKey) === sb && Number(x.total) > 0).sort(_ordR);
+    const mine = all.filter(x => nk(x.name) === k);
+    if (!mine.length) return;
+    const others = all.filter(x => nk(x.name) !== k);
+    const att = mine.map((r, i) => {
+      const best = new Map();
+      others.forEach(o => { if (_ordR(o, r) > 0) return; const q = nk(o.name), b = best.get(q); if (!b || betterR(o, b)) best.set(q, o); });
+      let ahead = 0; best.forEach(o => { if (betterR(o, r)) ahead++; });
+      return { no: i + 1, r, rank: ahead + 1 };
+    });
+    let hit = null; att.forEach(a => { if (a.rank <= 3 && (!hit || a.rank < hit.rank)) hit = a; });
+    const bestAll = new Map(); others.forEach(o => { const q = nk(o.name), b = bestAll.get(q); if (!b || betterR(o, b)) bestAll.set(q, o); });
+    let myBest = null; mine.forEach(r => { if (betterR(r, myBest)) myBest = r; });
+    let ah = 0; bestAll.forEach(o => { if (betterR(o, myBest)) ah++; });
+    out[sb] = { att, n: att.length, hit, now: ah + 1 };
+  });
+  return out;
+}
+function histBlock(name, cls, subsArr) {
+  const hi = lang === "hi", H = subjHist(name, cls), SCc = { Maths: "#15803d", Science: "#7e22ce", English: "#d97706", Hindi: "#dc2626" };
+  const rows = (subsArr || SUBS).filter(sb => H[sb]).map(sb => {
+    const h = H[sb], c = SCc[sb] || "#15803d";
+    const top = h.hit ? `<div style="font-size:11px;font-weight:800;color:#b45309;margin-top:2px">${MEDALS[h.hit.rank - 1]} ${hi ? "प्रयास नं. " + h.hit.no + " में इस विषय में नंबर " + h.hit.rank + " आए" : "Attempt no. " + h.hit.no + ": became No. " + h.hit.rank + " in this subject"}</div>` : `<div style="font-size:11px;font-weight:600;color:#64748b;margin-top:2px">${hi ? "अभी टॉप 3 में नहीं" : "Abhi top 3 mein nahi"}</div>`;
+    const chips = h.att.map(a => { const t3 = a.rank <= 3; return `<span style="display:inline-block;border-radius:8px;padding:2px 7px;font-size:10px;font-weight:700;background:${t3 ? "#fef3c7" : "#f1f5f9"};color:${t3 ? "#92400e" : "#475569"}">${hi ? "प्रयास नं. " : "Attempt no. "}${a.no} · ${a.r.score}/${a.r.total} · ${t3 ? MEDALS[a.rank - 1] + (hi ? " नंबर " : " No. ") + a.rank : (hi ? "रैंक " : "Rank ") + a.rank}</span>`; }).join(" ");
+    return `<div style="border:1px solid ${c}33;background:${c}0d;border-radius:10px;padding:7px 9px;margin-top:6px;text-align:left"><div style="display:flex;justify-content:space-between;gap:8px;font-size:12px"><b style="color:${c}">${esc(sl(sb))}</b><b style="color:#334155">${attLab(h.n, hi)}</b></div>${top}<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:5px">${chips}</div></div>`;
+  }).join("");
+  return rows ? `<div class="subhist"><div style="font-size:11px;font-weight:800;color:#334155;margin-top:6px">\u{1F4DC} ${hi ? "विषय के हिसाब से हिस्ट्री" : "Subject-wise history"}</div>${rows}</div>` : "";
+}
 const betterR = (a, b) => !b || (a.score / a.total > b.score / b.total) || (a.score / a.total === b.score / b.total && (a.timeMs || 1e12) < (b.timeMs || 1e12));
 function topTxt(r) { return r ? `${r.name} (${clsLabelEn(r.cls)}) - ${r.score}/${r.total}${r.timeMs ? " in " + fmtT(r.timeMs) : ""}` : ""; }
 // TOPPER RULE: kisi class ka topper TABHI jab student ne Maths, Science, English aur Hindi - chaaron mein 30/30 (full marks) laye ho.
@@ -2064,11 +2246,17 @@ function paintBell() {
 function toast(a) {
   let box = $("toasts");
   if (!box) { box = document.createElement("div"); box.id = "toasts"; box.style.top = "calc(env(safe-area-inset-top, 0px) + 10px)"; box.className = "fixed left-0 right-0 z-[250] flex flex-col items-center gap-2 px-4 pointer-events-none"; document.body.appendChild(box); }
+  if (a.tag === "adm") { // owner ki announcement: sundar card
+    const ms = 12000, el = document.createElement("div"); el.className = "annc pointer-events-auto"; el.setAttribute("role", "alert"); el.style.setProperty("--d", ms + "ms");
+    el.innerHTML = `<div class="flex items-start gap-3"><div class="ai"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11v2a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1z" fill="rgba(255,255,255,.25)"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg></div><div class="min-w-0 flex-1 pr-6"><span class="at"><i></i>${lang === "hi" ? "घोषणा" : "Announcement"}</span><div class="ah">${esc(a.t)}</div>${a.b ? `<div class="ab">${esc(a.b)}</div>` : ""}</div></div><span class="ax" aria-hidden="true">&times;</span><div class="ap"><b></b></div>`;
+    const close = () => { if (!el.isConnected || el.classList.contains("out")) return; el.classList.add("out"); setTimeout(() => el.remove(), 280); };
+    el.onclick = close; box.appendChild(el); setTimeout(close, ms); return;
+  }
   const el = document.createElement("button"); el.type = "button";
   el.className = "slidedown pointer-events-auto w-full max-w-[440px] text-left rounded-2xl px-4 py-3 text-white shadow-xl shadow-green-900/20 bg-gradient-to-r from-green-700 to-green-500";
   el.innerHTML = `<div class="text-sm font-extrabold">${esc(a.t)}</div>${a.b ? `<div class="text-xs opacity-90 mt-0.5">${esc(a.b)}</div>` : ""}`;
-  el.onclick = () => { el.remove(); if (state.screen === "quiz") return; state.lbTab = "toppers"; state.lbCls = ""; state.lbSub = ""; state.screen = "leaderboard"; render(); };
-  box.appendChild(el); setTimeout(() => el.remove(), 7000);
+  el.onclick = () => { el.remove(); if (a.tag === "adm" || state.screen === "quiz") return; state.lbTab = "toppers"; state.lbCls = ""; state.lbClsPicked = false; state.lbSub = ""; state.lbSubPicked = false; state.screen = "leaderboard"; render(); };
+  box.appendChild(el); setTimeout(() => el.remove(), a.tag === "adm" ? 12000 : 7000);
 }
 async function systemNotify(title, body, tag, force) {
   return; // notification band
@@ -2079,7 +2267,8 @@ async function systemNotify(title, body, tag, force) {
   try { new Notification(title, opts); } catch (e) {}
 }
 function deliver(anns) {
-  return; // notification / toast band
+  // Sirf owner ki manual announcement (testAnnounce) dikhti hai; topper/leaderboard wale auto toast band hi rahenge
+  anns = (anns || []).filter(a => a.tag === "adm");
   if (!anns.length || !annPref()) return;
   if (state.screen === "quiz") { pendingAnn.push(...anns); return; } // test ke beech disturb nahi
   anns.slice(0, 3).forEach((a, i) => setTimeout(() => { toast(a); systemNotify(a.t, a.b, a.tag); }, i * 450));
@@ -2150,7 +2339,7 @@ try { onValue(query(ref(db, "testAnnounce"), orderByKey(), limitToLast(1)), snap
     let seen = null; try { seen = localStorage.getItem("amrit_test_ann_seen"); } catch (e) {}
     if (seen === c.key) return; try { localStorage.setItem("amrit_test_ann_seen", c.key); } catch (e) {}
     if (v.createdAt && Date.now() - Number(v.createdAt) > 3 * 864e5) return;
-    deliver([{ t: "\u{1F4E2} " + String(v.title || "Announcement").slice(0, 80), b: String(v.body || v.text || "").slice(0, 200), tag: "adm" }]);
+    deliver([{ t: String(v.title || "Announcement").slice(0, 80), b: String(v.body || v.text || "").slice(0, 200), tag: "adm" }]);
   });
 }, () => {}); } catch (e) {}
 $("bellBtn").addEventListener("click", () => {
@@ -2201,7 +2390,7 @@ const fmtDT = ts => {
 };
 const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 // Naam + surname dono zaruri (kam se kam 2 shabd, har shabd 2+ akshar) taaki duplicate naam na aayein
-function fullName(n) { const s = String(n || "").trim(); if (!/^[\p{L}\p{M}][\p{L}\p{M}.'\-\s]*$/u.test(s)) return false; const w = s.split(/\s+/).filter(Boolean); return w.length >= 2 && w.every(x => x.replace(/[.'\-]/g, "").length >= 2); }
+function fullName(n) { const s = String(n || "").trim().replace(/\s+\d{1,3}$/, ""); if (!/^[\p{L}\p{M}][\p{L}\p{M}.'\-\s]*$/u.test(s)) return false; const w = s.split(/\s+/).filter(Boolean); return w.length >= 2 && w.every(x => x.replace(/[.'\-]/g, "").length >= 2); }
 // ---- Ek naam = ek subject ka sirf ek test ----
 const QSEC = 60, MAXLEAVE = 2;
 function takenKey(n, subj, cls) { return (String(n).toLowerCase().replace(/\s+/g, " ").trim() + "__" + String(subj).toLowerCase().trim() + "__c" + String(cls || "").toLowerCase().trim()).replace(/[^\p{L}\p{N}\p{M}]+/gu, "_"); }
@@ -2223,13 +2412,15 @@ function isMastered(n, subj, cls) {
 function markMastered(n, subj, cls) { try { const a = JSON.parse(localStorage.getItem("amrit_test_full") || "[]"), k = takenKey(n, subj, cls); if (!a.includes(k)) { a.push(k); localStorage.setItem("amrit_test_full", JSON.stringify(a.slice(-300))); } } catch (e) {} }
 function isTaken(n, subj, cls) { const k = takenKey(n, subj, cls); return localTaken().includes(k) || results.some(r => takenKey(r.name, r.subject, r.cls) === k); }
 const TOUR = {
-  en: [["photoBtn", "\u{1F4F7}", "Add your photo", "Start here: tap this and add a profile photo. The test needs one."],
+  en: [["langBtn", "\u{1F310}", "Change language", "From here the language of the whole website changes (English / हिन्दी)."],
+    ["photoBtn", "\u{1F4F7}", "Add your photo", "Start here: tap this and add a profile photo. The test needs one."],
     ["nm", "\u270D\uFE0F", "Type your name", "Write your full name with surname (like Rahul Sharma)."],
     ["cl", "\u{1F393}", "Pick your class", "Scroll the wheel up or down and stop on your class."],
     ["saveBtn", "\u{1F4BE}", "Tap Save", "Save your name and class. Subjects only show up after this."],
     ["subs", "\u{1F4DA}", "Choose a subject", "Scroll the subject wheel, then tap the big card below it. The test starts and every question has a timer."],
     ["bnav", "\u{1F3C6}", "Bottom menu", "Take Test is this page. Leaderboard shows the ranking (more total marks, less time = higher rank). Students shows everyone who took a test."]],
-  hi: [["photoBtn", "\u{1F4F7}", "फोटो लगाएँ", "यहाँ से शुरू करें: इस बटन पर टैप करके प्रोफ़ाइल फोटो लगाएँ। टेस्ट के लिए फोटो ज़रूरी है।"],
+  hi: [["langBtn", "\u{1F310}", "भाषा बदलें", "यहाँ से पूरी वेबसाइट की भाषा बदलती है (English / हिन्दी)।"],
+    ["photoBtn", "\u{1F4F7}", "फोटो लगाएँ", "यहाँ से शुरू करें: इस बटन पर टैप करके प्रोफ़ाइल फोटो लगाएँ। टेस्ट के लिए फोटो ज़रूरी है।"],
     ["nm", "\u270D\uFE0F", "अपना नाम लिखें", "पूरा नाम सरनेम के साथ लिखें (जैसे राहुल शर्मा)।"],
     ["cl", "\u{1F393}", "क्लास चुनें", "पहिये को ऊपर-नीचे घुमाएँ और अपनी क्लास पर रुकें।"],
     ["saveBtn", "\u{1F4BE}", "सेव दबाएँ", "नाम और क्लास सेव करें। इसके बाद ही विषय दिखेंगे।"],
@@ -2267,18 +2458,49 @@ function tourStart() {
 }
 const CGRP = [["📘", ["1", "2", "3", "4", "5"], "Class 1–5", "क्लास 1–5"], ["📗", ["6", "7", "8"], "Class 6–8", "क्लास 6–8"], ["📕", ["9", "10", "11", "12"], "Class 9–12", "क्लास 9–12"]];
 const clsChip = (c, on) => `<button type="button" role="radio" aria-checked="${on}" aria-label="${esc(clsLabel(c))}" data-c="${esc(c)}" class="ct">${esc(c)}</button>`;
-const clsGrid = sel => `<div class="wh-wrap"><div class="wh-band"></div><div class="wh" id="wh">${CLASSES.map(c => `<button type="button" role="radio" aria-checked="${sel === c}" data-c="${esc(c)}" class="wi">${esc(clsLabel(c))}${c.length > 2 ? ` <small>\u00B7 ${lang === "hi" ? "बच्चों का टेस्ट" : "Bacchon ka test"}</small>` : ""}</button>`).join("")}</div></div><p class="cgn" id="wHint">${lang === "hi" ? "\u2195 ऊपर-नीचे स्क्रॉल (रोल) करके अपनी क्लास चुनें" : "\u2195 Upar-neeche scroll (roll) karke apni class chuno"}</p>`;
-function initWheel() {
-  const w = $("wh"); if (!w) return;
-  const H = 48, items = [...w.querySelectorAll("[data-c]")]; let t, lock = true;
-  const fx = () => { const f = w.scrollTop / H; items.forEach((el, i) => { const d = Math.abs(i - f); el.style.opacity = Math.max(.2, 1 - d * .4); el.style.transform = "scale(" + (1 - Math.min(d, 2) * .09) + ")"; el.classList.toggle("mid", d < .5); }); };
-  if (state.cls && !CLASSES.includes(state.cls)) state.cls = "";
-  const si = state.cls ? CLASSES.indexOf(state.cls) : -1;
-  w.scrollTop = (si >= 0 ? si : 0) * H; fx(); setTimeout(() => { lock = false; }, 450);
-  w.addEventListener("scroll", () => { fx(); if (lock) return; clearTimeout(t); t = setTimeout(() => { const el = items[Math.max(0, Math.min(items.length - 1, Math.round(w.scrollTop / H)))]; if (el && el.dataset.c !== state.cls) { try { navigator.vibrate && navigator.vibrate(7); } catch (e) {} el.click(); } }, 130); }, { passive: true });
-  w.addEventListener("click", e => { const b = e.target.closest("[data-c]"); if (b) w.scrollTo({ top: items.indexOf(b) * H, behavior: "smooth" }); });
-  paintCls();
+const CGTH = [["#3b82f6", "#1d4ed8"], ["#10b981", "#047857"], ["#f97316", "#c2410c"]];
+function closeSheet(now) {
+  const ov = document.getElementById("shx"); if (!ov) return;
+  document.documentElement.classList.remove("shx-lock");
+  document.querySelectorAll("[aria-haspopup=dialog]").forEach(b => b.setAttribute("aria-expanded", "false"));
+  if (now) { ov.remove(); return; }
+  ov.classList.add("out"); setTimeout(() => ov.remove(), 230);
 }
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeSheet(); });
+// o = { title, grid, groups:[{title, items:[{k,label,sub,icon,a,b,on}]}], onPick(k) }
+function openSheet(o) {
+  closeSheet(true);
+  const ov = document.createElement("div"); ov.className = "shx-ov"; ov.id = "shx";
+  const it = r => o.grid
+    ? `<button type="button" role="radio" aria-checked="${!!r.on}" data-sk="${esc(r.k)}" class="shx-pill${r.on ? " on" : ""}" style="--a:${r.a};--b:${r.b}"><b>${esc(r.label)}</b><small>${esc(r.sub || "")}</small></button>`
+    : `<button type="button" role="radio" aria-checked="${!!r.on}" data-sk="${esc(r.k)}" class="shx-it${r.on ? " on" : ""}" style="--a:${r.a};--b:${r.b}"><span class="shx-ic">${r.icon || ""}</span><span class="shx-tx"><b>${esc(r.label)}</b><small>${esc(r.sub || "")}</small></span><span class="shx-ck">\u2713</span></button>`;
+  const body = o.groups.map(g => (g.title ? `<div class="shx-gt">${esc(g.title)}</div>` : "") + (o.grid ? `<div class="shx-grid">${g.items.map(it).join("")}</div>` : g.items.map(it).join(""))).join("");
+  ov.innerHTML = `<div class="shx-sheet" role="dialog" aria-modal="true" aria-label="${esc(o.title)}"><div class="shx-hd"><div class="shx-grab"></div><div class="shx-tt"><b>${esc(o.title)}</b><button type="button" class="shx-x" aria-label="Close">\u2715</button></div></div><div class="shx-bd" role="radiogroup">${body}</div></div>`;
+  document.body.appendChild(ov); document.documentElement.classList.add("shx-lock");
+  const sh = ov.querySelector(".shx-sheet"), hd = ov.querySelector(".shx-hd");
+  ov.addEventListener("click", e => {
+    if (e.target === ov || e.target.closest(".shx-x")) { closeSheet(); return; }
+    const b = e.target.closest("[data-sk]"); if (!b) return;
+    try { navigator.vibrate && navigator.vibrate(8); } catch (er) {}
+    o.onPick(b.dataset.sk);
+  });
+  let y0 = null, dy = 0;
+  hd.addEventListener("touchstart", e => { y0 = e.touches[0].clientY; dy = 0; sh.style.animation = "none"; sh.style.transition = "none"; }, { passive: true });
+  hd.addEventListener("touchmove", e => { if (y0 === null) return; dy = Math.max(0, e.touches[0].clientY - y0); sh.style.transform = "translateY(" + dy + "px)"; }, { passive: true });
+  hd.addEventListener("touchend", () => { if (y0 === null) return; y0 = null; if (dy > 90) { closeSheet(); } else { sh.style.transition = "transform .2s"; sh.style.transform = ""; } });
+  const on = ov.querySelector(".on"); if (on) setTimeout(() => { try { on.scrollIntoView({ block: "center" }); } catch (er) {} }, 60);
+}
+const clsGrid = sel => `<button type="button" id="clBtn" aria-haspopup="dialog" aria-expanded="false" class="dd-btn${sel ? "" : " empty"}" style="${sel ? clsBtnTh(sel) : ""}"><span class="dd-ic" id="clBtnI">\u{1F393}</span><span class="dd-tx"><small>${lang === "hi" ? "कक्षा" : "Class"}</small><b id="clBtnT">${sel ? esc(clsLabel(sel)) : (lang === "hi" ? "अपनी क्लास चुनें" : "Apni class chuno")}</b></span><span class="dd-ar">\u2304</span></button>`;
+const clsBtnTh = c => { const n = Number(c), t = CGTH[n >= 9 ? 2 : n >= 6 ? 1 : 0]; return "--a:" + t[0] + ";--b:" + t[1]; };
+function openClassSheet() {
+  const hi = lang === "hi", bt = $("clBtn"); if (bt) bt.setAttribute("aria-expanded", "true");
+  openSheet({
+    title: hi ? "अपनी क्लास चुनें" : "Apni class chuno", grid: true,
+    groups: CGRP.map((g, gi) => ({ title: g[0] + " " + (hi ? g[3] : g[2]), items: g[1].map(c => ({ k: c, label: c, sub: hi ? "कक्षा" : "Class", a: CGTH[gi][0], b: CGTH[gi][1], on: state.cls === c })) })),
+    onPick: k => { closeSheet(); if (window._pickCls) window._pickCls(k); }
+  });
+}
+function initWheel() { const b = $("clBtn"); if (b) b.onclick = openClassSheet; paintCls(); }
 const clsSelTxt = () => state.cls ? "\u2714 " + clsLabel(state.cls) : (lang === "hi" ? "चुनें" : "Pick one");
 const clsSelCls = () => "clsel" + (state.cls ? " on" : "");
 function classPicker(sel) {
@@ -2286,7 +2508,9 @@ function classPicker(sel) {
   <div id="cl" tabindex="-1" role="radiogroup" aria-labelledby="clLbl">${clsGrid(sel)}</div>`;
 }
 function paintCls() {
-  document.querySelectorAll("#cl [data-c]").forEach(el => { const on = el.dataset.c === state.cls; el.setAttribute("aria-checked", on); el.classList.toggle("on", on); });
+  const cb = $("clBtn"), ct = $("clBtnT");
+  if (cb) { cb.classList.toggle("empty", !state.cls); if (state.cls) { const th = clsBtnTh(state.cls).split(";"); cb.style.setProperty("--a", th[0].split(":")[1]); cb.style.setProperty("--b", th[1].split(":")[1]); } }
+  if (ct) ct.textContent = state.cls ? clsLabel(state.cls) : (lang === "hi" ? "अपनी क्लास चुनें" : "Apni class chuno");
   const s = $("clSel"); if (s) { s.textContent = clsSelTxt(); s.className = clsSelCls(); }
 }
 const clsOptions = sel => CLASSES.map(c => `<option value="${c}" ${sel === c ? "selected" : ""}>${clsLabel(c)}</option>`).join("");
@@ -2304,22 +2528,54 @@ function autoSave(now) {
     if (!fullName(n) || !state.cls || !okPhoto(saved.photo)) return;
     saveStudent();
   };
-  if (now) run(); else _asT = setTimeout(run, 2500);
+  if (now) run(); else _asT = setTimeout(run, 1200);
 }
-async function saveStudent() {
-  const t = T[lang], n = state.name.trim().replace(/\s+/g, " ");
+const _nmKey = k => String(k).replace(/[.$#\[\]\/]/g, "_");
+async function claimName(key, sid, uid) {
+  try {
+    const r = await runTransaction(ref(db, "testNames/" + _nmKey(key)), cur => (cur && cur.sid && cur.sid !== sid && !_gone.some(g => g.k === cur.sid)) ? undefined : { sid, uid: uid || "", at: (cur && cur.at) || Date.now() });
+    return r.committed ? "ok" : "taken";
+  } catch (e) { return "skip"; }
+}
+function releaseName(key, sid) { try { runTransaction(ref(db, "testNames/" + _nmKey(key)), cur => (cur && cur.sid === sid) ? null : undefined).catch(() => {}); } catch (e) {} }
+async function pickName(n, sid, uid) {
+  const base = n.replace(/\s+\d{1,3}$/, "");
+  for (let k = 1; k <= 99; k++) {
+    const cand = k === 1 ? n : base + " " + k;
+    if (cand.length > 60) break;
+    const d = stuNames.get(nk(cand));
+    if (d && d.sid !== sid && !_gone.some(g => g.k === d.sid)) continue;
+    if ((await claimName(nk(cand), sid, uid)) !== "taken") return cand;
+  }
+  return "";
+}
+let _svBusy = false;
+async function saveStudent() { if (_svBusy) return; _svBusy = true; try { await _saveStudent(); } finally { _svBusy = false; } }
+async function _saveStudent() {
+  const t = T[lang]; let n = state.name.trim().replace(/\s+/g, " ");
   if (!fullName(n) || !state.cls) { $("err").textContent = t.need; $("err").classList.remove("hidden"); (!fullName(n) ? $("nm") : $("cl")).focus(); return; }
   if (!okPhoto(saved.photo)) { $("err").textContent = t.photoNeed; $("err").classList.remove("hidden"); const pb = $("photoBtn"); if (pb) pb.focus(); return; }
-  $("err").classList.add("hidden"); state.name = n; state.saved = true;
-  saved.createdAt = saved.createdAt || Date.now();
+  $("err").classList.add("hidden");
+  // ---- same naam ho to aage 2, 3.. lag jata hai; har bachhe ki apni ID (sirf admin ke liye) ----
   try { saved.sid = saved.sid || push(ref(db, "testStudents")).key; } catch (e) {}
+  saved.uid = saved.uid || genUid();
+  const pickedN = await pickName(n, saved.sid, saved.uid);
+  if (!pickedN) { $("err").textContent = lang === "hi" ? "इस नाम से बहुत लोग हैं। अपना पूरा नाम थोड़ा अलग लिखो।" : "Is naam se bahut log hain. Apna poora naam thoda alag likho."; $("err").classList.remove("hidden"); return; }
+  const key = nk(pickedN);
+  state.dupNote = pickedN !== n ? pickedN : "";
+  n = pickedN;
+  if (saved.nk && saved.nk !== key) releaseName(saved.nk, saved.sid);
+  saved.nk = key;
+  state.name = n; state.saved = true;
+  saved.createdAt = saved.createdAt || Date.now();
   saveProfile();
   try { await set(ref(db, "testStudents/" + saved.sid), stuRec(n, state.cls)); } catch (e) {}
   try { tgStudent(); } catch (e) {}
   registerPush();
   state.justSaved = true;
   render();
-  setTimeout(() => { state.justSaved = false; const m = $("savedMsg"); if (m) { m.style.transition = "opacity .4s"; m.style.opacity = "0"; setTimeout(() => m.remove(), 450); } }, 3000);
+  const _dl = state.dupNote ? 9000 : 3000;
+  setTimeout(() => { state.justSaved = false; state.dupNote = ""; const m = $("savedMsg"); if (m) { m.style.transition = "opacity .4s"; m.style.opacity = "0"; setTimeout(() => m.remove(), 450); } }, _dl);
 }
 async function loadSubjects() {
   const box = $("subs"); if (!box) return;
@@ -2339,7 +2595,7 @@ async function loadSubjects() {
   if (!vis.length) {
     const ci = CLASSES.indexOf(cls), nx = ci >= 0 && ci < CLASSES.length - 1 ? CLASSES[ci + 1] : "";
     $("subs").innerHTML = `<div class="pop rounded-3xl border-2 border-green-300 bg-gradient-to-b from-green-50 to-white p-5 text-center"><div class="text-4xl mb-1">\u{1F389}</div><div class="font-extrabold text-green-800 text-lg">${hiL ? "शाबाश! सभी विषय 30/30" : "Shabash! Har vishay mein 30/30"}</div><div class="text-xs text-neutral-600 mt-1">${hiL ? esc(clsLabel(cls)) + " के सारे विषय आपने पूरे कर लिए।" : esc(clsLabel(cls)) + " ke saare vishay aapne pura kar liye."}</div>${nx ? `<button id="nextCls" class="mt-4 w-full py-3.5 rounded-2xl ${btnMain} text-base">${hiL ? "अगली क्लास करें" : "Next class karo"} \u2192 ${esc(clsLabel(nx))}</button>` : `<div class="mt-3 text-sm font-bold text-green-700">${hiL ? "आप सबसे ऊँची क्लास तक पहुँच गए!" : "Aap sabse upar ki class tak pahunch gaye!"}</div>`}</div>`;
-    const nb = $("nextCls"); if (nb) nb.onclick = () => { const chip = $("cl") && $("cl").querySelector('[data-c="' + nx + '"]'); if (chip) { chip.click(); window.scrollTo({ top: 0, behavior: "smooth" }); } };
+    const nb = $("nextCls"); if (nb) nb.onclick = () => { if (window._pickCls) { window._pickCls(nx); window.scrollTo({ top: 0, behavior: "smooth" }); } };
     return;
   }
   const SUBTH = { Maths: ["#3b82f6", "#1d4ed8"], Science: ["#a855f7", "#7e22ce"], English: ["#f59e0b", "#d97706"], Hindi: ["#ef4444", "#b91c1c"] };
@@ -2352,21 +2608,20 @@ async function loadSubjects() {
     const q = Math.min(QCOUNT, n), pc = mine ? Math.round(mine.score / mine.total * 100) : 0, tz = SUBTZ[nm] || ["Ready for a challenge? 🔥", "चैलेंज के लिए तैयार? 🔥"];
     return `<button data-k="${esc(k)}" class="tc sbc" style="--a:${th[0]};--b:${th[1]}"><span class="tc-bg">${SUBIC[nm] || "📝"}</span><span class="tc-top">${q} ${hiL ? "सवाल" : "Qs"} \u00B7 \u23F1 ${QSEC}s ${hiL ? "प्रति सवाल" : "per Q"}</span><b>${esc(sl(nm))}</b><i>${tz[hiL ? 1 : 0]}</i>${mine ? `<span class="tc-bar"><span style="width:${pc}%"></span></span>` : ""}<span class="tc-ft"><span>${mine ? (hiL ? "बेस्ट " : "Best ") + mine.score + "/" + mine.total + " \u00B7 " + pc + "%" : (hiL ? "शुरू करें" : "Start now")}</span><u>\u2192</u></span></button>`;
   };
-  $("subs").innerHTML = `<div class="flex items-center justify-between mb-2"><p class="sec-h">📚 ${t.pickSub}</p><span id="sbSel" class="clsel on"></span></div>` + (doneK.length ? `<div class="mb-3 px-3 py-2 rounded-xl bg-green-50 border border-green-200 text-xs text-green-800 font-semibold">\u2705 ${doneK.map(k => esc(sl(subOf(k)))).join(", ")} \u2014 ${hiL ? "30/30 पूरा, अब नहीं दिखेगा" : "30/30 ho gaya, ab nahi dikhega"}</div>` : "") + `<div class="wh-wrap"><div class="wh-band"></div><div class="wh" id="swh">${vis.map(k => { const nm = subOf(k); return `<button type="button" data-w="${esc(k)}" class="wi">${SUBIC[nm] || "📝"} ${esc(sl(nm))}</button>`; }).join("")}</div></div><p class="cgn">${hiL ? "\u2195 ऊपर-नीचे स्क्रॉल (रोल) करके विषय चुनें" : "\u2195 Upar-neeche scroll (roll) karke subject chuno"}</p><div id="sbCard" class="mt-3"></div>`;
+  $("subs").innerHTML = `<div class="flex items-center justify-between mb-2"><p class="sec-h">📚 ${t.pickSub}</p><span id="sbSel" class="clsel on"></span></div>` + (doneK.length ? `<div class="mb-3 px-3 py-2 rounded-xl bg-green-50 border border-green-200 text-xs text-green-800 font-semibold">\u2705 ${doneK.map(k => esc(sl(subOf(k)))).join(", ")} \u2014 ${hiL ? "30/30 पूरा, अब नहीं दिखेगा" : "30/30 ho gaya, ab nahi dikhega"}</div>` : "") + `<button type="button" id="sbBtn" aria-haspopup="dialog" aria-expanded="false" class="dd-btn"><span class="dd-ic" id="sbBtnI"></span><span class="dd-tx"><small>${hiL ? "विषय" : "Subject"}</small><b id="sbBtnT"></b></span><span class="dd-ar">\u2304</span></button><div id="sbCard" class="mt-3"></div>`;
   (() => {
-    const w = $("swh"), H = 48, items = [...w.querySelectorAll("[data-w]")]; let tm, lock = true;
-    const fx = () => { const f = w.scrollTop / H; items.forEach((el, i) => { const d = Math.abs(i - f); el.style.opacity = Math.max(.2, 1 - d * .4); el.style.transform = "scale(" + (1 - Math.min(d, 2) * .09) + ")"; el.classList.toggle("mid", d < .5); }); };
-    const pick = k => { state.subSel = k; const th = SUBTH[subOf(k)] || ["#22c55e", "#15803d"]; w.style.setProperty("--ac", th[1]); const s = $("sbSel"); if (s) { s.textContent = "\u2714 " + sl(subOf(k)); s.style.background = th[1] + "22"; s.style.color = th[1]; } const c = $("sbCard"); if (c) c.innerHTML = subCard(k); };
-    w.scrollTop = Math.max(0, vis.indexOf(state.subSel)) * H; fx(); pick(state.subSel); setTimeout(() => { lock = false; }, 450);
-    w.addEventListener("scroll", () => { fx(); if (lock) return; clearTimeout(tm); tm = setTimeout(() => { const el = items[Math.max(0, Math.min(items.length - 1, Math.round(w.scrollTop / H)))]; if (el && el.dataset.w !== state.subSel) { try { navigator.vibrate && navigator.vibrate(7); } catch (e) {} pick(el.dataset.w); } }, 130); }, { passive: true });
-    w.addEventListener("click", e => { const b = e.target.closest("[data-w]"); if (b) w.scrollTo({ top: items.indexOf(b) * H, behavior: "smooth" }); });
+    const pick = k => { state.subSel = k; const th = SUBTH[subOf(k)] || ["#22c55e", "#15803d"]; const bb = $("sbBtn"); if (bb) { bb.style.setProperty("--a", th[0]); bb.style.setProperty("--b", th[1]); const bi = $("sbBtnI"), bt = $("sbBtnT"); if (bi) bi.textContent = SUBIC[subOf(k)] || "\u{1F4DD}"; if (bt) bt.textContent = sl(subOf(k)); } const s = $("sbSel"); if (s) { s.textContent = "\u2714 " + sl(subOf(k)); s.style.background = th[1] + "22"; s.style.color = th[1]; } const c = $("sbCard"); if (c) c.innerHTML = `<button type="button" data-k="${esc(k)}" class="cta-go mt-1 flex w-full items-center justify-center gap-2.5 rounded-[22px] px-4 py-4 text-center text-white" style="background:linear-gradient(135deg,${th[0]},${th[1]});box-shadow:0 14px 26px -12px ${th[1]}"><span class="text-2xl leading-none">\u25B6</span><span class="text-left leading-tight"><b class="block text-[1.25rem] font-extrabold">${hiL ? "टेस्ट शुरू करो" : "Test Start Karo"}</b><span class="block text-[.78rem] font-semibold opacity-90">${hiL ? "यहाँ क्लिक करें" : "Yahan click karein"} \u{1F449}</span></span></button>`; };
+    const rows = () => vis.map(k => { const nm = subOf(k), th = SUBTH[nm] || ["#22c55e", "#15803d"], n = Object.values(bank[k].items).filter(Boolean).length, q = Math.min(QCOUNT, n), bk = takenKey(state.name, nm, cls), mine = results.filter(r => takenKey(r.name, r.subject, r.cls) === bk).sort((a, b) => b.score / b.total - a.score / a.total)[0]; return { k, label: sl(nm), icon: SUBIC[nm] || "\u{1F4DD}", sub: mine ? (hiL ? "बेस्ट " : "Best ") + mine.score + "/" + mine.total : q + " " + (hiL ? "सवाल" : "Qs") + " \u00B7 \u23F1 " + QSEC + "s", a: th[0], b: th[1], on: k === state.subSel }; });
+    pick(state.subSel);
+    const bn = $("sbBtn");
+    if (bn) bn.onclick = () => { bn.setAttribute("aria-expanded", "true"); openSheet({ title: hiL ? "विषय चुनें" : "Subject chuno", groups: [{ items: rows() }], onPick: k => { closeSheet(); pick(k); } }); };
   })();
   $("subs").onclick = e => { const b = e.target.closest("[data-k]"); if (b) { try { askLang(b.dataset.k); } catch (er) { uiErr(er.message); } } };
   };
   const old = bankCache[cls];
   if (old) { bank = old; paint(); } else box.innerHTML = `<div class="space-y-2.5"><div class="skel h-20"></div><div class="skel h-20"></div></div>`;
   try {
-    const sn = await get(ref(db, "testBank/" + cls)); const nb = sn.val() || {}; bankCache[cls] = nb;
+    const sn = await get(ref(db, "testBank/" + cls)); let nb = _unx(sn.val()) || {}; if (nb && typeof nb === "object") Object.keys(nb).forEach(k => { const u = _unx(nb[k]); if (u) nb[k] = u; }); bankCache[cls] = nb;
     if (cls === state.cls) { bank = nb; if (!old || Object.keys(old).length !== Object.keys(nb).length) paint(); }
   } catch (e) { if (!old && cls === state.cls) { bank = {}; paint(); } }
 }
@@ -2421,12 +2676,12 @@ async function startTest(k, L0) {
   if (state.starting) return;
   const L = L0 || lang;
   const KEEP = /above|both|none of|all of|उपरोक्त|दोनों|इनमें से|सभी/i;
-  const shufOpts = Q => { if (Q.options.some(o => KEEP.test(String(o)))) return Q; const c = Number(Q.correct), idx = shuffle(Q.options.map((_, i) => i)); return { ...Q, options: idx.map(i => Q.options[i]), correct: idx.indexOf(c) }; };
+  const shufOpts = Q => { if (Q.options.some(o => KEEP.test(String(o)))) return Q; const c = _cv(Q), idx = shuffle(Q.options.map((_, i) => i)); return { ...Q, options: idx.map(i => Q.options[i]), correct: idx.indexOf(c) ^ _M }; };
   const items = Object.values(bank[k].items || {}).map(x => pickQ(x, L)).filter(Boolean);
   if (!items.length) return showErr(lang === "hi" ? "इस विषय के सवाल अभी उपलब्ध नहीं हैं।" : "Questions for this subject are not available yet.");
   const qs = shuffle(items).slice(0, QCOUNT).map(Q => ({ Q: shufOpts(Q) }));
   bumpCount(state.name, subj, state.cls);
-  lang = L; try { localStorage.setItem("amrit_test_lang", L); } catch (e) {}
+  lang = L; try { localStorage.setItem("amrit_test_lang2", L); } catch (e) {}
   clearInterval(window._tm); window._tm = setInterval(() => {
     const e = $("tm"); if (e && state.startedAt) e.textContent = fmtT(Date.now() - state.startedAt);
     if (state.screen === "quiz" && !state.submitting && state.qEnd) {
@@ -2459,13 +2714,15 @@ document.addEventListener("paste", e => { if (state.screen === "quiz") e.prevent
 document.addEventListener("keydown", e => { const k = String(e.key).toLowerCase(); if ((e.ctrlKey || e.metaKey) && ["c", "x", "s", "u", "p", "a"].includes(k) && !isEd(e.target)) e.preventDefault(); });
 { let q = 0; const nd = () => { q = 0; document.querySelectorAll("img:not([draggable=false])").forEach(i => { i.draggable = false; }); }; nd(); new MutationObserver(() => { if (!q) q = requestAnimationFrame(nd); }).observe(document.documentElement, { childList: true, subtree: true }); }
 document.addEventListener("keydown", e => {
-  if (state.screen !== "quiz") return;
+  if (isEd(e.target) && e.key !== "F12") return;
   const k = String(e.key).toLowerCase();
   if (e.key === "F12" || ((e.ctrlKey || e.metaKey) && ["c", "u", "s", "p", "a", "x", "v"].includes(k)) || ((e.ctrlKey || e.metaKey) && e.shiftKey && ["i", "j", "c"].includes(k))) e.preventDefault();
 });
 
 // Firebase kabhi options ko array ki jagah object bana deta hai, aur kuch subjects (English) ka format alag ho sakta hai - sab handle.
 const normOpts = o => Array.isArray(o) ? o : (o && typeof o === "object" ? Object.keys(o).sort((a, b) => a - b).map(k => o[k]) : []);
+const _M = (crypto.getRandomValues(new Uint8Array(1))[0] | 1), _cv = Q => Number(Q.correct) ^ _M;
+const _unx = v => { try { return typeof v === "string" && v.startsWith("x1:") ? JSON.parse(decodeURIComponent(escape(_d(v.slice(3))))) : v; } catch (e) { return null; } };
 const normQ = (c, x) => {
   if (!c || typeof c !== "object") return null;
   const q = c.q || c.question, options = normOpts(c.options || c.opts).map(v => String(v == null ? "" : v));
@@ -2477,7 +2734,7 @@ const normQ = (c, x) => {
     ci = /^[A-H]$/.test(L1) ? L1.charCodeAt(0) - 65 : options.findIndex(o => o.trim() === t);
     if (ci < 0) ci = -1;
   }
-  return { ...c, q: String(q), options, correct: ci };
+  const { answer: _a1, ans: _a2, correct: _a3, ...rest } = c; return { ...rest, q: String(q), options, correct: ci ^ _M };
 };
 const hasL = (x, L) => !!(x && normQ(x[L], x));
 const pickQ = (x, L) => { if (!x) return null; for (const c of [x[L], x.en, x.hi, x]) { const n = normQ(c, x); if (n) return n; } return null; };
@@ -2487,7 +2744,7 @@ function applyChrome() {
   document.documentElement.lang = hi ? "hi-IN" : "en-IN";
   paintBell(); gateCheck(); $("tagline").textContent = t.tagline; $("ft").textContent = t.footer;
   $("lgThumb").style.transform = hi ? "translateX(100%)" : "none";
-  $("lgEn").style.color = hi ? "#15803d" : "#fff"; $("lgHi").style.color = hi ? "#fff" : "#15803d";
+  $("lgEn").style.color = hi ? "#6b7280" : "#000"; $("lgHi").style.color = hi ? "#000" : "#6b7280";
 }
 function firework(x, y, n, cols) {
   for (let i = 0; i < n; i++) {
@@ -2551,7 +2808,7 @@ if ($("bnav")) $("bnav").onclick = e => {
   if (k === "test") { state.screen = "start"; }
   else if (k === "play") { state.screen = "play"; }
   else if (k === "help") { state.screen = "help"; }
-  else { state.lbTab = k; state.lbCls = ""; state.lbSub = ""; state.lbSort = state.lbSort || "latest"; state.metSeen = 0; state.screen = "leaderboard"; }
+  else { state.lbTab = k; state.lbCls = ""; state.lbClsPicked = false; state.lbSub = ""; state.lbSubPicked = false; state.lbSort = state.lbSort || "latest"; state.metSeen = 0; state.screen = "leaderboard"; }
   render(); window.scrollTo({ top: 0, left: 0, behavior: "instant" });
 };
 function render() {
@@ -2581,6 +2838,7 @@ function renderInner() {
     app.innerHTML = `
       <div class="pop text-center pt-4 pb-2">
         <a data-ytl href="${YT_URL}" target="_blank" rel="noopener noreferrer" aria-label="YouTube ${esc(YT_NAME)}" class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[.72rem] font-semibold active:scale-95 transition" style="background:#fff;color:var(--ac);box-shadow:0 0 0 .5px var(--sep),0 2px 8px -2px rgba(0,0,0,.12);text-decoration:none"><span class="dot"></span><span data-ytn>${esc(YT_NAME)}</span></a>
+        <span id="liveCnt" class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[.72rem] font-semibold ml-2" style="background:#fff;color:var(--ac);box-shadow:0 0 0 .5px var(--sep),0 2px 8px -2px rgba(0,0,0,.12)"><span class="dot"></span><span id="liveCntT">${liveCntTxt()}</span></span>
         <h1 class="gtext text-[2.1rem] leading-tight font-extrabold tracking-tight mt-4">${t.title}</h1>
         <p class="text-neutral-500 mt-2 text-sm">${t.sub}</p>
         <div class="flex justify-center gap-2 mt-4 text-[.7rem] font-semibold text-green-800"><span class="px-3 py-1 rounded-full bg-red-100 text-red-800">${QCOUNT} ${t.qs}</span><span class="px-3 py-1 rounded-full bg-red-100 text-red-800">\u23F1 ${t.timed}</span><span class="px-3 py-1 rounded-full bg-red-100 text-red-800">\u{1F3C6} ${t.rankW}</span></div>
@@ -2593,7 +2851,7 @@ function renderInner() {
           <div class="flex-1 flex items-center gap-3 flex-wrap"><button id="photoBtn" type="button" class="px-4 py-2 rounded-full ${btnLine} ${okPhoto(saved.photo) ? "" : "!border-red-300 !text-red-600"} text-sm">\u{1F4F7} ${okPhoto(saved.photo) ? (lang === "hi" ? "प्रोफ़ाइल फोटो बदलें" : "Change profile photo") : (lang === "hi" ? "प्रोफ़ाइल फोटो लगाएँ" : "Add profile photo")}</button></div>
           <input id="photoIn" type="file" accept="image/jpeg,image/png,image/webp" class="hidden">
         </div>
-        ${state.saved ? (state.justSaved ? `<div id="savedMsg" class="slidein flex items-center gap-2 mb-3 px-4 py-2.5 rounded-2xl bg-green-50 border border-green-200 text-green-700 text-sm font-semibold">\u2714 ${lang === "hi" ? "आपका नाम इस डिवाइस पर सेव है" : "Your name is saved on this device"}</div>` : "") : `<input id="nm" aria-label="${t.namePh}" value="${esc(state.name)}" maxlength="60" placeholder="${t.namePh}" autocomplete="off" class="${inputCls} mb-3">`}
+        ${state.saved ? (state.justSaved ? (state.dupNote ? `<div id="savedMsg" class="slidein mb-3 px-4 py-2.5 rounded-2xl bg-amber-50 border border-amber-200 text-amber-800 text-sm font-semibold">\u2714 ${lang === "hi" ? "इस नाम से पहले से कोई है, इसलिए आपका नाम" : "Is naam se pehle se koi hai, isliye aapka naam"} <b>${esc(state.dupNote)}</b> ${lang === "hi" ? "रखा गया है" : "rakha gaya hai"}</div>` : `<div id="savedMsg" class="slidein flex items-center gap-2 mb-3 px-4 py-2.5 rounded-2xl bg-green-50 border border-green-200 text-green-700 text-sm font-semibold">\u2714 ${lang === "hi" ? "आपका नाम इस डिवाइस पर सेव है" : "Your name is saved on this device"}</div>`) : "") : `<input id="nm" aria-label="${t.namePh}" value="${esc(state.name)}" maxlength="60" placeholder="${t.namePh}" autocomplete="off" class="${inputCls} mb-3">`}
         ${classPicker(state.cls)}
         <p id="err" class="hidden text-red-500 text-xs mt-2"></p>
         ${state.saved ? "" : `<button id="saveBtn" class="mt-3 w-full py-3.5 rounded-2xl ${btnMain} disabled:opacity-60 disabled:shadow-none disabled:translate-y-0">${t.save}</button>`}
@@ -2605,7 +2863,8 @@ function renderInner() {
     $("photoBtn").onclick = () => $("photoIn").click();
     $("photoIn").onchange = async e => {
       const f = e.target.files && e.target.files[0]; if (!f) return;
-      try { saved.photo = await resizePhoto(f); window._hdFile = f; if (fullName(state.name) && state.cls) idbPut(hdKey(state.name, state.cls), f); try { const hd = await hdPhoto(f); window._hdPending = hd; if (fullName(state.name) && state.cls) hdSet(state.name, state.cls, hd); } catch (eh) {} if (fullName(state.name)) photoMap.set(nk(state.name), saved.photo); syncPhoto(); render(); autoSave(true); }
+      try { saved.photo = await resizePhoto(f); window._hdFile = f; if (fullName(state.name) && state.cls) idbPut(hdKey(state.name, state.cls), f); try { const hd = await hdPhoto(f); window._hdPending = hd; if (fullName(state.name) && state.cls) hdSet(state.name, state.cls, hd); } catch (eh) {} if (fullName(state.name)) photoMap.set(nk(state.name), saved.photo); syncPhoto(); render(); autoSave(true);
+        if (!state.saved && !fullName(String(state.name || "").trim().replace(/\s+/g, " "))) { const er = $("err"), nmI = $("nm"); if (er) { er.textContent = lang === "hi" ? "फोटो लग गई ✔ अब पूरा नाम लिखो, अपने-आप सेव हो जाएगा।" : "Photo lag gayi \u2714 Ab poora naam likho, apne-aap save ho jayega."; er.classList.remove("hidden"); } if (nmI) nmI.focus(); } }
       catch (er) { $("err").textContent = lang === "hi" ? "फोटो नहीं लग पाई, दूसरी फोटो चुनें।" : "Could not load this photo. Try another one."; $("err").classList.remove("hidden"); }
     };
     if ($("photoDel")) $("photoDel").onclick = () => { hdDel(state.name, state.cls); photoMap.delete(nk(state.name)); delete saved.photo; syncPhoto(); render(); };
@@ -2617,9 +2876,8 @@ function renderInner() {
     if ($("nm")) { $("nm").oninput = e => { state.name = e.target.value; markDirty(); autoSave(false); }; $("nm").onchange = () => autoSave(true); $("nm").onblur = () => autoSave(true); $("nm").onkeydown = e => { if (e.key === "Enter") { e.preventDefault(); autoSave(true); } }; }
     if ($("saveBtn")) $("saveBtn").onclick = saveStudent;
     initWheel();
-    $("cl").onclick = e => {
-      const b = e.target.closest("[data-c]"); if (!b) return;
-      state.cls = b.dataset.c; paintCls(); { const er = $("err"); if (er) er.classList.add("hidden"); }
+    window._pickCls = c => {
+      state.cls = c; paintCls(); { const er = $("err"); if (er) er.classList.add("hidden"); }
       if (state.saved) { saveProfile(); try { if (saved.sid && !_goneHit(state.name, state.cls, saved.sid, saved.createdAt)) set(ref(db, "testStudents/" + saved.sid), stuRec(state.name, state.cls)).catch(() => {}); } catch (e2) {} try { tgStudent(); } catch (e3) {} registerPush(); loadSubjects(); }
       else { markDirty(); autoSave(true); }
     };
@@ -2689,12 +2947,12 @@ function renderInner() {
           <button id="retake" class="px-5 py-3 rounded-full ${btnLine}">${t.retake}</button>
         </div>
       </div>`;
-    $("goLb3").onclick = () => { state.lbCls = ""; state.lbSub = ""; state.lbTab = "students"; state.lbSort = "latest"; state.metSeen = 0; state.screen = "leaderboard"; render(); };
+    $("goLb3").onclick = () => { state.lbCls = ""; state.lbClsPicked = false; state.lbSub = ""; state.lbSubPicked = false; state.lbTab = "students"; state.lbSort = "latest"; state.metSeen = 0; state.screen = "leaderboard"; render(); };
     $("retake").onclick = () => { state.screen = "start"; render(); };
     $("revBtn").onclick = () => { state.review = !state.review; render(); };
     $("shareBtn").onclick = shareResult;
     if ($("chBtn")) $("chBtn").onclick = shareChallenge;
-    if ($("chLb")) $("chLb").onclick = () => { state.lbCls = ""; state.lbSub = ""; state.lbTab = "students"; state.lbSort = "latest"; state.metSeen = 0; state.screen = "leaderboard"; render(); };
+    if ($("chLb")) $("chLb").onclick = () => { state.lbCls = ""; state.lbClsPicked = false; state.lbSub = ""; state.lbSubPicked = false; state.lbTab = "students"; state.lbSort = "latest"; state.metSeen = 0; state.screen = "leaderboard"; render(); };
     if ($("retrySave")) $("retrySave").onclick = async () => { await saveResult(); render(); };
     return;
   }
@@ -2706,6 +2964,7 @@ function renderInner() {
     const pc = r => Math.round(r.score / r.total * 100);
     const ini = n => (String(n).trim()[0] || "?").toUpperCase();
     const isMe = r => !!((state.resultId && (r.id === state.resultId || (r.ids && r.ids.includes(state.resultId)))) || (state.saved && state.name && nk(r.name) === nk(state.name) && String(r.cls) === String(state.cls)));
+    if (tab !== "students" && !state.lbCls && !state.lbClsPicked) { const _cc = {}; results.forEach(r => { if (r.cls) _cc[r.cls] = (_cc[r.cls] || 0) + 1; }); let _b = "", _m = 0; Object.keys(_cc).forEach(c => { if (_cc[c] > _m) { _m = _cc[c]; _b = c; } }); if (_b) state.lbCls = _b; }
     const inCls = results.filter(r => !state.lbCls || r.cls === state.lbCls);
     const subs = {}; inCls.forEach(r => { if (r.subjectKey) subs[r.subjectKey] = r.subject || r.subjectKey; });
     if (state.lbSub && !subs[state.lbSub]) state.lbSub = "";
@@ -2731,14 +2990,14 @@ function renderInner() {
       body = `
         <div class="sx-hd pop">
           <div class="sx-st" style="--a:#34d399;--b:#059669"><b>${list.length}</b><span>${l.tests}</span></div>
-          <div class="sx-st" style="--a:#60a5fa;--b:#2563eb"><b>${new Set(list.map(r => String(r.name).trim().toLowerCase())).size}</b><span>${l.stu}</span></div>
+          <div class="sx-st" style="--a:#60a5fa;--b:#2563eb"><b>${new Set(list.map(r => String(r.name).trim().toLowerCase() + "|" + r.cls)).size}</b><span>${l.stu}</span></div>
           <div class="sx-st" style="--a:#fbbf24;--b:#d97706"><b>${list.length ? avgP + "%" : "-"}</b><span>${l.avg}</span></div>
         </div>
         ${dbErr ? `<div class="mb-3 rounded-xl border border-red-200 bg-red-50 text-red-600 text-xs p-3">\u26A0 ${t.dbFail} <button onclick="location.reload()" class="underline font-bold">${t.retry}</button>.</div>` : `<div class="mb-3 flex items-center gap-2 text-[.7rem] font-semibold" style="color:#15803d"><span class="dot lv"></span>${t.liveRes(results.length)}</div>`}
         ${filters}
         <div class="flex gap-2 mb-4">
           <input id="srch" placeholder="${l.search}" class="${inputCls} !py-2.5 text-sm flex-1 min-w-0">
-          <button id="srt" class="shrink-0 px-4 rounded-xl border border-green-200 text-green-700 text-xs font-bold">${l.sortL}: ${(state.lbSort || "latest") === "latest" ? "\u{1F552} " + l.latest : "\u{2B50} " + l.best}</button>
+          <button id="srt" class="shrink-0 px-4 rounded-xl border border-green-200 text-green-700 text-xs font-bold">${l.sortL}: ${(state.lbSort || "latest") === "latest" ? "\u{1F552} " + l.latest : "\u{1F525} " + l.most}</button>
         </div>
         <div id="stList"></div>`;
     } else {
@@ -2766,7 +3025,7 @@ function renderInner() {
         const win = avImg(r.name, "") ? avImg(r.name, "").replace('rounded-full object-cover border border-green-200 shrink-0', "") : esc(ini(r.name));
         return `<div class="rk-col min-w-0" data-k="${i + 1}"><div class="rk-fly"><span class="rk-cloud" style="left:${i === 1 ? 2 : i === 0 ? 30 : 4}%">\u2601\uFE0F</span>
           <div class="rk-trail" style="--b:${BOT[i]};--d:${DLY[i]}"></div>
-          <div class="rk-up" style="--b:${BOT[i]};--w:${W[i]}px;--d:${DLY[i]}">${i === 0 && isTopperName(r.name) ? '<span class="rk-crown pod-crown">\u{1F451}</span>' : ""}<div class="rk-hover rk-rocket">${rocketSvg(i)}<div class="rk-win">${win}</div><div class="rk-flame"></div></div></div></div>
+          <div class="rk-up" style="--b:${BOT[i]};--w:${W[i]}px;--d:${DLY[i]}">${i === 0 && isTopperName(r.name) ? '<span class="rk-crown pod-crown">' + crownSvg() + '</span>' : ""}<div class="rk-hover rk-rocket">${rocketSvg(i)}<div class="rk-win">${win}</div><div class="rk-flame"></div></div></div></div>
           <div class="rk-card ${isMe(r) ? "ring-4 ring-emerald-300" : ""}" style="--d:${DLY[i]}"><span class="rk-tag" style="background:${TAG[i]}">${medal(i)} ${TAGT[i]}</span>
             <div class="text-[.78rem] font-extrabold truncate text-neutral-800">${esc(r.name)}${isMe(r) ? " \u00B7 " + l.you : ""}</div>
             <div class="text-[.58rem] text-neutral-500 leading-tight truncate">${esc(clsLabel(r.cls))} \u00B7 ${esc(sl(r.subject))}</div>
@@ -2784,7 +3043,7 @@ function renderInner() {
       const lbCard = (r, i) => {
         const k = LBK[i], px = i === 0 ? 66 : 50;
         if (!r) return `<div class="lbn-c lbn-${k} lbn-empty"><span class="lbn-wm">${i + 1}</span><div class="lbn-nm" style="margin-top:22px">${pHi ? "खाली" : "Khaali"}</div><div class="lbn-cs">${pHi ? "अगला आप?" : "Agla aap?"}</div></div>`;
-        return `<div class="lbn-c lbn-${k} ${isMe(r) ? "lbn-me" : ""}" style="--i:${i}"><span class="lbn-wm">${i + 1}</span>${i === 0 ? '<span class="lbn-crown">\u{1F451}</span>' : ""}<div class="lbn-av" style="width:${px}px;height:${px}px"><div class="lbn-ai">${lbAv(r, px)}</div><span class="lbn-bd lbm lbm${i + 1}">${i + 1}</span></div><div class="lbn-nm">${esc(r.name)}${isMe(r) ? " \u00B7 " + l.you : ""}</div><div class="lbn-cs">${esc(clsLabel(r.cls))} \u00B7 ${subCnt(r)}</div><div class="lbn-sc">${r.score}<small>/${r.total}</small></div><div class="lbn-ch"><span>${pc(r)}%</span>${r.timeMs ? `<span>\u23F1 ${fmtT(r.timeMs)}</span>` : ""}</div><div class="lbn-sub">${subChips(r)}</div></div>`;
+        return `<div class="lbn-c lbn-${k} ${isMe(r) ? "lbn-me" : ""}" style="--i:${i}"><span class="lbn-wm">${i + 1}</span>${i === 0 ? '<span class="lbn-crown">' + crownSvg() + '</span>' : ""}<div class="lbn-av" style="width:${px}px;height:${px}px"><div class="lbn-ai">${lbAv(r, px)}</div><span class="lbn-bd lbm lbm${i + 1}">${i + 1}</span></div><div class="lbn-nm">${esc(r.name)}${isMe(r) ? " \u00B7 " + l.you : ""}</div><div class="lbn-cs">${esc(clsLabel(r.cls))} \u00B7 ${subCnt(r)} \u00B7 ${attLab(r.ids.length, pHi)}</div><div class="lbn-sc">${r.score}<small>/${r.total}</small></div><div class="lbn-ch"><span>${pc(r)}%</span>${r.timeMs ? `<span>\u23F1 ${fmtT(r.timeMs)}</span>` : ""}</div><div class="lbn-sub">${subChips(r)}</div></div>`;
       };
       const SC2 = { Maths: "#15803d", Science: "#7e22ce", English: "#d97706", Hindi: "#dc2626" };
       const gm = new Map();
@@ -2793,7 +3052,7 @@ function renderInner() {
       const subChips = g => g.subs.map(r => { const c = SC2[r.subject] || "#15803d"; const nm = sl(r.subject); return `<i style="background:${c}1a;color:${c}"><span class="lbsn">${esc(nm)}</span><span class="lbsi">${esc(String([...String(nm)][0] || ""))}</span> <b>${r.score}<span class="lbtot">/${r.total}</span></b></i>`; }).join("");
       const subCnt = g => g.subs.length + " " + (pHi ? "विषय" : (g.subs.length === 1 ? "subject" : "subjects"));
       const lbRest = glist.slice(3, 20);
-      const lbList = lbRest.length ? `<div class="lbn-lh">${pHi ? "बाकी " + lbRest.length : "Baaki " + lbRest.length}</div><div class="lbn-list">` + lbRest.map((r, j) => { const p = pc(r), col = p >= 75 ? "#059669" : p >= 50 ? "#d97706" : "#ef4444"; return `<div class="rv lbn-row ${isMe(r) ? "lbn-rme" : ""}${j >= 7 ? " lbn-xtra" : ""}"><div class="lbn-rk">${j + 4}</div><div class="lbn-sav">${lbAv(r, 42)}</div><div class="flex-1 min-w-0"><div class="lbn-rn">${esc(r.name)} ${meTag(r)}</div><div class="lbn-rs">${esc(clsLabel(r.cls))} \u00B7 ${subCnt(r)}${r.timeMs ? " \u00B7 \u23F1 " + fmtT(r.timeMs) : ""}</div><div class="lbn-sub">${subChips(r)}</div></div><div class="lbn-rsc"><b>${r.score}/${r.total}</b><span style="background:${col}1f;color:${col}">${p}%</span></div></div>`; }).join("") + `</div>` + (lbRest.length > 7 ? `<button type="button" class="lbn-more" data-lbmore="${lbRest.length - 7}">${pHi ? "और देखें" : "Aur dikhao"} (${lbRest.length - 7}) \u25BE</button>` : "") : "";
+      const lbList = lbRest.length ? `<div class="lbn-lh">${pHi ? "बाकी " + lbRest.length : "Baaki " + lbRest.length}</div><div class="lbn-list">` + lbRest.map((r, j) => { const p = pc(r), col = p >= 75 ? "#059669" : p >= 50 ? "#d97706" : "#ef4444"; return `<div class="rv lbn-row ${isMe(r) ? "lbn-rme" : ""}${j >= 7 ? " lbn-xtra" : ""}"><div class="lbn-rk">${j + 4}</div><div class="lbn-sav">${lbAv(r, 42)}</div><div class="flex-1 min-w-0"><div class="lbn-rn">${esc(r.name)} ${meTag(r)}</div><div class="lbn-rs">${esc(clsLabel(r.cls))} \u00B7 ${subCnt(r)} \u00B7 ${attLab(r.ids.length, pHi)}${r.timeMs ? " \u00B7 \u23F1 " + fmtT(r.timeMs) : ""}</div><div class="lbn-sub">${subChips(r)}</div></div><div class="lbn-rsc"><b>${r.score}/${r.total}</b><span style="background:${col}1f;color:${col}">${p}%</span></div></div>`; }).join("") + `</div>` + (lbRest.length > 7 ? `<button type="button" class="lbn-more" data-lbmore="${lbRest.length - 7}">${pHi ? "और देखें" : "Aur dikhao"} (${lbRest.length - 7}) \u25BE</button>` : "") : "";
       const podium = `<p class="lbn-note">${pHi ? "हर छात्र एक ही बार \u2014 सभी विषयों के कुल नंबर, ज़्यादा नंबर + कम समय = ऊपर" : "One row per student \u2014 total marks of all subjects; more marks + less time = higher rank"}</p><div class="lbn lbt3">${glist.length ? `<div class="lbn-pod n${Math.min(3, glist.length)}">${[0, 1, 2].filter(i => glist[i]).map(i => lbCard(glist[i], i)).join("")}</div>` : ""}${lbList}</div>` + podNote;
 
       // ===== LEADERBOARD v2 (lx): naya, screenshot-friendly design =====
@@ -2808,7 +3067,7 @@ function renderInner() {
         const k = ["g", "s", "b"][i], px = i === 0 ? 78 : 62;
         if (!g) return `<div class="lx-p ${k} empty"><div class="lx-pav" style="--s:${px}px"><div><span>?</span></div></div><div class="lx-pn">${pHi ? "खाली" : "Khaali"}</div><div class="lx-pm">${pHi ? "अगला आप?" : "Agla aap?"}</div><div class="lx-ped"><i>${i + 1}</i></div></div>`;
         const me = isMe(g);
-        return `<div class="lx-p ${k}${me ? " me" : ""}">${i === 0 ? '<span class="lx-crown">\u{1F451}</span>' : ""}<div class="lx-pav" style="--s:${px}px"><div>${lbAv(g, px)}</div></div><div class="lx-pn">${esc(g.name)}</div><div class="lx-pm">${esc(clsLabel(g.cls))}${me ? " \u00B7 " + l.you : ""}</div><div class="lx-ped"><i>${i + 1}</i><b>${g.score}<small>/${g.total}</small></b><span>${pc(g)}%${g.timeMs ? "<br>\u23F1 " + fmtT(g.timeMs) : ""}</span>${lxMini(g)}</div></div>`;
+        return `<div class="lx-p ${k}${me ? " me" : ""}">${i === 0 ? '<span class="lx-crown">' + crownSvg() + '</span>' : ""}<div class="lx-pav" style="--s:${px}px"><div>${lbAv(g, px)}</div></div><div class="lx-pn">${esc(g.name)}</div><div class="lx-pm">${esc(clsLabel(g.cls))}${me ? " \u00B7 " + l.you : ""}</div><div class="lx-ped"><i>${i + 1}</i><b>${g.score}<small>/${g.total}</small></b><span>${pc(g)}%${g.timeMs ? "<br>\u23F1 " + fmtT(g.timeMs) : ""}</span>${lxMini(g)}</div></div>`;
       };
       const lxN = glist.length, lxTop = glist[0], lxAvg = lxN ? Math.round(glist.reduce((a, g) => a + pc(g), 0) / lxN) : 0;
       const lxShow = 10, lxMax = 50, lxMeIdx = glist.findIndex(g => isMe(g));
@@ -2838,23 +3097,23 @@ function renderInner() {
       const SCT = { Maths: ["#3b82f6", "#1d4ed8"], Science: ["#10b981", "#047857"], English: ["#8b5cf6", "#5b21b6"], Hindi: ["#06b6d4", "#0e7490"] };
       const cplAv = (r, cls) => avImg(r.name, "") || `<div class="tpx-ini">${esc(ini(r.name))}</div>`;
       const cplSubs = `<span class="cpl-subs">${SUBS.map(x => `<u style="--a:${SCT[x][0]};--b:${SCT[x][1]}">${icon[x]} 30/30</u>`).join("")}</span>`;
-      const cplHero = (o, nT) => { const r = o.r; return `<div class="cpl-w"><button data-cls="${esc(o.c)}" class="cpl-hero"><span class="cpl-tag">\u{1F451} ${hi ? "टॉपर नं. 1" : "TOPPER No. 1"}</span><span class="cpl-cnt">${nT} ${hi ? "टॉपर" : (nT === 1 ? "Topper" : "Toppers")}</span>
-          <div class="cpl-avw">${cplAv(r)}<i>\u{1F451}</i></div>
+      const cplHero = (o, nT) => { const r = o.r; return `<div class="cpl-w"><button data-cls="${esc(o.c)}" class="cpl-hero"><span class="cpl-tag">${crownSvg()} ${hi ? "टॉपर नं. 1" : "TOPPER No. 1"}</span><span class="cpl-cnt">${nT} ${hi ? "टॉपर" : (nT === 1 ? "Topper" : "Toppers")}</span>
+          <div class="cpl-avw">${cplAv(r)}<i>${crownSvg()}</i></div>
           <div class="cpl-nm">${esc(r.name)}</div>
-          <div class="cpl-meta"><b>${hi ? "कक्षा" : "Class"} ${esc(o.c)}</b>\u23F1 ${fmtT(r.timeMs)}</div>${cplSubs}</button></div>`; };
+          <div class="cpl-meta"><b>${hi ? "कक्षा" : "Class"} ${esc(o.c)}</b>\u23F1 ${fmtT(r.timeMs)} \u00B7 ${attLab(attUpto(r.name, o.c, r.createdAt), hi)}</div>${cplSubs}</button></div>`; };
       const cplRow = (o, i) => { const r = o.r; return `<div class="cpl-w"><button data-cls="${esc(o.c)}" class="cpl-row"><span class="cpl-rk ${i === 1 ? "r2" : i === 2 ? "r3" : ""}">${i + 1}</span><span class="cpl-sav">${cplAv(r)}</span>
-          <span class="cpl-mid"><b>${esc(r.name)}</b><em>\u23F1 ${fmtT(r.timeMs)} \u00B7 ${hi ? "चारों 30/30" : "4\u00D730/30"}</em></span>
+          <span class="cpl-mid"><b>${esc(r.name)}</b><em>\u23F1 ${fmtT(r.timeMs)} \u00B7 ${hi ? "चारों 30/30" : "4\u00D730/30"} \u00B7 ${attLab(attUpto(r.name, o.c, r.createdAt), hi)}</em></span>
           <span class="cpl-cls"><b>${esc(o.c)}</b><small>${hi ? "कक्षा" : "CLASS"}</small></span></button></div>`; };
       const cpTot = r => SUBS.length * (r.total || 30);
       const cpChips = r => SUBS.map(x => { const c = (SCT[x] || [])[1] || "#15803d"; return `<i style="background:${c}1a;color:${c}">${esc(sl(x))} <b>${r.total || 30}/${r.total || 30}</b></i>`; }).join("");
-      const cpCard = (o, i) => { const r = o.r, px = i === 0 ? 92 : i === 1 ? 70 : 52; return `<div data-cls="${esc(o.c)}" style="cursor:pointer;--i:${i}" class="lbn-c lbn-${LBK[i]}"><span class="lbn-wm">${i + 1}</span>${i === 0 ? '<span class="lbn-crown">\u{1F451}</span>' : ""}<div class="lbn-av" style="width:${px}px;height:${px}px"><div class="lbn-ai">${cplAv(r)}</div><span class="lbn-bd">${LBM[i]}</span></div><div class="lbn-nm">${esc(r.name)}</div><div class="lbn-cs">${esc(clsLabel(o.c))} \u00B7 ${SUBS.length} ${hi ? "विषय" : "subjects"}</div><div class="lbn-sc">${cpTot(r)}<small>/${cpTot(r)}</small></div><div class="lbn-ch"><span>100%</span>${r.timeMs ? `<span>\u23F1 ${fmtT(r.timeMs)}</span>` : ""}</div><div class="lbn-sub">${cpChips(r)}</div></div>`; };
-      const cpRow = (o, j) => { const r = o.r; return `<div data-cls="${esc(o.c)}" style="cursor:pointer" class="rv lbn-row"><div class="lbn-rk">${j + 4}</div><div class="lbn-sav">${cplAv(r)}</div><div class="flex-1 min-w-0"><div class="lbn-rn">${esc(r.name)}</div><div class="lbn-rs">${esc(clsLabel(o.c))} \u00B7 ${SUBS.length} ${hi ? "विषय" : "subjects"}${r.timeMs ? " \u00B7 \u23F1 " + fmtT(r.timeMs) : ""}</div><div class="lbn-sub">${cpChips(r)}</div></div><div class="lbn-rsc"><b>${cpTot(r)}/${cpTot(r)}</b><span style="background:#0596691f;color:#059669">100%</span></div></div>`; };
+      const cpCard = (o, i) => { const r = o.r, px = i === 0 ? 92 : i === 1 ? 70 : 52; return `<div data-cls="${esc(o.c)}" style="cursor:pointer;--i:${i}" class="lbn-c lbn-${LBK[i]}"><span class="lbn-wm">${i + 1}</span>${i === 0 ? '<span class="lbn-crown">' + crownSvg() + '</span>' : ""}<div class="lbn-av" style="width:${px}px;height:${px}px"><div class="lbn-ai">${cplAv(r)}</div><span class="lbn-bd">${LBM[i]}</span></div><div class="lbn-nm">${esc(r.name)}</div><div class="lbn-cs">${esc(clsLabel(o.c))} \u00B7 ${SUBS.length} ${hi ? "विषय" : "subjects"} \u00B7 ${attLab(attUpto(r.name, o.c, r.createdAt), hi)}</div><div class="lbn-sc">${cpTot(r)}<small>/${cpTot(r)}</small></div><div class="lbn-ch"><span>100%</span>${r.timeMs ? `<span>\u23F1 ${fmtT(r.timeMs)}</span>` : ""}</div><div class="lbn-sub">${cpChips(r)}</div></div>`; };
+      const cpRow = (o, j) => { const r = o.r; return `<div data-cls="${esc(o.c)}" style="cursor:pointer" class="rv lbn-row"><div class="lbn-rk">${j + 4}</div><div class="lbn-sav">${cplAv(r)}</div><div class="flex-1 min-w-0"><div class="lbn-rn">${esc(r.name)}</div><div class="lbn-rs">${esc(clsLabel(o.c))} \u00B7 ${SUBS.length} ${hi ? "विषय" : "subjects"} \u00B7 ${attLab(attUpto(r.name, o.c, r.createdAt), hi)}${r.timeMs ? " \u00B7 \u23F1 " + fmtT(r.timeMs) : ""}</div><div class="lbn-sub">${cpChips(r)}</div></div><div class="lbn-rsc"><b>${cpTot(r)}/${cpTot(r)}</b><span style="background:#0596691f;color:#059669">100%</span></div></div>`; };
       const cplBoard = L => `<div class="lbn">${cpCard(L[0], 0)}${L.length > 1 ? `<div class="lbn-two">${L.slice(1, 3).map((o, i) => cpCard(o, i + 1)).join("")}</div>` : ""}${L.length > 3 ? `<div class="lbn-lh">${hi ? "बाकी " + (L.length - 3) : "Baaki " + (L.length - 3)}</div><div class="lbn-list">${L.slice(3).map((o, j) => cpRow(o, j)).join("")}</div>` : ""}</div>`;
-      const lkSlot = i => { const px = i === 0 ? 92 : i === 1 ? 70 : 52; return `<div class="lbn-c lbn-${LBK[i]}" style="--i:${i}"><span class="lbn-wm">${i + 1}</span>${i === 0 ? '<span class="lbn-crown">\u{1F451}</span>' : ""}<div class="lbn-av" style="width:${px}px;height:${px}px"><div class="lbn-ai"><span class="th-lock" style="font-size:${Math.round(px * .5)}px">\u{1F512}</span></div><span class="lbn-bd">${LBM[i]}</span></div><div class="lbn-nm">${hi ? "खाली" : "Khaali"}</div><div class="lbn-cs">${hi ? "अगला आप?" : "Agla aap?"}</div><div class="lbn-sc">?<small></small></div><div class="lbn-sub">${cpChips({ total: 30 })}</div></div>`; };
+      const lkSlot = i => { const px = i === 0 ? 92 : i === 1 ? 70 : 52; return `<div class="lbn-c lbn-${LBK[i]}" style="--i:${i}"><span class="lbn-wm">${i + 1}</span>${i === 0 ? '<span class="lbn-crown">' + crownSvg() + '</span>' : ""}<div class="lbn-av" style="width:${px}px;height:${px}px"><div class="lbn-ai"><span class="th-lock" style="font-size:${Math.round(px * .5)}px">\u{1F512}</span></div><span class="lbn-bd">${LBM[i]}</span></div><div class="lbn-nm">${hi ? "खाली" : "Khaali"}</div><div class="lbn-cs">${hi ? "अगला आप?" : "Agla aap?"}</div><div class="lbn-sc">?<small></small></div><div class="lbn-sub">${cpChips({ total: 30 })}</div></div>`; };
       const lockCard = sec("\u{1F512} " + (hi ? "अभी कोई क्लास टॉपर नहीं" : "Abhi koi class topper nahi"), hi ? "चारों विषय में <b>30/30</b> लाओ \u2192 टॉपर बनो!" : "Chaaron subject mein <b>30/30</b> laao \u2192 topper bano!", "mt-0") + `<div class="lbn">${lkSlot(0)}<div class="lbn-two">${lkSlot(1)}${lkSlot(2)}</div></div><div style="height:18px"></div>`;
       const anyTop = classToppers().some(o => o.r);
       const ch0 = champion(), nTop = classToppers().filter(o => o.r).length;
-      const hallCard = ch0 ? `<div class="rv hof"><div class="hof-l"><i class="hof-cr">\u{1F451}</i><div class="hof-av">${avImg(ch0.name, "") || `<div class="tpx-ini">${esc(ini(ch0.name))}</div>`}</div></div><div class="min-w-0 flex-1"><em>${hi ? "सबसे तेज़ चैंपियन" : "FASTEST CHAMPION"}</em><b>${esc(ch0.name)}</b><i>${esc(clsLabel(ch0.cls))} \u00B7 \u23F1 ${fmtT(ch0.timeMs)}</i></div><div class="hof-n"><b>${nTop}</b><span>${hi ? "टॉपर" : "Toppers"}</span></div></div>` : "";
+      const hallCard = ch0 ? `<div class="rv hof"><div class="hof-l"><i class="hof-cr">${crownSvg()}</i><div class="hof-av">${avImg(ch0.name, "") || `<div class="tpx-ini">${esc(ini(ch0.name))}</div>`}</div></div><div class="min-w-0 flex-1"><em>${hi ? "सबसे तेज़ चैंपियन" : "FASTEST CHAMPION"}</em><b>${esc(ch0.name)}</b><i>${esc(clsLabel(ch0.cls))} \u00B7 \u23F1 ${fmtT(ch0.timeMs)}</i></div><div class="hof-n"><b>${nTop}</b><span>${hi ? "टॉपर" : "Toppers"}</span></div></div>` : "";
       const cplSorted = clsTop.slice().sort((x, y) => (x.r.timeMs || 1e12) - (y.r.timeMs || 1e12));
       const clsHtml = !anyTop ? "" : '<div class="cpm">' + sec("\u{1F393} " + (hi ? "क्लास टॉपर लीडरबोर्ड" : "Class Topper Leaderboard"), hi ? "सबसे तेज़ टॉपर ऊपर \u2014 सिर्फ़ वही क्लास जिनमें टॉपर है (क्लास पर टैप करें)।" : "Fastest topper on top \u2014 only classes that have a topper (tap a class).", "mt-0") + (cplSorted.length ? cplBoard(cplSorted) : "") + '</div>';
 
@@ -2866,11 +3125,11 @@ function renderInner() {
       let lxMe = "";
       if (meI >= 0) {
         const g = glist[meI], rk = meI + 1, pv = glist[meI - 1], gap = pv ? pv.score - g.score : 0, tp = Math.max(1, Math.round(rk / lxN * 100));
-        const msg = rk === 1 ? (pHi ? "\u{1F451} आप सबसे ऊपर हो! पूरे लीडरबोर्ड में नंबर 1!" : "\u{1F451} Aap sabse upar ho! Leaderboard mein No. 1!")
+        const msg = rk === 1 ? (pHi ? crownSvg() + " आप सबसे ऊपर हो! पूरे लीडरबोर्ड में नंबर 1!" : crownSvg() + " Aap sabse upar ho! Leaderboard mein No. 1!")
           : rk <= 3 ? (pHi ? "\u{1F525} शानदार! आप टॉप 3 में हो!" : "\u{1F525} Shaandaar! Aap Top 3 mein ho!")
           : gap > 0 ? (pHi ? `\u{1F4AA} #${rk - 1} से सिर्फ <b>${gap}</b> नंबर पीछे — एक और टेस्ट दो!` : `\u{1F4AA} #${rk - 1} se sirf <b>${gap}</b> marks peeche — ek aur test do!`)
           : (pHi ? `⚡ नंबर बराबर हैं — कम समय में टेस्ट करो, #${rk - 1} आपका!` : `⚡ Marks barabar hain — kam time mein test karo, #${rk - 1} aapka!`);
-        lxMe = `<div class="lxme${rk <= 3 ? " top" : ""}"><div class="lxme-av">${rk === 1 ? "<i>\u{1F451}</i>" : ""}<div>${lbAv(g, 84)}</div></div><div class="lxme-tx"><em>${pHi ? "आपकी रैंक" : "AAPKI RANK"} · ${esc(lbSubT)}</em><div class="lxme-rk"><b>#${rk}</b><small>/ ${lxN}</small><span>Top ${tp}%</span></div><div class="lxme-nm">${esc(g.name)}</div><div class="lxme-ch"><span>${g.score}/${g.total}</span><span>${pc(g)}%</span>${g.timeMs ? `<span>⏱ ${fmtT(g.timeMs)}</span>` : ""}</div><p>${msg}</p></div></div>`;
+        lxMe = `<div class="lxme${rk <= 3 ? " top" : ""}"><div class="lxme-av">${rk === 1 ? "<i>" + crownSvg() + "</i>" : ""}<div>${lbAv(g, 84)}</div></div><div class="lxme-tx"><em>${pHi ? "आपकी रैंक" : "AAPKI RANK"} · ${esc(lbSubT)}</em><div class="lxme-rk"><b>#${rk}</b><small>/ ${lxN}</small><span>Top ${tp}%</span></div><div class="lxme-nm">${esc(g.name)}</div><div class="lxme-ch"><span>${g.score}/${g.total}</span><span>${pc(g)}%</span>${g.timeMs ? `<span>⏱ ${fmtT(g.timeMs)}</span>` : ""}</div><p>${msg}</p></div></div>`;
       }
       // ===== LEADERBOARD v3: clean Tailwind design =====
       const tbClr = { Maths: "emerald", Science: "violet", English: "amber", Hindi: "rose" };
@@ -2878,48 +3137,55 @@ function renderInner() {
       const tbAv = (n, px, ring) => { const ph = photoOf(n), b = "grid shrink-0 place-items-center overflow-hidden rounded-full bg-emerald-100 font-bold text-emerald-800 " + (ring || ""); return ph ? `<div class="${b}" style="width:${px}px;height:${px}px"><img src="${ph}" alt="" decoding="async" class="h-full w-full object-cover"></div>` : `<div class="${b}" style="width:${px}px;height:${px}px;font-size:${Math.round(px * .42)}px">${esc(ini(n))}</div>`; };
       const tbChip = (attr, val, label, on) => `<button type="button" ${attr}="${esc(val)}" class="shrink-0 rounded-full border px-3.5 py-1.5 text-xs font-bold ${on ? "border-slate-900 bg-slate-900 text-white" : "border-slate-200 bg-white text-slate-600"}">${esc(label)}</button>`;
       const tbFilters = `<div class="mb-4 space-y-2"><div id="clsChips" class="flex gap-1.5 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">${tbChip("data-fc", "", pHi ? "सभी" : "All", !state.lbCls)}${CLASSES.map(c => tbChip("data-fc", c, clsLabel(c), state.lbCls === c)).join("")}</div><div id="chips" class="flex gap-1.5 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">${tbChip("data-s", "", pHi ? "सब विषय" : "All subjects", !state.lbSub)}${Object.keys(subs).map(k => tbChip("data-s", k, sl(subs[k]), state.lbSub === k)).join("")}</div></div>`;
-      const tbStrip = g => `<div class="mt-2.5 grid gap-1.5" style="grid-template-columns:repeat(${lxSubs.length},minmax(0,1fr))">` + lxSubs.map(x => { const r = g.by[x], c = tbClr[x] || "emerald"; return r ? `<div class="rounded-lg bg-${c}-50 px-1 py-1.5 text-center"><div class="truncate text-[10px] font-semibold text-${c}-700">${esc(sl(x))}</div><div class="text-sm font-bold text-slate-800">${r.score}<span class="text-[10px] font-medium text-slate-400">/${r.total}</span></div></div>` : `<div class="rounded-lg bg-slate-50 px-1 py-1.5 text-center"><div class="truncate text-[10px] font-semibold text-slate-400">${esc(sl(x))}</div><div class="text-sm font-bold text-slate-300">—</div></div>`; }).join("") + `</div>`;
-      const tbRow = (g, rk, extra) => { const me = isMe(g), p = pc(g); return `<details class="${extra || ""} rounded-2xl border ${me ? "border-emerald-400 bg-emerald-50/60" : rk <= 10 ? "border-orange-200 bg-orange-50/50" : "border-slate-200 bg-white"} shadow-sm"><summary class="flex cursor-pointer list-none items-center gap-3 px-3 py-2.5 [&::-webkit-details-marker]:hidden"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full text-xs font-extrabold ${rk <= 10 ? "bg-gradient-to-br from-orange-300 to-orange-700 text-white shadow" : "bg-slate-100 text-slate-600"}">${rk}</span>${tbAv(g.name, 40, rk <= 10 ? "ring-2 ring-orange-400" : "")}<div class="min-w-0 flex-1"><div class="flex items-center gap-1.5"><span class="truncate text-sm font-bold text-slate-900">${esc(g.name)}</span>${me ? `<span class="rounded-full bg-emerald-600 px-1.5 py-0.5 text-[9px] font-bold text-white">${l.you}</span>` : ""}</div><div class="truncate text-[11px] text-slate-500">${esc(clsLabel(g.cls))} · ${g.subs.length} ${pHi ? "विषय" : (g.subs.length === 1 ? "subject" : "subjects")}${g.timeMs ? " · ⏱ " + fmtT(g.timeMs) : ""}</div></div><div class="text-right"><div class="text-base font-extrabold leading-tight text-slate-900">${g.score}<span class="text-[11px] font-semibold text-slate-400">/${g.total}</span></div><span class="inline-block rounded-full px-2 py-0.5 text-[10px] font-bold ${tbTone(p)}">${p}%</span></div></summary><div class="px-3 pb-3">${tbStrip(g)}</div></details>`; };
+      const _hOf = g => subjHist(g.name, g.cls);
+      const _ab = (g, x) => { const h = _hOf(g)[x]; if (!h) return ""; return `<div class="text-[9px] font-semibold text-slate-500">${attLab(h.n, pHi)}${h.hit ? " " + MEDALS[h.hit.rank - 1] : ""}</div>`; };
+      const tbStrip = g => `<div class="mt-2.5 grid gap-1.5" style="grid-template-columns:repeat(${lxSubs.length},minmax(0,1fr))">` + lxSubs.map(x => { const r = g.by[x], c = tbClr[x] || "emerald"; return r ? `<div class="rounded-lg bg-${c}-50 px-1 py-1.5 text-center"><div class="truncate text-[10px] font-semibold text-${c}-700">${esc(sl(x))}</div><div class="text-sm font-bold text-slate-800">${r.score}<span class="text-[10px] font-medium text-slate-400">/${r.total}</span></div>${_ab(g, x)}</div>` : `<div class="rounded-lg bg-slate-50 px-1 py-1.5 text-center"><div class="truncate text-[10px] font-semibold text-slate-400">${esc(sl(x))}</div><div class="text-sm font-bold text-slate-300">—</div></div>`; }).join("") + `</div>`;
+      const tbRow = (g, rk, extra) => { const me = isMe(g), p = pc(g); return `<details class="${extra || ""} rounded-2xl border ${me ? "border-emerald-400 bg-emerald-50/60" : rk <= 10 ? "border-orange-200 bg-orange-50/50" : "border-slate-200 bg-white"} shadow-sm"><summary class="flex cursor-pointer list-none items-center gap-3 px-3 py-2.5 [&::-webkit-details-marker]:hidden"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full text-xs font-extrabold ${rk <= 10 ? "bg-gradient-to-br from-orange-300 to-orange-700 text-white shadow" : "bg-slate-100 text-slate-600"}">${rk}</span>${tbAv(g.name, 40, rk <= 10 ? "ring-2 ring-orange-400" : "")}<div class="min-w-0 flex-1"><div class="flex items-center gap-1.5"><span class="truncate text-sm font-bold text-slate-900">${esc(g.name)}</span>${me ? `<span class="rounded-full bg-emerald-600 px-1.5 py-0.5 text-[9px] font-bold text-white">${l.you}</span>` : ""}</div><div class="truncate text-[11px] text-slate-500">${esc(clsLabel(g.cls))} · ${g.subs.length} ${pHi ? "विषय" : (g.subs.length === 1 ? "subject" : "subjects")} · ${attLab(attUpto(g.name, g.cls), pHi)}${g.timeMs ? " · ⏱ " + fmtT(g.timeMs) : ""}</div></div><div class="text-right"><div class="text-base font-extrabold leading-tight text-slate-900">${g.score}<span class="text-[11px] font-semibold text-slate-400">/${g.total}</span></div><span class="inline-block rounded-full px-2 py-0.5 text-[10px] font-bold ${tbTone(p)}">${p}%</span></div></summary><div class="px-3 pb-3">${tbStrip(g)}</div></details>`; };
       const tbPod = () => { const C = [{ bg: "from-cyan-200 via-sky-50 to-white", bd: "border-cyan-400", ring: "ring-cyan-400", md: "\u{1F48E}", sz: 64, lb: "Diamond", bc: "bg-gradient-to-r from-cyan-400 to-sky-500 text-white" }, { bg: "from-amber-200 via-yellow-50 to-white", bd: "border-amber-400", ring: "ring-amber-400", md: "\u{1F947}", sz: 56, lb: "Gold", bc: "bg-gradient-to-r from-yellow-300 to-amber-500 text-amber-950" }, { bg: "from-slate-300 via-slate-100 to-white", bd: "border-slate-400", ring: "ring-slate-400", md: "\u{1F948}", sz: 52, lb: "Silver", bc: "bg-gradient-to-r from-slate-200 to-slate-400 text-slate-900" }];
         return `<div class="mb-5 space-y-3">` + C.map((c, i) => { const g = glist[i]; if (!g) return ""; const me = isMe(g);
-          const boxes = lxSubs.map(x => { const r = g.by[x], k = tbClr[x] || "emerald"; return r ? `<div class="rounded-xl bg-white/80 px-1 py-2 text-center shadow-sm ring-1 ring-${k}-100"><div class="truncate text-[10px] font-bold text-${k}-700">${esc(sl(x))}</div><div class="text-base font-extrabold leading-tight text-slate-900">${r.score}<span class="text-[10px] font-semibold text-slate-400">/${r.total}</span></div><div class="text-[10px] font-semibold text-slate-500">⏱ ${r.timeMs ? fmtT(r.timeMs) : "-"}</div></div>` : `<div class="rounded-xl bg-slate-50 px-1 py-2 text-center"><div class="truncate text-[10px] font-bold text-slate-400">${esc(sl(x))}</div><div class="text-base font-extrabold text-slate-300">—</div><div class="text-[10px] text-slate-300">⏱ -</div></div>`; }).join("");
-          return `<div class="relative rounded-3xl border ${c.bd} bg-gradient-to-b ${c.bg} p-3.5 shadow-md ${me ? "outline outline-2 outline-offset-2 outline-emerald-500" : ""}"><span class="absolute right-3 top-3 rounded-full px-2.5 py-1 text-[10px] font-extrabold ${c.bc}">${c.md} ${c.lb}</span><div class="flex items-center gap-3">${i === 0 ? '<span class="absolute -top-3 left-5 text-2xl">\u{1F451}</span>' : ""}${tbAv(g.name, c.sz, "ring-4 " + c.ring)}<div class="min-w-0 flex-1 pr-16"><div class="truncate text-base font-extrabold text-slate-900">${esc(g.name)}${me ? ` <span class="rounded-full bg-emerald-600 px-1.5 py-0.5 align-middle text-[9px] font-bold text-white">${l.you}</span>` : ""}</div><div class="text-[11px] text-slate-500">${esc(clsLabel(g.cls))}</div></div></div><div class="mt-3 grid grid-cols-3 gap-2 text-center"><div class="rounded-xl bg-white/80 py-1.5 shadow-sm"><div class="text-lg font-extrabold text-slate-900">${g.score}<span class="text-[11px] font-semibold text-slate-400">/${g.total}</span></div><div class="text-[10px] font-semibold text-slate-500">${pHi ? "कुल नंबर" : "Total marks"}</div></div><div class="rounded-xl bg-white/80 py-1.5 shadow-sm"><div class="text-lg font-extrabold text-slate-900">${pc(g)}%</div><div class="text-[10px] font-semibold text-slate-500">${pHi ? "प्रतिशत" : "Percent"}</div></div><div class="rounded-xl bg-white/80 py-1.5 shadow-sm"><div class="text-lg font-extrabold text-slate-900">${g.timeMs ? fmtT(g.timeMs) : "-"}</div><div class="text-[10px] font-semibold text-slate-500">${pHi ? "कुल समय" : "Total time"}</div></div></div><div class="mt-2 grid gap-1.5" style="grid-template-columns:repeat(${lxSubs.length},minmax(0,1fr))">${boxes}</div></div>`; }).join("") + `</div>`; };
+          const boxes = lxSubs.map(x => { const r = g.by[x], k = tbClr[x] || "emerald"; return r ? `<div class="rounded-xl bg-white/80 px-1 py-2 text-center shadow-sm ring-1 ring-${k}-100"><div class="truncate text-[10px] font-bold text-${k}-700">${esc(sl(x))}</div><div class="text-base font-extrabold leading-tight text-slate-900">${r.score}<span class="text-[10px] font-semibold text-slate-400">/${r.total}</span></div><div class="text-[10px] font-semibold text-slate-500">⏱ ${r.timeMs ? fmtT(r.timeMs) : "-"}</div>${_ab(g, x)}</div>` : `<div class="rounded-xl bg-slate-50 px-1 py-2 text-center"><div class="truncate text-[10px] font-bold text-slate-400">${esc(sl(x))}</div><div class="text-base font-extrabold text-slate-300">—</div><div class="text-[10px] text-slate-300">⏱ -</div></div>`; }).join("");
+          return `<div class="relative rounded-3xl border ${c.bd} bg-gradient-to-b ${c.bg} p-3.5 shadow-md ${me ? "outline outline-2 outline-offset-2 outline-emerald-500" : ""}"><span class="absolute right-3 top-3 rounded-full px-2.5 py-1 text-[10px] font-extrabold ${c.bc}">${c.md} ${c.lb}</span><div class="flex items-center gap-3">${i === 0 ? '<span class="absolute -top-4 left-5 text-2xl">' + crownSvg() + '</span>' : ""}${tbAv(g.name, c.sz, "ring-4 " + c.ring)}<div class="min-w-0 flex-1 pr-16"><div class="truncate text-base font-extrabold text-slate-900">${esc(g.name)}${me ? ` <span class="rounded-full bg-emerald-600 px-1.5 py-0.5 align-middle text-[9px] font-bold text-white">${l.you}</span>` : ""}</div><div class="text-[11px] text-slate-500">${esc(clsLabel(g.cls))} · ${attLab(attUpto(g.name, g.cls), pHi)}</div></div></div><div class="mt-3 grid grid-cols-3 gap-2 text-center"><div class="rounded-xl bg-white/80 py-1.5 shadow-sm"><div class="text-lg font-extrabold text-slate-900">${g.score}<span class="text-[11px] font-semibold text-slate-400">/${g.total}</span></div><div class="text-[10px] font-semibold text-slate-500">${pHi ? "कुल नंबर" : "Total marks"}</div></div><div class="rounded-xl bg-white/80 py-1.5 shadow-sm"><div class="text-lg font-extrabold text-slate-900">${pc(g)}%</div><div class="text-[10px] font-semibold text-slate-500">${pHi ? "प्रतिशत" : "Percent"}</div></div><div class="rounded-xl bg-white/80 py-1.5 shadow-sm"><div class="text-lg font-extrabold text-slate-900">${g.timeMs ? fmtT(g.timeMs) : "-"}</div><div class="text-[10px] font-semibold text-slate-500">${pHi ? "कुल समय" : "Total time"}</div></div></div><div class="mt-2 grid gap-1.5" style="grid-template-columns:repeat(${lxSubs.length},minmax(0,1fr))">${boxes}</div></div>`; }).join("") + `</div>`; };
       const tbStat = (v, lb) => `<div class="rounded-2xl border border-slate-200 bg-white py-3 text-center shadow-sm"><div class="text-lg font-extrabold text-slate-900">${v}</div><div class="text-[10px] font-semibold uppercase tracking-wide text-slate-400">${lb}</div></div>`;
       let tbMe = "";
       if (lxMeIdx >= 0 && lxN) { const g = glist[lxMeIdx], tp = Math.max(1, Math.round((lxMeIdx + 1) / lxN * 100)); tbMe = `<div class="mb-4 flex items-center gap-3 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-600 p-3.5 text-white shadow-lg">${tbAv(g.name, 52, "ring-2 ring-white/70")}<div class="min-w-0 flex-1"><div class="text-[10px] font-bold uppercase tracking-widest text-indigo-100">${pHi ? "आपकी रैंक" : "Your rank"}</div><div class="truncate text-sm font-bold">${esc(g.name)}</div><div class="text-[11px] text-indigo-100">${g.score}/${g.total} · ${pc(g)}%${g.timeMs ? " · ⏱ " + fmtT(g.timeMs) : ""}</div></div><div class="text-right"><div class="text-3xl font-extrabold leading-none">#${lxMeIdx + 1}</div><div class="mt-1 text-[10px] text-indigo-100">${pHi ? lxN + " में से" : "of " + lxN} · ${pHi ? "टॉप " : "Top "}${tp}%</div></div></div>`; }
       const tbShow = 10, tbMax = 50, tbRest = glist.slice(3, tbMax);
       const tbBoard = lxN ? `<div class="mb-5 grid grid-cols-3 gap-2">${tbStat(lxN, l.stu)}${tbStat(lxTop.score + "/" + lxTop.total, l.best)}${tbStat(lxAvg + "%", l.avg)}</div>` + tbPod() + `<div class="space-y-2">${tbRest.map((g, j) => tbRow(g, j + 4, j >= tbShow ? "tbx hidden" : "")).join("")}</div>` + (tbRest.length > tbShow ? `<button type="button" onclick="document.querySelectorAll('.tbx').forEach(e=>e.classList.remove('hidden'));this.remove()" class="mt-3 w-full rounded-2xl border border-slate-200 bg-white py-3 text-sm font-bold text-slate-700 shadow-sm">${pHi ? "और दिखाएँ" : "Show more"} (${tbRest.length - tbShow})</button>` : "") + (lxMeIdx >= tbMax ? `<div class="mt-3"><div class="mb-1 text-[11px] font-bold uppercase tracking-wide text-slate-400">${pHi ? "आपकी रैंक" : "Your rank"}</div>${tbRow(glist[lxMeIdx], lxMeIdx + 1, "")}</div>` : "") + `<p class="mt-6 text-center text-[11px] leading-relaxed text-slate-400">${pHi ? "रैंक = सभी विषयों के कुल नंबर। नंबर बराबर? कम समय वाला ऊपर।" : "Rank = total marks of all subjects. Same marks? Less time wins."}</p>` : `<div class="rounded-2xl border border-dashed border-slate-300 bg-white py-12 text-center text-sm text-slate-500">${l.none}</div>`;
-      body = `<div class="mb-4"><h1 class="text-2xl font-extrabold tracking-tight text-slate-900">${pHi ? "लीडरबोर्ड" : "Leaderboard"}</h1><p class="mt-0.5 text-xs text-slate-500">${esc(lbSubT)}</p></div>` + rewardCard() + tbMe + tbFilters + tbBoard;
+      body = `<div class="mb-4"><h1 class="text-2xl font-extrabold tracking-tight text-slate-900">${pHi ? "लीडरबोर्ड" : "Leaderboard"}</h1><p class="mt-0.5 text-xs text-slate-500">${esc(lbSubT)}</p></div>` + rewardCard() + tbFilters + tbBoard;
     }
     app.innerHTML = head + body + `<button id="backStart" class="block w-full text-center py-3.5 rounded-2xl ${btnMain} text-base mt-7">&larr; ${l.back}</button>`;
 
     const drawStudents = () => {
       const box = $("stList"); if (!box) return;
       const q = (($("srch") || {}).value || "").trim().toLowerCase();
-      const rankOf = new Map(list.map((r, i) => [r.id, i + 1]));
       const ck = x => String(x.name).trim().toLowerCase() + "|" + String(x.cls);
+      const _best = new Map(), _lat = new Map();
+      list.forEach(r => { const k = ck(r); const b = _best.get(k); if (!b || betterR(r, b)) _best.set(k, r); _lat.set(k, Math.max(_lat.get(k) || 0, r.createdAt || 0)); });
+      const uniq = [..._best.values()].sort((a, b) => (pc(b) - pc(a)) || ((a.timeMs || 1e12) - (b.timeMs || 1e12)) || ((a.createdAt || 0) - (b.createdAt || 0)));
+      const rankOf = new Map(uniq.map((r, i) => [r.id, i + 1]));
       const cntOf = new Map(); results.forEach(x => { const k = ck(x); cntOf.set(k, (cntOf.get(k) || 0) + 1); });
+      const cntList = new Map(); list.forEach(x => { const k = ck(x); cntList.set(k, (cntList.get(k) || 0) + 1); });
       const baar = n => lang === "hi" ? n + " बार" : n + (n === 1 ? " time" : " times");
       const liveHtml = "";
       let rows = list.filter(r => !q || String(r.name).toLowerCase().includes(q));
-      if ((state.lbSort || "latest") === "latest") rows = rows.slice().sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+      if ((state.lbSort || "latest") === "latest") rows = rows.slice().sort((a, b) => ((b.createdAt || 0) - (a.createdAt || 0)) || String(b.id).localeCompare(String(a.id)));
+      else rows = rows.slice().sort((a, b) => ((cntList.get(ck(b)) || 0) - (cntList.get(ck(a)) || 0)) || ((_lat.get(ck(b)) || 0) - (_lat.get(ck(a)) || 0)) || ck(a).localeCompare(ck(b)) || ((b.createdAt || 0) - (a.createdAt || 0)));
+      const _hc = new Map(), rankThen = r => { const k = ck(r); if (!_hc.has(k)) _hc.set(k, subjHist(r.name, r.cls)); const H = _hc.get(k)[r.subject], a = H && H.att.find(x => String(x.r.id) === String(r.id)); return a ? a.rank : 99; };
       const shown = rows.slice(0, state.lbLimit || 60);
       if (!rows.length) { box.innerHTML = liveHtml + `<p class="text-center text-neutral-500 py-12 border border-dashed border-green-200 rounded-2xl">${l.none}</p>`; return; }
       box.innerHTML = liveHtml + `<div class="sx-list stagger">` + shown.map((r, i) => {
-        const p = pc(r), rk = rankOf.get(r.id), dt = fmtDT(r.createdAt), SC = { Maths: "#15803d", Science: "#7e22ce", English: "#d97706", Hindi: "#dc2626" };
+        const p = pc(r), rk = rankThen(r), dt = fmtDT(r.createdAt), SC = { Maths: "#15803d", Science: "#7e22ce", English: "#d97706", Hindi: "#dc2626" };
         const col = p >= 75 ? "#059669" : p >= 50 ? "#d97706" : "#ef4444", sc = SC[r.subject] || "#15803d";
         return `<div data-nm="${esc(String(r.name).trim().toLowerCase())}" data-cl="${esc(String(r.cls))}" class="sx ${isMe(r) ? "me" : ""}">
-          <div class="sx-ring" style="--p:${p};--c:${col}">${avImg(r.name, "") || `<div>${esc(ini(r.name))}</div>`}<span class="sx-rk">${rk <= 3 ? medal(rk - 1) : "#" + rk}</span></div>
+          <div class="sx-ring" style="--p:${p};--c:${col}">${avImg(r.name, "") || `<div>${esc(ini(r.name))}</div>`}<span class="sx-rk" title="${lang === "hi" ? "उस समय इस विषय में रैंक" : "Rank in this subject at that time"}">${rk <= 3 ? medal(rk - 1) : "#" + rk}</span></div>
           <div class="flex-1 min-w-0">
             <div class="flex items-center gap-1.5"><span class="sx-nm">${esc(r.name)}</span>${isMe(r) ? `<span class="sx-you">${l.you}</span>` : ""}</div>
-            <div class="sx-tags"><span style="background:#f2f2f7;color:#3c3c43">${esc(clsLabel(r.cls))}</span><span style="background:${sc}1a;color:${sc}">${esc(sl(r.subject))}</span><span style="background:#f2f2f7;color:#8e8e93">${baar(cntOf.get(ck(r)) || 1)}</span></div>
-            ${dt ? `<div class="sx-dt">\u{1F552} ${dt}</div>` : ""}
-          </div>
+            <div class="sx-tags"><span style="background:${sc}1a;color:${sc}">${esc(clsLabel(r.cls))} \u00B7 ${esc(sl(r.subject))}</span>${rk > 98 ? "" : `<span style="background:${rk <= 3 ? "#fef3c7" : "#f1f5f9"};color:${rk <= 3 ? "#92400e" : "#475569"}">${rk <= 3 ? MEDALS[rk - 1] + " " : ""}${lang === "hi" ? "इस क्लास में नंबर " + rk : "No. " + rk + " in class"}</span>`}<span style="background:#eef2ff;color:#4f46e5">${(() => { const a = attInfo(r); return lang === "hi" ? "प्रयास " + a.no : "Attempt " + a.no; })()}</span>${(state.lbSort || "latest") === "most" ? `<span style="background:#fff7ed;color:#c2410c">\u{1F525} ${baar(cntList.get(ck(r)) || 1)}</span>` : ""}${dt ? `<em class="sx-dt2">${dt}</em>` : ""}</div>
+                      </div>
           <div class="sx-sc"><div class="sx-big" style="color:${col}">${r.score}<small>/${r.total}</small></div><div class="sx-pc" style="background:${col}1f;color:${col}">${p}%</div>${r.timeMs ? `<div class="sx-tm">\u23F1 ${fmtT(r.timeMs)}</div>` : ""}</div>
         </div>`; }).join("") + `</div>` + (rows.length > shown.length ? `<button id="moreBtn" class="block w-full mt-3 py-3 rounded-2xl ${btnLine} text-sm">${lang === "hi" ? "और दिखाएँ" : "Show more"} (${rows.length - shown.length})</button>` : "");
       const me = box.querySelector(".sx.me"); if (me && !state.metSeen) { state.metSeen = 1; me.scrollIntoView({ block: "center" }); }
     };
-    if ($("tabs")) $("tabs").onclick = e => { const b = e.target.closest("[data-tab]"); if (b) { state.lbTab = b.dataset.tab; render(); } };
+    if ($("tabs")) $("tabs").onclick = e => { const b = e.target.closest("[data-tab]"); if (b) { state.lbTab = b.dataset.tab; if (!state.lbSubPicked) state.lbSub = ""; render(); } };
     const upiIn = $("upiIn"); if (upiIn) { upiIn.oninput = e => { state.upiDraft = e.target.value; }; $("upiSave").onclick = async () => {
       const v = upiIn.value.trim(), msg = $("upiMsg"), hi = lang === "hi";
       if (!okUpi(v)) { msg.className = "text-xs mt-2 text-red-600"; msg.textContent = hi ? "सही UPI ID डालें (जैसे name@upi)" : "Sahi UPI ID daalein (jaise name@upi)"; return; }
@@ -2932,19 +3198,19 @@ function renderInner() {
       sb.disabled = false; }; }
     if (tab !== "students") app.querySelectorAll(".lbf-row,.lx-chips").forEach(w => { const a = w.querySelector(".on"); if (a) w.scrollLeft = Math.max(0, a.offsetLeft - 24); });
     const lxm = app.querySelector("[data-lxmore]"); if (lxm) lxm.onclick = () => { const w = lxm.closest(".lx"), on = w.classList.toggle("all"), n = lxm.dataset.lxmore; lxm.textContent = on ? (lang === "hi" ? "कम दिखाओ \u25B4" : "Kam dikhao \u25B4") : (lang === "hi" ? "और देखें" : "Aur dikhao") + " (" + n + ") \u25BE"; };
-    const cc = $("clsChips"); if (cc) cc.onclick = e => { const b = e.target.closest("[data-fc]"); if (!b) return; state.lbCls = b.dataset.fc; state.lbSub = ""; render(); };
-    app.querySelectorAll("[data-cls]").forEach(b => b.onclick = () => { state.lbCls = b.dataset.cls; state.lbSub = ""; render(); window.scrollTo({ top: 0, left: 0, behavior: "instant" }); });
-    const chips = $("chips"); if (chips) chips.onclick = e => { const b = e.target.closest("[data-s]"); if (!b) return; state.lbSub = b.dataset.s; render(); };
+    const cc = $("clsChips"); if (cc) cc.onclick = e => { const b = e.target.closest("[data-fc]"); if (!b) return; state.lbCls = b.dataset.fc; state.lbClsPicked = true; state.lbSub = ""; state.lbSubPicked = false; render(); };
+    app.querySelectorAll("[data-cls]").forEach(b => b.onclick = () => { state.lbCls = b.dataset.cls; state.lbSub = ""; state.lbSubPicked = false; render(); window.scrollTo({ top: 0, left: 0, behavior: "instant" }); });
+    const chips = $("chips"); if (chips) chips.onclick = e => { const b = e.target.closest("[data-s]"); if (!b) return; state.lbSub = b.dataset.s; state.lbSubPicked = true; render(); };
     if (tab === "students") {
       $("srch").value = state.q || ""; $("srch").oninput = e => { state.q = e.target.value; state.lbLimit = 60; clearTimeout(window._sq); window._sq = setTimeout(drawStudents, 120); };
-      $("srt").onclick = () => { state.lbSort = (state.lbSort || "latest") === "latest" ? "best" : "latest"; render(); };
+      $("srt").onclick = () => { state.lbSort = (state.lbSort || "latest") === "latest" ? "most" : "latest"; render(); };
       window.__drawStudents = drawStudents; drawStudents();
       $("stList").onclick = e => {
         if (e.target.closest("#moreBtn")) { state.lbLimit = (state.lbLimit || 60) + 60; drawStudents(); return; }
         const row = e.target.closest("[data-nm]"); if (!row) return;
         const nx = row.nextElementSibling; if (nx && nx.classList.contains("hist")) { nx.remove(); return; }
         const h = results.filter(x => String(x.name).trim().toLowerCase() === row.dataset.nm && String(x.cls) === row.dataset.cl).sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
-        row.insertAdjacentHTML("afterend", `<div class="hist bg-green-50/60 px-4 py-2 text-xs border-t border-green-100"><div class="font-bold text-green-700 mb-1">${esc(h[0] ? h[0].name : "")} - ${h.length} ${l.tests}</div><div class="flex flex-wrap gap-1.5 mb-1.5">` + Object.entries(h.reduce((a, x) => { const c = String(x.cls); a[c] = (a[c] || 0) + 1; return a; }, {})).map(([c, n]) => `<span class="px-2 py-0.5 rounded-full bg-white border border-green-200 text-green-700 font-semibold">${esc(clsLabel(c))}: ${baar(n)}</span>`).join("") + `</div>` + h.map(x => `<div class="flex justify-between gap-3 py-1"><span>${esc(sl(x.subject))} &middot; ${esc(clsLabel(x.cls))}${x.createdAt ? `<br><span class="font-semibold text-green-700">\u{1F552} ${fmtDT(x.createdAt)}</span>` : ""}</span><b class="shrink-0">${x.score}/${x.total} &middot; ${pc(x)}%</b></div>`).join("") + `</div>`);
+        row.insertAdjacentHTML("afterend", `<div class="hist bg-green-50/60 px-4 py-2 text-xs border-t border-green-100"><div class="font-bold text-green-700 mb-1">${esc(h[0] ? h[0].name : "")} - ${h.length} ${l.tests}</div><div class="flex flex-wrap gap-1.5 mb-1.5">` + Object.entries(h.reduce((a, x) => { const c = String(x.cls); a[c] = (a[c] || 0) + 1; return a; }, {})).map(([c, n]) => `<span class="px-2 py-0.5 rounded-full bg-white border border-green-200 text-green-700 font-semibold">${esc(clsLabel(c))}: ${baar(n)}</span>`).join("") + `</div>` + histBlock(h[0] ? h[0].name : "", row.dataset.cl, SUBS) + `<div class="mt-2 font-bold text-green-700">\u{1F552} ${lang === "hi" ? "सारे टेस्ट" : "All tests"}</div>` + h.map(x => `<div class="flex justify-between gap-3 py-1"><span>${esc(sl(x.subject))} &middot; ${esc(clsLabel(x.cls))}${x.createdAt ? `<br><span class="font-semibold text-green-700">\u{1F552} ${fmtDT(x.createdAt)}</span>` : ""}</span><b class="shrink-0">${x.score}/${x.total} &middot; ${pc(x)}%</b></div>`).join("") + `</div>`);
       };
     }
     $("backStart").onclick = $("backTop").onclick = () => { state.screen = "start"; render(); };
@@ -2964,7 +3230,7 @@ async function submitTest() {
   if (state.submitting) return; state.submitting = true; clearInterval(window._tm);
   try { if (state.liveId) remove(ref(db, "testLive/" + state.liveId)).catch(() => {}); state.liveId = null; } catch (e) {}
   let score = 0;
-  state.questions.forEach((q, i) => { const Q = q.Q; if (state.answers[i] === Number(Q.correct)) score++; });
+  state.questions.forEach((q, i) => { const Q = q.Q; if (state.answers[i] === _cv(Q)) score++; });
   state.score = score;
   const timeMs = Math.max(1000, Date.now() - (state.startedAt || Date.now()));
   state.timeMs = timeMs;
@@ -2990,7 +3256,7 @@ function topProgressHtml() {
   return `<div class="mt-5 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-left"><div class="text-xs font-bold text-amber-900 mb-2">\u{1F3AF} ${hi ? "टॉपर प्रोग्रेस" : "Topper progress"}: ${nd.length}/${SUBS.length} ${hi ? "विषय में 30/30" : "subject mein 30/30"}${nd.length === SUBS.length && cur ? " \u2014 " + (hi ? "अभी टॉपर " : "abhi topper ") + esc(cur.name) + (hi ? " है (कम समय)" : " hai (kam time)") : ""}</div><div class="flex flex-wrap gap-1.5">${chips}</div></div>`;
 }
 function reviewHtml() {
-  return `<div class="text-left mt-6 space-y-3">` + state.questions.map((q, i) => { const Q = q.Q, a = state.answers[i], c = Number(Q.correct), ok = a === c;
+  return `<div class="text-left mt-6 space-y-3">` + state.questions.map((q, i) => { const Q = q.Q, a = state.answers[i], c = _cv(Q), ok = a === c;
     return `<div class="rounded-2xl border ${ok ? "rv-ok" : "border-red-200 bg-red-50/60"} p-3.5 text-sm"><div class="font-semibold">${i + 1}. ${esc(Q.q)}</div><div class="mt-1 ${ok ? "rv-oktxt" : "text-red-600"}">${ok ? "\u2714" : "\u2718"} ${esc(Q.options[a] ?? "-")}</div>${ok ? "" : `<div class="rv-oktxt">\u2714 ${esc(Q.options[c] ?? "")}</div>`}</div>`; }).join("") + `</div>`;
 }
 // Test ke baad: dost ko bulao aur dekho dono mein kaun tez hai
@@ -3036,7 +3302,9 @@ const SESSION0 = Date.now(), LIVE_FRESH = 75e3, BEAT = 20e3, Q_FRESH = 40e3, WL 
 const gTtl = g => g.left ? 120e3 : g.status === "invite" ? 120e3 : g.status === "done" ? 600e3 : 30 * 60e3;
 const okMe = () => !!(fullName(state.name) && state.cls);
 const myNm = () => String(state.name || "").trim().replace(/\s+/g, " ").slice(0, 60);
-const recalcLive = () => { live = liveRaw.filter(x => sNow() - (x.ts || x.startedAt || 0) < LIVE_FRESH); };
+const liveCntTxt = () => { const n = Math.max(live.length, okMe() ? 1 : 0); return lang === "hi" ? n + " बच्चे ऑनलाइन" : n + (n === 1 ? " student online" : " students online"); };
+function paintLiveCnt() { const e = document.getElementById("liveCntT"); if (e) { const s = liveCntTxt(); if (e.textContent !== s) e.textContent = s; } }
+const recalcLive = () => { live = liveRaw.filter(x => sNow() - (x.ts || x.startedAt || 0) < LIVE_FRESH); try { paintLiveCnt(); } catch (e) {} };
 const gErr = e => { netErr = String((e && (e.code || e.message)) || "error").slice(0, 60); refreshPlay(); };
 // Heartbeat: har 20 sec "main live hoon" likhta hai. Site band/background ho to 75 sec mein list se hat jata hai.
 function syncLive(force) {
@@ -3062,38 +3330,45 @@ const ttWin = b => { for (const l of WL) if (b[l[0]] !== "_" && b[l[0]] === b[l[
 // ---------- Play leaderboard: jeet ginti (testGameWins) ----------
 let gwTop = [];
 const gwIni = n => (String(n).trim()[0] || "?").toUpperCase();
-try { onValue(ref(db, "testGameWins"), sn => { const a = []; sn.forEach(c => { const v = c.val(); if (v && v.name && Number(v.w) > 0) a.push({ k: c.key, name: String(v.name), cls: String(v.cls || ""), w: Number(v.w), at: Number(v.at) || 0 }); }); a.sort((p, q) => q.w - p.w || p.at - q.at); gwTop = a.slice(0, 20); refreshPlay(); }, () => {}); } catch (e) {}
-function gwWin() {
+try { onValue(ref(db, "testGameWins"), sn => { const a = []; sn.forEach(c => { const v = c.val(); if (v && v.name && Number(v.w) > 0) a.push({ k: c.key, name: String(v.name), cls: String(v.cls || ""), w: Number(v.w), at: Number(v.at) || 0, d: v.b && typeof v.b === "object" ? Object.keys(v.b).length : Number(v.w) }); }); a.sort((p, q) => q.w - p.w || p.at - q.at); gwTop = a.slice(0, 20); refreshPlay(); }, () => {}); } catch (e) {}
+function gwWin(opp) {
   const n = myNm(); if (!n || !state.cls) return;
-  runTransaction(ref(db, "testGameWins/" + upiKey(n, state.cls)), c => ({ name: n, cls: String(state.cls), w: (c && Number(c.w) || 0) + 1, at: Date.now() })).catch(() => {});
+  const ok = opp ? _nmKey(nk(opp)) : "";
+  runTransaction(ref(db, "testGameWins/" + upiKey(n, state.cls)), c => { const b = c && c.b && typeof c.b === "object" ? { ...c.b } : {}; if (ok && Object.keys(b).length < 300) b[ok] = true; const o = { name: n, cls: String(state.cls), w: (c && Number(c.w) || 0) + 1, at: Date.now() }; if (Object.keys(b).length) o.b = b; return o; }).catch(() => {});
 }
 function gwAv(n, sz, ring) { const ph = photoOf(n); return ph ? `<img src="${ph}" alt="" class="${sz} shrink-0 rounded-full object-cover ${ring}">` : `<div class="${sz} grid shrink-0 place-items-center rounded-full bg-gradient-to-br from-indigo-500 to-violet-600 font-bold text-white ${ring}">${esc(gwIni(n))}</div>`; }
 // Sabse upar: No. 1 player ka khatarnak champion banner
 function gwChamp(hi) {
-  const me = okMe() ? nk(myNm()) : "", t = gwTop[0];
-  if (!t) return "";
-  const mine = nk(t.name) === me;
-  const bg = "[background-image:radial-gradient(120%_100%_at_50%_130%,#ff5a00_0,#b91c1c_38%,transparent_72%),radial-gradient(80%_60%_at_50%_0,rgba(251,191,36,.28),transparent_70%),linear-gradient(165deg,#0a0a12,#1c0a0a_70%,#2a0b05)]";
-  const fire = "absolute bottom-1.5 z-0 text-[1.9rem] leading-none animate-gwFire [filter:drop-shadow(0_0_8px_#f97316)]";
-  return `<div class="relative mb-3 overflow-hidden rounded-[26px] ${bg} text-center text-white animate-gwGlow">`
-    + `<div class="pointer-events-none absolute inset-y-0 left-0 w-[30%] animate-gwSheen [background-image:linear-gradient(90deg,transparent,rgba(253,224,71,.32),transparent)]"></div>`
-    + `<span class="${fire} left-2.5">\u{1F525}</span><span class="${fire} right-2.5 [animation-delay:.4s]">\u{1F525}</span>`
-    + `<div class="relative z-[1] px-3.5 pb-[13px] pt-3.5">`
-    + `<div class="text-[.66rem] font-black tracking-[.2em] text-yellow-300 [text-shadow:0_0_10px_rgba(250,204,21,.9)]">\u{1F451} ${hi ? "नंबर 1 खिलाड़ी" : "NUMBER 1 PLAYER"} \u{1F451}</div>`
-    + `<div class="mt-[22px] flex items-center gap-3 text-left">`
-    + `<div class="relative h-[76px] w-[76px] flex-none"><span class="absolute -top-[26px] left-1/2 z-[2] text-[1.9rem] leading-none animate-gwBob [filter:drop-shadow(0_3px_6px_rgba(0,0,0,.6))]">\u{1F451}</span>`
-    + `<div class="h-full w-full animate-gwSpin rounded-full p-[3px] [background:conic-gradient(#fde047,#ef4444,#f97316,#fff7c2,#ef4444,#fde047)]">${gwAv(t.name, "h-full w-full text-2xl border-[3px] border-[#1c0a0a] animate-gwSpinRev", "")}</div></div>`
-    + `<div class="min-w-0 flex-1"><div class="truncate bg-clip-text text-[1.35rem] font-black uppercase leading-[1.1] tracking-[-.01em] text-transparent [background-image:linear-gradient(90deg,#fff,#fde047_50%,#fb923c)] [filter:drop-shadow(0_2px_6px_rgba(0,0,0,.6))]">${esc(t.name)}</div><div class="mt-[3px] text-[.7rem] font-bold text-orange-200">${esc(clsLabel(t.cls))}</div></div>`
-    + `<div class="min-w-[58px] flex-none rounded-[18px] px-2.5 py-2 text-center text-amber-950 [background-image:linear-gradient(160deg,#fde047,#f59e0b_55%,#ea580c)] shadow-[0_8px_16px_-8px_rgba(245,158,11,.9),inset_0_1px_0_rgba(255,255,255,.6)]"><b class="block text-[1.7rem] font-black leading-none">${t.w}</b><span class="mt-0.5 block text-[.55rem] font-black tracking-[.12em]">${hi ? "जीत" : "JEET"}</span></div>`
+  const t = gwTop[0], me = okMe() ? nk(myNm()) : "";
+  const bg = "[background-image:linear-gradient(115deg,transparent_38%,rgba(255,255,255,.16)_46%,transparent_54%),radial-gradient(90%_120%_at_85%_0,rgba(207,250,254,.55),transparent_60%),radial-gradient(70%_90%_at_0_100%,rgba(56,189,248,.45),transparent_65%),linear-gradient(150deg,#0c4a6e,#0891b2_55%,#22d3ee)]";
+  const wrap = "relative overflow-hidden rounded-[22px] " + bg + " text-white ring-1 ring-cyan-100/80 shadow-[0_14px_28px_-14px_rgba(8,145,178,.95)]";
+  const sty = "font-family:Poppins,'Noto Sans Devanagari',sans-serif;contain:layout paint";
+  const sheen = `<div class="pointer-events-none absolute inset-y-0 left-0 w-[28%] animate-gwSheen [background-image:linear-gradient(90deg,transparent,rgba(255,255,255,.42),transparent)]" style="will-change:transform"></div>`;
+  const star = (c, s) => `<span class="pointer-events-none absolute animate-pulse text-white ${c}" style="font-size:${s}">\u2726</span>`;
+  const gem = `<svg viewBox="0 0 24 20" class="h-3.5 w-3.5" aria-hidden="true"><path d="M5 1h14l5 6-12 12L0 7z" fill="#e0f2fe" stroke="#fff" stroke-width="1"/><path d="M0 7h24M5 1l7 18M19 1l-7 18M8 7l4-6 4 6" fill="none" stroke="#38bdf8" stroke-width="1"/></svg>`;
+  const crown = sz => `<svg viewBox="0 0 64 48" class="${sz}" aria-hidden="true" style="overflow:visible"><use href="#crwSym" width="64" height="48"/></svg>`;
+  const head = `<div class="flex items-center justify-center gap-2 text-[.7rem] font-bold tracking-[.12em] text-cyan-50">${gem}${hi ? "नंबर 1 खिलाड़ी" : "Number 1 Player"}${gem}</div>`;
+  if (!t) return `<div class="${wrap} mb-3" style="${sty}">${sheen}<div class="relative z-[1] flex items-center gap-2.5 px-3 py-2">${crown("h-[30px] w-10 flex-none animate-gwBob")}<div class="min-w-0"><div class="text-[.7rem] font-bold tracking-[.12em] text-cyan-50">${hi ? "नंबर 1 खिलाड़ी" : "Number 1 Player"}</div><div class="text-sm font-bold leading-snug text-white">${hi ? "ताज खाली है! पहली जीत तुम्हारी हो सकती है 🔥" : "Taaj khaali hai! Pehli jeet tumhari ho sakti hai \u{1F525}"}</div></div></div></div>`;
+  const mine = nk(t.name) === me, nl = String(t.name).length;
+  const msg = mine ? (hi ? "मेरा चैलेंज है, मुझे कोई नहीं हरा पाएगा!" : "Mera challenge hai, mujhe koi nahi hara paayega!")
+    : (hi ? "मेरा चैलेंज है, तुम मुझे नहीं हरा पाओगे!" : "Mera challenge hai, tum mujhe nahi hara paoge!");
+  return `<div class="${wrap} mb-3" style="${sty}">${sheen}`
+    + star("left-[10%] top-7", ".6rem") + star("right-[22%] top-3", ".55rem") + star("right-[8%] bottom-14", ".65rem")
+    + `<div class="relative z-[1] px-3 pb-2 pt-2">${head}`
+    + `<div class="mt-[26px] flex items-center gap-2.5 text-left">`
+    + `<div class="relative h-[46px] w-[46px] flex-none"><span class="absolute -top-[25px] left-1/2 z-[2] -ml-[21px] animate-gwBob" style="will-change:transform;transform-origin:50% 100%;filter:drop-shadow(0 3px 4px rgba(0,0,0,.4))">${crown("h-[32px] w-[42px]")}</span>`
+    + `<div class="h-full w-full rounded-full p-[3px] bg-gradient-to-br from-white via-cyan-200 to-sky-400 shadow-[0_0_16px_rgba(224,242,254,.8)]">${gwAv(t.name, "h-full w-full text-lg", "")}</div></div>`
+    + `<div class="min-w-0 flex-1"><div style="font-size:${nl > 20 ? ".82rem" : nl > 14 ? ".92rem" : "1.05rem"};text-shadow:0 2px 6px rgba(8,47,73,.45)" class="break-words font-extrabold leading-tight text-white">${esc(t.name)}</div><div class="mt-0.5 flex flex-wrap items-center gap-1"><span class="inline-block rounded-full bg-white/20 px-2 py-px text-[.62rem] font-semibold leading-tight text-white ring-1 ring-white/30">${esc(clsLabel(t.cls))}</span><span class="inline-block rounded-full bg-rose-500/80 px-2 py-px text-[.62rem] font-bold leading-tight text-white ring-1 ring-white/40">\u{1F451} ${hi ? "चैंपियन" : "Champion"}</span></div></div>`
+    + `<div class="min-w-[42px] flex-none rounded-xl px-1.5 py-1 text-center text-sky-950 [background-image:linear-gradient(160deg,#ffffff,#bae6fd_55%,#67e8f9)] shadow-[0_6px_12px_-6px_rgba(8,47,73,.7)]"><b class="block text-[1.05rem] font-extrabold leading-none">${t.w}</b><span class="block text-[.54rem] font-bold tracking-[.06em]">${hi ? "जीत" : "Jeet"}</span></div>`
     + `</div>`
-    + `<div class="relative z-[1] mt-[11px] text-[.72rem] font-bold text-red-200 [text-shadow:0_1px_3px_rgba(0,0,0,.6)]">${mine ? (hi ? "आप ही राजा हो! ताज बचाकर रखो \u{1F608}" : "Aap hi raja ho! Taaj bachake rakho \u{1F608}") : (hi ? "इसे हराकर ताज छीन सकते हो? \u{1F608}" : "Isse hara ke taaj chheen sakte ho? \u{1F608}")}</div>`
+    + `<div class="mt-2 rounded-lg bg-sky-950/45 px-2.5 py-1 text-center text-[.66rem] font-semibold leading-snug text-white ring-1 ring-white/25">\u201C${msg}\u201D \u{1F60E}</div>`
     + `</div></div>`;
 }
 function gwHtml(hi) {
-  const me = okMe() ? nk(myNm()) : "", rest = gwTop.slice(1, 6);
+  const me = okMe() ? nk(myNm()) : "", rest = gwTop.filter(x => nk(x.name) !== nk("Amrit Tiwari")).slice(0, 5);
   if (!rest.length) return "";
   const bd = ["from-white to-cyan-200 text-cyan-950", "from-cyan-300 to-sky-500 text-sky-950"];
-  return `<div class="mt-5 overflow-hidden rounded-3xl bg-gradient-to-br from-cyan-950 via-sky-900 to-slate-900 pb-1 shadow-xl shadow-cyan-400/20 ring-1 ring-cyan-300/50"><div class="h-px bg-gradient-to-r from-transparent via-cyan-200 to-transparent"></div><div class="flex items-center justify-between px-4 pb-2 pt-3.5"><span class="text-[11px] font-extrabold uppercase tracking-[.2em] text-cyan-200">\u{1F48E} ${hi ? "डायमंड लीडरबोर्ड" : "Diamond Leaderboard"}</span><span class="rounded-full bg-cyan-200/15 px-2 py-0.5 text-[10px] font-bold text-cyan-100">${hi ? "टॉप" : "Top"} ${rest.length + 1}</span></div>` + rest.map((x, i) => { const m = nk(x.name) === me; return `<div class="mx-1 mb-1 flex items-center gap-3 rounded-2xl px-3 py-2 ${m ? "bg-cyan-300/20 ring-1 ring-cyan-200/70" : "bg-cyan-100/10"}"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full text-xs font-black ${i < 2 ? "bg-gradient-to-br " + bd[i] : "bg-cyan-100/15 text-cyan-100"}">${i + 2}</span>${gwAv(x.name, "h-9 w-9 text-sm", "ring-1 ring-cyan-200/50")}<span class="min-w-0 flex-1"><span class="block truncate text-sm font-bold text-white">${esc(x.name)}${m ? " \u2022 " + (hi ? "आप" : "You") : ""}</span><span class="block truncate text-[10px] font-medium text-cyan-200/70">${esc(clsLabel(x.cls))}</span></span><span class="text-base font-black text-cyan-200">${x.w}<small class="ml-0.5 text-[9px] font-bold text-cyan-100/70">${hi ? "जीत" : "jeet"}</small></span></div>`; }).join("") + `</div>`;
+  return `<div class="mt-5 overflow-hidden rounded-3xl bg-gradient-to-br from-cyan-950 via-sky-900 to-slate-900 pb-1 shadow-xl shadow-cyan-400/20 ring-1 ring-cyan-300/50"><div class="h-px bg-gradient-to-r from-transparent via-cyan-200 to-transparent"></div><div class="flex items-center justify-between px-4 pb-2 pt-3.5"><span class="text-[11px] font-extrabold uppercase tracking-[.2em] text-cyan-200">\u{1F48E} ${hi ? "चैलेंजर्स" : "Challengers"}</span><span class="rounded-full bg-cyan-200/15 px-2 py-0.5 text-[10px] font-bold text-cyan-100">${hi ? "टॉप" : "Top"} ${rest.length}</span></div>` + rest.map((x, i) => { const m = nk(x.name) === me; return `<div class="mx-1 mb-1 flex items-center gap-3 rounded-2xl px-3 py-2 ${m ? "bg-cyan-300/20 ring-1 ring-cyan-200/70" : "bg-cyan-100/10"}"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full text-xs font-black ${i < 2 ? "bg-gradient-to-br " + bd[i] : "bg-cyan-100/15 text-cyan-100"}">\u{1F3C5}</span>${gwAv(x.name, "h-9 w-9 text-sm", "ring-1 ring-cyan-200/50")}<span class="min-w-0 flex-1"><span class="block truncate text-sm font-bold text-white">${esc(x.name)}${m ? " \u2022 " + (hi ? "आप" : "You") : ""}</span><span class="block truncate text-[10px] font-medium text-cyan-200/70">${esc(clsLabel(x.cls))}</span></span><span class="text-base font-black text-cyan-200">${x.w}<small class="ml-0.5 text-[9px] font-bold text-cyan-100/70">${hi ? "जीत" : "jeet"}</small></span></div>`; }).join("") + `</div>`;
 }
 const gTx = (id, fn) => runTransaction(ref(db, "testGames/" + id), g => { if (!g) return g; return fn({ ...g }) || g; }).catch(() => {});
 
@@ -3114,19 +3389,28 @@ function qLeave() {
   const e = qData[PID]; if (!e || e.m) return;
   runTransaction(qRef(), x => (x && !x.m) ? null : x).catch(() => {});
 }
-// Ek hi atomic transaction mein 2 random khiladi jodte hain (do log ek hi ko nahi pakad sakte)
+// Ek hi atomic transaction mein queue ke SAB khiladi do-do ki jodi mein jud jate hain (do log ek hi ko nahi pakad sakte).
+// Jodi ka koi khiladi bach jaye (odd sankhya) to wo queue mein intezaar karta hai.
 function qPair() {
   if (!qWant || state.screen !== "play" || !okMe()) return;
-  const gid = push(ref(db, "testGames")).key;
+  const gids = []; for (let i = 0; i < 10; i++) gids.push(push(ref(db, "testGames")).key);
   runTransaction(ref(db, "testQ"), q => {
     if (!q) return q;
     const me = q[PID]; if (!me || me.m) return;
-    const c = Object.keys(q).filter(id => id !== PID && qFresh(q[id])); if (!c.length) return;
-    const pref = c.filter(id => id !== me.prev && q[id].prev !== PID), pool = pref.length ? pref : c;
-    const o = pool[Math.floor(Math.random() * pool.length)], now = sNow();
-    me.m = { g: gid, o, on: String(q[o].name).slice(0, 60), x: 1, t: now };
-    q[o].m = { g: gid, o: PID, on: String(me.name).slice(0, 60), x: 0, t: now };
-    return q;
+    const others = Object.keys(q).filter(id => id !== PID && qFresh(q[id]));
+    if (!others.length) return;
+    for (let i = others.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [others[i], others[j]] = [others[j], others[i]]; }
+    const pool = [PID, ...others], now = sNow(); let n = 0;
+    const clash = (a, b) => q[a].prev === b || q[b].prev === a;
+    while (pool.length >= 2 && n < gids.length) {
+      const a = pool.shift();
+      let k = pool.findIndex(b => !clash(a, b)); if (k < 0) k = 0;
+      const o = pool.splice(k, 1)[0];
+      q[a].m = { g: gids[n], o, on: String(q[o].name).slice(0, 60), x: 1, t: now };
+      q[o].m = { g: gids[n], o: a, on: String(q[a].name).slice(0, 60), x: 0, t: now };
+      n++;
+    }
+    return n ? q : undefined;
   }).catch(e => gErr(e));
 }
 // Match ho gaya -> game bana do (dono mein se koi bhi bana sakta hai, transaction se ek hi banta hai)
@@ -3178,7 +3462,7 @@ function gMove(id, i) {
     const b = g.board.split(""); b[i] = x ? "X" : "O"; g.board = b.join("");
     if (ttWin(g.board)) { g.status = "done"; g.winner = x ? "x" : "o"; if (x) g.xw = (g.xw || 0) + 1; else g.ow = (g.ow || 0) + 1; } else if (!g.board.includes("_")) { g.status = "done"; g.winner = "draw"; } else g.turn = x ? "o" : "x";
     moved = true; g.updatedAt = sNow(); return g;
-  }).then(r => { try { if (moved && r && r.committed) { const v = r.snapshot.val(); if (v && v.status === "done" && v.winner !== "draw") gwWin(); } } catch (e) {} });
+  }).then(r => { try { if (moved && r && r.committed) { const v = r.snapshot.val(); if (v && v.status === "done" && v.winner !== "draw") { const xw = v.winner === "x"; gwWin(xw ? v.oName : v.xName); } } } catch (e) {} });
 }
 // Sirf tab dobara draw karta hai jab kuch sach mein badla ho (isi se atkna band)
 function playSig() {
@@ -3310,6 +3594,7 @@ function isFem(name) {
   return false;
 }
 const gv = (name, m, f) => isFem(name) ? f : m;
+const gwTrophy = () => `<svg viewBox="0 0 120 132" class="gw-tro mx-auto mt-3 h-[84px] w-[78px]" aria-hidden="true"><defs><linearGradient id="gtG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff6bf"/><stop offset=".45" stop-color="#f6b81a"/><stop offset="1" stop-color="#b45309"/></linearGradient><linearGradient id="gtB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a16207"/><stop offset="1" stop-color="#451a03"/></linearGradient></defs><ellipse cx="60" cy="118" rx="50" ry="9" fill="url(#gtB)"/><ellipse cx="60" cy="114" rx="50" ry="9" fill="#92400e"/><ellipse cx="60" cy="111" rx="44" ry="7" fill="url(#gtB)"/><path d="M34 108C40 78 44 66 40 50 52 58 78 58 86 46 84 66 86 84 90 108Z" fill="url(#gtB)"/><path d="M42 54C52 62 76 62 86 50L84 40C74 50 52 50 40 38Z" fill="#c2780e"/><text x="60" y="52" text-anchor="middle" font-family="Poppins,sans-serif" font-weight="900" font-size="62" fill="url(#gtG)" stroke="#92400e" stroke-width="1.6" paint-order="stroke">1</text><g fill="url(#gtG)" stroke="#92400e" stroke-width=".8"><ellipse cx="96" cy="44" rx="4.4" ry="9" transform="rotate(30 96 44)"/><ellipse cx="102" cy="58" rx="4.4" ry="9" transform="rotate(50 102 58)"/><ellipse cx="102" cy="74" rx="4.4" ry="9" transform="rotate(70 102 74)"/><ellipse cx="96" cy="88" rx="4.4" ry="9" transform="rotate(95 96 88)"/></g><text x="60" y="104" text-anchor="middle" font-family="Poppins,sans-serif" font-weight="900" font-size="25" fill="url(#gtG)" stroke="#78350f" stroke-width="1.2" paint-order="stroke" letter-spacing="1">TOP</text></svg>`;
 function renderPlay() {
   _psig = playSig();
   const hi = lang === "hi", app = $("app"), ini = n => (String(n).trim()[0] || "?").toUpperCase();
@@ -3327,8 +3612,7 @@ function renderPlay() {
   const spin = `<div class="mx-auto mb-3 h-10 w-10 animate-spin rounded-full border-4 border-emerald-100 border-t-emerald-500"></div>`;
   const pingDot = `<span class="relative flex h-2.5 w-2.5"><span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span><span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500"></span></span>`;
   // ---- hero ----
-  let h = gwChamp(hi) + `<div class="relative overflow-hidden rounded-[30px] bg-gradient-to-br from-emerald-500 via-teal-500 to-sky-500 p-4 text-white shadow-[0_22px_36px_-18px_rgba(13,148,136,.9)]"><div class="pointer-events-none absolute -right-10 -top-12 h-40 w-40 rounded-full bg-white/15"></div><div class="pointer-events-none absolute -bottom-14 left-8 h-28 w-28 rounded-full bg-white/10"></div><div class="relative flex items-center gap-3"><div class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-white/20 shadow-inner ring-1 ring-white/40 backdrop-blur">${ic("pad", "h-7 w-7")}</div><div class="min-w-0 flex-1"><h1 class="text-[1.2rem] font-extrabold leading-tight tracking-tight">${hi ? "लाइव मुकाबला ⚔️" : "Live Muqabla ⚔️"}</h1><p class="mt-0.5 text-[11px] font-medium text-white/90">${hi ? "दोस्त से भिड़ो, मैच अपने-आप बन जाएगा" : "Dost se bhido, match apne-aap ban jayega"} \u00B7 Tic Tac Toe</p></div><span class="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-xs font-extrabold text-emerald-600 shadow-lg shadow-emerald-900/10">${pingDot}${cnt} ${hi ? "लाइव" : "live"}</span></div></div>`;
-  if (netErr) h += `<div class="mt-3 rounded-2xl border border-rose-200 bg-rose-50 p-3 text-sm font-semibold text-rose-700">\u26A0 ${hi ? "गेम सर्वर से कनेक्ट नहीं हो पा रहा" : "Game server se connect nahi ho pa raha"} (${esc(netErr)})<div class="mt-1 text-[11px] font-medium text-rose-500">${hi ? "Firebase Rules में testLive, testQ, testGames की permission चाहिए।" : "Firebase Rules mein testLive, testQ, testGames ki permission chahiye."}</div></div>`;
+  let h = gwChamp(hi);
   if (!me) {
     h += `<div class="mt-4 rounded-[28px] border-2 border-dashed border-emerald-200 bg-emerald-50 p-5 text-center"><div class="text-4xl">\u{1F3AE}</div><p class="mt-2 text-sm font-semibold leading-relaxed text-emerald-900">${hi ? "पहले \"टेस्ट दो\" में अपना पूरा नाम और क्लास सेव करो, फिर यहाँ खेल पाओगे।" : "Pehle \"Take Test\" mein apna poora naam aur class save karo, phir yahan khel paoge."}</p><div class="mt-4"><button id="gmTest" type="button" class="${pBtn}">${hi ? "टेस्ट पेज पर जाओ" : "Take Test par jao"}</button></div></div>`;
   } else {
@@ -3351,26 +3635,18 @@ function renderPlay() {
       const winLine = ww => { if (!ww) return ""; const P = i => [18 + (i % 3) * 32, 18 + Math.floor(i / 3) * 32], a = P(ww.l[0]), b = P(ww.l[2]), dx = b[0] - a[0], dy = b[1] - a[1], ln = Math.hypot(dx, dy) || 1, e = 10, x1 = a[0] - dx / ln * e, y1 = a[1] - dy / ln * e, x2 = b[0] + dx / ln * e, y2 = b[1] + dy / ln * e; return `<svg viewBox="0 0 100 100" preserveAspectRatio="none" class="pointer-events-none absolute inset-0 h-full w-full" aria-hidden="true"><line pathLength="1" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#064e3b" stroke-opacity=".25" stroke-width="8.5" stroke-linecap="round" class="[stroke-dasharray:1] animate-ttDraw"/><line pathLength="1" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#10b981" stroke-width="5" stroke-linecap="round" class="[stroke-dasharray:1] animate-ttDraw [filter:drop-shadow(0_0_4px_rgba(16,185,129,.8))]"/></svg>`; };
       const cell = (c, i) => { const base = "grid aspect-square place-items-center rounded-2xl "; const mk = c === "X" ? mX("h-3/5 w-3/5") : c === "O" ? mO("h-3/5 w-3/5") : ""; if (c === "_" && myTurn) return `<button type="button" data-gm="${i}" class="${base}bg-white shadow-[0_6px_12px_-8px_rgba(0,0,0,.4)] ring-2 ring-emerald-200 transition active:scale-90 active:bg-emerald-50"></button>`; return `<div class="${base}${w && w.l.includes(i) ? "animate-pulse bg-emerald-50 ring-2 ring-emerald-400" : "bg-white/70 shadow-[0_4px_10px_-8px_rgba(0,0,0,.35)]"}">${mk}</div>`; };
       const pl = (isMe, isX, nm, wn) => { const turn = g.status === "playing" && !left && ((g.turn === "x") === isX); return `<div class="flex min-w-0 flex-1 flex-col items-center gap-1 rounded-2xl px-2 py-2.5 text-center transition ${turn ? (isX ? "bg-rose-50 ring-2 ring-rose-300" : "bg-sky-50 ring-2 ring-sky-300") : "bg-slate-50 ring-1 ring-slate-200"}"><div class="flex items-center gap-1.5">${isX ? mX("h-4 w-4") : mO("h-4 w-4")}<span class="max-w-[80px] truncate text-xs font-bold ${isX ? "text-rose-600" : "text-sky-600"}">${nm}</span></div><div class="text-2xl font-black leading-none text-slate-900">${wn || 0}</div>${isMe ? `<span class="rounded-full bg-slate-900 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-white">${hi ? "आप" : "You"}</span>` : `<span class="h-[17px]"></span>`}</div>`; };
-      h += `<div class="mt-4 ${card}"><div class="flex items-center gap-2">${pl(true, meX, hi ? "आप" : "You", meX ? g.xw : g.ow)}<span class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-slate-900 text-[10px] font-black text-white">VS</span>${pl(false, !meX, opp, meX ? g.ow : g.xw)}</div><div class="mx-auto mt-3.5 w-fit max-w-full rounded-full px-4 py-1.5 text-center text-sm font-bold ring-1 ${stCls}">${st}</div><div class="relative mx-auto mt-3.5 grid max-w-[300px] grid-cols-3 gap-2 rounded-[26px] bg-slate-100 p-2.5 shadow-inner">${[...g.board].map((c, i) => cell(c, i)).join("")}${winLine(w)}</div>${note}<div class="mt-4 flex flex-wrap justify-center gap-2">${acts}</div></div>`;
+      h += `<div class="mt-4 ${card}"><div class="flex items-center gap-2">${pl(true, meX, hi ? "आप" : "You", meX ? g.xw : g.ow)}<span class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-slate-900 text-[10px] font-black text-white">VS</span>${pl(false, !meX, opp, meX ? g.ow : g.xw)}</div>${done && !left && won && g.winner !== "draw" ? gwTrophy() : ""}<div class="mx-auto mt-2 w-fit max-w-full rounded-full px-4 py-1.5 text-center text-sm font-bold ring-1 ${stCls}">${st}</div><div class="relative mx-auto mt-3.5 grid max-w-[300px] grid-cols-3 gap-2 rounded-[26px] bg-slate-100 p-2.5 shadow-inner">${[...g.board].map((c, i) => cell(c, i)).join("")}${winLine(w)}</div>${note}<div class="mt-4 flex flex-wrap justify-center gap-2">${acts}</div></div>`;
     } else if (matching) {
       h += `<div class="mt-4 ${card} text-center">${spin}<div class="text-base font-extrabold text-slate-900">\u{1F3AF} ${hi ? "खिलाड़ी मिल गया! 🎉" : "Opponent mil gaya! 🎉"}</div><p class="mt-1 text-xs text-slate-500">${esc(mq.m.on)} ${hi ? "के साथ गेम शुरू हो रहा है..." : "ke saath game shuru ho raha hai..."}</p></div>`;
+    } else if (qWant && !waitingOthers && !others.length) {
+      h += `<div class="mt-4 ${card} text-center"><div class="text-4xl">\u{1F4E3}</div><div class="mt-2 text-base font-extrabold text-slate-900">${hi ? "दोस्त को शेयर करके बुलाओ!" : "Dost ko share karke bulao!"}</div><p class="mt-1 text-xs text-slate-500">${hi ? "अभी एक भी स्टूडेंट ऑनलाइन नहीं है।" : "Abhi ek bhi student online nahi hai."}</p><button id="gmShare" type="button" class="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 py-3.5 text-sm font-bold text-white shadow-[0_12px_22px_-12px_rgba(79,70,229,.9)] transition active:scale-95">${ic("share", "h-5 w-5")}${hi ? "दोस्त को लिंक भेजो" : "Dost ko link bhejo"}</button></div>`;
     } else if (qWant) {
-      h += `<div class="mt-4 ${card} text-center">${spin}<div class="text-base font-extrabold text-slate-900">${waitingOthers ? (hi ? "खिलाड़ी जोड़ा जा रहा है..." : "Opponent jod rahe hain...") : (hi ? "दोस्त को ढूँढ रहे हैं... 🔍" : "Dost ko dhundh rahe hain... 🔍")}</div><p class="mt-1 text-xs text-slate-500">${hi ? "जैसे ही कोई और आएगा, गेम अपने-आप शुरू! यहीं रुके रहो।" : "Jaise hi koi aur aayega, game apne-aap shuru! Yahin ruke raho."}</p></div>`;
-      if (!waitingOthers && !others.length) h += `<button id="gmShare" type="button" class="mt-3 flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 py-3.5 text-sm font-bold text-white shadow-[0_12px_22px_-12px_rgba(79,70,229,.9)] transition active:scale-95">${ic("share", "h-5 w-5")}${hi ? "दोस्त को लिंक भेजो" : "Dost ko link bhejo"}</button>`;
+      h += `<div class="mt-4 ${card} text-center">${spin}<div class="text-base font-extrabold text-slate-900">${hi ? "खिलाड़ी जोड़ा जा रहा है..." : "Opponent jod rahe hain..."}</div><p class="mt-1 text-xs text-slate-500">${hi ? "गेम अपने-आप शुरू होगा।" : "Game apne-aap shuru hoga."}</p></div>`;
     } else {
       h += `<div class="mt-4 ${card} text-center"><div class="text-4xl">\u{1F579}\uFE0F</div><div class="mt-2 text-base font-extrabold text-slate-900">${hi ? "ढूँढना बंद है" : "Search band hai"}</div><p class="mt-1 text-xs text-slate-500">${hi ? "बटन दबाओ और कोई दोस्त ढूँढो" : "Button dabao aur koi dost dhundo"}</p><div class="mt-4"><button id="gmQ" type="button" class="${pBtn}">${ic("play", "h-4 w-4", true)}${hi ? "खिलाड़ी ढूँढो" : "Opponent dhundo"}</button></div></div>`;
     }
     // ---- abhi live list ----
-    h += `<div class="mb-2 mt-6 flex items-center gap-2 px-1 text-sm font-extrabold text-slate-800">${pingDot}${hi ? "अभी लाइव" : "Abhi live"}<span class="rounded-full bg-emerald-100 px-2 py-0.5 text-[11px] font-bold text-emerald-700">${others.length}</span></div>${others.length ? "" : `<div class="rounded-3xl border-2 border-dashed border-slate-200 bg-white/70 py-7 text-center text-xs font-medium text-slate-400">${hi ? "अभी सब शांत हैं 😴 दोस्त को लिंक भेजो!" : "Abhi sab shant hain 😴 dost ko link bhejo!"}</div>`}<div class="space-y-2">`;
-    h += others.map(x => { const inT = x.subject === "In test", bz = busy.has(x.id), sr = srch.has(x.id);
-      const fm = isFem(x.name);
-      const stt = inT ? (hi ? (fm ? "टेस्ट दे रही है" : "टेस्ट दे रहा है") : (fm ? "Test de rahi hai" : "Test de raha hai")) : bz ? (hi ? (fm ? "खेल रही है" : "खेल रहा है") : (fm ? "Khel rahi hai" : "Khel raha hai")) : sr ? (hi ? (fm ? "मैच ढूँढ रही है" : "मैच ढूँढ रहा है") : (fm ? "Match dhundh rahi hai" : "Match dhundh raha hai")) : (hi ? "ऑनलाइन" : "Online");
-      const dot = inT ? "bg-slate-400" : bz ? "bg-amber-400" : "bg-emerald-500";
-      const chip = inT ? "bg-slate-100 text-slate-500" : bz ? "bg-amber-50 text-amber-600" : sr ? "bg-sky-50 text-sky-600" : "bg-emerald-50 text-emerald-600";
-      return `<div class="flex items-center gap-3 rounded-[22px] bg-white p-2.5 shadow-[0_0_0_1px_rgba(0,0,0,.05),0_10px_20px_-16px_rgba(0,0,0,.35)]"><div class="relative shrink-0"><div class="grid h-11 w-11 place-items-center rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 text-sm font-bold text-white">${esc(ini(x.name))}</div><span class="absolute -bottom-0.5 -right-0.5 h-3.5 w-3.5 rounded-full border-2 border-white ${dot}"></span></div><div class="min-w-0 flex-1"><div class="truncate text-sm font-bold text-slate-900">${esc(x.name)}</div><div class="truncate text-[11px] text-slate-500">${esc(clsLabel(String(x.cls)))}</div></div><span class="shrink-0 rounded-full px-2.5 py-1 text-[10px] font-bold ${chip}">${stt}</span></div>`; }).join("");
-    h += `</div>`;
   }
-  h += gwHtml(hi);
   _lc = cnt;
   app.innerHTML = h;
   app.querySelectorAll("[data-gag]").forEach(b => b.onclick = () => gRematch(b.dataset.gag));
@@ -3442,7 +3718,7 @@ window.addEventListener("pagehide", () => { try { remove(ref(db, "testLive/" + P
     const SC = { Maths: "#4ade80", Science: "#c084fc", English: "#fbbf24", Hindi: "#fb7185" };
     return `<div class="cg r${rk}" role="dialog" aria-modal="true" aria-label="Congratulations"><button class="cg-x" aria-label="Close">&times;</button><div class="cg-in">
       <div class="cg-hi">\u{1F389} ${hi ? "बधाई हो!" : "Congratulations!"}<br>${greet}<b>${esc(first)} \u{1F44B}</b></div>
-      <div class="cg-av">${rk === 1 ? '<span class="cg-cr">\u{1F451}</span>' : ""}<div class="cg-ring"></div><div class="cg-ph">${ph ? `<img src="${ph}" alt="">` : esc((first[0] || "?").toUpperCase())}</div><span class="cg-bd">${MED[i]}</span></div>
+      <div class="cg-av">${rk === 1 ? '<span class="cg-cr">' + crownSvg() + '</span>' : ""}<div class="cg-ring"></div><div class="cg-ph">${ph ? `<img src="${ph}" alt="">` : esc((first[0] || "?").toUpperCase())}</div><span class="cg-bd">${MED[i]}</span></div>
       <p class="cg-big">${big}</p><p class="cg-sub">${sub}</p>
       <div class="cg-st"><div><b>${g.score}/${g.total}</b><span>${hi ? "नंबर" : "Marks"}</span></div><div><b>${g.timeMs ? fmtT(g.timeMs) : "-"}</b><span>${hi ? "समय" : "Time"}</span></div><div><b>${esc(clsLabel(g.cls))}</b><span>${hi ? "क्लास" : "Class"}</span></div></div>
       <div class="cg-sb">${g.subs.map(r => `<div class="cg-sr"><span>${esc(sl(r.subject))}</span><u><i style="--w:${Math.round(r.score / r.total * 100)}%;${SC[r.subject] ? "background:" + SC[r.subject] : ""}"></i></u><s>${r.score}/${r.total}</s></div>`).join("")}</div>
@@ -3549,6 +3825,15 @@ setTimeout(async () => {
     if (state.screen !== "quiz") render();
   } catch (e) {}
 }, 3500);
+setTimeout(async () => {
+  try {
+    if (!state.saved || !saved.sid || !saved.uid || _goneHit(state.name, state.cls, saved.sid, saved.createdAt)) return;
+    const rec = stuNames.get(nk(state.name));
+    if (rec && (rec.sid !== saved.sid || rec.uid === saved.uid)) return;
+    await set(ref(db, "testStudents/" + saved.sid), stuRec(state.name, state.cls));
+    if ((await claimName(nk(state.name), saved.sid, saved.uid)) !== "taken") { saved.nk = nk(state.name); saveProfile(); }
+  } catch (e) {}
+}, 4500);
 render();
 
 
