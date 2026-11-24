@@ -394,6 +394,40 @@ body.noselect .border-green-600{border-color:#16a34a}
 body.noselect .hover\:border-green-500:hover{border-color:#22c55e}
 
 
+
+/* ===== result screen v3 ===== */
+.rs{max-width:520px;margin:0 auto}
+.rs-hero{position:relative;overflow:hidden;border-radius:30px;padding:22px 16px 22px;color:#fff;text-align:center;box-shadow:0 22px 40px -22px rgba(0,0,0,.45)}
+.rs-hero.t3{background:linear-gradient(150deg,#34d399,#16a34a 55%,#166534)}
+.rs-hero.t2{background:linear-gradient(150deg,#fcd34d,#f59e0b 55%,#b45309)}
+.rs-hero.t1{background:linear-gradient(150deg,#fda4af,#f43f5e 55%,#be123c)}
+.rs-hero::before,.rs-hero::after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.13);pointer-events:none}
+.rs-hero::before{width:190px;height:190px;top:-70px;right:-60px}
+.rs-hero::after{width:130px;height:130px;bottom:-50px;left:-40px}
+.rs-hero>*{position:relative;z-index:1}
+.rs-sub{font-size:.82rem;font-weight:600;opacity:.92;margin:0}
+.rs-time{display:inline-block;margin-top:8px;padding:3px 11px;border-radius:999px;background:rgba(255,255,255,.2);font-size:.68rem;font-weight:600}
+.rs-ring{position:relative;width:176px;height:176px;margin:14px auto 10px;filter:drop-shadow(0 6px 14px rgba(0,0,0,.18))}
+.rs-in{position:absolute;inset:0;display:grid;place-items:center;align-content:center}
+.rs-score{font-size:2.8rem;font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
+.rs-score small{font-size:1.15rem;font-weight:700;opacity:.75}
+.rs-pct{font-size:.95rem;font-weight:700;margin-top:4px;padding:2px 12px;border-radius:999px;background:rgba(255,255,255,.22)}
+.rs-praise{font-size:1.15rem;font-weight:700;margin:0;text-shadow:0 1px 2px rgba(0,0,0,.18)}
+.rs-card{margin-top:12px;background:#fff;border-radius:24px;padding:10px 12px 14px;box-shadow:0 1px 2px rgba(0,0,0,.04),0 10px 26px -14px rgba(0,0,0,.18)}
+.rs-card .kstars{margin:4px 0 2px}
+.rs-card .kstars span svg{display:block;fill:#fbbf24;filter:drop-shadow(0 2px 3px rgba(245,158,11,.45))}
+.rs-card .kstars span.off svg{fill:#d1d5db;filter:none}
+.rs-card .kmsg{color:#374151;font-size:.86rem;font-weight:600}
+.rs-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+.rs-st{background:#fff;border-radius:20px;padding:12px 6px 10px;border-top:4px solid #22c55e;box-shadow:0 1px 2px rgba(0,0,0,.04),0 10px 24px -14px rgba(0,0,0,.2)}
+.rs-st.r{border-top-color:#ef4444}.rs-st.b{border-top-color:#3b82f6}
+.rs-st b{display:block;font-size:1.3rem;font-weight:800;line-height:1.2;font-variant-numeric:tabular-nums}
+.rs-st.g b{color:#15803d}.rs-st.r b{color:#dc2626}.rs-st.b b{color:#1d4ed8}
+.rs-st span{font-size:.68rem;color:#6b7280;font-weight:600}
+.rs-rank{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:9px 20px;border-radius:999px;background:#111827;color:#fff;font-size:.85rem;font-weight:600;box-shadow:0 10px 22px -10px rgba(17,24,39,.6)}
+.rs-rank b{font-size:1rem;color:#fcd34d}
+.rs #shareBtn,.rs #revBtn{min-width:120px;padding:10px 18px}
+@media (prefers-reduced-motion:reduce){.rs-hero *{animation:none!important}}
 </style>
 <style id="ios-skin">
 /* ===== iOS SKIN: full-fit, SF-style, glass, grouped cards ===== */
@@ -1521,6 +1555,147 @@ html body .lbt3 .lbn-sub{justify-content:center;margin-top:8px}
 .lxme-tx p{margin:8px 0 0;padding:6px 10px;border-radius:14px;background:rgba(255,255,255,.18);font-size:.72rem;font-weight:600;line-height:1.35}
 @media (prefers-reduced-motion:reduce){.lxme,.lxme::after,.lxme-av::before{animation:none!important}}
 </style>
+<style id="eye-comfort">
+/* ===== inaam card (leaderboard top) ===== */
+.irw{margin:0 0 16px;padding:14px;border-radius:22px;background:#fffdf7;border:1px solid #f1e3b8;box-shadow:0 6px 18px -14px rgba(120,80,0,.35)}
+.irw-hd{display:flex;align-items:center;gap:10px}
+.irw-tr{flex:none;width:40px;height:40px;border-radius:13px;display:grid;place-items:center;font-size:1.3rem;background:#fdf1c9}
+.irw-hd b{display:block;font-size:1rem;font-weight:800;color:#3b2a05;line-height:1.2}
+.irw-hd small{display:block;margin-top:2px;font-size:.7rem;font-weight:500;color:#7a6a45;line-height:1.35}
+.irw-pr{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0 4px}
+.irw-pr>div{padding:10px 8px;border-radius:16px;text-align:center;background:#fff;border:1px solid #efe4c4}
+.irw-pr .top{background:#fff6dc;border-color:#e8cf86}
+.irw-pr strong{display:block;font-size:1.55rem;font-weight:800;line-height:1.1;color:#92400e}
+.irw-pr span{display:block;margin-top:2px;font-size:.68rem;font-weight:600;color:#6b5b3a}
+.irw-ls{margin-top:10px;display:flex;flex-direction:column;gap:7px}
+.irw-row{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:16px;background:#fff;border:1px solid #f0e8d2}
+.irw-row.big{border-color:#e3c46a;background:#fffaf0}
+.irw-av{flex:none;width:42px;height:42px;border-radius:50%;overflow:hidden;display:grid;place-items:center;background:#e7f3ea;color:#166534;font-weight:800;border:2px solid #fff;box-shadow:0 0 0 1px #d9e8dd}
+.irw-av img{width:100%;height:100%;object-fit:cover}
+.irw-mid{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}
+.irw-mid b{font-size:.88rem;font-weight:700;color:#1f2937;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.irw-mid em{font-style:normal;font-size:.68rem;color:#6b7280}
+.irw-st{align-self:flex-start;margin-top:2px;font-size:.64rem;font-weight:700;padding:2px 8px;border-radius:99px}
+.irw-st.wait{background:#fef3c7;color:#92400e}.irw-st.ok{background:#dcfce7;color:#166534}
+.irw-amt{flex:none;text-align:right}
+.irw-amt strong{display:block;font-size:1.2rem;font-weight:800;color:#92400e;line-height:1.1}
+.irw-amt span{font-size:.62rem;font-weight:600;color:#8a7a55}
+.irw-em{margin-top:10px;padding:12px;border-radius:14px;text-align:center;font-size:.8rem;font-weight:600;color:#6b5b3a;background:#fff;border:1px dashed #e3c46a;line-height:1.45}
+.irw-pt{margin:12px 2px 6px;font-size:.68rem;font-weight:700;color:#7a6a45}
+.irw-pd{display:flex;align-items:center;gap:8px;padding:6px 4px;font-size:.78rem;color:#374151;border-top:1px solid #f3ecd6}
+.irw-pd span{color:#16a34a;font-weight:800}.irw-pd b{font-weight:700;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.irw-pd em{font-style:normal;font-size:.68rem;color:#8b8b8b}.irw-pd strong{color:#92400e;font-weight:800}
+
+/* ===== aankhon ko aaram: tez rang, glow aur hilna-dulna kam ===== */
+/* section heading (Class / Subject): tez neela pill -> halka hara label */
+html body .sec-h{background:#e8f5ec!important;color:#166534!important;box-shadow:none!important;border:1px solid #cfe8d6}
+/* class / subject chunne wala button */
+html body .dd-btn{border:1.5px solid #dbe5dd!important;box-shadow:0 2px 8px -6px rgba(0,0,0,.25)!important;background:#fff!important}
+html body .dd-ic{background:color-mix(in srgb,var(--b,#15803d) 88%,#fff)!important;box-shadow:none!important}
+html body .dd-tx small{color:#6b7280;letter-spacing:.02em;text-transform:none;font-size:.7rem}
+html body .dd-ar{background:#eef2ef!important}
+/* khulne wali sheet: chhaya halki, chuna hua option shaant */
+html body .shx-ov{background:rgba(15,23,42,.35)!important}
+html body .shx-pill.on,html body .shx-it.on{background:color-mix(in srgb,var(--b) 90%,#fff)!important;box-shadow:none!important}
+html body .shx-pill,html body .shx-it{border-color:#e3e8e4!important}
+/* "Test Start Karo" button: blink/pulse band, halki chhaya */
+html body .cta-go,html body #sbCard .cta-go{animation:ctaIn .3s ease both!important;box-shadow:0 6px 14px -8px var(--b,#15803d)!important}
+/* help chat: tez jaamuni gradient hata kar shaant rang */
+html body .hp-hero{background:#eef1fb!important;color:#1e2a5a!important;box-shadow:0 0 0 1px #dde3f7!important;padding:18px 16px 16px!important}
+html body .hp-hero:before,html body .hp-hero:after{background:rgba(99,102,241,.07)!important}
+html body .hp-hero h1{color:#1e2a5a!important}
+html body .hp-hero p{color:#4b5578!important;opacity:1!important}
+html body .hp-ic{animation:none!important;background:#5b63d6!important;box-shadow:none!important;width:54px!important;height:54px!important;border-radius:18px!important}
+html body .hp-ic svg .d,html body #guideBtn svg .d{animation:none!important}
+html body .hp-card,html body .hp-ok,html body .hp-th{box-shadow:0 0 0 1px #e5e7eb!important}
+html body .hp-tp{background:#f5f6fb!important;color:#374151!important;box-shadow:inset 0 0 0 1px #e1e5f2!important}
+html body .hp-tp.on{background:#5b63d6!important;color:#fff!important;box-shadow:none!important}
+html body .hp-ti{color:#5b63d6}
+html body .hp-to{background:#f5f6fb!important;box-shadow:inset 0 0 0 1px #e1e5f2!important}
+html body .hp-av{background:#5b63d6!important;box-shadow:none!important}
+html body .hp-card textarea{background:#fafafa!important;border:1.5px solid #e1e5f2!important}
+html body .hp-card textarea:focus,html body .hp-card input:focus{background:#fff!important;border-color:#5b63d6!important;box-shadow:0 0 0 3px rgba(91,99,214,.12)!important}
+html body .hp-go{background:#5b63d6!important;box-shadow:none!important}
+html body .hp-b.me{background:#5b63d6!important}
+html body .hp-b.ad{background:#f3f8f4!important;box-shadow:inset 0 0 0 1px #d6e8da!important}
+/* chat icon (upar) ki chamak halki */
+html body #guideBtn{box-shadow:0 2px 8px -4px rgba(79,70,229,.6)!important}
+html body #guideBtn.hpt-ring{animation:none!important}
+@media (prefers-reduced-motion:reduce){html body .cta-go,html body #sbCard .cta-go{animation:none!important}}
+</style>
+<style id="cute-chat">
+/* ===== cute chat: naya smiley chat icon + pyaare message bubbles ===== */
+html body #guideBtn{background:linear-gradient(135deg,#f08fc0,#9b8cf5)!important;box-shadow:0 4px 10px -5px rgba(155,140,245,.9)!important}
+html body #guideBtn svg{width:22px;height:22px}
+html body .hp-ic{background:linear-gradient(135deg,#f08fc0,#9b8cf5)!important;box-shadow:0 8px 16px -10px rgba(155,140,245,.9)!important}
+html body .hp-hero{background:linear-gradient(135deg,#fdf0f7,#f1eefe)!important;box-shadow:0 0 0 1px #f3dcea!important}
+html body .hp-hero:before{background:rgba(240,143,192,.14)!important}
+html body .hp-hero:after{background:rgba(155,140,245,.14)!important}
+html body .hp-hero h1{color:#5b3a78!important}
+html body .hp-hero p{color:#7a5f8f!important}
+html body .hp-tp.on,html body .hp-go,html body .hp-av{background:linear-gradient(135deg,#f08fc0,#9b8cf5)!important}
+html body .hp-ti{color:#a56cc9}
+html body .hp-tp{background:#faf5fd!important;box-shadow:inset 0 0 0 1px #eadcf5!important}
+html body .hp-to{background:#faf5fd!important;box-shadow:inset 0 0 0 1px #eadcf5!important}
+html body .hp-card textarea{border-color:#eadcf5!important;background:#fffafd!important}
+html body .hp-card textarea:focus,html body .hp-card input:focus{border-color:#c38be0!important;box-shadow:0 0 0 3px rgba(195,139,224,.15)!important}
+/* message bubbles */
+html body .hp-th{background:#fffafd!important;box-shadow:0 0 0 1px #f3dcea!important;border-radius:26px!important;gap:10px!important;padding:14px!important}
+html body .hp-b{max-width:86%;padding:11px 15px!important;border-radius:22px!important;font-size:.88rem;line-height:1.5;position:relative}
+html body .hp-b em{font-size:.6rem;opacity:.7;align-self:flex-end}
+html body .hp-b.me{background:linear-gradient(135deg,#f08fc0,#9b8cf5)!important;color:#fff;border-bottom-right-radius:6px!important;box-shadow:0 6px 12px -8px rgba(155,140,245,.9)}
+html body .hp-b.me:before{content:"\1F338";position:absolute;left:-8px;top:-9px;font-size:.95rem}
+html body .hp-b.ad{background:#fff!important;color:#3b2a4a;border-bottom-left-radius:6px!important;box-shadow:inset 0 0 0 1.5px #f3c9df!important}
+html body .hp-b.ad b{color:#c2579a!important}
+html body .hp-w{background:#fff4fa!important;color:#a1457b!important;box-shadow:inset 0 0 0 1px #f6cfe3;padding:6px 13px!important}
+html body .hp-ok .hp-okc{background:linear-gradient(135deg,#86e3b0,#43c98a)!important}
+</style>
+<style id="irw-compact">
+html body .irw{margin:0 0 12px;padding:10px 12px;border-radius:18px}
+html body .irw-hd{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 8px}
+html body .irw-hd b{font-size:.9rem;font-weight:800;color:#3b2a05}
+html body .irw-pr{display:flex;gap:6px;margin:0;grid-template-columns:none}
+html body .irw-pr i{font-style:normal;font-size:.66rem;font-weight:600;color:#6b5b3a;background:#fff6dc;border:1px solid #ecd9a0;border-radius:99px;padding:2px 9px;white-space:nowrap}
+html body .irw-pr i strong{display:inline;font-size:.8rem;font-weight:800;color:#92400e}
+html body .irw-ls{margin-top:8px;gap:5px}
+html body .irw-row{padding:5px 8px;gap:8px;border-radius:12px}
+html body .irw-av{width:30px;height:30px;font-size:.8rem}
+html body .irw-mid b{font-size:.8rem}html body .irw-mid em{font-size:.64rem}
+html body .irw-amt{font-size:.95rem;font-weight:800;color:#92400e}
+html body .irw-em{margin-top:8px;padding:8px;font-size:.74rem}
+html body .irw-yt{margin:8px 0 0;padding:7px 10px;border-radius:12px;background:#fff;border:1px dashed #e3c46a;font-size:.72rem;font-weight:600;line-height:1.4;color:#5c4a1e}
+html body .irw-yt b{color:#b91c1c;font-weight:800}
+</style>
+<style id="irw-rl">html body .irw-rl{margin:6px 0 0;font-size:.68rem;font-weight:600;line-height:1.4;color:#6b5b3a}</style>
+<style id="kidFx">
+#sndBtn{display:none!important;width:36px;height:36px;border-radius:999px;display:grid;place-items:center;font-size:1rem;background:#fff;border:1px solid rgba(60,60,67,.14);box-shadow:0 1px 3px rgba(0,0,0,.08);transition:transform .15s}
+#sndBtn:active{transform:scale(.9)}
+.kstars{display:flex;justify-content:center;gap:6px;margin:6px 0 2px;font-size:2.2rem;line-height:1}
+.kstars span{display:inline-block;opacity:0;transform:scale(.2) rotate(-40deg);animation:kstar .55s cubic-bezier(.2,1.4,.4,1) forwards}
+.kstars span.off{filter:grayscale(1);opacity:.3!important;animation:none;transform:none}
+.kstars span:nth-child(1){animation-delay:.35s}.kstars span:nth-child(2){animation-delay:.6s}.kstars span:nth-child(3){animation-delay:.85s}
+@keyframes kstar{to{opacity:1;transform:scale(1) rotate(0)}}
+.kstreak{display:inline-flex;align-items:center;gap:6px;margin-top:12px;padding:6px 14px;border-radius:999px;font-size:.78rem;font-weight:700;color:#9a3412;background:linear-gradient(135deg,#fff7ed,#ffedd5);border:1px solid #fed7aa;box-shadow:0 4px 12px -6px rgba(234,88,12,.5)}
+.kstreak b{font-size:1.05rem;animation:kfire 1.2s ease-in-out infinite;display:inline-block}
+@keyframes kfire{0%,100%{transform:scale(1) rotate(-4deg)}50%{transform:scale(1.2) rotate(4deg)}}
+.kmsg{margin-top:6px;font-size:.85rem;font-weight:600;color:#9a3412}
+@media (prefers-reduced-motion:reduce){.kstars span,.kstreak b{animation:none;opacity:1;transform:none}}
+</style>
+<style id="kidFx2">
+.kst{display:inline-flex;align-items:center;gap:6px;margin-top:10px;padding:5px 11px;border-radius:999px;background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;font-size:.72rem;font-weight:700;line-height:1;white-space:nowrap;max-width:100%}
+.kst-fl{font-size:.95rem;display:inline-block;animation:kfire 1.2s ease-in-out infinite}
+.kst.cold .kst-fl{filter:grayscale(1) opacity(.55);animation:none}
+.kst b{font-size:.95rem;font-weight:800;color:#c2410c}
+.kst-t{overflow:hidden;text-overflow:ellipsis}
+.kst-wk{display:inline-flex;gap:3px;margin-left:2px}
+.kd{width:7px;height:7px;border-radius:50%;background:#fde6cf;display:inline-block}
+.kd.on{background:#ea580c}
+.kd.tod:not(.on){background:transparent;border:1.5px dashed #ea580c;width:7px;height:7px;box-sizing:border-box}
+.kst.cold .kst-wk{display:none}
+.kst.big{animation:kpopin .5s cubic-bezier(.2,1.3,.4,1) both}
+@keyframes kpopin{from{opacity:0;transform:scale(.7)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.kst,.kst-fl{animation:none!important}}
+</style>
 </head>
 <body class="text-neutral-900 font-sans min-h-screen antialiased">
 
@@ -1529,7 +1704,7 @@ html body .lbt3 .lbn-sub{justify-content:center;margin-top:8px}
     <div class="flex items-center gap-2.5 font-bold tracking-tight text-[.95rem]">
       <img id="logoImg" role="button" tabindex="0" style="cursor:zoom-in" src="https://www.image2url.com/r2/default/images/1793436578177-b58e0c47-137d-4d2c-962a-4c44d604b000.jpg" alt="Amrit Tiwari" width="36" height="36" class="w-9 h-9 rounded-full object-cover shrink-0 border-2 border-green-500 shadow-md" onerror="this.outerHTML='<span class=&quot;logo w-9 h-9 rounded-full text-white grid place-items-center font-extrabold&quot;>A</span>'"><span class="leading-tight" style="color:#1c1c1e">Amrit Tiwari<a href="https://youtube.com/@alltypesquiz4?si=WEt78dTjllCyXV4F" target="_blank" rel="noopener noreferrer" aria-label="YouTube @alltypesquiz4" data-ytl data-ytn class="block" style="font-size:.66rem;font-weight:600;color:var(--ac);text-decoration:none;margin-top:1px">@alltypesquiz4</a><span id="tagline" style="display:none"></span></span>
     </div>
-    <div class="flex items-center gap-2"><button id="guideBtn" type="button" class="w-9 h-9 rounded-full grid place-items-center text-base font-extrabold text-white shadow-sm active:scale-95 transition" style="background:linear-gradient(135deg,#6366f1,#3b82f6)" aria-label="Help"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.5-4.6A8 8 0 1 1 21 12z"/><circle class="d" cx="8.5" cy="12" r="1.15"/><circle class="d" cx="12" cy="12" r="1.15"/><circle class="d" cx="15.5" cy="12" r="1.15"/></svg></button><button id="bellBtn" type="button" style="display:none" class="relative w-9 h-9 rounded-full border border-green-200 bg-white/80 grid place-items-center text-base shadow-sm active:scale-95 transition" aria-label="Announcements">&#128276;</button><button id="langBtn" aria-label="Change language" class="lg active:scale-95 transition"><span class="th" id="lgThumb"></span><span class="o" id="lgEn">EN</span><span class="o" id="lgHi">हिं</span></button></div>
+    <div class="flex items-center gap-2"><button id="sndBtn" type="button" aria-label="Sound on/off" style="display:none" hidden></button><button id="guideBtn" type="button" class="w-9 h-9 rounded-full grid place-items-center text-base font-extrabold text-white shadow-sm active:scale-95 transition" style="background:linear-gradient(135deg,#f08fc0,#9b8cf5)" aria-label="Help"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.5-4.6A8 8 0 1 1 21 12z"/><circle class="d" cx="9" cy="10.6" r="1.1"/><circle class="d" cx="15" cy="10.6" r="1.1"/><path d="M8.9 13.6c.8 1.1 1.9 1.7 3.1 1.7s2.3-.6 3.1-1.7"/></svg></button><button id="bellBtn" type="button" style="display:none" class="relative w-9 h-9 rounded-full border border-green-200 bg-white/80 grid place-items-center text-base shadow-sm active:scale-95 transition" aria-label="Announcements">&#128276;</button><button id="langBtn" aria-label="Change language" class="lg active:scale-95 transition"><span class="th" id="lgThumb"></span><span class="o" id="lgEn">EN</span><span class="o" id="lgHi">हिं</span></button></div>
   </div>
 </header>
 
@@ -1923,6 +2098,21 @@ function rewardCard() {
   let saved = ""; try { saved = localStorage.getItem("amrit_upi_" + upiKey(state.name, state.cls)) || ""; } catch (e) {}
   const val = state.upiDraft != null ? state.upiDraft : saved;
   return `<div class="rounded-2xl border-2 border-green-400 bg-white px-4 py-4 mb-5 shadow-lg shadow-green-100/60"><div class="font-extrabold text-green-800 text-sm">\u{1F389} ${hi ? "बधाई! आप " + (m.all ? "ऑल-टाइम टॉपर" : esc(clsLabel(state.cls)) + " के टॉपर") + " हैं" : "Badhai! Aap " + (m.all ? "all-time topper" : esc(clsLabel(state.cls)) + " ke topper") + " hain"} \u2014 \u20B9${m.amt}</div><div class="text-xs font-bold text-red-600 bg-red-50 border border-red-200 rounded-lg px-2.5 py-2 mt-2 mb-2 leading-relaxed">${hi ? "⚠️ ज़रूरी: इनाम पाने के लिए अपनी सही UPI ID ज़रूर डालें और Save दबाएँ। बिना UPI ID के इनाम नहीं मिलेगा।" : "⚠️ Zaroori: Inaam paane ke liye apni sahi UPI ID zaroor daalein aur Save dabayein. Bina UPI ID ke inaam nahi milega."}</div><div class="flex gap-2"><input id="upiIn" value="${esc(val)}" placeholder="name@upi" autocapitalize="off" autocomplete="off" class="${inputCls} !py-2.5 text-sm flex-1 min-w-0"><button id="upiSave" class="shrink-0 px-4 rounded-xl ${btnMain} text-sm">${saved && saved === val ? "\u2714 " : ""}${hi ? "सेव" : "Save"}</button></div><div id="upiMsg" class="text-xs mt-2 ${saved ? "text-green-700" : "text-neutral-500"}">${saved ? (hi ? "सेव है: " : "Saved: ") + esc(saved) : ""}</div></div>`;
+}
+// ===== INAAM CARD: leaderboard ke sabse upar - kisko kitna inaam milega =====
+function rewardTopHtml() {
+  const hi = lang === "hi", R = rcfg, tops = classToppers().filter(o => o.r), w = allTimeWinner();
+  const ic = n => (String(n).trim()[0] || "?").toUpperCase();
+  const isAll = o => !!(w && nk(w.name) === nk(o.r.name) && w.classes.includes(String(o.c)));
+  const seenW = {}, tops1 = tops.filter(o => { if (!isAll(o)) return true; if (seenW.x) return false; seenW.x = 1; return true; });
+  const rows = tops1.slice().sort((a, b) => (isAll(b) - isAll(a)) || (a.r.timeMs || 1e12) - (b.r.timeMs || 1e12)).slice(0, 3).map(o => {
+    const r = o.r, all = isAll(o), a = all ? R.topAmt : R.classAmt;
+    const av = photoOf(r.name) ? `<img src="${photoOf(r.name)}" alt="" decoding="async">` : `<span>${esc(ic(r.name))}</span>`;
+    return `<div class="irw-row"><div class="irw-av">${av}</div><div class="irw-mid"><b>${esc(r.name)}</b><em>${all && w.classes.length > 1 ? w.classes.length + (hi ? " क्लास" : " classes") : esc(clsLabel(o.c))}</em></div><strong class="irw-amt">\u20B9${a}</strong></div>`;
+  }).join("");
+  const N = Math.max(1, R.minClasses | 0);
+  const rl = hi ? `\u20B9${R.classAmt}: अपनी क्लास में टॉपर \u00B7 \u20B9${R.topAmt}: सबसे ज़्यादा क्लास में टॉपर${N > 1 ? " (कम से कम " + N + ")" : ""}` : `\u20B9${R.classAmt}: apni class mein topper \u00B7 \u20B9${R.topAmt}: sabse zyada class mein topper${N > 1 ? " (kam se kam " + N + ")" : ""}`;
+  return `<section class="irw" aria-label="${hi ? "इनाम" : "Inaam"}"><div class="irw-hd"><b>\u{1F3C6} ${hi ? "इनाम किसे मिलेगा?" : "Inaam kisko milega?"}</b><span class="irw-pr"><i>${hi ? "क्लास टॉपर" : "Class topper"} <strong>\u20B9${R.classAmt}</strong></i><i>${hi ? "ऑल-टाइम" : "All-time"} <strong>\u20B9${R.topAmt}</strong></i></span></div><p class="irw-rl">${rl}</p>${rows ? `<div class="irw-ls">${rows}</div>` : `<div class="irw-em">${hi ? "अभी कोई टॉपर नहीं — पहले टॉपर बनो!" : "Abhi koi topper nahi \u2014 pehle topper bano!"}</div>`}</section>`;
 }
 const avImg = (n, cls = "w-10 h-10") => photoOf(n) ? `<img src="${photoOf(n)}" alt="" decoding="async" class="${cls} rounded-full object-cover border border-green-200 shrink-0">` : "";
 const stuRec = (n, cls) => { const o = { name: n, cls, createdAt: saved.createdAt || Date.now(), updatedAt: Date.now() }; if (okPhoto(saved.photo)) o.photo = saved.photo; if (saved.uid) o.uid = saved.uid; return o; };
@@ -2715,14 +2905,17 @@ async function startTest(k, L0) {
   bumpCount(state.name, subj, state.cls);
   lang = L; try { localStorage.setItem("amrit_test_lang2", L); } catch (e) {}
   clearInterval(window._tm); window._tm = setInterval(() => {
+    if (state.screen !== "quiz" && _fxK === "timer") stopFx();
     const e = $("tm"); if (e && state.startedAt) e.textContent = fmtT(Date.now() - state.startedAt);
     if (state.screen === "quiz" && !state.submitting && state.qEnd) {
       const left = Math.max(0, Math.ceil((state.qEnd - Date.now()) / 1000)), q = $("qt");
       if (q) { q.textContent = left; q.parentElement.classList.toggle("text-red-500", left <= 10); }
+      if (_fxK === "timer" && left <= 0) stopFx();
       if (left <= 0) autoNext();
     }
-  }, 1000);
+  }, 250);
   state = { ...state, testLang: L, screen: "quiz", submitting: false, resultId: null, saveErr: "", review: false, pending: null, startedAt: Date.now(), subKey: k, subName: bank[k].name || k, questions: qs, answers: new Array(qs.length).fill(null), qi: 0, score: 0, lastPct: 0, leaves: 0, cheatMsg: "", _qIdx: -1, qEnd: 0 };
+  try { sfxFile("start"); } catch (e) {}
   render();
   try { tgText("▶️ <b>Test shuru hua</b>\n👤 " + tgE(state.name) + " · " + tgE(clsLabelEn(state.cls)) + "\n📚 " + tgE(state.subName) + " (" + String(L).toUpperCase() + ")\n🕒 " + tgNow()); } catch (e) {}
 }
@@ -2888,6 +3081,7 @@ function renderInner() {
         <span id="liveCnt" class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[.72rem] font-semibold ml-2" style="background:#fff;color:var(--ac);box-shadow:0 0 0 .5px var(--sep),0 2px 8px -2px rgba(0,0,0,.12)"><span class="dot"></span><span id="liveCntT">${liveCntTxt()}</span></span>
         <h1 class="gtext text-[2.1rem] leading-tight font-extrabold tracking-tight mt-4">${t.title}</h1>
         <p class="text-neutral-500 mt-2 text-sm">${t.sub}</p>
+        ${streakChip()}
         <div class="flex justify-center items-center gap-1.5 mt-4 font-bold tracking-tight" style="flex-wrap:nowrap;white-space:nowrap;font-size:.64rem"><span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-gradient-to-b from-white to-rose-50 text-rose-700 ring-1 ring-rose-200/80 shadow-md shadow-rose-300/40 backdrop-blur-sm animate__animated animate__fadeInUp active:scale-95 transition" style="animation-delay:0s"><span class="text-indigo-500">\u{1F4DD}</span>${QCOUNT} ${t.qs}</span>${NEG > 0 ? `<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-gradient-to-b from-white to-rose-50 text-rose-700 ring-1 ring-rose-200/80 shadow-md shadow-rose-300/40 backdrop-blur-sm animate__animated animate__fadeInUp active:scale-95 transition" style="animation-delay:.08s"><span class="text-rose-500">\u2796</span>${lang === "hi" ? "गलत पर &minus;" : "Wrong &minus;"}${NEG}</span>` : ""}<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-gradient-to-b from-white to-rose-50 text-rose-700 ring-1 ring-rose-200/80 shadow-md shadow-rose-300/40 backdrop-blur-sm animate__animated animate__fadeInUp active:scale-95 transition" style="animation-delay:.16s"><span class="text-amber-500 inline-block animate__animated animate__swing animate__infinite" style="animation-duration:2.6s">\u23F1</span>${t.timed}</span><span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-gradient-to-b from-white to-rose-50 text-rose-700 ring-1 ring-rose-200/80 shadow-md shadow-rose-300/40 backdrop-blur-sm animate__animated animate__fadeInUp active:scale-95 transition" style="animation-delay:.24s"><span class="text-emerald-500 inline-block animate__animated animate__pulse animate__infinite" style="animation-duration:2.2s">\u{1F3C6}</span>${t.rankW}</span></div>
       </div>
       ${ytCard()}
@@ -2935,7 +3129,7 @@ function renderInner() {
 
   if (state.screen === "quiz") {
     const i = state.qi, qs = state.questions, q = qs[i], Q = q.Q;
-        if (state._qIdx !== i) { state._qIdx = i; state.qEnd = Date.now() + QSEC * 1000; }
+        if (state._qIdx !== i) { state._qIdx = i; state.qEnd = Date.now() + QSEC * 1000; state._cdTag = state.startedAt + ":" + i; if (i > 0) sfxFile("q"); cdStart(state._cdTag); }
     const sel = state.answers[i], pct = Math.round((i / qs.length) * 100);
     const np = Math.round(((i + 1) / qs.length) * 100), from = state.lastPct || 0; state.lastPct = np;
     app.innerHTML = `
@@ -2950,7 +3144,7 @@ function renderInner() {
       </div>`;
     $("opts").addEventListener("click", e => {
       const b = e.target.closest("[data-i]"); if (!b) return;
-      state.answers[i] = Number(b.dataset.i);
+      state.answers[i] = Number(b.dataset.i); sfx("tap");
       $("opts").querySelectorAll(".opt").forEach((x, xi) => { const on = xi === state.answers[i];
         x.classList.toggle("on", on); x.classList.toggle("border-green-600", on); x.classList.toggle("text-white", on); x.classList.toggle("font-semibold", on);
         x.classList.toggle("border-green-200", !on); x.classList.toggle("bg-white", !on); x.classList.toggle("text-neutral-800", !on); });
@@ -2959,6 +3153,7 @@ function renderInner() {
     $("quit").onclick = () => { if (confirm(t.quitQ)) { clearInterval(window._tm); state.screen = "start"; render(); } };
     $("nextBtn").onclick = () => {
       if (state.answers[i] == null) return;
+      sfx("next");
       if (i < qs.length - 1) { state.qi++; render(); } else { $("nextBtn").disabled = true; $("nextBtn").textContent = t.loading; submitTest(); }
     };
     return;
@@ -2969,24 +3164,29 @@ function renderInner() {
     const same = results.filter(r => r.cls === state.cls && r.subjectKey === state.subKey);
     const rank = same.findIndex(r => r.id === state.resultId) + 1;
     app.innerHTML = `
-      <div class="pop text-center py-6">
-        <p class="text-neutral-500 text-sm mb-1">${t.result} &middot; ${esc(sl(state.subName))}</p>
-        ${state.pending && state.pending.createdAt ? `<p class="text-xs font-semibold text-green-700">\u{1F552} ${LB[lang].taken}: ${fmtDT(state.pending.createdAt)}</p>` : ""}
-        <div class="relative mx-auto my-4 w-48 h-48">
-          <svg viewBox="0 0 120 120" class="w-full h-full -rotate-90"><circle cx="60" cy="60" r="52" fill="none" stroke="#dcfce7" stroke-width="10"/><circle class="ringc" cx="60" cy="60" r="52" fill="none" stroke="url(#rg)" stroke-width="10" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="${(326.7 * (1 - pct / 100)).toFixed(1)}" style="--c:326.7"/><defs><linearGradient id="rg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#16a34a"/><stop offset="1" stop-color="#4ade80"/></linearGradient></defs></svg>
-          <div class="absolute inset-0 grid place-items-center"><div><div class="text-4xl font-extrabold gtext leading-none">${state.score}<span class="text-lg text-neutral-400">/${total}</span></div><div class="text-sm font-bold text-green-700 mt-1">${pct}%</div></div></div>
+      <div class="pop rs text-center py-4">
+        <div class="rs-hero ${pct >= 75 ? "t3" : pct >= 50 ? "t2" : "t1"}">
+          <p class="rs-sub">${t.result} &middot; ${esc(sl(state.subName))}</p>
+          ${state.pending && state.pending.createdAt ? `<span class="rs-time">${LB[lang].taken}: ${fmtDT(state.pending.createdAt)}</span>` : ""}
+          <div class="rs-ring">
+            <svg viewBox="0 0 120 120" class="w-full h-full -rotate-90"><circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="9"/><circle class="ringc" cx="60" cy="60" r="52" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="${(326.7 * (1 - pct / 100)).toFixed(1)}" style="--c:326.7"/></svg>
+            <div class="rs-in"><div class="rs-score">${state.score}<small>/${total}</small></div><div class="rs-pct">${pct}%</div></div>
+          </div>
+          <p class="rs-praise">${t.praise(pct)}</p>
         </div>
-        <p class="text-lg font-semibold">${t.praise(pct)}</p>
-        ${state.saveErr ? `<p class="mt-3 text-xs text-red-600 bg-red-50 border border-red-200 rounded-xl p-3">\u26A0 ${t.saveFail}</p>` : ""}
-        <div class="grid grid-cols-3 gap-2.5 mt-5">
-          <div class="glass rounded-2xl py-3"><div class="text-lg font-extrabold rv-oktxt">${state.right != null ? state.right : state.score}</div><div class="text-[.65rem] text-neutral-500">${t.cor}</div></div>
-          <div class="glass rounded-2xl py-3"><div class="text-lg font-extrabold text-red-500">${state.wrong != null ? state.wrong : total - state.score}</div><div class="text-[.65rem] text-neutral-500">${t.wro}</div></div>
-          <div class="glass rounded-2xl py-3"><div class="text-lg font-extrabold text-green-700">${state.timeMs ? fmtT(state.timeMs) : "-"}</div><div class="text-[.65rem] text-neutral-500">${t.timeL}</div></div>
+        <div class="rs-card">
+          ${starsHtml(pct)}
         </div>
-        ${state.neg > 0 && state.wrong > 0 ? `<p class="mt-3 text-xs font-semibold text-red-600">\u2796 ${lang === "hi" ? "नेगेटिव मार्किंग" : "Negative marking"}: ${state.wrong} &times; ${state.neg} = &minus;${Math.round(state.wrong * state.neg * 100) / 100} &middot; ${lang === "hi" ? "बिना हल किए सवाल पर कटौती नहीं" : "no cut on skipped questions"}</p>` : ""}
+        ${state.saveErr ? `<p class="mt-3 text-xs text-red-600 bg-red-50 border border-red-200 rounded-xl p-3">${t.saveFail}</p>` : ""}
+        <div class="rs-stats">
+          <div class="rs-st g"><b>${state.right != null ? state.right : state.score}</b><span>${t.cor}</span></div>
+          <div class="rs-st r"><b>${state.wrong != null ? state.wrong : total - state.score}</b><span>${t.wro}</span></div>
+          <div class="rs-st b"><b>${state.timeMs ? fmtT(state.timeMs) : "-"}</b><span>${t.timeL}</span></div>
+        </div>
+        ${state.neg > 0 && state.wrong > 0 ? `<p class="mt-3 text-xs font-semibold text-red-600">${lang === "hi" ? "नेगेटिव मार्किंग" : "Negative marking"}: ${state.wrong} &times; ${state.neg} = &minus;${Math.round(state.wrong * state.neg * 100) / 100} &middot; ${lang === "hi" ? "बिना हल किए सवाल पर कटौती नहीं" : "no cut on skipped questions"}</p>` : ""}
         ${topProgressHtml()}
         ${challengeHtml(pct)}
-        ${rank > 0 ? `<div class="inline-flex items-center gap-2 mt-4 px-4 py-2 rounded-full bg-green-600 text-white text-sm font-semibold shadow-lg shadow-green-600/25">\u{1F3C5} ${t.rank}: #${rank}</div>` : ""}
+        ${rank > 0 ? `<div class="rs-rank">${t.rank} <b>#${rank}</b></div>` : ""}
         ${state.saveErr ? `<button id="retrySave" class="mt-4 px-5 py-2.5 rounded-full ${btnMain} text-sm">${t.retrySave}</button>` : ""}
         <div class="flex gap-2 mt-6 justify-center"><button id="shareBtn" class="px-4 py-2 rounded-full ${btnLine} text-sm">${t.share}</button><button id="revBtn" class="px-4 py-2 rounded-full ${btnLine} text-sm">${state.review ? t.hide : t.review}</button></div>
         ${state.review ? reviewHtml() : ""}
@@ -3199,7 +3399,7 @@ function renderInner() {
       if (lxMeIdx >= 0 && lxN) { const g = glist[lxMeIdx], tp = Math.max(1, Math.round((lxMeIdx + 1) / lxN * 100)); tbMe = `<div class="mb-4 flex items-center gap-3 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-600 p-3.5 text-white shadow-lg">${tbAv(g.name, 52, "ring-2 ring-white/70")}<div class="min-w-0 flex-1"><div class="text-[10px] font-bold uppercase tracking-widest text-indigo-100">${pHi ? "आपकी रैंक" : "Your rank"}</div><div class="truncate text-sm font-bold">${esc(g.name)}</div><div class="text-[11px] text-indigo-100">${g.score}/${g.total} · ${pc(g)}%${g.timeMs ? " · ⏱ " + fmtT(g.timeMs) : ""}</div></div><div class="text-right"><div class="text-3xl font-extrabold leading-none">#${lxMeIdx + 1}</div><div class="mt-1 text-[10px] text-indigo-100">${pHi ? lxN + " में से" : "of " + lxN} · ${pHi ? "टॉप " : "Top "}${tp}%</div></div></div>`; }
       const tbShow = 10, tbMax = 50, tbRest = glist.slice(3, tbMax);
       const tbBoard = lxN ? `<div class="mb-5 grid grid-cols-3 gap-2">${tbStat(lxN, l.stu)}${tbStat(lxTop.score + "/" + lxTop.total, l.best)}${tbStat(lxAvg + "%", l.avg)}</div>` + tbPod() + `<div class="space-y-2">${tbRest.map((g, j) => tbRow(g, j + 4, j >= tbShow ? "tbx hidden" : "")).join("")}</div>` + (tbRest.length > tbShow ? `<button type="button" onclick="document.querySelectorAll('.tbx').forEach(e=>e.classList.remove('hidden'));this.remove()" class="mt-3 w-full rounded-2xl border border-slate-200 bg-white py-3 text-sm font-bold text-slate-700 shadow-sm">${pHi ? "और दिखाएँ" : "Show more"} (${tbRest.length - tbShow})</button>` : "") + (lxMeIdx >= tbMax ? `<div class="mt-3"><div class="mb-1 text-[11px] font-bold uppercase tracking-wide text-slate-400">${pHi ? "आपकी रैंक" : "Your rank"}</div>${tbRow(glist[lxMeIdx], lxMeIdx + 1, "")}</div>` : "") + `<p class="mt-6 text-center text-[11px] leading-relaxed text-slate-400">${pHi ? "रैंक = सभी विषयों के कुल नंबर। नंबर बराबर? कम समय वाला ऊपर।" : "Rank = total marks of all subjects. Same marks? Less time wins."}</p>` : `<div class="rounded-2xl border border-dashed border-slate-300 bg-white py-12 text-center text-sm text-slate-500">${l.none}</div>`;
-      body = `<div class="mb-4"><h1 class="text-2xl font-extrabold tracking-tight text-slate-900">${pHi ? "लीडरबोर्ड" : "Leaderboard"}</h1><p class="mt-0.5 text-xs text-slate-500">${esc(lbSubT)}</p></div>` + rewardCard() + tbFilters + tbBoard;
+      body = `<div class="mb-4"><h1 class="text-2xl font-extrabold tracking-tight text-slate-900">${pHi ? "लीडरबोर्ड" : "Leaderboard"}</h1><p class="mt-0.5 text-xs text-slate-500">${esc(lbSubT)}</p></div>` + rewardTopHtml() + rewardCard() + tbFilters + tbBoard;
     }
     app.innerHTML = head + body + `<button id="backStart" class="block w-full text-center py-3.5 rounded-2xl ${btnMain} text-base mt-7">&larr; ${l.back}</button>`;
 
@@ -3291,6 +3491,7 @@ async function submitTest() {
   await saveResult();
   state.screen = "result";
   render();
+  try { kidDone(score / total); } catch (e) {}
   if (score / total >= 0.75) confetti();
   try { const cur = fullTopperOf(state.cls); if (score >= total && cur && nk(cur.name) === nk(state.name)) { podBurst(); setTimeout(() => { const h = document.querySelector("#app .th-trophy"); if (h) { const b = h.getBoundingClientRect(); firework(b.left + b.width / 2, b.top + b.height / 2, 36, ["#facc15", "#fbbf24", "#f59e0b", "#ffffff", "#4ade80"]); } }, 700); } } catch (e) {}
 }
@@ -3584,7 +3785,7 @@ function renderHelp() {
   { const keep = myRp.filter(r => { const n = repList(r.id).length; return !(n > 0 && (+_seen[r.id] || 0) >= n); }); if (keep.length !== myRp.length) { myRp = keep; _lss("amrit_my_reports", myRp); } }
   markSeen();
   const tops = [["test", `<svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="3"/><path d="M9 4.5V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v.5M9 11h6M9 15h4"/></svg>`, hi ? "टेस्ट में दिक्कत" : "Test mein problem"], ["res", `<svg viewBox="0 0 24 24"><path d="M8 4h8v6a4 4 0 0 1-8 0z"/><path d="M8 6H5.5a1 1 0 0 0-1 1c0 2 1.3 3.6 3.5 4M16 6h2.5a1 1 0 0 1 1 1c0 2-1.3 3.6-3.500 4M12 14v4M8.500 20h7"/></svg>`, hi ? "रिज़ल्ट / रैंक" : "Result / Rank"], ["game", `<svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="11" rx="5.500"/><path d="M8 10.500v4M6 12.500h4M15.500 11.500h.01M17.500 13.500h.01"/></svg>`, hi ? "गेम नहीं चल रहा" : "Game nahi chal raha"], ["ask", `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.500 9.500a2.500 2.500 0 1 1 3.500 2.300c-.7.400-1 .9-1 1.700M12 17h.01"/></svg>`, hi ? "कुछ पूछना है" : "Kuch poochna hai"]];
-  app.innerHTML = `<div class="pop text-center hp-hero"><div class="hp-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.5-4.6A8 8 0 1 1 21 12z"/><circle class="d" cx="8.5" cy="12" r="1.15"/><circle class="d" cx="12" cy="12" r="1.15"/><circle class="d" cx="15.5" cy="12" r="1.15"/></svg></div><h1 class="text-2xl font-extrabold tracking-tight">${hi ? "मदद और सवाल" : "Madad & Sawal"}</h1><p class="text-neutral-500 text-sm mt-1">${hi ? "कोई समस्या आई या कुछ पूछना है? सीधे Amrit को लिखो।" : "Koi problem aayi ya kuch poochna hai? Seedha Amrit ko likho."}</p></div>
+  app.innerHTML = `<div class="pop text-center hp-hero"><div class="hp-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.5-4.6A8 8 0 1 1 21 12z"/><circle class="d" cx="9" cy="10.6" r="1.1"/><circle class="d" cx="15" cy="10.6" r="1.1"/><path d="M8.9 13.6c.8 1.1 1.9 1.7 3.1 1.7s2.3-.6 3.1-1.7"/></svg></div><h1 class="text-2xl font-extrabold tracking-tight">${hi ? "मदद और सवाल" : "Madad & Sawal"}</h1><p class="text-neutral-500 text-sm mt-1">${hi ? "कोई समस्या आई या कुछ पूछना है? सीधे Amrit को लिखो।" : "Koi problem aayi ya kuch poochna hai? Seedha Amrit ko likho."}</p></div>
   ${_hp.done ? `<div class="hp-ok"><div class="hp-okc"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><b>${hi ? "मैसेज भेज दिया गया!" : "Message bhej diya gaya!"}</b><span>${hi ? "Amrit को मिल गया। जवाब नीचे दिखेगा।" : "Amrit ko mil gaya. Jawab neeche dikhega."}</span><button type="button" class="btnm" id="hpAgain">${hi ? "एक और भेजो" : "Ek aur bhejo"}</button></div>` : `<div class="hp-card"><div class="hp-lb">${hi ? "किस बारे में?" : "Kis baare mein?"}</div><div class="hp-tps">${tops.map(t => `<button type="button" data-tp="${t[0]}" class="hp-tp${_hp.tp === t[0] ? " on" : ""}"><span class="hp-ti">${t[1]}</span>${t[2]}</button>`).join("")}</div>
   <div class="hp-lb">${hi ? "आपका नाम" : "Aapka naam"}</div><input id="hpNm" maxlength="60" value="${esc(_hp.nm)}" placeholder="${hi ? "पूरा नाम" : "Poora naam"}">
   <div class="hp-to"><div class="hp-av">A</div><div><b>Amrit Tiwari</b></div></div><textarea id="hpMsg" maxlength="500" placeholder="${hi ? "यहाँ लिखो..." : "Yahan likho..."}">${esc(_hp.msg)}</textarea><div class="hp-c" id="hpCnt">${_hp.msg.length}/500</div>
@@ -3884,6 +4085,175 @@ setTimeout(async () => {
     if ((await claimName(nk(state.name), saved.sid, saved.uid)) !== "taken") { saved.nk = nk(state.name); saveProfile(); }
   } catch (e) {}
 }, 4500);
+// ===== KID FUN: sound effects + stars + daily streak =====
+let _ac = null;
+function sndOn() { return true; }
+function paintSnd() { const b = document.getElementById("sndBtn"); if (b) { b.textContent = ""; b.style.display = "none"; } }
+function _tone(f, t0, d, type, vol) {
+  const o = _ac.createOscillator(), g = _ac.createGain(), t = _ac.currentTime + t0;
+  o.type = type || "sine"; o.frequency.setValueAtTime(f, t);
+  g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol || 0.15, t + 0.015); g.gain.exponentialRampToValueAtTime(0.0001, t + d);
+  o.connect(g); g.connect(_ac.destination); o.start(t); o.stop(t + d + 0.02);
+}
+function sfx(k) {
+  return; // sirf SND_FILES ke links wali awaaz chalegi
+  try {
+    if (!sndOn()) return;
+    const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return;
+    if (!_ac) _ac = new AC(); if (_ac.state === "suspended") _ac.resume();
+    if (k === "tap") { _tone(660, 0, .08, "sine", .12); _tone(880, .05, .09, "sine", .1); }
+    else if (k === "next") { _tone(520, 0, .09, "triangle", .1); }
+    else if (k === "win") { [523, 659, 784, 1047, 1319].forEach((f, i) => _tone(f, i * .11, .28, "triangle", .16)); _tone(1047, .6, .5, "sine", .12); }
+    else if (k === "ok") { [440, 523, 659].forEach((f, i) => _tone(f, i * .13, .25, "triangle", .14)); }
+  } catch (e) {}
+}
+document.addEventListener("click", e => { const b = e.target.closest && e.target.closest("#sndBtn"); if (!b) return; try { localStorage.setItem("amrit_snd", sndOn() ? "0" : "1"); } catch (er) {} paintSnd(); sfx("tap"); });
+paintSnd();
+function _dstr(d) { return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
+function streakDays() {
+  try {
+    let o = JSON.parse(localStorage.getItem("amrit_streak2") || "null");
+    if (!o || !Array.isArray(o.days)) {
+      o = { days: [], best: 0 };
+      const old = JSON.parse(localStorage.getItem("amrit_streak") || "null");
+      if (old && old.d && old.n > 0) { const d = new Date(old.d + "T00:00:00"); for (let i = 0; i < old.n; i++) { o.days.push(_dstr(d)); d.setDate(d.getDate() - 1); } o.best = old.n; }
+    }
+    return o;
+  } catch (e) { return { days: [], best: 0 }; }
+}
+function streakGet() {
+  const o = streakDays(), set = new Set(o.days), t = new Date(), today = set.has(_dstr(t));
+  const d = new Date(t); if (!today) d.setDate(d.getDate() - 1);
+  let n = 0; while (set.has(_dstr(d))) { n++; d.setDate(d.getDate() - 1); }
+  return { n, today, best: Math.max(o.best || 0, n), set };
+}
+function streakBump() {
+  try {
+    const o = streakDays(), td = _dstr(new Date());
+    if (o.days.includes(td)) return { n: streakGet().n, isNew: false };
+    o.days = Array.from(new Set(o.days.concat(td))).sort().slice(-120);
+    localStorage.setItem("amrit_streak2", JSON.stringify(o));
+    const g = streakGet(); o.best = Math.max(o.best || 0, g.n); localStorage.setItem("amrit_streak2", JSON.stringify(o));
+    return { n: g.n, isNew: true };
+  } catch (e) { return { n: 0, isNew: false }; }
+}
+const STREAK_GOALS = [3, 7, 14, 30, 60, 100];
+function streakCard(big, isNew) {
+  const g = streakGet(), hi = lang === "hi", n = g.n; let dots = ""; const t = new Date();
+  for (let i = 6; i >= 0; i--) { const d = new Date(t); d.setDate(t.getDate() - i); dots += `<i class="kd${g.set.has(_dstr(d)) ? " on" : ""}${i === 0 ? " tod" : ""}"></i>`; }
+  let tail = "";
+  if (big && isNew) tail = STREAK_GOALS.includes(n) ? (hi ? " \u{1F389} milestone!" : " \u{1F389} milestone!") : (hi ? " \u2714 बढ़ गई!" : " \u2714 badh gayi!");
+  const label = n ? (hi ? "दिन की स्ट्रीक" : "din ki streak") : (hi ? "आज टेस्ट दो, स्ट्रीक शुरू करो" : "Aaj test do, streak shuru karo");
+  return `<div class="kst${big ? " big" : ""}${n ? "" : " cold"}"><span class="kst-fl">\u{1F525}</span>${n ? `<b>${n}</b>` : ""}<span class="kst-t">${label}${tail}</span><span class="kst-wk">${dots}</span></div>`;
+}
+function streakChip() { return streakCard(false, false); }
+function starsHtml(pct) {
+  const n = pct >= 90 ? 3 : pct >= 60 ? 2 : 1, hi = lang === "hi";
+  const msg = n === 3 ? (hi ? "तीन स्टार! तुम तो चैंपियन हो" : "Teen star! Tum toh champion ho") : n === 2 ? (hi ? "दो स्टार! बस थोड़ा और" : "Do star! Bas thoda aur") : (hi ? "एक स्टार मिला, अगली बार और स्टार लाओ" : "Ek star mila, agli baar aur star laao");
+  const star = '<svg viewBox="0 0 24 24" width="38" height="38" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5L2.6 9.4l6.5-.9z"/></svg>';
+  return `<div class="kstars" aria-label="${n} stars">${[1, 2, 3].map(i => `<span class="${i > n ? "off" : ""}">${star}</span>`).join("")}</div><div class="kmsg">${msg}</div>`;
+}
+// ===== AUDIO: Web Audio se (phone me media-notification nahi aata) + hamesha chalne wali music =====
+const SND_FILES = {
+  start: "https://www.image2url.com/r2/default/audio/1789533453489-c8438b30-f9a1-41d1-9463-9140f231cdf2.mp3", // Test button click: koun-hai-re
+  q:     "https://www.image2url.com/r2/default/audio/1789533412175-3495b1a8-ee7e-4b4d-a0d1-8e5bed2cb7f7.mp3", // New question: kbc-question
+  mid:   "https://www.image2url.com/r2/default/audio/1789533314005-4a0b3c5e-e7b2-4809-b276-f4933c85e2c6.mp3", // 50% score: angry
+  top:   "https://www.image2url.com/r2/default/audio/1789533275690-b958b2a5-f50d-455a-b5bd-bd85859bbbda.mp3", // Highest rank: 7 crore
+  low:   "https://www.image2url.com/r2/default/audio/1789533495384-a663379e-b951-4a68-9c8f-2d130c593655.mp3", // Lowest score: sad-meow-song
+  timer: "https://www.image2url.com/r2/default/audio/1795520775480-57873bda-3be5-49d8-98d8-3b2d4457984c.mp3"  // Timer (aakhri 10 second)
+};
+const BG_URL = ""; // apni background music ka mp3 link yahan daalo; khali rakha to built-in khushnuma music chalegi
+const BG_VOL = 0.9, BG_DUCK = 0.22;      // music ki awaaz / effect bajte waqt dheemi
+const SND_MID_MIN = 50, SND_WIN_MIN = 75; // %: 50 se kam = sad meow, 50-74 = angry, 75+ = jeet ki dhun
+const _buf = {}, _bufP = {};
+let _cur = null, _el = null, _bgG = null, _bgT = null, _bgOn = false, _bgNext = 0, _bgStep = 0, _bgSrc = null, _pre = false;
+function ensureAC() { try { const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return null; if (!_ac) _ac = new AC(); if (_ac.state === "suspended") _ac.resume(); return _ac; } catch (e) { return null; } }
+function loadBuf(k) {
+  const url = k === "bg" ? BG_URL : SND_FILES[k]; if (!url || _bufP[k]) return _bufP[k];
+  const ac = ensureAC(); if (!ac) return Promise.resolve();
+  return (_bufP[k] = fetch(url).then(r => { if (!r.ok) throw 0; return r.arrayBuffer(); }).then(ab => new Promise((res, rej) => ac.decodeAudioData(ab, res, rej))).then(b => { _buf[k] = b; }).catch(() => { _buf[k] = false; }));
+}
+function _duck(on) { try { if (_bgG && _ac) _bgG.gain.setTargetAtTime(on ? BG_DUCK : BG_VOL, _ac.currentTime, .15); } catch (e) {} }
+let _fxK = "";
+function cdStart(tag) {
+  try {
+    if (!sndOn()) return;
+    const go = () => { if (state.screen !== "quiz" || state._cdTag !== tag) return; sfxFile("timer"); };
+    if (_cur) { const s0 = _cur, o0 = s0.onended; s0.onended = () => { try { o0 && o0.call(s0); } catch (e) {} go(); }; }
+    else if (_el && !_el.paused && !_el.ended) _el.addEventListener("ended", go, { once: true });
+    else go();
+  } catch (e) {}
+}
+function stopFx() { _fxK = ""; try { if (_cur) { const c = _cur; _cur = null; c.stop(); } } catch (e) {} try { if (_el) { _el.pause(); _el = null; } } catch (e) {} _duck(false); }
+function sfxFile(k, fb) {
+  try {
+    if (!sndOn() || !SND_FILES[k]) return;
+    stopFx(); _fxK = k; const ac = ensureAC();
+    if (ac && _buf[k]) { const src = ac.createBufferSource(); src.buffer = _buf[k]; src.connect(ac.destination); _cur = src; _duck(true); src.onended = () => { if (_cur === src) { _cur = null; _duck(false); } }; src.start(); return; }
+    if (ac && _buf[k] === undefined) loadBuf(k);
+    const a = new Audio(SND_FILES[k]); _el = a; const pr = a.play(); if (pr && pr.catch) pr.catch(() => { if (fb) sfx(fb); });
+  } catch (e) { if (fb) sfx(fb); }
+}
+// ----- hamesha chalne wali background music (built-in khushnuma loop) -----
+const BG_STEP = 0.3;
+const BG_CH = [
+  { b: 130.81, a: [523.25, 659.25, 783.99] }, // C
+  { b: 110.0,  a: [440.0, 523.25, 659.25] },  // Am
+  { b: 87.31,  a: [440.0, 523.25, 698.46] },  // F
+  { b: 98.0,   a: [392.0, 493.88, 587.33] }   // G
+];
+const BG_ML = [659.25,0,0,587.33,0,523.25,0,0, 440,0,523.25,0,659.25,0,0,0, 523.25,0,0,440,0,523.25,587.33,0, 587.33,0,493.88,0,392,0,0,0];
+function _bgNote(f, t, d, type, v) {
+  const o = _ac.createOscillator(), g = _ac.createGain(); o.type = type; o.frequency.setValueAtTime(f, t);
+  g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(v, t + .03); g.gain.exponentialRampToValueAtTime(0.0001, t + d);
+  o.connect(g); g.connect(_bgG); o.start(t); o.stop(t + d + .05);
+}
+function bgTick() {
+  if (!_bgOn || !_ac || !_bgG) return;
+  if (_bgNext < _ac.currentTime) _bgNext = _ac.currentTime + .1;
+  const PAT = [0, 1, 2, 1, 0, 1, 2, 1];
+  while (_bgNext < _ac.currentTime + .6) {
+    const st = _bgStep % 32, ch = BG_CH[st >> 3], i = st & 7, tm = _bgNext;
+    if (i === 0) _bgNote(ch.b, tm, .9, "sine", .1); else if (i === 4) _bgNote(ch.b, tm, .6, "sine", .06);
+    _bgNote(ch.a[PAT[i]], tm, .3, "triangle", .04);
+    if (BG_ML[st]) _bgNote(BG_ML[st], tm, .55, "sine", .055);
+    _bgNext += BG_STEP; _bgStep++;
+  }
+}
+function startBg() {
+  if (!BG_URL) return; // built-in music band
+  if (_bgOn || !sndOn()) return; const ac = ensureAC(); if (!ac) return; _bgOn = true;
+  _bgG = ac.createGain(); _bgG.gain.value = 0; _bgG.connect(ac.destination); _bgG.gain.setTargetAtTime(_cur ? BG_DUCK : BG_VOL, ac.currentTime, .8);
+  const gen = () => { if (!_bgOn || _bgT) return; _bgNext = ac.currentTime + .15; _bgStep = 0; _bgT = setInterval(bgTick, 150); };
+  if (BG_URL) loadBuf("bg").then(() => { if (!_bgOn) return; if (_buf.bg) { _bgSrc = ac.createBufferSource(); _bgSrc.buffer = _buf.bg; _bgSrc.loop = true; _bgSrc.connect(_bgG); _bgSrc.start(); } else gen(); });
+  else gen();
+}
+function stopBg() {
+  _bgOn = false; clearInterval(_bgT); _bgT = null; try { if (_bgSrc) _bgSrc.stop(); } catch (e) {} _bgSrc = null;
+  if (_bgG) { const g = _bgG; _bgG = null; try { g.gain.setTargetAtTime(0, _ac.currentTime, .1); } catch (e) {} setTimeout(() => { try { g.disconnect(); } catch (e) {} }, 700); }
+}
+function unlockAudio() { if (!sndOn()) return; if (!ensureAC()) return; if (!_pre) { _pre = true; Object.keys(SND_FILES).forEach(loadBuf); } if (!_bgOn) startBg(); }
+["pointerdown", "touchend", "click", "keydown"].forEach(ev => document.addEventListener(ev, unlockAudio, { passive: true }));
+document.addEventListener("click", e => { if (!(e.target.closest && e.target.closest("#sndBtn"))) return; if (sndOn()) startBg(); else { stopFx(); stopBg(); } });
+document.addEventListener("visibilitychange", () => { try { if (!_ac) return; if (document.hidden) _ac.suspend(); else if (sndOn()) _ac.resume(); } catch (e) {} });
+function myRankTop(score, timeMs) {
+  try {
+    const same = results.filter(r => r.cls === state.cls && r.subjectKey === state.subKey);
+    const idx = same.findIndex(r => r.id === state.resultId);
+    if (idx >= 0) return idx === 0;
+    return same.every(r => r.score < score || (r.score === score && (r.timeMs || 1e12) > timeMs));
+  } catch (e) { return false; }
+}
+function kidDone(ratio) {
+  const sk = streakBump(), pct = ratio * 100;
+  if (pct >= SND_MID_MIN && myRankTop(state.score, state.timeMs)) sfxFile("top", "win");
+  else if (pct < SND_MID_MIN) sfxFile("low", "ok");
+  else if (pct < SND_WIN_MIN) sfxFile("mid", "ok");
+  else sfx("win");
+  try { const m = document.querySelector("#app .kmsg"); if (m && !document.querySelector("#app .kst")) m.insertAdjacentHTML("afterend", "<div>" + streakCard(true, sk.isNew) + "</div>"); } catch (e) {}
+  try { if (sk.isNew && STREAK_GOALS.includes(sk.n)) setTimeout(() => { try { confetti(); } catch (e) {} }, 500); } catch (e) {}
+}
+
 render();
 
 
