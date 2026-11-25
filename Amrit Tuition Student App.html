@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amrit Student — Official Safe App Download</title>
+  <meta name="description" content="Amrit Student (Class 1–8) Official Tuition App Download. 100% Safe, Ad-Free, Zero Spam — Direct APK Download & Safe Install Guide." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%234F46E5'/%3E%3Cpath d='M50 22L18 37l32 15 32-15-32-15zm-18 24v15c0 8 36 8 36 0V46L50 55 32 46z' fill='%23ffffff'/%3E%3Ccircle cx='76' cy='28' r='7' fill='%23F59E0B'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      /* Exact App Theme Colors from Color.kt & AuroraBackground.kt */
+      --indigo-blob: #C7D2FE;       /* AuroraMintGreen - Pastel Indigo */
+      --sky-blob: #BFDBFE;          /* AuroraLimeYellow - Soft Sky Blue */
+      --bg-wash: #F8FAFC;           /* AuroraWhiteGreen - Slate-50 */
+      --accent: #4F46E5;            /* AuroraAccentGreen - Royal Indigo-600 */
+      --accent-hover: #4338CA;      /* Deep Indigo-700 */
+      --border: #C7D2FE;            /* AuroraBorderGreen */
+      --pill-light: #E0E7FF;        /* AuroraPillActiveLight - Indigo-100 */
+      --glass: rgba(255, 255, 255, 0.78);       /* GlassSurfaceWhite */
+      --glass-chip: rgba(255, 255, 255, 0.65);  /* GlassSurfaceChip */
+      --glass-nav: rgba(255, 255, 255, 0.86);   /* GlassNavWhite */
+      --text-dark: #0F172A;         /* AuroraTextDark - Slate-900 */
+      --text-sec: #334155;          /* AuroraTextSecondary - Slate-700 */
+      --text-muted: #64748B;        /* AuroraTextMuted - Slate-500 */
+
+      --safe-bg: rgba(236, 253, 245, 0.88);
+      --safe-border: #86EFAC;
+      --safe-text: #166534;
+      --warn-bg: rgba(255, 251, 235, 0.90);
+      --warn-border: #FCD34D;
+      --warn-text: #92400E;
+      --shadow: 0 20px 48px rgba(79, 70, 229, 0.10);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', 'Noto Sans Devanagari', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-wash);
+      background-image:
+        radial-gradient(circle at 15% 16%, rgba(199, 210, 254, 0.88) 0%, rgba(199, 210, 254, 0.42) 28%, transparent 58%),
+        radial-gradient(circle at 86% 24%, rgba(191, 219, 254, 0.82) 0%, rgba(191, 219, 254, 0.34) 28%, transparent 56%),
+        radial-gradient(circle at 50% 68%, rgba(199, 210, 254, 0.52) 0%, rgba(191, 219, 254, 0.24) 32%, transparent 64%),
+        linear-gradient(180deg, rgba(199, 210, 254, 0.32) 0%, rgba(248, 250, 252, 0.90) 40%, #F8FAFC 100%);
+      background-attachment: fixed;
+      color: var(--text-dark);
+      line-height: 1.65;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 18px;
+    }
+
+    /* Glass Top Bar matching GlassNavWhite */
+    .topbar {
+      position: sticky;
+      top: 12px;
+      z-index: 40;
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 16px;
+      gap: 12px;
+      background: var(--glass-nav);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      box-shadow: 0 10px 30px rgba(79, 70, 229, 0.08);
+    }
+
+    .brand-mini {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 0.94rem;
+      color: var(--text-dark);
+    }
+
+    .brand-mini img {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      object-fit: cover;
+      border: 1.5px solid var(--border);
+    }
+
+    .v2-tag {
+      background: var(--pill-light);
+      color: var(--accent);
+      border: 1px solid var(--border);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 2px 9px;
+      border-radius: 999px;
+    }
+
+    .lang-toggle {
+      display: inline-flex;
+      background: var(--glass-chip);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 3px;
+    }
+
+    .lang-btn {
+      border: none;
+      background: transparent;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.82rem;
+      color: var(--text-sec);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .lang-btn.active {
+      background: var(--accent);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.28);
+    }
+
+    /* Glass Hero Card */
+    .hero-card {
+      background: var(--glass);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      padding: 28px 24px;
+      box-shadow: var(--shadow);
+      margin-top: 20px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .app-icon-wrap {
+      width: 112px;
+      height: 112px;
+      border-radius: 26px;
+      overflow: hidden;
+      border: 2.5px solid var(--border);
+      box-shadow: 0 14px 32px rgba(79, 70, 229, 0.20);
+      background: #07746E;
+      flex-shrink: 0;
+    }
+
+    .app-icon-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .verified-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--pill-light);
+      color: var(--accent);
+      border: 1px solid var(--border);
+      padding: 5px 14px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: clamp(1.65rem, 3.6vw, 2.25rem);
+      font-weight: 800;
+      line-height: 1.22;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+
+    .hero-sub {
+      color: var(--text-sec);
+      font-size: 0.96rem;
+      margin-bottom: 14px;
+    }
+
+    .meta-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .chip {
+      background: var(--glass-chip);
+      color: var(--text-dark);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 5px 12px;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+
+    .chip.highlight {
+      background: var(--pill-light);
+      color: var(--accent);
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--accent), #6366F1);
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 15px 26px;
+      border-radius: 999px;
+      box-shadow: 0 12px 26px rgba(79, 70, 229, 0.32);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, var(--accent-hover), var(--accent));
+      transform: translateY(-2px);
+      box-shadow: 0 16px 32px rgba(79, 70, 229, 0.38);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--glass-chip);
+      color: var(--text-dark);
+      border: 1px solid var(--border);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 13px 20px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .btn-secondary:hover {
+      background: var(--pill-light);
+      color: var(--accent);
+    }
+
+    /* Safety Banner */
+    .safety-banner {
+      margin-top: 22px;
+      background: var(--safe-bg);
+      border: 1.5px solid var(--safe-border);
+      border-radius: 20px;
+      padding: 18px 20px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .shield-badge {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: #16A34A;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      box-shadow: 0 8px 18px rgba(22, 163, 74, 0.25);
+    }
+
+    .safety-banner h2 {
+      font-size: 1.06rem;
+      color: var(--safe-text);
+      margin-bottom: 4px;
+    }
+
+    .safety-banner p {
+      font-size: 0.91rem;
+      color: #14532D;
+    }
+
+    /* Sections */
+    .section {
+      margin-top: 32px;
+    }
+
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 5px;
+    }
+
+    .section-desc {
+      font-size: 0.92rem;
+      color: var(--text-sec);
+      margin-bottom: 16px;
+    }
+
+    /* Glass Cards */
+    .perm-grid,
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      background: var(--glass);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: 0 10px 26px rgba(79, 70, 229, 0.06);
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .check-list {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+      font-size: 0.89rem;
+      color: var(--text-sec);
+    }
+
+    .check-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    /* Warning Explainer */
+    .warning-box {
+      background: var(--warn-bg);
+      border: 1.5px solid var(--warn-border);
+      border-radius: 20px;
+      padding: 18px 20px;
+      margin-top: 16px;
+      color: var(--warn-text);
+      font-size: 0.91rem;
+    }
+
+    .warning-box strong {
+      display: block;
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+
+    /* Steps */
+    .step-card {
+      background: var(--glass);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: 0 10px 26px rgba(79, 70, 229, 0.06);
+    }
+
+    .step-num {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.92rem;
+      margin-bottom: 10px;
+      box-shadow: 0 6px 14px rgba(79, 70, 229, 0.25);
+    }
+
+    .step-card h3 {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+    }
+
+    .step-card p {
+      font-size: 0.88rem;
+      color: var(--text-sec);
+    }
+
+    .feat-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: var(--pill-light);
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+
+    /* FAQ */
+    .faq-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    details.faq-item {
+      background: var(--glass);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 14px 18px;
+    }
+
+    details.faq-item summary {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text-dark);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    details.faq-item summary::after {
+      content: "+";
+      font-size: 1.25rem;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    details.faq-item[open] summary::after {
+      content: "−";
+    }
+
+    details.faq-item p {
+      margin-top: 10px;
+      font-size: 0.89rem;
+      color: var(--text-sec);
+    }
+
+    footer {
+      margin-top: 38px;
+      padding: 22px 0 36px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.84rem;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 22px;
+      left: 50%;
+      transform: translateX(-50%) translateY(90px);
+      background: var(--text-dark);
+      color: #ffffff;
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-size: 0.86rem;
+      font-weight: 600;
+      opacity: 0;
+      transition: all 0.25s ease;
+      z-index: 99;
+      pointer-events: none;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.25);
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    @media (max-width: 720px) {
+      .topbar {
+        border-radius: 20px;
+      }
+      .brand-mini span.brand-title {
+        font-size: 0.84rem;
+      }
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .app-icon-wrap {
+        margin: 0 auto;
+      }
+      .meta-chips, .cta-row {
+        justify-content: center;
+      }
+      .perm-grid, .steps-grid, .features-grid {
+        grid-template-columns: 1fr;
+      }
+      .safety-banner {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- In-App Browser Warning (WhatsApp / Telegram / Instagram often block APK downloads) -->
+    <div
+      id="inapp-warning"
+      style="display:none; margin-top:12px; background:rgba(255,251,235,0.95); border:1.5px solid #FCD34D; border-radius:18px; padding:14px 16px; color:#92400E; font-size:0.9rem; box-shadow:0 8px 24px rgba(146,64,14,0.10);"
+    >
+      <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px;">
+        <div>
+          <strong data-hi="⚠️ WhatsApp / In-App ब्राउज़र में APK डाउनलोड नहीं होता!" data-en="⚠️ APK Downloads May Fail Inside WhatsApp / In-App Browser!">
+            ⚠️ WhatsApp / In-App ब्राउज़र में APK डाउनलोड नहीं होता!
+          </strong>
+          <div data-hi="सही डाउनलोड के लिए ऊपर दाईं ओर ⋮ (3 डॉट) दबाकर 'Open in Chrome' चुनें या नीचे वाला बटन दबाएं।" data-en="Tap the top-right ⋮ menu and select 'Open in Chrome', or tap the button below.">
+            सही डाउनलोड के लिए ऊपर दाईं ओर ⋮ (3 डॉट) दबाकर "Open in Chrome" चुनें या नीचे वाला बटन दबाएं।
+          </div>
+        </div>
+        <button
+          type="button"
+          onclick="openInChrome()"
+          style="border:none; background:#4F46E5; color:#fff; font-weight:700; padding:10px 18px; border-radius:999px; cursor:pointer; font-family:inherit;"
+          data-hi="Chrome में खोलें ↗"
+          data-en="Open in Chrome ↗"
+        >
+          Chrome में खोलें ↗
+        </button>
+      </div>
+    </div>
+
+    <!-- Glass Top Bar -->
+    <header class="topbar">
+      <div class="brand-mini">
+        <svg viewBox="0 0 64 64" width="34" height="34" aria-hidden="true" style="border-radius:10px; flex-shrink:0; border:1.5px solid var(--border);">
+          <defs>
+            <linearGradient id="miniGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#4F46E5" />
+              <stop offset="100%" stop-color="#0D9488" />
+            </linearGradient>
+          </defs>
+          <rect width="64" height="64" rx="14" fill="url(#miniGrad)" />
+          <path d="M32 15L12 25l20 10 20-10-20-10z" fill="#ffffff" />
+          <path d="M19 30v11c0 5.5 26 5.5 26 0V30l-13 6.5L19 30z" fill="#E0E7FF" />
+          <circle cx="49" cy="18" r="4.5" fill="#FBBF24" />
+        </svg>
+        <span class="brand-title">Amrit Tuition • Student App</span>
+      </div>
+      <div class="lang-toggle" role="group" aria-label="Language switcher">
+        <button class="lang-btn active" id="btn-hi" onclick="setLang('hi')">हिंदी</button>
+        <button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button>
+      </div>
+    </header>
+
+    <!-- Hero Download Card -->
+    <section class="hero-card">
+      <div class="hero-grid">
+        <div class="app-icon-wrap" aria-label="Amrit Student App Icon">
+          <svg viewBox="0 0 128 128" width="112" height="112" xmlns="http://www.w3.org/2000/svg" style="display:block; width:100%; height:100%;">
+            <defs>
+              <linearGradient id="heroIconBg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#4F46E5" />
+                <stop offset="55%" stop-color="#2563EB" />
+                <stop offset="100%" stop-color="#0D9488" />
+              </linearGradient>
+              <linearGradient id="capGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#FFFFFF" />
+                <stop offset="100%" stop-color="#E0E7FF" />
+              </linearGradient>
+            </defs>
+            <rect width="128" height="128" fill="url(#heroIconBg)" />
+            <circle cx="96" cy="30" r="24" fill="#FFFFFF" opacity="0.10" />
+            <circle cx="28" cy="102" r="22" fill="#FFFFFF" opacity="0.08" />
+            <!-- Open Study Book -->
+            <path d="M26 70c13-6 26-4 38 4 12-8 25-10 38-4v28c-13-5-26-3-38 4-12-7-25-9-38-4V70z" fill="#FFFFFF" opacity="0.96" />
+            <path d="M64 74v28" stroke="#4F46E5" stroke-width="3" stroke-linecap="round" />
+            <!-- Graduation Cap -->
+            <path d="M64 26L24 44l40 18 40-18-40-18z" fill="url(#capGrad)" />
+            <path d="M40 53v13c0 7 48 7 48 0V53L64 64 40 53z" fill="#C7D2FE" />
+            <path d="M96 46v18" stroke="#FBBF24" stroke-width="3.5" stroke-linecap="round" />
+            <circle cx="96" cy="66" r="4.5" fill="#FBBF24" />
+            <!-- Golden Star Badge -->
+            <path d="M95 22l2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.2-4.1 5.8-.8z" fill="#FBBF24" />
+          </svg>
+        </div>
+        <div>
+          <div class="verified-pill" data-hi="✅ 100% सुरक्षित • कोई विज्ञापन नहीं • डायरेक्ट ट्यूशन ऐप" data-en="✅ 100% Safe • Zero Ads • Official Tuition App">
+            ✅ 100% सुरक्षित • कोई विज्ञापन नहीं • डायरेक्ट ट्यूशन ऐप
+          </div>
+          <h1>Amrit Student</h1>
+          <p class="hero-sub" data-hi="कक्षा 1 से 8 तक के विद्यार्थियों के लिए लाइव प्रश्न पत्र, अभ्यास और पढ़ाई का आधिकारिक ऐप।" data-en="Official live classroom & practice app for Class 1 to 8 students of Amrit Tuition.">
+            कक्षा 1 से 8 तक के विद्यार्थियों के लिए लाइव प्रश्न पत्र, अभ्यास और पढ़ाई का आधिकारिक ऐप।
+          </p>
+          <div class="meta-chips">
+            <span class="chip highlight">Class 1 – 8</span>
+            <span class="chip">Android 7.0+</span>
+            <span class="chip">100% Safe &amp; Ad-Free</span>
+          </div>
+          <div class="cta-row">
+            <a
+              id="download-btn"
+              class="btn-primary"
+              href="https://files.catbox.moe/4sygaa.apk"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>⬇️</span>
+              <span data-hi="Amrit Student APK डाउनलोड करें" data-en="Download Amrit Student APK">Amrit Student APK डाउनलोड करें</span>
+            </a>
+            <a
+              class="btn-secondary"
+              href="https://Amritbhai.shop/test.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              style="background: var(--pill-light); color: var(--accent); font-weight: 700;"
+            >
+              <span>📝</span>
+              <span data-hi="Amrit Tiwari Test Website" data-en="Amrit Tiwari Test Website">Amrit Tiwari Test Website</span>
+            </a>
+            <a class="btn-secondary" href="#install-guide" data-hi="सुरक्षित इंस्टॉल कैसे करें?" data-en="How to Install Safely?">
+              सुरक्षित इंस्टॉल कैसे करें?
+            </a>
+            <button class="btn-secondary" type="button" onclick="shareApp()" data-hi="लिंक शेयर करें" data-en="Share Link">
+              लिंक शेयर करें
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Amrit Tiwari Online Test Website Card -->
+      <div
+        style="margin-top: 18px; background: var(--pill-light); border: 1.5px solid var(--border); border-radius: 20px; padding: 16px 18px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px;"
+      >
+        <div>
+          <div style="font-weight: 800; color: var(--text-dark); font-size: 1rem;" data-hi="📝 Amrit Tiwari Test Website (ऑनलाइन टेस्ट)" data-en="📝 Amrit Tiwari Test Website (Online Test)">
+            📝 Amrit Tiwari Test Website (ऑनलाइन टेस्ट)
+          </div>
+          <div style="font-size: 0.88rem; color: var(--text-sec);" data-hi="सीधे ब्राउज़र में ऑनलाइन टेस्ट देने के लिए Amritbhai.shop/test.html खोलें।" data-en="Open Amritbhai.shop/test.html to take online tests directly in your browser.">
+            सीधे ब्राउज़र में ऑनलाइन टेस्ट देने के लिए Amritbhai.shop/test.html खोलें।
+          </div>
+        </div>
+        <a
+          href="https://Amritbhai.shop/test.html"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-primary"
+          style="padding: 11px 20px; font-size: 0.9rem;"
+        >
+          <span data-hi="Test Website खोलें ↗" data-en="Open Test Website ↗">Test Website खोलें ↗</span>
+        </a>
+      </div>
+
+      <!-- Strong Safety Assurance Banner -->
+      <div class="safety-banner">
+        <div class="shield-badge">🛡️</div>
+        <div>
+          <h2 data-hi="यह ऐप 100% सुरक्षित है — माता-पिता और छात्र निश्चिंत रहें" data-en="This App is 100% Safe — Complete Peace of Mind for Parents & Students">
+            यह ऐप 100% सुरक्षित है — माता-पिता और छात्र निश्चिंत रहें
+          </h2>
+          <p data-hi="यह Amrit Tuition द्वारा बनाया गया असली और सुरक्षित Student ऐप है। इसमें कोई वायरस, कोई फालतू विज्ञापन (Ads), कोई पेड सब्सक्रिप्शन या फोन का निजी डेटा लेने वाली कोई चीज़ नहीं है। केवल मास्टर जी द्वारा भेजे गए प्रश्न पत्र दिखाने के लिए इंटरनेट और Google Sign-In का उपयोग होता है।" data-en="This is the genuine student app created by Amrit Tuition. It contains no viruses, no ads, no spam, and does not access your private phone data. It only uses the internet and Google Sign-In to receive live question papers sent by your teacher.">
+            यह Amrit Tuition द्वारा बनाया गया असली और सुरक्षित Student ऐप है। इसमें कोई वायरस, कोई फालतू विज्ञापन (Ads), कोई पेड सब्सक्रिप्शन या फोन का निजी डेटा लेने वाली कोई चीज़ नहीं है। केवल मास्टर जी द्वारा भेजे गए प्रश्न पत्र दिखाने के लिए इंटरनेट और Google Sign-In का उपयोग होता है।
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Permissions Transparency -->
+    <section class="section">
+      <h2 class="section-title" data-hi="ऐप सुरक्षा और परमिशन की पूरी सच्चाई" data-en="Complete Safety & Permission Transparency">
+        ऐप सुरक्षा और परमिशन की पूरी सच्चाई
+      </h2>
+      <p class="section-desc" data-hi="इंस्टॉल करने से पहले देखें कि यह ऐप आपके फोन में क्या उपयोग करता है और क्या बिल्कुल नहीं छूता:" data-en="See exactly what this app uses and what it never touches on your phone:">
+        इंस्टॉल करने से पहले देखें कि यह ऐप आपके फोन में क्या उपयोग करता है और क्या बिल्कुल नहीं छूता:
+      </p>
+
+      <div class="perm-grid">
+        <div class="card">
+          <h3 data-hi="✅ केवल यही उपयोग होता है" data-en="✅ Only Uses These">✅ केवल यही उपयोग होता है</h3>
+          <ul class="check-list">
+            <li><span>🔹</span><span data-hi="<strong>इंटरनेट (Internet):</strong> मास्टर जी से लाइव टेस्ट और प्रश्न पत्र पाने के लिए।" data-en="<strong>Internet:</strong> To receive live tests and question papers from your teacher."><strong>इंटरनेट (Internet):</strong> मास्टर जी से लाइव टेस्ट और प्रश्न पत्र पाने के लिए।</span></li>
+            <li><span>🔹</span><span data-hi="<strong>Google Sign-In:</strong> विद्यार्थी की पहचान और कक्षा (Class 1–8) सेव रखने के लिए।" data-en="<strong>Google Sign-In:</strong> To verify student identity and save your Class (1–8)."><strong>Google Sign-In:</strong> विद्यार्थी की पहचान और कक्षा (Class 1–8) सेव रखने के लिए।</span></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 data-hi="🔒 ये चीजें बिल्कुल नहीं मांगता" data-en="🔒 Never Accesses">🔒 ये चीजें बिल्कुल नहीं मांगता</h3>
+          <ul class="check-list">
+            <li><span>🛡️</span><span data-hi="कोई फोटो, गैलरी या फाइल स्टोरेज एक्सेस नहीं।" data-en="No Photos, Gallery, or File Storage access.">कोई फोटो, गैलरी या फाइल स्टोरेज एक्सेस नहीं।</span></li>
+            <li><span>🛡️</span><span data-hi="कोई कैमरा, माइक, कॉन्टैक्ट्स, SMS या लोकेशन परमिशन नहीं।" data-en="No Camera, Microphone, Contacts, SMS, or Location permission.">कोई कैमरा, माइक, कॉन्टैक्ट्स, SMS या लोकेशन परमिशन नहीं।</span></li>
+            <li><span>🛡️</span><span data-hi="कोई विज्ञापन (Ads) या थर्ड-पार्टी ट्रैकर नहीं।" data-en="Zero advertisements or third-party trackers.">कोई विज्ञापन (Ads) या थर्ड-पार्टी ट्रैकर नहीं।</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="warning-box">
+        <strong data-hi="⚠️ Chrome या Play Protect चेतावनी दिखे तो घबराएं नहीं!" data-en="⚠️ Don't Worry If Chrome or Play Protect Shows a Warning!">
+          ⚠️ Chrome या Play Protect चेतावनी दिखे तो घबराएं नहीं!
+        </strong>
+        <span data-hi="जब भी कोई ऐप Google Play Store के बाहर से (सीधे .apk लिंक से) डाउनलोड किया जाता है, तो Android हर APK पर 'File might be harmful' या 'Unknown app' चेतावनी दिखाता है — चाहे वह कितना भी सुरक्षित क्यों न हो। निश्चिंत होकर 'Download anyway' और 'Install anyway' दबाएं।" data-en="Whenever any app is installed directly via an .apk link outside Google Play Store, Android automatically shows a generic 'File might be harmful' or 'Unknown app' prompt. That is normal for direct APKs—simply tap 'Download anyway' and 'Install anyway'.">
+          जब भी कोई ऐप Google Play Store के बाहर से (सीधे .apk लिंक से) डाउनलोड किया जाता है, तो Android हर APK पर "File might be harmful" या "Unknown app" चेतावनी दिखाता है — चाहे वह कितना भी सुरक्षित क्यों न हो। निश्चिंत होकर "Download anyway" और "Install anyway" दबाएं।
+        </span>
+      </div>
+    </section>
+
+    <!-- 4-Step Installation Guide -->
+    <section class="section" id="install-guide">
+      <h2 class="section-title" data-hi="4 आसान स्टेप्स में इंस्टॉल करें" data-en="Install in 4 Simple Steps">
+        4 आसान स्टेप्स में इंस्टॉल करें
+      </h2>
+      <p class="section-desc" data-hi="नीचे दिए गए आसान स्टेप्स को फॉलो करके 1 मिनट में ऐप शुरू करें:" data-en="Follow these quick steps to start using Amrit Student in 1 minute:">
+        नीचे दिए गए आसान स्टेप्स को फॉलो करके 1 मिनट में ऐप शुरू करें:
+      </p>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <h3 data-hi="APK डाउनलोड करें" data-en="Download the APK">APK डाउनलोड करें</h3>
+          <p data-hi="ऊपर दिए गए नीले बटन 'Amrit Student APK डाउनलोड करें' पर टैप करें। Chrome पूछे तो 'Download anyway' दबाएं।" data-en="Tap the Indigo 'Download Amrit Student APK' button above. If Chrome asks, tap 'Download anyway'.">
+            ऊपर दिए गए नीले बटन "Amrit Student APK डाउनलोड करें" पर टैप करें। Chrome पूछे तो "Download anyway" दबाएं।
+          </p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <h3 data-hi="फाइल खोलें और अनुमति दें" data-en="Open File & Allow">फाइल खोलें और अनुमति दें</h3>
+          <p data-hi="डाउनलोड पूरी होने पर 'Open' दबाएं। यदि 'Install unknown apps' मांगे तो Settings में 'Allow from this source' ऑन करें।" data-en="Tap 'Open' once downloaded. If prompted, turn ON 'Allow from this source' in Settings and go back.">
+            डाउनलोड पूरी होने पर "Open" दबाएं। यदि "Install unknown apps" मांगे तो Settings में "Allow from this source" ऑन करें।
+          </p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <h3 data-hi="Install पर टैप करें" data-en="Tap Install">Install पर टैप करें</h3>
+          <p data-hi="Amrit Student आइकन दिखेगा — 'Install' दबाएं। यदि Play Protect पूछे तो 'Install anyway' चुनें।" data-en="You'll see the Amrit Student icon — tap 'Install'. If Play Protect asks, choose 'Install anyway'.">
+            Amrit Student आइकन दिखेगा — "Install" दबाएं। यदि Play Protect पूछे तो "Install anyway" चुनें।
+          </p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">4</div>
+          <h3 data-hi="Google Sign-In और Classroom Join" data-en="Sign In & Join Class">Google Sign-In और Classroom Join</h3>
+          <p data-hi="ऐप खोलें, Google से साइन इन करें, अपनी कक्षा (Class 1–8) चुनें और मास्टर जी का Classroom Code डालकर जुड़ें!" data-en="Open the app, sign in with Google, pick your Class (1–8), and enter Master Ji's Classroom Code!">
+            ऐप खोलें, Google से साइन इन करें, अपनी कक्षा (Class 1–8) चुनें और मास्टर जी का Classroom Code डालकर जुड़ें!
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- App Features -->
+    <section class="section">
+      <h2 class="section-title" data-hi="Amrit Student ऐप में क्या मिलेगा?" data-en="What's Inside Amrit Student?">
+        Amrit Student ऐप में क्या मिलेगा?
+      </h2>
+      <div class="features-grid">
+        <div class="card">
+          <div class="feat-icon">📡</div>
+          <h3 data-hi="लाइव प्रश्न पत्र" data-en="Live Question Papers">लाइव प्रश्न पत्र</h3>
+          <p class="hero-sub" data-hi="जैसे ही मास्टर जी कक्षा के लिए पेपर भेजेंगे, तुरंत आपके फोन पर आ जाएगा।" data-en="Receive class-wise question papers live the moment Master Ji publishes them.">
+            जैसे ही मास्टर जी कक्षा के लिए पेपर भेजेंगे, तुरंत आपके फोन पर आ जाएगा।
+          </p>
+        </div>
+        <div class="card">
+          <div class="feat-icon">📚</div>
+          <h3 data-hi="सभी विषय (Class 1–8)" data-en="All Subjects (Class 1–8)">सभी विषय (Class 1–8)</h3>
+          <p class="hero-sub" data-hi="गणित, हिंदी, अंग्रेजी, विज्ञान, सामाजिक विज्ञान, संस्कृत, कंप्यूटर और रीजनिंग की तैयारी।" data-en="Maths, Hindi, English, Science, Social Science, Sanskrit, Computer & Reasoning study material.">
+            गणित, हिंदी, अंग्रेजी, विज्ञान, सामाजिक विज्ञान, संस्कृत, कंप्यूटर और रीजनिंग की तैयारी।
+          </p>
+        </div>
+        <div class="card">
+          <div class="feat-icon">📝</div>
+          <h3 data-hi="हिंदी और English दोनों में" data-en="Hindi & English Medium">हिंदी और English दोनों में</h3>
+          <p class="hero-sub" data-hi="अपनी भाषा में आसानी से पढ़ें, अभ्यास करें और सही उत्तर चेक करें।" data-en="Switch smoothly between Hindi and English medium anytime and review solutions.">
+            अपनी भाषा में आसानी से पढ़ें, अभ्यास करें और सही उत्तर चेक करें।
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section">
+      <h2 class="section-title" data-hi="अक्सर पूछे जाने वाले सवाल (FAQ)" data-en="Frequently Asked Questions">
+        अक्सर पूछे जाने वाले सवाल (FAQ)
+      </h2>
+      <div class="faq-list">
+        <details class="faq-item" open>
+          <summary data-hi="क्या यह ऐप मेरे बच्चे या मेरे फोन के लिए पूरी तरह सुरक्षित है?" data-en="Is this app completely safe for my phone and my child?">
+            क्या यह ऐप मेरे बच्चे या मेरे फोन के लिए पूरी तरह सुरक्षित है?
+          </summary>
+          <p data-hi="हाँ, 100% सुरक्षित है। यह Amrit Tuition के छात्रों के लिए बनाया गया आधिकारिक ऐप है। यह कोई कैमरा, गैलरी, कॉन्टैक्ट्स या लोकेशन नहीं मांगता और इसमें कोई विज्ञापन भी नहीं है।" data-en="Yes, 100% safe. It is built exclusively for Amrit Tuition students, asks for zero invasive permissions (no camera, contacts, storage, or location), and has zero ads.">
+            हाँ, 100% सुरक्षित है। यह Amrit Tuition के छात्रों के लिए बनाया गया आधिकारिक ऐप है। यह कोई कैमरा, गैलरी, कॉन्टैक्ट्स या लोकेशन नहीं मांगता और इसमें कोई विज्ञापन भी नहीं है।
+          </p>
+        </details>
+        <details class="faq-item">
+          <summary data-hi="यह ऐप Play Store पर क्यों नहीं है, और चेतावनी क्यों दिखती है?" data-en="Why is it not on Play Store and why does Android show a warning?">
+            यह ऐप Play Store पर क्यों नहीं है, और चेतावनी क्यों दिखती है?
+          </summary>
+          <p data-hi="यह हमारे ट्यूशन क्लास के विद्यार्थियों के लिए प्राइवेट ऐप है ताकि तुरंत अपडेट और लाइव प्रश्न मिल सकें। Play Store के बाहर से कोई भी APK फाइल इंस्टॉल करने पर Android अपने आप चेतावनी दिखाता है — आप निश्चिंत होकर Install करें।" data-en="It is a dedicated private tuition app so students get instant live updates without waiting on store reviews. Android shows a standard prompt for every APK downloaded outside Play Store—it is safe to proceed.">
+            यह हमारे ट्यूशन क्लास के विद्यार्थियों के लिए प्राइवेट ऐप है ताकि तुरंत अपडेट और लाइव प्रश्न मिल सकें। Play Store के बाहर से कोई भी APK फाइल इंस्टॉल करने पर Android अपने आप चेतावनी दिखाता है — आप निश्चिंत होकर Install करें।
+          </p>
+        </details>
+        <details class="faq-item">
+          <summary data-hi="क्या यह Student ऐप Master ऐप के साथ एक ही फोन में इंस्टॉल हो सकता है?" data-en="Can Amrit Student be installed alongside the Master app?">
+            क्या यह Student ऐप Master ऐप के साथ एक ही फोन में इंस्टॉल हो सकता है?
+          </summary>
+          <p data-hi="हाँ! Amrit Student का सिस्टम पैकेज और आइकन दोनों Master ऐप से बिल्कुल अलग हैं, इसलिए दोनों अलग-अलग इंस्टॉल हो सकते हैं।" data-en="Yes! Amrit Student has a completely separate package identity and icon, so it installs cleanly alongside the Master app.">
+            हाँ! Amrit Student का सिस्टम पैकेज और आइकन दोनों Master ऐप से बिल्कुल अलग हैं, इसलिए दोनों अलग-अलग इंस्टॉल हो सकते हैं।
+          </p>
+        </details>
+      </div>
+    </section>
+
+    <footer>
+      <p data-hi="© 2026 Amrit Tuition • Amrit Student • सुरक्षित शिक्षण ऐप" data-en="© 2026 Amrit Tuition • Amrit Student • Safe Learning App">
+        © 2026 Amrit Tuition • Amrit Student • सुरक्षित शिक्षण ऐप
+      </p>
+      <p style="margin-top: 6px; word-break: break-all;">
+        APK Link: <a href="https://files.catbox.moe/4sygaa.apk" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-weight: 600;">https://files.catbox.moe/4sygaa.apk</a>
+      </p>
+      <p style="margin-top: 4px; word-break: break-all;">
+        Test Website: <a href="https://Amritbhai.shop/test.html" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-weight: 600;">Amritbhai.shop/test.html</a>
+      </p>
+    </footer>
+  </div>
+
+  <div class="toast" id="toast">Link copied!</div>
+
+  <script>
+    let currentLang = 'hi';
+    const CATBOX_APK_URL = 'https://files.catbox.moe/4sygaa.apk';
+
+    // Detect WhatsApp / Instagram / Facebook / Telegram in-app browsers that block APK downloads
+    (function detectInAppBrowser() {
+      const ua = navigator.userAgent || '';
+      const isInApp = /WhatsApp|FBAN|FBAV|Instagram|Telegram|Line|Snapchat|wv\)/i.test(ua);
+      if (isInApp) {
+        const banner = document.getElementById('inapp-warning');
+        if (banner) banner.style.display = 'block';
+      }
+    })();
+
+    function openInChrome() {
+      const currentUrl = window.location.href;
+      if (/^https?:\/\//i.test(currentUrl)) {
+        const clean = currentUrl.replace(/^https?:\/\//i, '');
+        const scheme = currentUrl.startsWith('https://') ? 'https' : 'http';
+        window.location.href = 'intent://' + clean + '#Intent;scheme=' + scheme + ';package=com.android.chrome;end';
+      } else {
+        showToast(currentLang === 'hi' ? 'कृपया लिंक को Chrome में खोलें।' : 'Please open this link in Chrome.');
+      }
+    }
+
+    function setLang(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang;
+      document.getElementById('btn-hi').classList.toggle('active', lang === 'hi');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+
+      document.querySelectorAll('[data-hi][data-en]').forEach((el) => {
+        const value = el.getAttribute('data-' + lang);
+        if (value !== null) {
+          el.innerHTML = value;
+        }
+      });
+    }
+
+    async function shareApp() {
+      const urlToShare = window.location.href.startsWith('http')
+        ? window.location.href
+        : CATBOX_APK_URL;
+      const shareText = currentLang === 'hi'
+        ? '📚 Amrit Student App डाउनलोड करें — 100% सुरक्षित और बिना विज्ञापन वाला ट्यूशन ऐप:\n' + urlToShare
+        : '📚 Download Amrit Student App — 100% Safe & Ad-Free Tuition App:\n' + urlToShare;
+
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: 'Amrit Student — Official Safe App',
+            text: shareText,
+            url: urlToShare
+          });
+          return;
+        } catch (e) {
+          // Fallback to copy
+        }
+      }
+
+      try {
+        await navigator.clipboard.writeText(shareText);
+        showToast(currentLang === 'hi' ? 'डाउनलोड लिंक कॉपी हो गया!' : 'Download link copied!');
+      } catch (e) {
+        showToast(urlToShare);
+      }
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2600);
+    }
+  </script>
+</body>
+</html>
