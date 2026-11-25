@@ -8,6 +8,8 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <title id="pageTitle">Amrit Tiwari Test - Free Online Test Class 1-12</title>
 <meta id="metaDesc" name="description" content="Free online test Class 1-12: Maths, Science, English, Hindi (50 sawaal). Har class ke topper ko reward milta hai! 4 subject mein 50/50 laao aur topper bano.">
+<meta http-equiv="Content-Security-Policy" content="object-src 'none'; base-uri 'self'">
+<meta name="referrer" content="no-referrer">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="author" content="Amrit Tiwari">
 <meta name="theme-color" content="#f2f2f7">
@@ -122,6 +124,20 @@ html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}butto
 .axb{position:absolute;left:0;bottom:0;height:3px;width:100%;background:linear-gradient(90deg,#fde047,#fff);transform-origin:left;animation:axBar 12s linear forwards;z-index:2}
 @keyframes axBar{to{transform:scaleX(0)}}
 @media (prefers-reduced-motion:reduce){.axc,.axc::before,.axi::after,.axi svg,.axi .w1,.axi .w2,.axs{animation:none!important}}
+/* ---- Announcement bar (blue top bar, Student App Preview jaisa) ---- */
+.annbar{position:fixed;top:0;left:0;right:0;z-index:9600;display:flex;align-items:center;gap:10px;padding:calc(env(safe-area-inset-top,0px) + 12px) 14px 15px;background:#4f46e5;color:#fff;box-shadow:0 12px 26px -12px rgba(49,46,129,.75);font-family:Poppins,'Noto Sans Devanagari',system-ui,sans-serif;overflow:hidden;animation:annbIn .4s cubic-bezier(.2,.9,.25,1) both}
+.annbar.out{animation:annbOut .28s ease-in both}
+.annbar-i{flex:none;font-size:22px;line-height:1}
+.annbar-t{flex:1;min-width:0;display:flex;flex-direction:column}
+.annbar-t b{font-size:15px;line-height:1.25;font-weight:700;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.annbar-t span{font-size:12px;line-height:1.35;opacity:.92;margin-top:2px;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.annbar-b{flex:none;border:0;cursor:pointer;background:#fff;color:#4f46e5;font:700 13px/1 Poppins,'Noto Sans Devanagari',system-ui,sans-serif;padding:10px 16px;border-radius:999px;box-shadow:0 4px 10px -4px rgba(0,0,0,.35)}
+.annbar-b:active{transform:scale(.95)}
+.annbar-p{position:absolute;left:0;bottom:0;height:3px;width:100%;background:rgba(255,255,255,.6);transform-origin:left;animation:annbBar 12s linear forwards}
+@keyframes annbIn{from{opacity:0;transform:translateY(-100%)}to{opacity:1;transform:none}}
+@keyframes annbOut{to{opacity:0;transform:translateY(-100%)}}
+@keyframes annbBar{to{transform:scaleX(0)}}
+@media (prefers-reduced-motion:reduce){.annbar,.annbar-p{animation:none!important}}
 /* ---- Announcement card (owner ki manual announcement) ---- */
 .annc{position:relative;overflow:hidden;width:100%;max-width:400px;text-align:left;border:0;border-radius:18px;padding:10px 12px 14px;color:#fff;background:linear-gradient(135deg,#4f46e5,#7c3aed 60%,#a21caf);box-shadow:0 0 0 2px #fff,0 0 0 3.5px rgba(124,58,237,.55),0 18px 36px -10px rgba(49,46,129,.85);animation:anncIn .5s cubic-bezier(.2,1.1,.3,1) both}
 .annc.out{animation:anncOut .28s ease-in both}
@@ -1696,6 +1712,13 @@ html body .irw-yt b{color:#b91c1c;font-weight:800}
 @keyframes kpopin{from{opacity:0;transform:scale(.7)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.kst,.kst-fl{animation:none!important}}
 </style>
+<style id="poppins-safe">
+/* Announcement (top bar, card, toast) = hamesha Poppins */
+.annbar,.annbar *,.annc,.annc *,#toasts,#toasts *,.axc,.axc *{font-family:Poppins,'Noto Sans Devanagari',system-ui,sans-serif!important}
+/* Photo safety: save/drag/long-press/select band */
+img,#pv .ph,.lxme-av img{-webkit-touch-callout:none!important;-webkit-user-drag:none!important;user-drag:none;-webkit-user-select:none!important;user-select:none!important}
+#app img[src^="data:image"],#pv .ph{pointer-events:auto}
+</style>
 </head>
 <body class="text-neutral-900 font-sans min-h-screen antialiased">
 
@@ -1857,10 +1880,11 @@ html body .lbt3 .lbn-more:active{transform:scale(.98)}
 #stList .sx-tm{margin-top:0;font-size:.56rem}
 </style>
 <script type="module">
-let initializeApp, getDatabase, ref, onValue, get, push, set, runTransaction, remove, onDisconnect, query, orderByKey, limitToLast;
+let getAuth, signInAnonymously, initializeApp, getDatabase, ref, onValue, get, push, set, runTransaction, remove, onDisconnect, query, orderByKey, limitToLast;
 try {
-  const [_A, _D] = await Promise.all([import("https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js"), import("https://www.gstatic.com/firebasejs/10.13.0/firebase-database.js")]);
+  const [_A, _D, _U] = await Promise.all([import("https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js"), import("https://www.gstatic.com/firebasejs/10.13.0/firebase-database.js"), import("https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js")]);
   ({ initializeApp } = _A);
+  ({ getAuth, signInAnonymously } = _U);
   ({ getDatabase, ref, onValue, get, push, set, runTransaction, remove, onDisconnect, query, orderByKey, limitToLast } = _D);
 } catch (e) {
   document.getElementById("app").innerHTML = '<div class="text-center py-16"><p class="text-red-600 font-semibold">Server load nahi hua. Internet check karein.</p><button onclick="location.reload()" class="mt-4 px-6 py-2.5 rounded-full bg-green-600 text-white font-semibold">Retry</button></div>';
@@ -1871,6 +1895,7 @@ const _k = "AmritEdition", _d = s => { const b = atob(s); let o = ""; for (let i
 const firebaseConfig = JSON.parse(_d("Ok8TGR0OARBWU00vCBcTOg0GBwc/PCcHOyAdEAYDEz1CLx8eFSkTO0czXS9FJB9edl1QRVYkER0cLQADIAQcS05nBQQGABsabAgWAAAqCkcSAB0LIwwBDBU1FEcXBgJMbU8WCAAkBggHDDo8DU9ISxwxEBkHU0BBIAAAAAAxSQwQABsBL0AWDBIkEQUARB0aJQ9cDx03AQsVGgoHLkMRBhlnSEsEGwAEJA4GIBBnXksVBB0HNRlfDBAsEAYaS0NMMhkdGxUiASsBCgQLNU9ISxUoFgAAHUILJQQGBhprAgAGDA0PMggBHRs3BQ4RRw4eMU9eSxkgFxoVDgYAJj4XBxAgFiAQS1VMdlhGX0N1UlxCWFpeY0FQCAQ1LQ1WU01fe1pHXUJyVF9BX15bcVcFDBZ/AQhFWw0KJQhBWRZ2UVxCXgwNIl0QXlY4"));
 const fbApp = initializeApp(firebaseConfig);
 const db = getDatabase(fbApp);
+try { const _au = getAuth(fbApp); if (!_au.currentUser) await signInAnonymously(_au); } catch (e) { console.error("auth", e); }
 const $ = id => document.getElementById(id);
 const esc = v => String(v == null ? "" : v).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 $("yr").textContent = new Date().getFullYear();
@@ -1890,6 +1915,8 @@ function applyYt() {
 }
 try { onValue(ref(db, "testConfig"), sn => {
   const v = sn.val() || {}, u = String(v.ytUrl || "").trim();
+  { const sv = v.sound, son = !(sv === false || sv === 0 || sv === "0" || sv === "off" || sv === "false");
+    if (son !== SND_CFG) { SND_CFG = son; try { localStorage.setItem("amrit_snd_cfg", son ? "1" : "0"); } catch (e) {} if (!son) { try { stopFx(); stopBg(); } catch (e) {} } } }
   { const qn = Math.round(Number(v.qCount)), ng = Number(v.negMark);
     const nq = qn >= 5 && qn <= 100 ? qn : 50, nn = v.negMark != null && v.negMark !== "" && ng >= 0 && ng <= 5 ? Math.round(ng * 100) / 100 : 0.25;
     const chg = nq !== QCOUNT || nn !== NEG; QCOUNT = nq; FULL_Q = nq; NEG = nn;
@@ -1993,7 +2020,7 @@ try {
 } catch (e) {}
 saved = profiles[cur] || {};
 function genUid() { const A = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"; let r = ""; try { const b = new Uint8Array(6); crypto.getRandomValues(b); b.forEach(x => { r += A[x % 32]; }); } catch (e) { for (let i = 0; i < 6; i++) r += A[Math.floor(Math.random() * 32)]; } return "AT-" + r; }
-const persist = () => { try { localStorage.setItem("amrit_test_profiles", JSON.stringify({ list: profiles, cur: Math.min(cur, Math.max(0, profiles.length - 1)) })); } catch (e) {} };
+const persist = () => { const js = JSON.stringify({ list: profiles, cur: Math.min(cur, Math.max(0, profiles.length - 1)) }); try { localStorage.setItem("amrit_test_profiles", js); } catch (e) {} try { if (profiles.length) idbPut("profiles_backup", js); else idbDel("profiles_backup"); } catch (e) {} };
 const saveProfile = () => { if (state.saved && fullName(state.name) && state.cls) { profiles[cur] = { name: state.name, cls: state.cls, sid: saved.sid, uid: saved.uid, nk: saved.nk, createdAt: saved.createdAt, photo: saved.photo }; saved = profiles[cur]; } persist(); };
 profiles.forEach(p => { if (p && !p.uid) p.uid = genUid(); }); if (profiles.length) persist();
 function switchProfile(i) {
@@ -2132,6 +2159,12 @@ const idbO = () => new Promise((res, rej) => { try { const q = indexedDB.open("a
 const idbPut = (k, v) => idbO().then(d => new Promise(r => { const x = d.transaction("f", "readwrite").objectStore("f").put(v, k); x.onsuccess = x.onerror = () => r(); })).catch(() => {});
 const idbGet = k => idbO().then(d => new Promise(r => { const x = d.transaction("f").objectStore("f").get(k); x.onsuccess = () => r(x.result || null); x.onerror = () => r(null); })).catch(() => null);
 const idbDel = k => idbO().then(d => new Promise(r => { const x = d.transaction("f", "readwrite").objectStore("f").delete(k); x.onsuccess = x.onerror = () => r(); })).catch(() => {});
+// ---- 2 naam is phone par permanent: localStorage saaf ho jaye to backup se wapas aa jate hain ----
+if (!profiles.length) idbGet("profiles_backup").then(js => { try {
+  if (profiles.length || !js) return; const o = JSON.parse(js); if (!o || !Array.isArray(o.list)) return;
+  const L = o.list.filter(p => p && fullName(p.name) && p.cls && !_goneHit(p.name, p.cls, p.sid, p.createdAt)).slice(0, MAXP); if (!L.length) return;
+  profiles = L; cur = Math.min(Number(o.cur) || 0, L.length - 1); saved = profiles[cur]; state.name = saved.name; state.cls = saved.cls; state.saved = true; persist(); render(); _applyDeleted();
+} catch (e) {} });
 async function hdOrig(n, c) {
   const k = hdKey(n, c); let f = await idbGet(k);
   if (!f && window._hdFile && fullName(n) && c) { f = window._hdFile; idbPut(k, f); }
@@ -2466,13 +2499,12 @@ function paintBell() {
 function toast(a) {
   let box = $("toasts");
   if (!box) { box = document.createElement("div"); box.id = "toasts"; box.style.top = "calc(env(safe-area-inset-top, 0px) + 10px)"; box.className = "fixed left-0 right-0 z-[9500] flex flex-col items-center gap-2 px-4 pointer-events-none"; document.body.appendChild(box); }
-  if (a.tag === "adm") { // owner ki announcement: green toast (Tailwind CDN classes)
-    const ms = 12000, el = document.createElement("div");
-    el.className = "axc slidedown pointer-events-auto w-[287px] max-w-full h-[51px] shrink-0 overflow-hidden pl-2.5 pr-8 rounded-[22px] bg-gradient-to-br from-[#6366F1] to-[#06B6D4] border-[1.5px] border-[#FFFFFF] shadow-lg text-[#FFFFFF] text-[16px] font-semibold flex flex-row items-center gap-2.5 text-left transition duration-300";
-    el.setAttribute("role", "alert");
-    el.innerHTML = `<div class="axi"><svg viewBox="0 0 24 24" fill="none"><path d="M3 10v4a1 1 0 0 0 1 1h2l5 4V5L6 9H4a1 1 0 0 0-1 1z" fill="#7c2d12"/><path class="w1" d="M14.5 9.2a4 4 0 0 1 0 5.6" stroke="#7c2d12" stroke-width="2" stroke-linecap="round"/><path class="w2" d="M17.5 6.5a8 8 0 0 1 0 11" stroke="#7c2d12" stroke-width="2" stroke-linecap="round"/></svg></div><div class="min-w-0 flex-1 relative z-[2]"><div class="truncate text-[15px] font-extrabold leading-[1.15] drop-shadow">${esc(a.t)}</div>${a.b ? `<div class="truncate text-[11px] font-medium leading-[1.15] opacity-90">${esc(a.b)}</div>` : ""}</div><svg class="axs" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z"/></svg><svg class="axs s2" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z"/></svg><div class="axb"></div>`;
-    const close = () => { if (!el.isConnected) return; el.style.animation = "none"; el.classList.add("opacity-0", "-translate-y-2"); setTimeout(() => el.remove(), 300); };
-    el.onclick = close; box.appendChild(el); setTimeout(close, ms); return;
+  if (a.tag === "adm") { // owner ki announcement: blue top bar
+    document.querySelectorAll(".annbar").forEach(x => x.remove());
+    const el = document.createElement("div"); el.className = "annbar"; el.setAttribute("role", "alert");
+    el.innerHTML = `<div class="annbar-i">\u{1F4E2}</div><div class="annbar-t"><b>${esc(a.t)}</b>${a.b ? `<span>${esc(a.b)}</span>` : ""}</div><button type="button" class="annbar-b">${lang === "hi" ? "ठीक है" : "OK"}</button><i class="annbar-p"></i>`;
+    const close = () => { if (!el.isConnected) return; el.classList.add("out"); setTimeout(() => el.remove(), 300); };
+    el.onclick = close; document.body.appendChild(el); setTimeout(close, 12000); return;
   }
   const el = document.createElement("button"); el.type = "button";
   el.className = "slidedown pointer-events-auto w-full max-w-[440px] text-left rounded-2xl px-4 py-3 text-white shadow-xl shadow-green-900/20 bg-gradient-to-r from-green-700 to-green-500";
@@ -2741,17 +2773,15 @@ const btnMain = "btnm";
 const btnLine = "border border-green-200 bg-white/80 text-green-700 font-semibold shadow-sm hover:bg-green-50 hover:border-green-300 active:scale-[.97] transition";
 
 function markDirty() { state.saved = false; saveProfile(); const b = $("saveBtn"); if (b) { b.disabled = false; b.textContent = T[lang].save; } loadSubjects(); }
-let _asT = 0;
-function autoSave(now) {
-  clearTimeout(_asT);
-  const run = () => {
-    if (state.screen !== "start" || state.saved || !$("saveBtn")) return;
-    const n = String(state.name || "").trim().replace(/\s+/g, " ");
-    if (!fullName(n) || !state.cls || !okPhoto(saved.photo)) return;
-    saveStudent();
-  };
-  if (now) run(); else _asT = setTimeout(run, 1200);
-}
+// Naam ab AUTOMATIC save nahi hota - sirf Save button (ya Enter) dabane par.
+function autoSave() {}
+const _chkItems = () => { const hi = lang === "hi"; return [
+  [okPhoto(saved.photo), "\u{1F4F7}", hi ? "फोटो" : "Photo", "chkPh"],
+  [fullName(String(state.name || "").trim().replace(/\s+/g, " ")), "\u270D\uFE0F", hi ? "पूरा नाम" : "Full name", "chkNm"],
+  [!!state.cls, "\u{1F393}", hi ? "क्लास" : "Class", "chkCl"]]; };
+const chkHtml = () => _chkItems().map(([ok, ic, tx, id]) => `<span id="${id}" class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[.72rem] font-bold border transition ${ok ? "bg-green-50 text-green-700 border-green-300" : "bg-white text-neutral-500 border-neutral-200"}">${ok ? "\u2714" : ic} ${tx}</span>`).join("");
+function paintChk() { const c = $("svChk"); if (c) c.innerHTML = chkHtml(); const b = $("saveBtn"); if (b) b.style.opacity = _chkItems().every(x => x[0]) ? "1" : ".7"; }
+function shakeChk(id) { const e = $(id); if (!e) return; e.classList.add("animate__animated", "animate__shakeX"); setTimeout(() => e.classList.remove("animate__animated", "animate__shakeX"), 750); }
 const _nmKey = k => String(k).replace(/[.$#\[\]\/]/g, "_");
 async function claimName(key, sid, uid) {
   try {
@@ -2772,20 +2802,27 @@ async function pickName(n, sid, uid) {
   return "";
 }
 let _svBusy = false;
-async function saveStudent() { if (_svBusy) return; _svBusy = true; try { await _saveStudent(); } finally { _svBusy = false; } }
+async function saveStudent() {
+  if (_svBusy) return; _svBusy = true;
+  const b = $("saveBtn"); if (b) { b.disabled = true; b.textContent = lang === "hi" ? "सेव हो रहा है…" : "Saving…"; }
+  try { await _saveStudent(); }
+  finally { _svBusy = false; const b2 = $("saveBtn"); if (b2 && !state.saved) { b2.disabled = false; b2.textContent = T[lang].save; } }
+}
 async function _saveStudent() {
   const t = T[lang]; let n = state.name.trim().replace(/\s+/g, " ");
-  if (!fullName(n) || !state.cls) { $("err").textContent = t.need; $("err").classList.remove("hidden"); (!fullName(n) ? $("nm") : $("cl")).focus(); return; }
-  if (!okPhoto(saved.photo)) { $("err").textContent = t.photoNeed; $("err").classList.remove("hidden"); const pb = $("photoBtn"); if (pb) pb.focus(); return; }
+  if (!fullName(n) || !state.cls) { $("err").textContent = t.need; $("err").classList.remove("hidden"); shakeChk(!fullName(n) ? "chkNm" : "chkCl"); { const f = !fullName(n) ? $("nm") : $("cl"); if (f) f.focus(); } return; }
+  if (!okPhoto(saved.photo)) { $("err").textContent = t.photoNeed; $("err").classList.remove("hidden"); shakeChk("chkPh"); const pb = $("photoBtn"); if (pb) pb.focus(); return; }
   $("err").classList.add("hidden");
   // ---- same naam ho to aage 2, 3.. lag jata hai; har bachhe ki apni ID (sirf admin ke liye) ----
   try { saved.sid = saved.sid || push(ref(db, "testStudents")).key; } catch (e) {}
   saved.uid = saved.uid || genUid();
-  const pickedN = await pickName(n, saved.sid, saved.uid);
-  if (!pickedN) { $("err").textContent = lang === "hi" ? "इस नाम से बहुत लोग हैं। अपना पूरा नाम थोड़ा अलग लिखो।" : "Is naam se bahut log hain. Apna poora naam thoda alag likho."; $("err").classList.remove("hidden"); return; }
-  const key = nk(pickedN);
-  state.dupNote = pickedN !== n ? pickedN : "";
-  n = pickedN;
+  // ---- duplicate naam allowed nahi: pehle se hai to save nahi hoga ----
+  const _dd = stuNames.get(nk(n));
+  let _taken = !!(_dd && _dd.sid !== saved.sid && !_gone.some(g => g.k === _dd.sid));
+  if (!_taken) _taken = (await claimName(nk(n), saved.sid, saved.uid)) === "taken";
+  if (_taken) { $("err").textContent = lang === "hi" ? "यह नाम पहले से किसी ने ले लिया है। अपना पूरा नाम थोड़ा अलग लिखो (जैसे पिता का नाम या गाँव जोड़ो)।" : "Yeh naam pehle se kisi ne le liya hai. Apna poora naam thoda alag likho (jaise pita ka naam ya gaon jodo)."; $("err").classList.remove("hidden"); shakeChk("chkNm"); const _nm = $("nm"); if (_nm) _nm.focus(); return; }
+  const key = nk(n);
+  state.dupNote = "";
   if (saved.nk && saved.nk !== key) releaseName(saved.nk, saved.sid);
   saved.nk = key;
   state.name = n; state.saved = true;
@@ -3092,10 +3129,11 @@ function renderInner() {
           <div class="flex-1 flex items-center gap-3 flex-wrap"><button id="photoBtn" type="button" class="px-4 py-2 rounded-full ${btnLine} ${okPhoto(saved.photo) ? "" : "!border-red-300 !text-red-600"} text-sm">\u{1F4F7} ${okPhoto(saved.photo) ? (lang === "hi" ? "प्रोफ़ाइल फोटो बदलें" : "Change profile photo") : (lang === "hi" ? "प्रोफ़ाइल फोटो लगाएँ" : "Add profile photo")}</button></div>
           <input id="photoIn" type="file" accept="image/jpeg,image/png,image/webp" class="hidden">
         </div>
-        ${state.saved ? (state.justSaved ? (state.dupNote ? `<div id="savedMsg" class="slidein mb-3 px-4 py-2.5 rounded-2xl bg-amber-50 border border-amber-200 text-amber-800 text-sm font-semibold">\u2714 ${lang === "hi" ? "इस नाम से पहले से कोई है, इसलिए आपका नाम" : "Is naam se pehle se koi hai, isliye aapka naam"} <b>${esc(state.dupNote)}</b> ${lang === "hi" ? "रखा गया है" : "rakha gaya hai"}</div>` : `<div id="savedMsg" class="slidein flex items-center gap-2 mb-3 px-4 py-2.5 rounded-2xl bg-green-50 border border-green-200 text-green-700 text-sm font-semibold">\u2714 ${lang === "hi" ? "आपका नाम इस डिवाइस पर सेव है" : "Your name is saved on this device"}</div>`) : "") : `<input id="nm" aria-label="${t.namePh}" value="${esc(state.name)}" maxlength="60" placeholder="${t.namePh}" autocomplete="off" class="${inputCls} mb-3">`}
+        ${state.saved ? (state.justSaved ? (state.dupNote ? `<div id="savedMsg" class="slidein mb-3 px-4 py-2.5 rounded-2xl bg-amber-50 border border-amber-200 text-amber-800 text-sm font-semibold">\u2714 ${lang === "hi" ? "इस नाम से पहले से कोई है, इसलिए आपका नाम" : "Is naam se pehle se koi hai, isliye aapka naam"} <b>${esc(state.dupNote)}</b> ${lang === "hi" ? "रखा गया है" : "rakha gaya hai"}</div>` : `<div id="savedMsg" class="slidein flex items-center gap-2 mb-3 px-4 py-2.5 rounded-2xl bg-green-50 border border-green-200 text-green-700 text-sm font-semibold">\u2714 ${lang === "hi" ? "आपका नाम इस डिवाइस पर सेव है" : "Your name is saved on this device"}</div>`) : "") : `<input id="nm" aria-label="${t.namePh}" value="${esc(state.name)}" maxlength="60" placeholder="${t.namePh}" autocomplete="off" autocapitalize="words" enterkeyhint="done" class="${inputCls} mb-3">`}
         ${classPicker(state.cls)}
+        ${state.saved ? "" : `<div id="svChk" class="flex flex-wrap gap-2 mt-3">${chkHtml()}</div>`}
         <p id="err" class="hidden text-red-500 text-xs mt-2"></p>
-        ${state.saved ? "" : `<button id="saveBtn" class="mt-3 w-full py-3.5 rounded-2xl ${btnMain} disabled:opacity-60 disabled:shadow-none disabled:translate-y-0">${t.save}</button>`}
+        ${state.saved ? "" : `<button id="saveBtn" style="opacity:${_chkItems().every(x => x[0]) ? 1 : .7}" class="mt-3 w-full py-3.5 rounded-2xl ${btnMain} disabled:opacity-60 disabled:shadow-none disabled:translate-y-0">${t.save}</button>`}
         <div id="subs" class="mt-5"></div>
       </div>
       <div id="faq" class="sr-only"></div>`;
@@ -3104,8 +3142,8 @@ function renderInner() {
     $("photoBtn").onclick = () => $("photoIn").click();
     $("photoIn").onchange = async e => {
       const f = e.target.files && e.target.files[0]; if (!f) return;
-      try { saved.photo = await resizePhoto(f); window._hdFile = f; if (fullName(state.name) && state.cls) idbPut(hdKey(state.name, state.cls), f); try { const hd = await hdPhoto(f); window._hdPending = hd; if (fullName(state.name) && state.cls) hdSet(state.name, state.cls, hd); } catch (eh) {} if (fullName(state.name)) photoMap.set(nk(state.name), saved.photo); syncPhoto(); render(); autoSave(true);
-        if (!state.saved && !fullName(String(state.name || "").trim().replace(/\s+/g, " "))) { const er = $("err"), nmI = $("nm"); if (er) { er.textContent = lang === "hi" ? "फोटो लग गई ✔ अब पूरा नाम लिखो, अपने-आप सेव हो जाएगा।" : "Photo lag gayi \u2714 Ab poora naam likho, apne-aap save ho jayega."; er.classList.remove("hidden"); } if (nmI) nmI.focus(); } }
+      try { saved.photo = await resizePhoto(f); window._hdFile = f; if (fullName(state.name) && state.cls) idbPut(hdKey(state.name, state.cls), f); try { const hd = await hdPhoto(f); window._hdPending = hd; if (fullName(state.name) && state.cls) hdSet(state.name, state.cls, hd); } catch (eh) {} if (fullName(state.name)) photoMap.set(nk(state.name), saved.photo); syncPhoto(); render();
+        if (!state.saved) { const er = $("err"), nmI = $("nm"); if (er) { er.textContent = lang === "hi" ? "फोटो लग गई ✔ अब पूरा नाम लिखो और नीचे Save दबाओ।" : "Photo lag gayi \u2714 Ab poora naam likho aur neeche Save dabao."; er.classList.remove("hidden"); } if (nmI) nmI.focus(); } }
       catch (er) { $("err").textContent = lang === "hi" ? "फोटो नहीं लग पाई, दूसरी फोटो चुनें।" : "Could not load this photo. Try another one."; $("err").classList.remove("hidden"); }
     };
     if ($("photoDel")) $("photoDel").onclick = () => { hdDel(state.name, state.cls); photoMap.delete(nk(state.name)); delete saved.photo; syncPhoto(); render(); };
@@ -3114,13 +3152,13 @@ function renderInner() {
       if (b.dataset.p === "add") { if (cur < profiles.length) { cur = profiles.length; saved = {}; window._hdPending = ""; window._hdFile = null; state.name = ""; state.cls = "2"; state.saved = false; render(); } }
       else if (Number(b.dataset.p) !== cur) switchProfile(Number(b.dataset.p));
     };
-    if ($("nm")) { $("nm").oninput = e => { state.name = e.target.value; markDirty(); autoSave(false); }; $("nm").onchange = () => autoSave(true); $("nm").onblur = () => autoSave(true); $("nm").onkeydown = e => { if (e.key === "Enter") { e.preventDefault(); autoSave(true); } }; }
+    if ($("nm")) { $("nm").oninput = e => { state.name = e.target.value; markDirty(); paintChk(); }; $("nm").onkeydown = e => { if (e.key === "Enter") { e.preventDefault(); saveStudent(); } }; }
     if ($("saveBtn")) $("saveBtn").onclick = saveStudent;
     initWheel();
     window._pickCls = c => {
       state.cls = c; paintCls(); { const er = $("err"); if (er) er.classList.add("hidden"); }
       if (state.saved) { saveProfile(); try { if (saved.sid && !_goneHit(state.name, state.cls, saved.sid, saved.createdAt)) set(ref(db, "testStudents/" + saved.sid), stuRec(state.name, state.cls)).catch(() => {}); } catch (e2) {} try { tgStudent(); } catch (e3) {} registerPush(); loadSubjects(); }
-      else { markDirty(); autoSave(true); }
+      else { markDirty(); paintChk(); }
     };
     document.querySelectorAll(".goTab").forEach(b => b.onclick = () => { state.lbTab = b.dataset.go; state.lbSort = state.lbSort || "latest"; state.screen = "leaderboard"; render(); });
     loadSubjects();
@@ -4087,7 +4125,9 @@ setTimeout(async () => {
 }, 4500);
 // ===== KID FUN: sound effects + stars + daily streak =====
 let _ac = null;
-function sndOn() { return true; }
+// Sound ON/OFF admin se: Firebase testConfig/sound (false / 0 / "off" = band, baaki sab = chalu)
+var SND_CFG = true; try { SND_CFG = localStorage.getItem("amrit_snd_cfg") !== "0"; } catch (e) {}
+function sndOn() { return SND_CFG; }
 function paintSnd() { const b = document.getElementById("sndBtn"); if (b) { b.textContent = ""; b.style.display = "none"; } }
 function _tone(f, t0, d, type, vol) {
   const o = _ac.createOscillator(), g = _ac.createGain(), t = _ac.currentTime + t0;
@@ -4271,6 +4311,15 @@ render();
   im.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();open()}});
   v.addEventListener("click",close);
   document.addEventListener("keydown",function(e){if(e.key==="Escape"&&v.classList.contains("on"))close()});
+})();
+</script>
+<script>
+/* Photo safety: har <img> ko non-draggable + no-referrer banao (naye photo bhi) */
+(function(){
+function lock(i){try{i.setAttribute("draggable","false");i.setAttribute("referrerpolicy","no-referrer");i.setAttribute("oncontextmenu","return false");}catch(e){}}
+function scan(r){try{(r.querySelectorAll?r.querySelectorAll("img"):[]).forEach(lock);}catch(e){}}
+scan(document);
+try{new MutationObserver(function(ms){ms.forEach(function(m){m.addedNodes.forEach(function(n){if(n.nodeType!==1)return;if(n.tagName==="IMG")lock(n);else scan(n);});});}).observe(document.documentElement,{childList:true,subtree:true});}catch(e){}
 })();
 </script>
 </body>
