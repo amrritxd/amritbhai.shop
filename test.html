@@ -1917,6 +1917,7 @@ try { onValue(ref(db, "testConfig"), sn => {
   const v = sn.val() || {}, u = String(v.ytUrl || "").trim();
   { const sv = v.sound, son = !(sv === false || sv === 0 || sv === "0" || sv === "off" || sv === "false");
     if (son !== SND_CFG) { SND_CFG = son; try { localStorage.setItem("amrit_snd_cfg", son ? "1" : "0"); } catch (e) {} if (!son) { try { stopFx(); stopBg(); } catch (e) {} } } }
+  try { applySndCfg(v); applyUiCfg(v); } catch (e) {}
   { const qn = Math.round(Number(v.qCount)), ng = Number(v.negMark);
     const nq = qn >= 5 && qn <= 100 ? qn : 50, nn = v.negMark != null && v.negMark !== "" && ng >= 0 && ng <= 5 ? Math.round(ng * 100) / 100 : 0.25;
     const chg = nq !== QCOUNT || nn !== NEG; QCOUNT = nq; FULL_Q = nq; NEG = nn;
@@ -1974,6 +1975,7 @@ function ytReturn() {
 }
 document.addEventListener("visibilitychange", () => { if (!document.hidden) ytReturn(); });
 window.addEventListener("focus", ytReturn);
+var CTL = {}; // admin controls (testConfig)
 let QCOUNT = 50, NEG = 0.25; // admin (testConfig/qCount, negMark) se badalta hai
 const CLASSES = Array.from({ length: 12 }, (_, i) => String(i + 1));
 const clsLabelEn = c => /^\d+$/.test(c) ? "Class " + c : c;
@@ -2504,7 +2506,7 @@ function toast(a) {
     const el = document.createElement("div"); el.className = "annbar"; el.setAttribute("role", "alert");
     el.innerHTML = `<div class="annbar-i">\u{1F4E2}</div><div class="annbar-t"><b>${esc(a.t)}</b>${a.b ? `<span>${esc(a.b)}</span>` : ""}</div><button type="button" class="annbar-b">${lang === "hi" ? "ठीक है" : "OK"}</button><i class="annbar-p"></i>`;
     const close = () => { if (!el.isConnected) return; el.classList.add("out"); setTimeout(() => el.remove(), 300); };
-    el.onclick = close; document.body.appendChild(el); setTimeout(close, 12000); return;
+    el.onclick = close; document.body.appendChild(el); setTimeout(close, (typeof CTL !== "undefined" && CTL.annSec ? CTL.annSec : 12) * 1000); return;
   }
   const el = document.createElement("button"); el.type = "button";
   el.className = "slidedown pointer-events-auto w-full max-w-[440px] text-left rounded-2xl px-4 py-3 text-white shadow-xl shadow-green-900/20 bg-gradient-to-r from-green-700 to-green-500";
@@ -2593,6 +2595,7 @@ try { onValue(query(ref(db, "testAnnounce"), orderByKey(), limitToLast(1)), snap
     let seen = null; try { seen = localStorage.getItem("amrit_test_ann_seen"); } catch (e) {}
     if (seen === c.key) return; try { localStorage.setItem("amrit_test_ann_seen", c.key); } catch (e) {}
     if (v.createdAt && Date.now() - Number(v.createdAt) > 3 * 864e5) return;
+    { const af = Number(v.from) || 0, au = Number(v.until) || 0; if (au && Date.now() > au) return; if (af > Date.now()) { const pk = { t: String(v.title || "Announcement").slice(0, 80), b: String(v.body || v.text || "").slice(0, 200), tag: "adm" }; setTimeout(() => { if (!au || Date.now() < au) deliver([pk]); }, Math.min(af - Date.now(), 2147000000)); return; } }
     deliver([{ t: String(v.title || "Announcement").slice(0, 80), b: String(v.body || v.text || "").slice(0, 200), tag: "adm" }]);
   });
 }, () => {}); } catch (e) {}
@@ -2605,6 +2608,7 @@ $("bellBtn").addEventListener("click", () => {
 });
 
 function confetti() {
+  if (typeof CONF_ON !== "undefined" && CONF_ON === false) return;
   for (let n = 0; n < 26; n++) {
     const el = document.createElement("span"); el.className = "confetti";
     const s = 8 + (n % 3) * 4;
@@ -2646,7 +2650,7 @@ const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { c
 // Naam + surname dono zaruri (kam se kam 2 shabd, har shabd 2+ akshar) taaki duplicate naam na aayein
 function fullName(n) { const s = String(n || "").trim().replace(/\s+\d{1,3}$/, ""); if (!/^[\p{L}\p{M}][\p{L}\p{M}.'\-\s]*$/u.test(s)) return false; const w = s.split(/\s+/).filter(Boolean); return w.length >= 2 && w.every(x => x.replace(/[.'\-]/g, "").length >= 2); }
 // ---- Ek naam = ek subject ka sirf ek test ----
-const QSEC = 45, MAXLEAVE = 2;
+let QSEC = 45, MAXLEAVE = 2;
 function takenKey(n, subj, cls) { return (String(n).toLowerCase().replace(/\s+/g, " ").trim() + "__" + String(subj).toLowerCase().trim() + "__c" + String(cls || "").toLowerCase().trim()).replace(/[^\p{L}\p{N}\p{M}]+/gu, "_"); }
 function localTaken() { try { return JSON.parse(localStorage.getItem("amrit_test_taken") || "[]"); } catch (e) { return []; } }
 function markTaken(n, subj, cls) { try { const a = localTaken(); const k = takenKey(n, subj, cls); if (!a.includes(k)) a.push(k); localStorage.setItem("amrit_test_taken", JSON.stringify(a)); } catch (e) {} }
@@ -2829,6 +2833,7 @@ async function _saveStudent() {
   saved.createdAt = saved.createdAt || Date.now();
   saveProfile();
   try { await set(ref(db, "testStudents/" + saved.sid), stuRec(n, state.cls)); } catch (e) {}
+  try { const _v = cleanVillage(state.village); if (_v.length >= 2) { saved.village = _v; saveProfile(); await saveVillage(); } } catch (e) {}
   try { tgStudent(); } catch (e) {}
   registerPush();
   state.justSaved = true;
@@ -2932,13 +2937,14 @@ async function startTest(k, L0) {
   const subj = bank[k].name || k;
   const blockMsg = lang === "hi" ? "इस नाम से यह टेस्ट पहले ही हो चुका है। एक नाम से एक विषय का टेस्ट सिर्फ एक बार दे सकते हैं।" : "This name has already taken this subject's test. One name can take each test only once.";
   const showErr = m => { $("err").textContent = m; $("err").classList.remove("hidden"); window.scrollTo({ top: 0, left: 0, behavior: "instant" }); };
+  { const gm = ctlGate(subj); if (gm) return showErr(gm); }
   if (state.starting) return;
   const L = L0 || lang;
   const KEEP = /above|both|none of|all of|उपरोक्त|दोनों|इनमें से|सभी/i;
-  const shufOpts = Q => { if (Q.options.some(o => KEEP.test(String(o)))) return Q; const c = _cv(Q), idx = shuffle(Q.options.map((_, i) => i)); return { ...Q, options: idx.map(i => Q.options[i]), correct: idx.indexOf(c) ^ _M }; };
+  const shufOpts = Q => { if (CTL.shufOpt === false) return Q; if (Q.options.some(o => KEEP.test(String(o)))) return Q; const c = _cv(Q), idx = shuffle(Q.options.map((_, i) => i)); return { ...Q, options: idx.map(i => Q.options[i]), correct: idx.indexOf(c) ^ _M }; };
   const items = Object.values(bank[k].items || {}).map(x => pickQ(x, L)).filter(Boolean);
   if (!items.length) return showErr(lang === "hi" ? "इस विषय के सवाल अभी उपलब्ध नहीं हैं।" : "Questions for this subject are not available yet.");
-  const qs = shuffle(items).slice(0, QCOUNT).map(Q => ({ Q: shufOpts(Q) }));
+  const qs = (CTL.shuf === false ? items : shuffle(items)).slice(0, QCOUNT).map(Q => ({ Q: shufOpts(Q) }));
   bumpCount(state.name, subj, state.cls);
   lang = L; try { localStorage.setItem("amrit_test_lang2", L); } catch (e) {}
   clearInterval(window._tm); window._tm = setInterval(() => {
@@ -3074,6 +3080,9 @@ if ($("bnav")) $("bnav").onclick = e => {
   render(); window.scrollTo({ top: 0, left: 0, behavior: "instant" });
 };
 function render() {
+  if (CTL.play === false && state.screen === "play") state.screen = "start";
+  if (CTL.lb === false && state.screen === "leaderboard" && state.lbTab !== "students") state.lbTab = "students";
+  if (CTL.showAns === false) state.review = false;
   navSync();
   applyChrome();
   document.body.classList.toggle("noselect", state.screen === "quiz"); document.body.classList.toggle("on-play", state.screen === "play");
@@ -3130,7 +3139,7 @@ function renderInner() {
           <input id="photoIn" type="file" accept="image/jpeg,image/png,image/webp" class="hidden">
         </div>
         ${state.saved ? (state.justSaved ? (state.dupNote ? `<div id="savedMsg" class="slidein mb-3 px-4 py-2.5 rounded-2xl bg-amber-50 border border-amber-200 text-amber-800 text-sm font-semibold">\u2714 ${lang === "hi" ? "इस नाम से पहले से कोई है, इसलिए आपका नाम" : "Is naam se pehle se koi hai, isliye aapka naam"} <b>${esc(state.dupNote)}</b> ${lang === "hi" ? "रखा गया है" : "rakha gaya hai"}</div>` : `<div id="savedMsg" class="slidein flex items-center gap-2 mb-3 px-4 py-2.5 rounded-2xl bg-green-50 border border-green-200 text-green-700 text-sm font-semibold">\u2714 ${lang === "hi" ? "आपका नाम इस डिवाइस पर सेव है" : "Your name is saved on this device"}</div>`) : "") : `<input id="nm" aria-label="${t.namePh}" value="${esc(state.name)}" maxlength="60" placeholder="${t.namePh}" autocomplete="off" autocapitalize="words" enterkeyhint="done" class="${inputCls} mb-3">`}
-        ${classPicker(state.cls)}
+        ${villageHtml(inputCls)}${classPicker(state.cls)}
         ${state.saved ? "" : `<div id="svChk" class="flex flex-wrap gap-2 mt-3">${chkHtml()}</div>`}
         <p id="err" class="hidden text-red-500 text-xs mt-2"></p>
         ${state.saved ? "" : `<button id="saveBtn" style="opacity:${_chkItems().every(x => x[0]) ? 1 : .7}" class="mt-3 w-full py-3.5 rounded-2xl ${btnMain} disabled:opacity-60 disabled:shadow-none disabled:translate-y-0">${t.save}</button>`}
@@ -3149,10 +3158,12 @@ function renderInner() {
     if ($("photoDel")) $("photoDel").onclick = () => { hdDel(state.name, state.cls); photoMap.delete(nk(state.name)); delete saved.photo; syncPhoto(); render(); };
     if ($("prof")) $("prof").onclick = e => {
       const b = e.target.closest("[data-p]"); if (!b) return;
-      if (b.dataset.p === "add") { if (cur < profiles.length) { cur = profiles.length; saved = {}; window._hdPending = ""; window._hdFile = null; state.name = ""; state.cls = "2"; state.saved = false; render(); } }
+      if (b.dataset.p === "add") { if (cur < profiles.length) { cur = profiles.length; saved = {}; state.village = ""; window._hdPending = ""; window._hdFile = null; state.name = ""; state.cls = "2"; state.saved = false; render(); } }
       else if (Number(b.dataset.p) !== cur) switchProfile(Number(b.dataset.p));
     };
-    if ($("nm")) { $("nm").oninput = e => { state.name = e.target.value; markDirty(); paintChk(); }; $("nm").onkeydown = e => { if (e.key === "Enter") { e.preventDefault(); saveStudent(); } }; }
+    if ($("vl")) $("vl").oninput = e => { state.village = e.target.value; };
+  if ($("vlSave")) $("vlSave").onclick = async () => { const v = cleanVillage($("vl").value); if (v.length < 2) return; saved.village = v; try { saveProfile(); } catch (e) {} await saveVillage(); render(); };
+  if ($("nm")) { $("nm").oninput = e => { state.name = e.target.value; markDirty(); paintChk(); }; $("nm").onkeydown = e => { if (e.key === "Enter") { e.preventDefault(); saveStudent(); } }; }
     if ($("saveBtn")) $("saveBtn").onclick = saveStudent;
     initWheel();
     window._pickCls = c => {
@@ -3518,7 +3529,7 @@ async function submitTest() {
   try { if (state.liveId) remove(ref(db, "testLive/" + state.liveId)).catch(() => {}); state.liveId = null; } catch (e) {}
   let right = 0, wrong = 0;
   state.questions.forEach((q, i) => { const Q = q.Q, a = state.answers[i]; if (a === null || a === undefined) return; if (a === _cv(Q)) right++; else wrong++; });
-  const neg = NEG, score = Math.max(0, Math.round((right - wrong * neg) * 100) / 100);
+  const neg = negFor(state.subName), score = Math.max(0, Math.round((right - wrong * neg) * 100) / 100);
   state.score = score; state.right = right; state.wrong = wrong; state.neg = neg;
   const timeMs = Math.max(1000, Date.now() - (state.startedAt || Date.now()));
   state.timeMs = timeMs;
@@ -3531,7 +3542,7 @@ async function submitTest() {
   render();
   try { kidDone(score / total); } catch (e) {}
   if (score / total >= 0.75) confetti();
-  try { const cur = fullTopperOf(state.cls); if (score >= total && cur && nk(cur.name) === nk(state.name)) { podBurst(); setTimeout(() => { const h = document.querySelector("#app .th-trophy"); if (h) { const b = h.getBoundingClientRect(); firework(b.left + b.width / 2, b.top + b.height / 2, 36, ["#facc15", "#fbbf24", "#f59e0b", "#ffffff", "#4ade80"]); } }, 700); } } catch (e) {}
+  try { const cur = fullTopperOf(state.cls); if (score >= total && cur && nk(cur.name) === nk(state.name)) { setTimeout(() => downloadCert(false), 1200); podBurst(); setTimeout(() => { const h = document.querySelector("#app .th-trophy"); if (h) { const b = h.getBoundingClientRect(); firework(b.left + b.width / 2, b.top + b.height / 2, 36, ["#facc15", "#fbbf24", "#f59e0b", "#ffffff", "#4ade80"]); } }, 700); } } catch (e) {}
 }
 
 // result screen: 4 subject x 50/50 ka progress (topper banne ka raasta)
@@ -3540,7 +3551,7 @@ function topProgressHtml() {
   const p = state.pending, extra = state.resultId ? null : [{ ...p, id: "pending" }], hi = lang === "hi", subs = fullSubs(state.name, state.cls, extra), nd = SUBS.filter(x => subs[x]);
   const cur = fullTopperOf(state.cls, extra), iAm = cur && nk(cur.name) === nk(state.name);
   const chips = SUBS.map(x => `<span class="th-chip" style="--i:${SUBS.indexOf(x)};${subs[x] ? "" : "opacity:.55;filter:grayscale(1)"}">${subs[x] ? "\u2714" : "\u{1F512}"} ${esc(sl(x))}</span>`).join("");
-  if (iAm && nd.length === SUBS.length) return `<div class="th-wrap mt-5"><div class="th-card text-center"><span class="th-trophy">\u{1F3C6}</span><div class="font-extrabold text-amber-800 mt-1 gold-txt">${hi ? "बधाई! आप " + esc(clsLabel(state.cls)) + " के टॉपर हैं!" : "Badhai! Aap " + esc(clsLabel(state.cls)) + " ke TOPPER hain!"}</div><div class="text-[.7rem] text-amber-900 mt-1">${hi ? "चारों विषय में 50/50" : "Chaaron subject mein 50/50"}</div><div class="flex flex-wrap justify-center gap-1.5 mt-2">${chips}</div></div></div>`;
+  if (iAm && nd.length === SUBS.length) return `<div class="th-wrap mt-5"><div class="th-card text-center"><span class="th-trophy">\u{1F3C6}</span><div class="font-extrabold text-amber-800 mt-1 gold-txt">${hi ? "बधाई! आप " + esc(clsLabel(state.cls)) + " के टॉपर हैं!" : "Badhai! Aap " + esc(clsLabel(state.cls)) + " ke TOPPER hain!"}</div><div class="text-[.7rem] text-amber-900 mt-1">${hi ? "चारों विषय में 50/50" : "Chaaron subject mein 50/50"}</div><div class="flex flex-wrap justify-center gap-1.5 mt-2">${chips}</div><button id="certDl" type="button" class="mt-3 px-4 py-2 rounded-xl font-bold text-sm" style="background:#f59e0b;color:#fff">\u2B07 ${hi ? "सर्टिफिकेट डाउनलोड (PNG)" : "Certificate download (PNG)"}</button></div></div>`;
   if (!nd.length && state.score < state.questions.length) return `<div class="mt-5 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-xs text-amber-900 text-left">\u{1F3AF} ${hi ? "क्लास टॉपर बनने के लिए <b>चारों विषयों में 50/50</b> लाना होगा।" : "Class topper banne ke liye <b>chaaron subject mein 50/50</b> laana hoga."}</div>`;
   return `<div class="mt-5 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-left"><div class="text-xs font-bold text-amber-900 mb-2">\u{1F3AF} ${hi ? "टॉपर प्रोग्रेस" : "Topper progress"}: ${nd.length}/${SUBS.length} ${hi ? "विषय में 50/50" : "subject mein 50/50"}${nd.length === SUBS.length && cur ? " \u2014 " + (hi ? "अभी टॉपर " : "abhi topper ") + esc(cur.name) + (hi ? " है (कम समय)" : " hai (kam time)") : ""}</div><div class="flex flex-wrap gap-1.5">${chips}</div></div>`;
 }
@@ -3984,6 +3995,7 @@ window.addEventListener("pagehide", () => { try { remove(ref(db, "testLive/" + P
     return -1;
   }
   function confetti() {
+    if (typeof CONF_ON !== "undefined" && CONF_ON === false) return;
     const CF = ["#facc15", "#fb923c", "#f472b6", "#60a5fa", "#4ade80", "#ffffff"];
     for (let n = 0; n < 70; n++) {
       const el = document.createElement("i"); el.className = "cg-cf";
@@ -4127,6 +4139,7 @@ setTimeout(async () => {
 let _ac = null;
 // Sound ON/OFF admin se: Firebase testConfig/sound (false / 0 / "off" = band, baaki sab = chalu)
 var SND_CFG = true; try { SND_CFG = localStorage.getItem("amrit_snd_cfg") !== "0"; } catch (e) {}
+var BLOCKED = {}, EV_OFF = {}, CONF_ON = true; // admin: kaun si awaaz band / confetti on-off
 function sndOn() { return SND_CFG; }
 function paintSnd() { const b = document.getElementById("sndBtn"); if (b) { b.textContent = ""; b.style.display = "none"; } }
 function _tone(f, t0, d, type, vol) {
@@ -4202,9 +4215,10 @@ const SND_FILES = {
   low:   "https://www.image2url.com/r2/default/audio/1789533495384-a663379e-b951-4a68-9c8f-2d130c593655.mp3", // Lowest score: sad-meow-song
   timer: "https://www.image2url.com/r2/default/audio/1795520775480-57873bda-3be5-49d8-98d8-3b2d4457984c.mp3"  // Timer (aakhri 10 second)
 };
-const BG_URL = ""; // apni background music ka mp3 link yahan daalo; khali rakha to built-in khushnuma music chalegi
-const BG_VOL = 0.9, BG_DUCK = 0.22;      // music ki awaaz / effect bajte waqt dheemi
-const SND_MID_MIN = 50, SND_WIN_MIN = 75; // %: 50 se kam = sad meow, 50-74 = angry, 75+ = jeet ki dhun
+const SND_DEF = Object.assign({}, SND_FILES); // admin ke "default" ke liye
+let BG_URL = ""; // apni background music ka mp3 link yahan daalo; khali rakha to built-in khushnuma music chalegi
+let BG_VOL = 0.9, BG_DUCK = 0.22, FX_VOL = 1, BG_ON = true;      // music ki awaaz / effect bajte waqt dheemi
+let SND_MID_MIN = 50, SND_WIN_MIN = 75; // %: 50 se kam = sad meow, 50-74 = angry, 75+ = jeet ki dhun
 const _buf = {}, _bufP = {};
 let _cur = null, _el = null, _bgG = null, _bgT = null, _bgOn = false, _bgNext = 0, _bgStep = 0, _bgSrc = null, _pre = false;
 function ensureAC() { try { const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return null; if (!_ac) _ac = new AC(); if (_ac.state === "suspended") _ac.resume(); return _ac; } catch (e) { return null; } }
@@ -4227,11 +4241,11 @@ function cdStart(tag) {
 function stopFx() { _fxK = ""; try { if (_cur) { const c = _cur; _cur = null; c.stop(); } } catch (e) {} try { if (_el) { _el.pause(); _el = null; } } catch (e) {} _duck(false); }
 function sfxFile(k, fb) {
   try {
-    if (!sndOn() || !SND_FILES[k]) return;
+    if (!sndOn() || !SND_FILES[k] || EV_OFF[k]) return;
     stopFx(); _fxK = k; const ac = ensureAC();
-    if (ac && _buf[k]) { const src = ac.createBufferSource(); src.buffer = _buf[k]; src.connect(ac.destination); _cur = src; _duck(true); src.onended = () => { if (_cur === src) { _cur = null; _duck(false); } }; src.start(); return; }
+    if (ac && _buf[k]) { const src = ac.createBufferSource(); src.buffer = _buf[k]; const fg = ac.createGain(); fg.gain.value = FX_VOL; src.connect(fg); fg.connect(ac.destination); _cur = src; _duck(true); src.onended = () => { if (_cur === src) { _cur = null; _duck(false); } }; src.start(); return; }
     if (ac && _buf[k] === undefined) loadBuf(k);
-    const a = new Audio(SND_FILES[k]); _el = a; const pr = a.play(); if (pr && pr.catch) pr.catch(() => { if (fb) sfx(fb); });
+    const a = new Audio(SND_FILES[k]); a.volume = Math.max(0, Math.min(1, FX_VOL)); _el = a; const pr = a.play(); if (pr && pr.catch) pr.catch(() => { if (fb) sfx(fb); });
   } catch (e) { if (fb) sfx(fb); }
 }
 // ----- hamesha chalne wali background music (built-in khushnuma loop) -----
@@ -4261,7 +4275,7 @@ function bgTick() {
   }
 }
 function startBg() {
-  if (!BG_URL) return; // built-in music band
+  if (!BG_URL || !BG_ON) return; // built-in music band; admin se on/off
   if (_bgOn || !sndOn()) return; const ac = ensureAC(); if (!ac) return; _bgOn = true;
   _bgG = ac.createGain(); _bgG.gain.value = 0; _bgG.connect(ac.destination); _bgG.gain.setTargetAtTime(_cur ? BG_DUCK : BG_VOL, ac.currentTime, .8);
   const gen = () => { if (!_bgOn || _bgT) return; _bgNext = ac.currentTime + .15; _bgStep = 0; _bgT = setInterval(bgTick, 150); };
@@ -4276,6 +4290,141 @@ function unlockAudio() { if (!sndOn()) return; if (!ensureAC()) return; if (!_pr
 ["pointerdown", "touchend", "click", "keydown"].forEach(ev => document.addEventListener(ev, unlockAudio, { passive: true }));
 document.addEventListener("click", e => { if (!(e.target.closest && e.target.closest("#sndBtn"))) return; if (sndOn()) startBg(); else { stopFx(); stopBg(); } });
 document.addEventListener("visibilitychange", () => { try { if (!_ac) return; if (document.hidden) _ac.suspend(); else if (sndOn()) _ac.resume(); } catch (e) {} });
+
+// ===== ADMIN CONTROLS: testConfig se sound / confetti / timer / maintenance =====
+function _num(x, lo, hi, d) { if (x === null || x === undefined || x === "") return d; x = Number(x); return isFinite(x) && x >= lo && x <= hi ? x : d; }
+function _off(x) { return x === false || x === 0 || x === "0" || x === "off" || x === "false"; }
+function applySndCfg(v) {
+  const s = (v && v.snd) || {};
+  FX_VOL = _num(s.vol, 0, 100, 100) / 100;
+  BG_VOL = _num(s.bgVol, 0, 100, 90) / 100; BG_DUCK = _num(s.duck, 0, 100, 22) / 100;
+  SND_MID_MIN = _num(s.mid, 0, 100, 50); SND_WIN_MIN = Math.max(SND_MID_MIN, _num(s.win, 0, 100, 75));
+  EV_OFF = {}; const ev = s.ev || {}; Object.keys(ev).forEach(k => { if (_off(ev[k])) EV_OFF[k] = true; });
+  const urls = s.url || {};
+  ["start", "q", "mid", "top", "low", "timer", "win"].forEach(k => {
+    const u = String(urls[k] || "").trim(), want = /^https:\/\//i.test(u) ? u : (SND_DEF[k] || "");
+    if ((SND_FILES[k] || "") !== want) { if (want) SND_FILES[k] = want; else delete SND_FILES[k]; delete _buf[k]; delete _bufP[k]; if (_pre && want) loadBuf(k); }
+  });
+  const bu = String(s.bgUrl || "").trim(), nu = /^https:\/\//i.test(bu) ? bu : "", nOn = !_off(s.bg), wasOn = BG_ON, wasUrl = BG_URL;
+  BG_ON = nOn; BG_URL = nu;
+  if (nu !== wasUrl) { const was = _bgOn; stopBg(); delete _buf.bg; delete _bufP.bg; if (was && sndOn() && BG_ON && BG_URL) startBg(); }
+  else if (wasOn !== BG_ON) { if (!BG_ON) stopBg(); else if (sndOn()) startBg(); }
+  try { if (_bgG && _ac) _bgG.gain.setTargetAtTime(_cur ? BG_DUCK : BG_VOL, _ac.currentTime, .2); } catch (e) {}
+  try { localStorage.setItem("amrit_snd_cfg2", JSON.stringify({ snd: s })); } catch (e) {}
+}
+function _set(o) { const r = {}; if (o && typeof o === "object") Object.keys(o).forEach(k => { if (o[k]) r[k] = true; }); return r; }
+function _tmin(s) { const m = /^(\d\d):(\d\d)$/.exec(String(s || "")); return m ? (+m[1]) * 60 + (+m[2]) : 0; }
+
+// ===== v15: Village (sirf admin ko dikhta hai: testVillage), Font, Topper certificate PNG =====
+const cleanVillage = v => String(v == null ? "" : v).trim().replace(/\s+/g, " ").slice(0, 40);
+function villageHtml(inputCls) {
+  if ((typeof CTL !== "undefined" && CTL && CTL.village === false) || (state.saved && saved.village)) return "";
+  const hi = lang === "hi", ph = hi ? "गाँव का नाम (वैकल्पिक)" : "Gaon / Village ka naam (optional)";
+  return `<input id="vl" aria-label="${ph}" value="${esc(state.village || "")}" maxlength="40" placeholder="${ph}" autocomplete="off" autocapitalize="words" class="${inputCls} mb-3">`
+    + (state.saved ? `<button id="vlSave" type="button" class="mb-3 px-4 py-2 rounded-xl font-bold text-sm bg-green-600 text-white">${hi ? "गाँव सेव करो" : "Village save karo"}</button>` : "");
+}
+async function saveVillage() {
+  try {
+    const v = cleanVillage(saved.village); if (v.length < 2 || !saved.sid) return;
+    await set(ref(db, "testVillage/" + saved.sid), { v, name: String(state.name || "").slice(0, 60), cls: String(state.cls || "").slice(0, 4), at: Date.now() });
+  } catch (e) {}
+}
+const CERT_FONTS = ["Poppins", "Inter", "Roboto", "Nunito", "Lato", "Montserrat", "Mukta", "Hind", "Baloo 2", "Noto Sans Devanagari"];
+function _loadImg(src) { return new Promise(res => { if (!src) return res(null); const i = new Image(); i.onload = () => res(i); i.onerror = () => res(null); i.src = src; }); }
+async function makeCert(o) {
+  const W = 1600, H = 1130, cv = document.createElement("canvas"); cv.width = W; cv.height = H;
+  const x = cv.getContext("2d"), F = "Poppins,'Noto Sans Devanagari',system-ui,sans-serif";
+  try { await Promise.all([document.fonts.load("800 60px Poppins"), document.fonts.load("700 40px 'Noto Sans Devanagari'")]); await document.fonts.ready; } catch (e) {}
+  const g = x.createLinearGradient(0, 0, W, H); g.addColorStop(0, "#fffbeb"); g.addColorStop(1, "#fde68a"); x.fillStyle = g; x.fillRect(0, 0, W, H);
+  x.strokeStyle = "#f59e0b"; x.lineWidth = 14; x.strokeRect(40, 40, W - 80, H - 80); x.lineWidth = 4; x.strokeRect(70, 70, W - 140, H - 140);
+  x.fillStyle = "rgba(255,255,255,.7)"; x.fillRect(80, 80, W - 160, H - 160);
+  x.textAlign = "center"; x.fillStyle = "#92400e";
+  x.font = "800 28px " + F; x.fillText("A M R I T   T I W A R I   T E S T", W / 2, 165);
+  x.font = "700 78px Georgia,serif"; x.fillText("Certificate of Excellence", W / 2, 265);
+  x.fillStyle = "#6b7280"; x.font = "500 28px " + F; x.fillText(lang === "hi" ? "यह सम्मान प्रदान किया जाता है" : "is proudly presented to", W / 2, 325);
+  const im = await _loadImg(okPhoto(saved.photo) ? saved.photo : ""), cx = W / 2, cy = 440, r = 80;
+  x.save(); x.beginPath(); x.arc(cx, cy, r, 0, Math.PI * 2); x.closePath(); x.clip();
+  if (im) { const m = Math.min(im.width, im.height); x.drawImage(im, (im.width - m) / 2, (im.height - m) / 2, m, m, cx - r, cy - r, r * 2, r * 2); } else { x.fillStyle = "#f59e0b"; x.fillRect(cx - r, cy - r, r * 2, r * 2); x.fillStyle = "#fff"; x.font = "800 80px " + F; x.fillText(String(o.name || "?")[0].toUpperCase(), cx, cy + 28); }
+  x.restore(); x.strokeStyle = "#f59e0b"; x.lineWidth = 8; x.beginPath(); x.arc(cx, cy, r, 0, Math.PI * 2); x.stroke();
+  let fs = 92; x.fillStyle = "#1f2937"; do { x.font = "800 " + fs + "px " + F; fs -= 4; } while (x.measureText(o.name).width > W - 300 && fs > 36);
+  x.fillText(o.name, W / 2, 625);
+  x.fillStyle = "#b45309"; x.font = "700 44px " + F; x.fillText("\u{1F451} " + clsLabelEn(state.cls) + " TOPPER \u{1F451}", W / 2, 705);
+  x.fillStyle = "#374151"; x.font = "500 30px " + F;
+  x.fillText((lang === "hi" ? "चारों विषय में 50/50: " : "Full marks in all 4 subjects: ") + SUBS.join(" \u00B7 "), W / 2, 780);
+  if (o.timeMs) x.fillText((lang === "hi" ? "कुल समय: " : "Total time: ") + fmtT(o.timeMs), W / 2, 830);
+  const d = new Date(o.done || Date.now()).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" });
+  x.textAlign = "left"; x.fillStyle = "#6b7280"; x.font = "500 26px " + F; x.fillText(d, 150, 985);
+  x.textAlign = "center"; x.fillStyle = "#92400e"; x.font = "italic 700 52px Georgia,serif"; x.fillText("Amrit Tiwari", W - 330, 975);
+  x.strokeStyle = "#f59e0b"; x.lineWidth = 3; x.beginPath(); x.moveTo(W - 460, 995); x.lineTo(W - 200, 995); x.stroke();
+  x.fillStyle = "#6b7280"; x.font = "500 22px " + F; x.fillText("Founder", W - 330, 1030);
+  return cv;
+}
+async function downloadCert(manual) {
+  try {
+    const o = fullTopperOf(state.cls); if (!o || nk(o.name) !== nk(state.name)) return;
+    const key = "amrit_cert_" + state.cls + "_" + nk(o.name) + "_" + o.done;
+    if (!manual && typeof CTL !== "undefined" && CTL && CTL.certAuto === false) return;
+    if (!manual) { try { if (localStorage.getItem(key)) return; localStorage.setItem(key, "1"); } catch (e) {} }
+    const cv = await makeCert(o);
+    cv.toBlob(b => { if (!b) return; const a = document.createElement("a"); a.href = URL.createObjectURL(b); a.download = "Topper-Certificate-" + String(o.name).replace(/[^\w]+/g, "_") + ".png"; document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 5000); }, "image/png");
+  } catch (e) {}
+}
+document.addEventListener("click", e => { if (e.target.closest && e.target.closest("#certDl")) downloadCert(true); });
+
+const THEMES = {"sunrise": ["🌅 Sunrise", "#f97316", "#c2410c"], "ocean": ["🌊 Ocean", "#0ea5e9", "#0369a1"], "forest": ["🌿 Forest", "#16a34a", "#166534"], "royal": ["👑 Royal", "#7c3aed", "#5b21b6"], "rose": ["🌹 Rose", "#e11d48", "#9f1239"], "night": ["🌙 Night", "#6366f1", "#0f172a"], "gold": ["🥇 Gold", "#d97706", "#92400e"]};
+const NOTIFS = ["classic", "glass", "card", "neon"];
+function notifCss(n, ac) {
+  const base = ".annbar-t b{font-weight:800!important;letter-spacing:.01em;font-size:15.5px!important}.annbar-t span{font-weight:500;letter-spacing:.005em}.annbar-b{color:" + ac + "!important}.annc .ah{font-weight:800;letter-spacing:.01em}#toasts>button{border-radius:20px!important;background-image:linear-gradient(135deg," + ac + ",#111827)!important;letter-spacing:.01em}#toasts>button .font-extrabold{font-weight:800}";
+  if (n === "glass") return base + ".annbar{background:rgba(255,255,255,.82)!important;color:#111827!important;-webkit-backdrop-filter:blur(18px) saturate(1.4);backdrop-filter:blur(18px) saturate(1.4);box-shadow:0 10px 30px -14px rgba(0,0,0,.35)!important;border-radius:0 0 22px 22px}.annbar-b{background:" + ac + "!important;color:#fff!important}.annbar-p{background:" + ac + "!important}.annc{background:rgba(255,255,255,.9)!important;color:#111827!important;box-shadow:0 0 0 1.5px " + ac + ",0 16px 32px -12px rgba(0,0,0,.4)!important}.annc .at{color:" + ac + "!important}.annc .ax{background:rgba(0,0,0,.08)!important}";
+  if (n === "card") return base + ".annbar{background:#fff!important;color:#111827!important;border-bottom:5px solid " + ac + ";border-radius:0 0 24px 24px;box-shadow:0 14px 30px -14px rgba(0,0,0,.35)!important}.annbar-b{background:" + ac + "!important;color:#fff!important}.annbar-p{background:" + ac + "!important}.annc{background:#fff!important;color:#111827!important;border-left:6px solid " + ac + "!important;box-shadow:0 14px 30px -12px rgba(0,0,0,.35)!important}.annc .at{color:" + ac + "!important}.annc .ax{background:rgba(0,0,0,.08)!important}";
+  if (n === "neon") return base + ".annbar{background:#0b1020!important;color:#e0e7ff!important;box-shadow:0 0 0 1px " + ac + ",0 12px 34px -8px " + ac + "!important}.annbar-b{background:" + ac + "!important;color:#fff!important}.annbar-p{background:" + ac + "!important}.annc{background:#0b1020!important;box-shadow:0 0 0 1.5px " + ac + ",0 0 24px -4px " + ac + "!important}.annc .at{color:" + ac + "!important}";
+  return base;
+}
+const CTL_KEYS = ["theme", "notif", "village", "certAuto", "font", "play", "lb", "showAns", "shuf", "shufOpt", "offSub", "offCls", "win", "dayLim", "maxLeave", "negSub", "accent", "annBg", "annSec", "confetti", "qSec"];
+function _shade(hex, f) { const n = parseInt(hex.slice(1), 16), c = k => Math.max(0, Math.min(255, Math.round(((n >> k) & 255) * f))); return "rgb(" + c(16) + "," + c(8) + "," + c(0) + ")"; }
+function applyUiCfg(v) {
+  v = v || {};
+  CONF_ON = !_off(v.confetti);
+  const was = QSEC, qs = Math.round(Number(v.qSec)); QSEC = qs >= 10 && qs <= 300 ? qs : 45;
+  MAXLEAVE = Math.round(_num(v.maxLeave, 1, 10, 2));
+  const w = v.win && typeof v.win === "object" ? v.win : {}, hex = x => /^#[0-9a-f]{6}$/i.test(String(x || "")) ? String(x) : "";
+  const ns = {}; if (v.negSub && typeof v.negSub === "object") Object.keys(v.negSub).forEach(k => { const n = Number(v.negSub[k]); if (isFinite(n) && n >= 0 && n <= 5) ns[k] = n; });
+  CTL = { play: !_off(v.play), lb: !_off(v.lb), showAns: !_off(v.showAns), shuf: !_off(v.shuf), shufOpt: !_off(v.shufOpt), offSub: _set(v.offSub), offCls: _set(v.offCls),
+    win: { on: !!w.on && !_off(w.on), from: /^\d\d:\d\d$/.test(w.from || "") ? w.from : "00:00", to: /^\d\d:\d\d$/.test(w.to || "") ? w.to : "23:59" },
+    dayLim: Math.round(_num(v.dayLim, 0, 50, 0)), negSub: ns, accent: hex(v.accent) || ((THEMES[v.theme] || [])[1] || ""), annBg: hex(v.annBg) || ((THEMES[v.theme] || [])[2] || ""), theme: THEMES[v.theme] ? v.theme : "", notif: NOTIFS.indexOf(v.notif) >= 0 ? v.notif : "classic", annSec: Math.round(_num(v.annSec, 3, 60, 12)), village: !_off(v.village), certAuto: !_off(v.certAuto), font: CERT_FONTS.indexOf(String(v.font || "")) >= 0 ? String(v.font) : "" };
+  try {
+    const bc = document.body.classList; bc.toggle("no-play", !CTL.play); bc.toggle("no-lb", !CTL.lb); bc.toggle("no-ans", !CTL.showAns);
+    let st = document.getElementById("ctlCss"); if (!st) { st = document.createElement("style"); st.id = "ctlCss"; document.head.appendChild(st); }
+    st.textContent = "body.no-play [data-nav=\"play\"],body.no-lb [data-nav=\"toppers\"]{display:none!important}body.no-lb #tabs [data-tab]:not([data-tab=\"students\"]){display:none!important}body.no-ans #revBtn{display:none!important}"
+      + (CTL.accent ? ":root{--ac:" + CTL.accent + ";--ac2:" + _shade(CTL.accent, .78) + ";--acs:" + CTL.accent + "24}" : "") + (CTL.annBg ? ".annbar{background:" + CTL.annBg + "!important}" : "") + (CTL.font ? ':root body,:root body *:not(svg):not(svg *):not(code){font-family:"' + CTL.font + '",Poppins,"Noto Sans Devanagari",system-ui,sans-serif!important}' : "") + notifCss(CTL.notif, CTL.accent || "#4f46e5");
+    let lk = document.getElementById("ctlFont");
+    if (CTL.font) { if (!lk) { lk = document.createElement("link"); lk.id = "ctlFont"; lk.rel = "stylesheet"; document.head.appendChild(lk); } lk.href = "https://fonts.googleapis.com/css2?family=" + CTL.font.replace(/ /g, "+") + ":wght@400;600;700;800&display=swap"; } else if (lk) lk.remove();
+  } catch (e) {}
+  try { if (was !== QSEC && state.screen !== "quiz") render(); else if ((!CTL.play && state.screen === "play") || (!CTL.lb && state.screen === "leaderboard" && state.lbTab !== "students") || (!CTL.showAns && state.review)) render(); } catch (e) {}
+  let o = document.getElementById("maintOv");
+  if (v.maint) {
+    if (!o) { o = document.createElement("div"); o.id = "maintOv"; o.style.cssText = "position:fixed;inset:0;z-index:2147483000;display:grid;place-items:center;padding:24px;text-align:center;background:#f0fdf4;color:#14532d;font:700 1.1rem Poppins,system-ui,sans-serif"; document.body.appendChild(o); }
+    o.textContent = String(v.maintMsg || "Site thodi der ke liye band hai. Jaldi wapas aayenge!");
+  } else if (o) o.remove();
+  try { const c = {}; CTL_KEYS.forEach(k => { if (v[k] !== undefined) c[k] = v[k]; }); localStorage.setItem("amrit_ui_raw", JSON.stringify(c)); } catch (e) {}
+}
+function negFor(sub) { const m = CTL.negSub || {}; for (const k in m) if (nk(k) === nk(sub)) return m[k]; return NEG; }
+function ctlGate(subj) {
+  const hi = lang === "hi", m = (e, h) => hi ? h : e, me = nk(state.name);
+  for (const id in BLOCKED) { const b = BLOCKED[id] || {}; if ((saved && saved.sid && id === saved.sid) || (b.name && nk(b.name) === me && String(b.cls) === String(state.cls))) return m("Your test access has been stopped. Please talk to your teacher.", "\u0906\u092A\u0915\u093E \u091F\u0947\u0938\u094D\u091F \u0926\u0947\u0928\u093E \u0930\u094B\u0915 \u0926\u093F\u092F\u093E \u0917\u092F\u093E \u0939\u0948\u0964 \u0915\u0943\u092A\u092F\u093E \u091F\u0940\u091A\u0930 \u0938\u0947 \u092C\u093E\u0924 \u0915\u0930\u0947\u0902\u0964"); }
+  if (CTL.offCls && CTL.offCls[String(state.cls)]) return m("Tests for this class are closed right now.", "\u0907\u0938 \u0915\u094D\u0932\u093E\u0938 \u0915\u0947 \u091F\u0947\u0938\u094D\u091F \u0905\u092D\u0940 \u092C\u0902\u0926 \u0939\u0948\u0902\u0964");
+  if (CTL.offSub && Object.keys(CTL.offSub).some(s => nk(s) === nk(subj))) return m(subj + " test is closed right now.", subj + " \u0915\u093E \u091F\u0947\u0938\u094D\u091F \u0905\u092D\u0940 \u092C\u0902\u0926 \u0939\u0948\u0964");
+  const w = CTL.win; if (w && w.on) { const d = new Date(Date.now() + 19800000), cur = d.getUTCHours() * 60 + d.getUTCMinutes(), f = _tmin(w.from), t = _tmin(w.to), ok = f <= t ? (cur >= f && cur < t) : (cur >= f || cur < t);
+    if (!ok) return m("Tests are open only from " + w.from + " to " + w.to + " (IST).", "\u091F\u0947\u0938\u094D\u091F \u0938\u093F\u0930\u094D\u092B " + w.from + " \u0938\u0947 " + w.to + " (IST) \u0924\u0915 \u0916\u0941\u0932\u0924\u0947 \u0939\u0948\u0902\u0964"); }
+  if (CTL.dayLim > 0) { const sod = Math.floor((Date.now() + 19800000) / 864e5) * 864e5 - 19800000, n = results.filter(r => _sp(r) === me + "|" + state.cls && (r.createdAt || 0) >= sod).length;
+    if (n >= CTL.dayLim) return m("Daily limit of " + CTL.dayLim + " test(s) is done. Come back tomorrow!", "\u0906\u091C \u0915\u0947 " + CTL.dayLim + " \u091F\u0947\u0938\u094D\u091F \u092A\u0942\u0930\u0947 \u0939\u094B \u0917\u090F\u0964 \u0915\u0932 \u092B\u093F\u0930 \u0906\u0928\u093E!"); }
+  return "";
+}
+try { onValue(ref(db, "testBlocked"), sn => { BLOCKED = sn.val() || {}; }, () => {}); } catch (e) {}
+try {
+  const c = JSON.parse(localStorage.getItem("amrit_snd_cfg2") || "null"); if (c) applySndCfg({ snd: c.snd });
+  const u = JSON.parse(localStorage.getItem("amrit_ui_raw") || "null"); if (u) applyUiCfg(u);
+} catch (e) {}
 function myRankTop(score, timeMs) {
   try {
     const same = results.filter(r => r.cls === state.cls && r.subjectKey === state.subKey);
@@ -4289,7 +4438,7 @@ function kidDone(ratio) {
   if (pct >= SND_MID_MIN && myRankTop(state.score, state.timeMs)) sfxFile("top", "win");
   else if (pct < SND_MID_MIN) sfxFile("low", "ok");
   else if (pct < SND_WIN_MIN) sfxFile("mid", "ok");
-  else sfx("win");
+  else sfxFile("win");
   try { const m = document.querySelector("#app .kmsg"); if (m && !document.querySelector("#app .kst")) m.insertAdjacentHTML("afterend", "<div>" + streakCard(true, sk.isNew) + "</div>"); } catch (e) {}
   try { if (sk.isNew && STREAK_GOALS.includes(sk.n)) setTimeout(() => { try { confetti(); } catch (e) {} }, 500); } catch (e) {}
 }
